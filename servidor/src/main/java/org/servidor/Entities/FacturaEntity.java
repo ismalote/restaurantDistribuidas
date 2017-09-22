@@ -1,67 +1,40 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public class Factura {
+public class FacturaEntity {
 	
 	private String cliente;
 	private double montoTotal;
-	private List<ItemPlato> itemsPlato;
-	private List<ItemBebida> itemsBebida;
+	private List<ItemPlatoEntity> itemsPlato;
+	private List<ItemBebidaEntity> itemsBebida;
 	
-	
-	public Factura(String cliente, double montoTotal, List<ItemPlato> itemsPlato, List<ItemBebida> itemsBebida) {
-		super();
-		this.cliente = cliente;
-		this.montoTotal = montoTotal;
-		this.itemsPlato = itemsPlato;
-		this.itemsBebida = itemsBebida;
-	}
-
-
 	public String getCliente() {
 		return cliente;
 	}
-
-
 	public void setCliente(String cliente) {
 		this.cliente = cliente;
 	}
-
-
 	public double getMontoTotal() {
 		return montoTotal;
 	}
-
-
 	public void setMontoTotal(double montoTotal) {
 		this.montoTotal = montoTotal;
 	}
-
-
-	public List<ItemPlato> getItemsPlato() {
+	public List<ItemPlatoEntity> getItemsPlato() {
 		return itemsPlato;
 	}
-
-
-	public void setItemsPlato(List<ItemPlato> itemsPlato) {
+	public void setItemsPlato(List<ItemPlatoEntity> itemsPlato) {
 		this.itemsPlato = itemsPlato;
 	}
-
-
-	public List<ItemBebida> getItemsBebida() {
+	public List<ItemBebidaEntity> getItemsBebida() {
 		return itemsBebida;
 	}
-
-
-	public void setItemsBebida(List<ItemBebida> itemsBebida) {
+	public void setItemsBebida(List<ItemBebidaEntity> itemsBebida) {
 		this.itemsBebida = itemsBebida;
 	}
-
-
-	@Override
-	public String toString() {
-		return "Factura [cliente=" + cliente + ", montoTotal=" + montoTotal + "]";
-	}
 	
+	
+
+
 	
 	
 

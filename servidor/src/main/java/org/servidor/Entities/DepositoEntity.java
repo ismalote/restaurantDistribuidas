@@ -1,31 +1,25 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public class Deposito extends Area{
+public class DepositoEntity extends AreaEntity{
 	
-	private Stock stockDeposito;
-	private EncargadoArea encargadoDeposito;
-	
-	public Deposito(Integer idArea, Stock stockDeposito, EncargadoArea encargadoDeposito) {
-		super(idArea);
-		this.stockDeposito = stockDeposito;
-		this.encargadoDeposito = encargadoDeposito;
-	}
-
-	public Stock getStockDeposito() {
+	private StockEntity stockDeposito;
+	private EncargadoAreaEntity encargadoDeposito;
+	public StockEntity getStockDeposito() {
 		return stockDeposito;
 	}
-
-	public void setStockDeposito(Stock stockDeposito) {
+	public void setStockDeposito(StockEntity stockDeposito) {
 		this.stockDeposito = stockDeposito;
 	}
-
-	public EncargadoArea getEncargadoDeposito() {
+	public EncargadoAreaEntity getEncargadoDeposito() {
 		return encargadoDeposito;
 	}
-
-	public void setEncargadoDeposito(EncargadoArea encargadoDeposito) {
+	public void setEncargadoDeposito(EncargadoAreaEntity encargadoDeposito) {
 		this.encargadoDeposito = encargadoDeposito;
 	}
+	
+	
+
+
 	
 	
 

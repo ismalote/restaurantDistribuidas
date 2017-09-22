@@ -1,85 +1,62 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
 import java.util.List;
 
-public class Comanda {
+public class ComandaEntity {
 	
-	private List<Plato> platos;
-	private Mozo mozo;
+	private List<PlatoEntity> platos;
+	private MozoEntity mozo;
 	private Boolean comandaLista;
-	private Mesa mesa;
-	private List<Bebida> bebidas;
-	private EstadoComanda estadoComanda;
-	private Factura factura;
+	private MesaEntity mesa;
+	private List<BebidaEntity> bebidas;
+	private EstadoComandaEntity estadoComanda;
+	private FacturaEntity factura;
 	
-	public Comanda(List<Plato> platos, Mozo mozo, Boolean comandaLista, Mesa mesa, List<Bebida> bebidas,
-			EstadoComanda estadoComanda, Factura factura) {
-		super();
-		this.platos = platos;
-		this.mozo = mozo;
-		this.comandaLista = comandaLista;
-		this.mesa = mesa;
-		this.bebidas = bebidas;
-		this.estadoComanda = estadoComanda;
-		this.factura = factura;
-	}
-
-	public List<Plato> getPlatos() {
+	public List<PlatoEntity> getPlatos() {
 		return platos;
 	}
-
-	public void setPlatos(List<Plato> platos) {
+	public void setPlatos(List<PlatoEntity> platos) {
 		this.platos = platos;
 	}
-
-	public Mozo getMozo() {
+	public MozoEntity getMozo() {
 		return mozo;
 	}
-
-	public void setMozo(Mozo mozo) {
+	public void setMozo(MozoEntity mozo) {
 		this.mozo = mozo;
 	}
-
 	public Boolean getComandaLista() {
 		return comandaLista;
 	}
-
 	public void setComandaLista(Boolean comandaLista) {
 		this.comandaLista = comandaLista;
 	}
-
-	public Mesa getMesa() {
+	public MesaEntity getMesa() {
 		return mesa;
 	}
-
-	public void setMesa(Mesa mesa) {
+	public void setMesa(MesaEntity mesa) {
 		this.mesa = mesa;
 	}
-
-	public List<Bebida> getBebidas() {
+	public List<BebidaEntity> getBebidas() {
 		return bebidas;
 	}
-
-	public void setBebidas(List<Bebida> bebidas) {
+	public void setBebidas(List<BebidaEntity> bebidas) {
 		this.bebidas = bebidas;
 	}
-
-	public EstadoComanda getEstadoComanda() {
+	public EstadoComandaEntity getEstadoComanda() {
 		return estadoComanda;
 	}
-
-	public void setEstadoComanda(EstadoComanda estadoComanda) {
+	public void setEstadoComanda(EstadoComandaEntity estadoComanda) {
 		this.estadoComanda = estadoComanda;
 	}
-
-	public Factura getFactura() {
+	public FacturaEntity getFactura() {
 		return factura;
 	}
-
-	public void setFactura(Factura factura) {
+	public void setFactura(FacturaEntity factura) {
 		this.factura = factura;
 	}
 	
+	
+
 	
 	
 

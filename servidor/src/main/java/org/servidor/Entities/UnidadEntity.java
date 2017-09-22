@@ -1,15 +1,10 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public class Unidad {
+public class UnidadEntity {
 	
 	private Integer codigo;
 	private String descripcion;
 	
-	public Unidad(Integer codigo, String descripcion) {
-		super();
-		this.codigo = codigo;
-		this.descripcion = descripcion;
-	}
 	public Integer getCodigo() {
 		return codigo;
 	}
@@ -22,6 +17,8 @@ public class Unidad {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+
 	
 	
 

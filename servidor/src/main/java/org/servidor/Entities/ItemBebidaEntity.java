@@ -1,43 +1,31 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public class ItemBebida {
+public class ItemBebidaEntity {
 	
-	private Bebida bebida;
+	private BebidaEntity bebida;
 	private Integer cantidad;
 	private double montoSubtotal;
 	
-	public ItemBebida(Bebida bebida, Integer cantidad, double montoSubtotal) {
-		super();
-		this.bebida = bebida;
-		this.cantidad = cantidad;
-		this.montoSubtotal = montoSubtotal;
-	}
-
-	public Bebida getBebida() {
+	public BebidaEntity getBebida() {
 		return bebida;
 	}
-
-	public void setBebida(Bebida bebida) {
+	public void setBebida(BebidaEntity bebida) {
 		this.bebida = bebida;
 	}
-
 	public Integer getCantidad() {
 		return cantidad;
 	}
-
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
 	}
-
 	public double getMontoSubtotal() {
 		return montoSubtotal;
 	}
-
 	public void setMontoSubtotal(double montoSubtotal) {
 		this.montoSubtotal = montoSubtotal;
 	}
 	
-	
+
 	
 
 }

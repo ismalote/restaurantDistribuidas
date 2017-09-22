@@ -1,52 +1,38 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
 import java.util.List;
 
-public class AreaProduccion {
+public class AreaProduccionEntity {
 	private String TipoArea;
-	private EncargadoArea encargadoArea;
-	private Stock stock;
-	private List<Comanda> comandas;
+	private EncargadoAreaEntity encargadoArea;
+	private StockEntity stock;
+	private List<ComandaEntity> comandas;
 	
-	public AreaProduccion(String tipoArea, EncargadoArea encargadoArea, Stock stock, List<Comanda> comandas) {
-		super();
-		TipoArea = tipoArea;
-		this.encargadoArea = encargadoArea;
-		this.stock = stock;
-		this.comandas = comandas;
-	}
-
 	public String getTipoArea() {
 		return TipoArea;
 	}
-
 	public void setTipoArea(String tipoArea) {
 		TipoArea = tipoArea;
 	}
-
-	public EncargadoArea getEncargadoArea() {
+	public EncargadoAreaEntity getEncargadoArea() {
 		return encargadoArea;
 	}
-
-	public void setEncargadoArea(EncargadoArea encargadoArea) {
+	public void setEncargadoArea(EncargadoAreaEntity encargadoArea) {
 		this.encargadoArea = encargadoArea;
 	}
-
-	public Stock getStock() {
+	public StockEntity getStock() {
 		return stock;
 	}
-
-	public void setStock(Stock stock) {
+	public void setStock(StockEntity stock) {
 		this.stock = stock;
 	}
-
-	public List<Comanda> getComandas() {
+	public List<ComandaEntity> getComandas() {
 		return comandas;
 	}
-
-	public void setComandas(List<Comanda> comandas) {
+	public void setComandas(List<ComandaEntity> comandas) {
 		this.comandas = comandas;
 	}
+	
 	
 	
 	// TODO faltan metodos, no puedo justificar la herencia, asi que le meti un parametro tipoArea, en la cual dice que area es ya que por el momento no tienen comportamiento diferente.

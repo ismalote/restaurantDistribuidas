@@ -1,14 +1,11 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public class Bebida extends Insumo {
+public class BebidaEntity extends InsumoEntity {
 
 	private Integer idBebida;
 	private String descripcion;
 	
-	public Bebida() {
-		super(idBebida, precio, caducidad);
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	public Integer getIdBebida() {
 		return idBebida;

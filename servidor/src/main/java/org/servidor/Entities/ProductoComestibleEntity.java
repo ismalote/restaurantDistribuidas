@@ -1,31 +1,23 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public abstract class ProductoComestible {
+public abstract class ProductoComestibleEntity {
 
-	protected Area area;
+	protected AreaEntity area;
 	protected Integer estimadoStock;
 	
-	public ProductoComestible(Area area, Integer estimadoStock) {
-		super();
-		this.area = area;
-		this.estimadoStock = estimadoStock;
-	}
-
-	public Area getArea() {
+	public AreaEntity getArea() {
 		return area;
 	}
-
-	public void setArea(Area area) {
+	public void setArea(AreaEntity area) {
 		this.area = area;
 	}
-
 	public Integer getEstimadoStock() {
 		return estimadoStock;
 	}
-
 	public void setEstimadoStock(Integer estimadoStock) {
 		this.estimadoStock = estimadoStock;
 	}
+
 	
 	
 

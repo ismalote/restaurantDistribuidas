@@ -1,43 +1,30 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public class ItemPlato {
+public class ItemPlatoEntity {
 
-		private Plato plato;
+		private PlatoEntity plato;
 		private Integer cantidad;
 		private double montoSubtotal;
 		
-		public ItemPlato(Plato plato, Integer cantidad, double montoSubtotal) {
-			super();
-			this.plato = plato;
-			this.cantidad = cantidad;
-			this.montoSubtotal = montoSubtotal;
-		}
-
-		public Plato getPlato() {
+		public PlatoEntity getPlato() {
 			return plato;
 		}
-
-		public void setPlato(Plato plato) {
+		public void setPlato(PlatoEntity plato) {
 			this.plato = plato;
 		}
-
 		public Integer getCantidad() {
 			return cantidad;
 		}
-
 		public void setCantidad(Integer cantidad) {
 			this.cantidad = cantidad;
 		}
-
 		public double getMontoSubtotal() {
 			return montoSubtotal;
 		}
-
 		public void setMontoSubtotal(double montoSubtotal) {
 			this.montoSubtotal = montoSubtotal;
 		}
-		
-		
+	
 		
 	
 	

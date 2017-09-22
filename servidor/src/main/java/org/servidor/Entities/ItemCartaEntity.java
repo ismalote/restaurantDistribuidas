@@ -1,18 +1,13 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
 import java.util.List;
 
-public class ItemCarta {
+public class ItemCartaEntity {
 	
 	private Float precio;
 	private String descripcion;
-	private List<Plato> plato;
-	public ItemCarta(Float precio, String descripcion, List<Plato> plato) {
-		super();
-		this.precio = precio;
-		this.descripcion = descripcion;
-		this.plato = plato;
-	}
+	private List<PlatoEntity> plato;
+	
 	public Float getPrecio() {
 		return precio;
 	}
@@ -25,13 +20,15 @@ public class ItemCarta {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public List<Plato> getPlato() {
+	public List<PlatoEntity> getPlato() {
 		return plato;
 	}
-	public void setPlato(List<Plato> plato) {
+	public void setPlato(List<PlatoEntity> plato) {
 		this.plato = plato;
 	}
-
+	
+	
+	
 	//TODO faltan metodos
 	
 }

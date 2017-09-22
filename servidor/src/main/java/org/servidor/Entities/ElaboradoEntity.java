@@ -1,34 +1,27 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
 import java.util.List;
 
-public class Elaborado extends ProductoComestible {
+public class ElaboradoEntity extends ProductoComestibleEntity {
 
-	private List<ProductoComestible> productos;
-	private Unidad unidad;
+	private List<ProductoComestibleEntity> productos;
+	private UnidadEntity unidad;
 	
-	public Elaborado() {
-		super(area, estimadoStock);
-		// TODO Auto-generated constructor stub
-	}
-
-	public List<ProductoComestible> getProductos() {
+	public List<ProductoComestibleEntity> getProductos() {
 		return productos;
 	}
-
-	public void setProductos(List<ProductoComestible> productos) {
+	public void setProductos(List<ProductoComestibleEntity> productos) {
 		this.productos = productos;
 	}
-
-	public Unidad getUnidad() {
+	public UnidadEntity getUnidad() {
 		return unidad;
 	}
-
-	public void setUnidad(Unidad unidad) {
+	public void setUnidad(UnidadEntity unidad) {
 		this.unidad = unidad;
 	}
 	
-	
+
+
 	
 
 

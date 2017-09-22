@@ -1,33 +1,26 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
 import java.util.List;
 
-public class Salon extends Area {
+public class SalonEntity extends AreaEntity {
 	
 	private String nombre;
-	private List<Sector> sectores;
+	private List<SectorEntity> sectores;
 	
-	public Salon(Integer idArea, String nombre, List<Sector> sectores) {
-		super(idArea);
-		this.nombre = nombre;
-		this.sectores = sectores;
-	}
-
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public List<Sector> getSectores() {
+	public List<SectorEntity> getSectores() {
 		return sectores;
 	}
-
-	public void setSectores(List<Sector> sectores) {
+	public void setSectores(List<SectorEntity> sectores) {
 		this.sectores = sectores;
 	}
+	
+	
 	
 	
 	

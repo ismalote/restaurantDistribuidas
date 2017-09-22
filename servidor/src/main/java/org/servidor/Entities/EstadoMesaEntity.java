@@ -1,13 +1,10 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public class EstadoMesa {
+public class EstadoMesaEntity {
 	
 	private Boolean ocupada;
 
-	public EstadoMesa(Boolean ocupada) {
-		super();
-		this.ocupada = ocupada;
-	}
+	
 
 	public Boolean getOcupada() {
 		return ocupada;

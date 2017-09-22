@@ -1,18 +1,12 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public abstract class Encargado {
+public abstract class EncargadoEntity {
 
 	protected Integer idEncargado;
 	protected String Nombre;
 	protected String Apellido;
 	
-	public Encargado(Integer idEncargado, String nombre, String apellido) {
-		super();
-		this.idEncargado = idEncargado;
-		Nombre = nombre;
-		Apellido = apellido;
-	}
-
+	
 	public Integer getIdEncargado() {
 		return idEncargado;
 	}

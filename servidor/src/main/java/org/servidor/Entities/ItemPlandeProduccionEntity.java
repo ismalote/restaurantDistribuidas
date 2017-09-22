@@ -1,31 +1,24 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public class ItemPlandeProduccion {
+public class ItemPlandeProduccionEntity {
 
-		private Plato plato;
+		private PlatoEntity plato;
 		private Integer cantidadEstimada;
 		
-		public ItemPlandeProduccion(Plato plato, Integer cantidadEstimada) {
-			super();
-			this.plato = plato;
-			this.cantidadEstimada = cantidadEstimada;
-		}
-
-		public Plato getPlato() {
+		public PlatoEntity getPlato() {
 			return plato;
 		}
-
-		public void setPlato(Plato plato) {
+		public void setPlato(PlatoEntity plato) {
 			this.plato = plato;
 		}
-
 		public Integer getCantidadEstimada() {
 			return cantidadEstimada;
 		}
-
 		public void setCantidadEstimada(Integer cantidadEstimada) {
 			this.cantidadEstimada = cantidadEstimada;
 		}
+		
+	
 		
 		
 		

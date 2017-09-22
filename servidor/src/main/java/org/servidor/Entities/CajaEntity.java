@@ -1,33 +1,27 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
 import java.util.List;
 
-public class Caja extends Area {
+public class CajaEntity extends AreaEntity {
 	
-	private EncargadoArea encargadoCaja;
-	private List<Comanda> comandas;
+	private EncargadoAreaEntity encargadoCaja;
+	private List<ComandaEntity> comandas;
 	
-	public Caja(Integer idArea) {
-		super(idArea);
-		// TODO Auto-generated constructor stub
-	}
-
-	public EncargadoArea getEncargadoCaja() {
+	public EncargadoAreaEntity getEncargadoCaja() {
 		return encargadoCaja;
 	}
-
-	public void setEncargadoCaja(EncargadoArea encargadoCaja) {
+	public void setEncargadoCaja(EncargadoAreaEntity encargadoCaja) {
 		this.encargadoCaja = encargadoCaja;
 	}
-
-	public List<Comanda> getComandas() {
+	public List<ComandaEntity> getComandas() {
 		return comandas;
 	}
-
-	public void setComandas(List<Comanda> comandas) {
+	public void setComandas(List<ComandaEntity> comandas) {
 		this.comandas = comandas;
 	}
+	
 
+	
 	
 	
 	//TODO faltan metodos, OJO esto es HERENCIA NO POLIMORFISMO...creo...

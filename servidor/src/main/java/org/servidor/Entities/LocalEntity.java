@@ -1,84 +1,61 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
 import java.util.List;
 
-public class Local {
+public class LocalEntity {
 	
-	private List<Encargado> encargadosAreas;
-	private List<Mozo> mozos;
-	private Salon salon;
-	private Deposito deposito;
-	private List<Area> areas;
-	private Carta carta;
-	private List<ListadoCompras> listadosCompras;
+	private List<EncargadoEntity> encargadosAreas;
+	private List<MozoEntity> mozos;
+	private SalonEntity salon;
+	private DepositoEntity deposito;
+	private List<AreaEntity> areas;
+	private CartaEntity carta;
+	private List<ListadoComprasEntity> listadosCompras;
 	
-	public Local(List<Encargado> encargadosAreas, List<Mozo> mozos, Salon salon, Deposito deposito, List<Area> areas,
-			Carta carta, List<ListadoCompras> listadosCompras) {
-		super();
-		this.encargadosAreas = encargadosAreas;
-		this.mozos = mozos;
-		this.salon = salon;
-		this.deposito = deposito;
-		this.areas = areas;
-		this.carta = carta;
-		this.listadosCompras = listadosCompras;
-	}
-
-	public List<Encargado> getEncargadosAreas() {
+	
+	public List<EncargadoEntity> getEncargadosAreas() {
 		return encargadosAreas;
 	}
-
-	public void setEncargadosAreas(List<Encargado> encargadosAreas) {
+	public void setEncargadosAreas(List<EncargadoEntity> encargadosAreas) {
 		this.encargadosAreas = encargadosAreas;
 	}
-
-	public List<Mozo> getMozos() {
+	public List<MozoEntity> getMozos() {
 		return mozos;
 	}
-
-	public void setMozos(List<Mozo> mozos) {
+	public void setMozos(List<MozoEntity> mozos) {
 		this.mozos = mozos;
 	}
-
-	public Salon getSalon() {
+	public SalonEntity getSalon() {
 		return salon;
 	}
-
-	public void setSalon(Salon salon) {
+	public void setSalon(SalonEntity salon) {
 		this.salon = salon;
 	}
-
-	public Deposito getDeposito() {
+	public DepositoEntity getDeposito() {
 		return deposito;
 	}
-
-	public void setDeposito(Deposito deposito) {
+	public void setDeposito(DepositoEntity deposito) {
 		this.deposito = deposito;
 	}
-
-	public List<Area> getAreas() {
+	public List<AreaEntity> getAreas() {
 		return areas;
 	}
-
-	public void setAreas(List<Area> areas) {
+	public void setAreas(List<AreaEntity> areas) {
 		this.areas = areas;
 	}
-
-	public Carta getCarta() {
+	public CartaEntity getCarta() {
 		return carta;
 	}
-
-	public void setCarta(Carta carta) {
+	public void setCarta(CartaEntity carta) {
 		this.carta = carta;
 	}
-
-	public List<ListadoCompras> getListadosCompras() {
+	public List<ListadoComprasEntity> getListadosCompras() {
 		return listadosCompras;
 	}
-
-	public void setListadosCompras(List<ListadoCompras> listadosCompras) {
+	public void setListadosCompras(List<ListadoComprasEntity> listadosCompras) {
 		this.listadosCompras = listadosCompras;
 	}
+	
 	
 	
 	// TODO faltan metodos

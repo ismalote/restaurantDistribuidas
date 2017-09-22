@@ -1,20 +1,15 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public class ItemStock {
+public class ItemStockEntity {
 	
-	private Insumo producto;
+	private InsumoEntity producto;
 	private Integer CantidadEnStock;
 	private Integer estimadoStock;
-	public ItemStock(Insumo producto, Integer cantidadEnStock, Integer estimadoStock) {
-		super();
-		this.producto = producto;
-		CantidadEnStock = cantidadEnStock;
-		this.estimadoStock = estimadoStock;
-	}
-	public Insumo getProducto() {
+	
+	public InsumoEntity getProducto() {
 		return producto;
 	}
-	public void setProducto(Insumo producto) {
+	public void setProducto(InsumoEntity producto) {
 		this.producto = producto;
 	}
 	public Integer getCantidadEnStock() {
@@ -29,6 +24,8 @@ public class ItemStock {
 	public void setEstimadoStock(Integer estimadoStock) {
 		this.estimadoStock = estimadoStock;
 	}
+	
+	
 	
 	
 

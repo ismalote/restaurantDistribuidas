@@ -1,53 +1,40 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
 import java.util.List;
 
-public class Plato {
+public class PlatoEntity {
 	
-	private List<Elaborado> plato;
+	private List<ElaboradoEntity> plato;
 	private Float precio;
-	private Area area;
+	private AreaEntity area;
 	private Float comisionExtra;
 	
-	public Plato(List<Elaborado> plato, Float precio, Area area, Float comisionExtra) {
-		super();
-		this.plato = plato;
-		this.precio = precio;
-		this.area = area;
-		this.comisionExtra = comisionExtra;
-	}
-
-	public List<Elaborado> getPlato() {
+	public List<ElaboradoEntity> getPlato() {
 		return plato;
 	}
-
-	public void setPlato(List<Elaborado> plato) {
+	public void setPlato(List<ElaboradoEntity> plato) {
 		this.plato = plato;
 	}
-
 	public Float getPrecio() {
 		return precio;
 	}
-
 	public void setPrecio(Float precio) {
 		this.precio = precio;
 	}
-
-	public Area getArea() {
+	public AreaEntity getArea() {
 		return area;
 	}
-
-	public void setArea(Area area) {
+	public void setArea(AreaEntity area) {
 		this.area = area;
 	}
-
 	public Float getComisionExtra() {
 		return comisionExtra;
 	}
-
 	public void setComisionExtra(Float comisionExtra) {
 		this.comisionExtra = comisionExtra;
 	}
+	
+	
 	
 	
 

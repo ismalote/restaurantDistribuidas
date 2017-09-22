@@ -1,6 +1,6 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public class EncargadoCaja extends Encargado {
+public class EncargadoCajaEntity extends EncargadoEntity {
 
 	//TODO que onda aca? que le ponemos?
 	

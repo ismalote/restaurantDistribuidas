@@ -1,14 +1,10 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public class Area {
+public class AreaEntity {
 	
 	protected Integer idArea;
 
-	public Area(Integer idArea) {
-		super();
-		this.idArea = idArea;
-	}
-
+	
 	public Integer getIdArea() {
 		return idArea;
 	}

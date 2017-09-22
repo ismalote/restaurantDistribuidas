@@ -1,31 +1,24 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public class ItemListado {
+public class ItemListadoEntity {
 	
-	private Insumo insumo;
+	private InsumoEntity insumo;
 	private Integer cantidad;
 	
-	public ItemListado(Insumo insumo, Integer cantidad) {
-		super();
-		this.insumo = insumo;
-		this.cantidad = cantidad;
-	}
-
-	public Insumo getInsumo() {
+	public InsumoEntity getInsumo() {
 		return insumo;
 	}
-
-	public void setInsumo(Insumo insumo) {
+	public void setInsumo(InsumoEntity insumo) {
 		this.insumo = insumo;
 	}
-
 	public Integer getCantidad() {
 		return cantidad;
 	}
-
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
 	}
+	
+	
 	
 	//todo metodo?
 	

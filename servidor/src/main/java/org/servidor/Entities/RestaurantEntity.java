@@ -1,106 +1,73 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
 import java.util.List;
 
-public class Restaurant {
+public class RestaurantEntity {
 	
-	private  Local LocalLogueado;
-	private List<Local> locales;
-	private DepositoCentral depositoCentral;
-	private Administracion administracion;
-	private List<ListadoCompras> cosasAComprar;
-	private List<Plato> platos;
-	private List<Comanda> comandas;
-	private List<PlandeProduccion> planesDeProduccion;
-	private List<Insumo> insumos;
-	
-	public Restaurant(Local localLogueado, List<Local> locales, DepositoCentral depositoCentral,
-			Administracion administracion, List<ListadoCompras> cosasAComprar, List<Plato> platos,
-			List<Comanda> comandas, List<PlandeProduccion> planesDeProduccion, List<Insumo> insumos) {
-		super();
-		LocalLogueado = localLogueado;
-		this.locales = locales;
-		this.depositoCentral = depositoCentral;
-		this.administracion = administracion;
-		this.cosasAComprar = cosasAComprar;
-		this.platos = platos;
-		this.comandas = comandas;
-		this.planesDeProduccion = planesDeProduccion;
-		this.insumos = insumos;
-	}
-
-	public Local getLocalLogueado() {
+	private  LocalEntity LocalLogueado;
+	private List<LocalEntity> locales;
+	private DepositoCentralEntity depositoCentral;
+	private AdministracionEntity administracion;
+	private List<ListadoComprasEntity> cosasAComprar;
+	private List<PlatoEntity> platos;
+	private List<ComandaEntity> comandas;
+	private List<PlandeProduccionEntity> planesDeProduccion;
+	private List<InsumoEntity> insumos;
+	public LocalEntity getLocalLogueado() {
 		return LocalLogueado;
 	}
-
-	public void setLocalLogueado(Local localLogueado) {
+	public void setLocalLogueado(LocalEntity localLogueado) {
 		LocalLogueado = localLogueado;
 	}
-
-	public List<Local> getLocales() {
+	public List<LocalEntity> getLocales() {
 		return locales;
 	}
-
-	public void setLocales(List<Local> locales) {
+	public void setLocales(List<LocalEntity> locales) {
 		this.locales = locales;
 	}
-
-	public DepositoCentral getDepositoCentral() {
+	public DepositoCentralEntity getDepositoCentral() {
 		return depositoCentral;
 	}
-
-	public void setDepositoCentral(DepositoCentral depositoCentral) {
+	public void setDepositoCentral(DepositoCentralEntity depositoCentral) {
 		this.depositoCentral = depositoCentral;
 	}
-
-	public Administracion getAdministracion() {
+	public AdministracionEntity getAdministracion() {
 		return administracion;
 	}
-
-	public void setAdministracion(Administracion administracion) {
+	public void setAdministracion(AdministracionEntity administracion) {
 		this.administracion = administracion;
 	}
-
-	public List<ListadoCompras> getCosasAComprar() {
+	public List<ListadoComprasEntity> getCosasAComprar() {
 		return cosasAComprar;
 	}
-
-	public void setCosasAComprar(List<ListadoCompras> cosasAComprar) {
+	public void setCosasAComprar(List<ListadoComprasEntity> cosasAComprar) {
 		this.cosasAComprar = cosasAComprar;
 	}
-
-	public List<Plato> getPlatos() {
+	public List<PlatoEntity> getPlatos() {
 		return platos;
 	}
-
-	public void setPlatos(List<Plato> platos) {
+	public void setPlatos(List<PlatoEntity> platos) {
 		this.platos = platos;
 	}
-
-	public List<Comanda> getComandas() {
+	public List<ComandaEntity> getComandas() {
 		return comandas;
 	}
-
-	public void setComandas(List<Comanda> comandas) {
+	public void setComandas(List<ComandaEntity> comandas) {
 		this.comandas = comandas;
 	}
-
-	public List<PlandeProduccion> getPlanesDeProduccion() {
+	public List<PlandeProduccionEntity> getPlanesDeProduccion() {
 		return planesDeProduccion;
 	}
-
-	public void setPlanesDeProduccion(List<PlandeProduccion> planesDeProduccion) {
+	public void setPlanesDeProduccion(List<PlandeProduccionEntity> planesDeProduccion) {
 		this.planesDeProduccion = planesDeProduccion;
 	}
-
-	public List<Insumo> getInsumos() {
+	public List<InsumoEntity> getInsumos() {
 		return insumos;
 	}
-
-	public void setInsumos(List<Insumo> insumos) {
+	public void setInsumos(List<InsumoEntity> insumos) {
 		this.insumos = insumos;
 	}
-	
+
 	
 	
 

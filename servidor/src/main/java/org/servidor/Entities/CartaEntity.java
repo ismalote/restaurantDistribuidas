@@ -1,15 +1,13 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public class Carta {
+import java.util.List;
+
+public class CartaEntity {
 	
 	private Integer idCarta;
-	private List<ItemCarta> itemsCarta;
+	private List<ItemCartaEntity> itemsCarta;
 	
-	public Carta(Integer idCarta, List<ItemCarta> itemsCarta) {
-		super();
-		this.idCarta = idCarta;
-		this.itemsCarta = itemsCarta;
-	}
+	
 
 	public Integer getIdCarta() {
 		return idCarta;

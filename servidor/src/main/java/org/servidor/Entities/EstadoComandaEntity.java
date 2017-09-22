@@ -1,17 +1,12 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public class EstadoComanda {
+public class EstadoComandaEntity {
 	
 	private boolean estadoCocina;
 	private boolean estadoCafeteria;
 	private boolean estadoBarra;
 	
-	public EstadoComanda(boolean estadoCocina, boolean estadoCafeteria, boolean estadoBarra) {
-		super();
-		this.estadoCocina = estadoCocina;
-		this.estadoCafeteria = estadoCafeteria;
-		this.estadoBarra = estadoBarra;
-	}
+
 	public boolean isEstadoCocina() {
 		return estadoCocina;
 	}

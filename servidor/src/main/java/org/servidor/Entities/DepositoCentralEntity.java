@@ -1,22 +1,20 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public class DepositoCentral {
+public class DepositoCentralEntity {
 
-	private Stock stockDeposito;
+	private StockEntity stockDeposito;
 
-	public DepositoCentral(Stock stockDeposito) {
-		super();
-		this.stockDeposito = stockDeposito;
-	}
-
-	public Stock getStockDeposito() {
+	public StockEntity getStockDeposito() {
 		return stockDeposito;
 	}
 
-	public void setStockDeposito(Stock stockDeposito) {
+	public void setStockDeposito(StockEntity stockDeposito) {
 		this.stockDeposito = stockDeposito;
 	}
+
 	
+
+
 	
 	
 }

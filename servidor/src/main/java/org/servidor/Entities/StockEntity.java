@@ -1,23 +1,20 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
 import java.util.List;
 
-public class Stock {
+public class StockEntity {
 	
-	private List<ItemStock> itemsStock;
+	private List<ItemStockEntity> itemsStock;
 
-	public Stock(List<ItemStock> itemsStock) {
-		super();
-		this.itemsStock = itemsStock;
-	}
-
-	public List<ItemStock> getItemsStock() {
+	public List<ItemStockEntity> getItemsStock() {
 		return itemsStock;
 	}
 
-	public void setItemsStock(List<ItemStock> itemsStock) {
+	public void setItemsStock(List<ItemStockEntity> itemsStock) {
 		this.itemsStock = itemsStock;
 	}
+
+	
 	
 	
 	//TODO faltan metodos

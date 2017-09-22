@@ -1,18 +1,11 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
-public abstract class Insumo {
+public abstract class InsumoEntity {
 
 	 protected Integer idInsumo;
 	 protected Float precio;
-	 protected Caducidad caducidad;
+	 protected CaducidadEntity caducidad;
 	 
-	 
-	public Insumo(Integer idInsumo, Float precio, Caducidad caducidad) {
-		super();
-		this.idInsumo = idInsumo;
-		this.precio = precio;
-		this.caducidad = caducidad;
-	}
 	public Integer getIdInsumo() {
 		return idInsumo;
 	}
@@ -25,14 +18,13 @@ public abstract class Insumo {
 	public void setPrecio(Float precio) {
 		this.precio = precio;
 	}
-	public Caducidad getCaducidad() {
+	public CaducidadEntity getCaducidad() {
 		return caducidad;
 	}
-	public void setCaducidad(Caducidad caducidad) {
+	public void setCaducidad(CaducidadEntity caducidad) {
 		this.caducidad = caducidad;
 	}
 	 
-	 
-	 
+	
 	 
 }

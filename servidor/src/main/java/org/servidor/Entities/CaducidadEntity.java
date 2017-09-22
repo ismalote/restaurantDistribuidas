@@ -1,17 +1,13 @@
-package org.servidor.Negocio;
+package org.servidor.Entities;
 
 import java.util.Date;
 
-public class Caducidad  {
+public class CaducidadEntity  {
 	
 	private Date fechaCreacion;
 	private Date fechaCaducidad;
 	
-	public Caducidad(Date fechaCreacion, Date fechaCaducidad) {
-		super();
-		this.fechaCreacion = fechaCreacion;
-		this.fechaCaducidad = fechaCaducidad;
-	}
+	
 
 	public Date getFechaCreacion() {
 		return fechaCreacion;
