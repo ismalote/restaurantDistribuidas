@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>edu.uade</groupId>
+  <groupId>uade.edu</groupId>
   <artifactId>restaurantDistribuida</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -17,6 +17,13 @@
     <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
     <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
   </properties>
+  
+  <modules>
+  	<module>repositorio</module>
+  	<module>clienteWeb</module>
+  	<module>clienteSwing</module>
+  	<module>servidor</module>
+  </modules>
 
   <build>
       <plugins>
