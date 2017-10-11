@@ -23,6 +23,7 @@ local.properties
 .loadpath
 .recommenders
 target/
+.*
 
 # IntelliJ #
 ######################
