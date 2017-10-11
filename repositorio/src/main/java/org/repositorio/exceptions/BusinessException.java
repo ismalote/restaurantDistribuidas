@@ -1,4 +1,4 @@
-package org.repositorio.exception;
+package org.repositorio.exceptions;
 
 public class BusinessException extends Exception {
 
