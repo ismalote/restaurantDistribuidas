@@ -1,8 +1,6 @@
 package org.clienteWeb.controller;
 
 
-import java.util.ResourceBundle;
-
 import org.repositorio.BussinessDelegate;
 
 public class WebController {

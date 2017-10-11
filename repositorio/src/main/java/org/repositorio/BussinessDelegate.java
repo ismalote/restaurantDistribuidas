@@ -1,9 +1,6 @@
 package org.repositorio;
 
 import java.rmi.Naming;
-import java.rmi.RemoteException;
-import java.util.List;
-import java.util.Map;
 
 import org.repositorio.interfaces.IAppRemote;
 

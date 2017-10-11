@@ -1,12 +1,9 @@
 package org.clienteSwing;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.EventQueue;
 import java.io.Serializable;
-import java.rmi.RemoteException;
-import java.util.ArrayList;
+
+import javax.swing.JFrame;
 
 public class MainSwing implements Serializable {
 
