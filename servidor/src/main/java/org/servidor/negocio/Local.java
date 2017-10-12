@@ -2,18 +2,26 @@ package org.servidor.negocio;
 
 import java.util.List;
 
+import org.repositorio.dtos.AreaDTO;
+import org.repositorio.dtos.CartaDTO;
+import org.repositorio.dtos.DepositoDTO;
+import org.repositorio.dtos.EncargadoDTO;
+import org.repositorio.dtos.ListadoComprasDTO;
+import org.repositorio.dtos.MozoDTO;
+import org.repositorio.dtos.SalonDTO;
+
 public class Local {
-	
-	private List<Encargado> encargadosAreas;
-	private List<Mozo> mozos;
-	private Salon salon;
-	private Deposito deposito;
-	private List<Area> areas;
-	private Carta carta;
-	private List<ListadoCompras> listadosCompras;
-	
-	public Local(List<Encargado> encargadosAreas, List<Mozo> mozos, Salon salon, Deposito deposito, List<Area> areas,
-			Carta carta, List<ListadoCompras> listadosCompras) {
+
+	private List<EncargadoDTO> encargadosAreas;
+	private List<MozoDTO> mozos;
+	private SalonDTO salon;
+	private DepositoDTO deposito;
+	private List<AreaDTO> areas;
+	private CartaDTO carta;
+	private List<ListadoComprasDTO> listadosCompras;
+
+	public Local(List<EncargadoDTO> encargadosAreas, List<MozoDTO> mozos, SalonDTO salon, DepositoDTO deposito,
+			List<AreaDTO> areas, CartaDTO carta, List<ListadoComprasDTO> listadosCompras) {
 		super();
 		this.encargadosAreas = encargadosAreas;
 		this.mozos = mozos;
@@ -24,64 +32,62 @@ public class Local {
 		this.listadosCompras = listadosCompras;
 	}
 
-	public List<Encargado> getEncargadosAreas() {
+	public List<EncargadoDTO> getEncargadosAreas() {
 		return encargadosAreas;
 	}
 
-	public void setEncargadosAreas(List<Encargado> encargadosAreas) {
+	public void setEncargadosAreas(List<EncargadoDTO> encargadosAreas) {
 		this.encargadosAreas = encargadosAreas;
 	}
 
-	public List<Mozo> getMozos() {
+	public List<MozoDTO> getMozos() {
 		return mozos;
 	}
 
-	public void setMozos(List<Mozo> mozos) {
+	public void setMozos(List<MozoDTO> mozos) {
 		this.mozos = mozos;
 	}
 
-	public Salon getSalon() {
+	public SalonDTO getSalon() {
 		return salon;
 	}
 
-	public void setSalon(Salon salon) {
+	public void setSalon(SalonDTO salon) {
 		this.salon = salon;
 	}
 
-	public Deposito getDeposito() {
+	public DepositoDTO getDeposito() {
 		return deposito;
 	}
 
-	public void setDeposito(Deposito deposito) {
+	public void setDeposito(DepositoDTO deposito) {
 		this.deposito = deposito;
 	}
 
-	public List<Area> getAreas() {
+	public List<AreaDTO> getAreas() {
 		return areas;
 	}
 
-	public void setAreas(List<Area> areas) {
+	public void setAreas(List<AreaDTO> areas) {
 		this.areas = areas;
 	}
 
-	public Carta getCarta() {
+	public CartaDTO getCarta() {
 		return carta;
 	}
 
-	public void setCarta(Carta carta) {
+	public void setCarta(CartaDTO carta) {
 		this.carta = carta;
 	}
 
-	public List<ListadoCompras> getListadosCompras() {
+	public List<ListadoComprasDTO> getListadosCompras() {
 		return listadosCompras;
 	}
 
-	public void setListadosCompras(List<ListadoCompras> listadosCompras) {
+	public void setListadosCompras(List<ListadoComprasDTO> listadosCompras) {
 		this.listadosCompras = listadosCompras;
 	}
-	
-	
+
 	// TODO faltan metodos
-	
 
 }

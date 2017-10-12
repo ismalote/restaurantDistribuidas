@@ -1,10 +1,8 @@
 package org.servidor.entities;
 
 public class EstadoMesaEntity {
-	
-	private Boolean ocupada;
 
-	
+	private Boolean ocupada;
 
 	public Boolean getOcupada() {
 		return ocupada;
@@ -13,8 +11,5 @@ public class EstadoMesaEntity {
 	public void setOcupada(Boolean ocupada) {
 		this.ocupada = ocupada;
 	}
-	
-	
-	
 
 }

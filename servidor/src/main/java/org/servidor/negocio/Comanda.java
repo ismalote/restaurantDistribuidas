@@ -2,18 +2,25 @@ package org.servidor.negocio;
 
 import java.util.List;
 
+import org.repositorio.dtos.BebidaDTO;
+import org.repositorio.dtos.EstadoComandaDTO;
+import org.repositorio.dtos.FacturaDTO;
+import org.repositorio.dtos.MesaDTO;
+import org.repositorio.dtos.MozoDTO;
+import org.repositorio.dtos.PlatoDTO;
+
 public class Comanda {
-	
-	private List<Plato> platos;
-	private Mozo mozo;
+
+	private List<PlatoDTO> platos;
+	private MozoDTO mozo;
 	private Boolean comandaLista;
-	private Mesa mesa;
-	private List<Bebida> bebidas;
-	private EstadoComanda estadoComanda;
-	private Factura factura;
-	
-	public Comanda(List<Plato> platos, Mozo mozo, Boolean comandaLista, Mesa mesa, List<Bebida> bebidas,
-			EstadoComanda estadoComanda, Factura factura) {
+	private MesaDTO mesa;
+	private List<BebidaDTO> bebidas;
+	private EstadoComandaDTO estadoComanda;
+	private FacturaDTO factura;
+
+	public Comanda(List<PlatoDTO> platos, MozoDTO mozo, Boolean comandaLista, MesaDTO mesa, List<BebidaDTO> bebidas,
+			EstadoComandaDTO estadoComanda, FacturaDTO factura) {
 		super();
 		this.platos = platos;
 		this.mozo = mozo;
@@ -24,19 +31,19 @@ public class Comanda {
 		this.factura = factura;
 	}
 
-	public List<Plato> getPlatos() {
+	public List<PlatoDTO> getPlatos() {
 		return platos;
 	}
 
-	public void setPlatos(List<Plato> platos) {
+	public void setPlatos(List<PlatoDTO> platos) {
 		this.platos = platos;
 	}
 
-	public Mozo getMozo() {
+	public MozoDTO getMozo() {
 		return mozo;
 	}
 
-	public void setMozo(Mozo mozo) {
+	public void setMozo(MozoDTO mozo) {
 		this.mozo = mozo;
 	}
 
@@ -48,39 +55,36 @@ public class Comanda {
 		this.comandaLista = comandaLista;
 	}
 
-	public Mesa getMesa() {
+	public MesaDTO getMesa() {
 		return mesa;
 	}
 
-	public void setMesa(Mesa mesa) {
+	public void setMesa(MesaDTO mesa) {
 		this.mesa = mesa;
 	}
 
-	public List<Bebida> getBebidas() {
+	public List<BebidaDTO> getBebidas() {
 		return bebidas;
 	}
 
-	public void setBebidas(List<Bebida> bebidas) {
+	public void setBebidas(List<BebidaDTO> bebidas) {
 		this.bebidas = bebidas;
 	}
 
-	public EstadoComanda getEstadoComanda() {
+	public EstadoComandaDTO getEstadoComanda() {
 		return estadoComanda;
 	}
 
-	public void setEstadoComanda(EstadoComanda estadoComanda) {
+	public void setEstadoComanda(EstadoComandaDTO estadoComanda) {
 		this.estadoComanda = estadoComanda;
 	}
 
-	public Factura getFactura() {
+	public FacturaDTO getFactura() {
 		return factura;
 	}
 
-	public void setFactura(Factura factura) {
+	public void setFactura(FacturaDTO factura) {
 		this.factura = factura;
 	}
-	
-	
-	
 
 }

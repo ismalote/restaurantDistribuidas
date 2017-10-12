@@ -2,11 +2,11 @@ package org.servidor.negocio;
 
 import java.util.Date;
 
-public class Caducidad  {
-	
+public class Caducidad {
+
 	private Date fechaCreacion;
 	private Date fechaCaducidad;
-	
+
 	public Caducidad(Date fechaCreacion, Date fechaCaducidad) {
 		super();
 		this.fechaCreacion = fechaCreacion;
@@ -28,7 +28,5 @@ public class Caducidad  {
 	public void setFechaCaducidad(Date fechaCaducidad) {
 		this.fechaCaducidad = fechaCaducidad;
 	}
-	
-	
 
 }

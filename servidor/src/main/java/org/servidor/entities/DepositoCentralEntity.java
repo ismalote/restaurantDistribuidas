@@ -12,9 +12,4 @@ public class DepositoCentralEntity {
 		this.stockDeposito = stockDeposito;
 	}
 
-	
-
-
-	
-	
 }

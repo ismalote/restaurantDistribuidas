@@ -1,34 +1,32 @@
 package org.servidor.negocio;
 
+import org.repositorio.dtos.PlatoDTO;
+
 public class ItemPlandeProduccion {
 
-		private Plato plato;
-		private Integer cantidadEstimada;
-		
-		public ItemPlandeProduccion(Plato plato, Integer cantidadEstimada) {
-			super();
-			this.plato = plato;
-			this.cantidadEstimada = cantidadEstimada;
-		}
+	private PlatoDTO plato;
+	private Integer cantidadEstimada;
 
-		public Plato getPlato() {
-			return plato;
-		}
+	public ItemPlandeProduccion(PlatoDTO plato, Integer cantidadEstimada) {
+		super();
+		this.plato = plato;
+		this.cantidadEstimada = cantidadEstimada;
+	}
 
-		public void setPlato(Plato plato) {
-			this.plato = plato;
-		}
+	public PlatoDTO getPlato() {
+		return plato;
+	}
 
-		public Integer getCantidadEstimada() {
-			return cantidadEstimada;
-		}
+	public void setPlato(PlatoDTO plato) {
+		this.plato = plato;
+	}
 
-		public void setCantidadEstimada(Integer cantidadEstimada) {
-			this.cantidadEstimada = cantidadEstimada;
-		}
-		
-		
-		
-	
-	
+	public Integer getCantidadEstimada() {
+		return cantidadEstimada;
+	}
+
+	public void setCantidadEstimada(Integer cantidadEstimada) {
+		this.cantidadEstimada = cantidadEstimada;
+	}
+
 }

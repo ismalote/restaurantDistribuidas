@@ -2,17 +2,20 @@ package org.servidor.negocio;
 
 import java.util.Date;
 
+import org.repositorio.dtos.EstadoMesaDTO;
+import org.repositorio.dtos.ReservaDTO;
+
 public class Mesa {
-	
+
 	private Integer idMesa;
-	private EstadoMesa estadoMesa;
-	private Reserva reserva;
+	private EstadoMesaDTO estadoMesa;
+	private ReservaDTO reserva;
 	private Integer cantidadSillas;
 	private Date horaOcupacion;
 	private Date horaLiberacion;
-	
-	public Mesa(Integer idMesa, EstadoMesa estadoMesa, Reserva reserva, Integer cantidadSillas, Date horaOcupacion,
-			Date horaLiberacion) {
+
+	public Mesa(Integer idMesa, EstadoMesaDTO estadoMesa, ReservaDTO reserva, Integer cantidadSillas,
+			Date horaOcupacion, Date horaLiberacion) {
 		super();
 		this.idMesa = idMesa;
 		this.estadoMesa = estadoMesa;
@@ -30,19 +33,19 @@ public class Mesa {
 		this.idMesa = idMesa;
 	}
 
-	public EstadoMesa getEstadoMesa() {
+	public EstadoMesaDTO getEstadoMesa() {
 		return estadoMesa;
 	}
 
-	public void setEstadoMesa(EstadoMesa estadoMesa) {
+	public void setEstadoMesa(EstadoMesaDTO estadoMesa) {
 		this.estadoMesa = estadoMesa;
 	}
 
-	public Reserva getReserva() {
+	public ReservaDTO getReserva() {
 		return reserva;
 	}
 
-	public void setReserva(Reserva reserva) {
+	public void setReserva(ReservaDTO reserva) {
 		this.reserva = reserva;
 	}
 
@@ -69,8 +72,7 @@ public class Mesa {
 	public void setHoraLiberacion(Date horaLiberacion) {
 		this.horaLiberacion = horaLiberacion;
 	}
-	
-	//TODO falta metodo y nose como poner simple y compuesta
-	
+
+	// TODO falta metodo y nose como poner simple y compuesta
 
 }

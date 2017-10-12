@@ -1,20 +1,22 @@
 package org.servidor.negocio;
 
+import org.repositorio.dtos.InsumoDTO;
+
 public class ItemStock {
 	
-	private Insumo producto;
+	private InsumoDTO producto;
 	private Integer CantidadEnStock;
 	private Integer estimadoStock;
-	public ItemStock(Insumo producto, Integer cantidadEnStock, Integer estimadoStock) {
+	public ItemStock(InsumoDTO producto, Integer cantidadEnStock, Integer estimadoStock) {
 		super();
 		this.producto = producto;
 		CantidadEnStock = cantidadEnStock;
 		this.estimadoStock = estimadoStock;
 	}
-	public Insumo getProducto() {
+	public InsumoDTO getProducto() {
 		return producto;
 	}
-	public void setProducto(Insumo producto) {
+	public void setProducto(InsumoDTO producto) {
 		this.producto = producto;
 	}
 	public Integer getCantidadEnStock() {

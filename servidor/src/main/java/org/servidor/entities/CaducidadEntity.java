@@ -2,12 +2,10 @@ package org.servidor.entities;
 
 import java.util.Date;
 
-public class CaducidadEntity  {
-	
+public class CaducidadEntity {
+
 	private Date fechaCreacion;
 	private Date fechaCaducidad;
-	
-	
 
 	public Date getFechaCreacion() {
 		return fechaCreacion;
@@ -24,7 +22,5 @@ public class CaducidadEntity  {
 	public void setFechaCaducidad(Date fechaCaducidad) {
 		this.fechaCaducidad = fechaCaducidad;
 	}
-	
-	
 
 }

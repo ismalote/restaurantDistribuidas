@@ -1,13 +1,13 @@
 package org.servidor.negocio;
 
 public class Mozo {
-	
+
 	private Integer idMozo;
 	private Float porcentajeComision;
 	private String Nombre;
 	private String Apellido;
 	private Integer antiguedad;
-	
+
 	public Mozo(Integer idMozo, Float porcentajeComision, String nombre, String apellido, Integer antiguedad) {
 		super();
 		this.idMozo = idMozo;
@@ -56,13 +56,7 @@ public class Mozo {
 	public void setAntiguedad(Integer antiguedad) {
 		this.antiguedad = antiguedad;
 	}
-	
-	
-	//TODO faltan metodos
-	
-	
-	
-	
-	
+
+	// TODO faltan metodos
 
 }

@@ -10,10 +10,10 @@ import org.repositorio.interfaces.IAppRemote;
  */
 public class RMIUtil extends UnicastRemoteObject implements IAppRemote {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    public RMIUtil() throws RemoteException {
-        super();
-    }
+	public RMIUtil() throws RemoteException {
+		super();
+	}
 
 }

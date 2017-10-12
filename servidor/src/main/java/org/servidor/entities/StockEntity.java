@@ -3,7 +3,7 @@ package org.servidor.entities;
 import java.util.List;
 
 public class StockEntity {
-	
+
 	private List<ItemStockEntity> itemsStock;
 
 	public List<ItemStockEntity> getItemsStock() {
@@ -14,9 +14,6 @@ public class StockEntity {
 		this.itemsStock = itemsStock;
 	}
 
-	
-	
-	
-	//TODO faltan metodos
+	// TODO faltan metodos
 
 }

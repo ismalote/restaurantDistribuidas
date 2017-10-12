@@ -2,24 +2,25 @@ package org.servidor.negocio;
 
 import java.util.List;
 
-public class Stock {
-	
-	private List<ItemStock> itemsStock;
+import org.repositorio.dtos.ItemStockDTO;
 
-	public Stock(List<ItemStock> itemsStock) {
+public class Stock {
+
+	private List<ItemStockDTO> itemsStock;
+
+	public Stock(List<ItemStockDTO> itemsStock) {
 		super();
 		this.itemsStock = itemsStock;
 	}
 
-	public List<ItemStock> getItemsStock() {
+	public List<ItemStockDTO> getItemsStock() {
 		return itemsStock;
 	}
 
-	public void setItemsStock(List<ItemStock> itemsStock) {
+	public void setItemsStock(List<ItemStockDTO> itemsStock) {
 		this.itemsStock = itemsStock;
 	}
-	
-	
-	//TODO faltan metodos
+
+	// TODO faltan metodos
 
 }

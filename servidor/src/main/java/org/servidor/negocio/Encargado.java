@@ -5,7 +5,7 @@ public abstract class Encargado {
 	protected Integer idEncargado;
 	protected String Nombre;
 	protected String Apellido;
-	
+
 	public Encargado(Integer idEncargado, String nombre, String apellido) {
 		super();
 		this.idEncargado = idEncargado;
@@ -36,8 +36,5 @@ public abstract class Encargado {
 	public void setApellido(String apellido) {
 		Apellido = apellido;
 	}
-	
-	
-	
-	
+
 }

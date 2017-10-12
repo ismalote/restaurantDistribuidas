@@ -1,11 +1,14 @@
 package org.servidor.negocio;
 
-public class Limpieza extends Insumo {
+import org.repositorio.dtos.CaducidadDTO;
+import org.repositorio.dtos.InsumoDTO;
+
+public class Limpieza extends InsumoDTO {
 
 	private Integer idProductoLimpieza;
 	private String descripcion;
-	
-	public Limpieza(Integer idInsumo, float precio, Caducidad caducidad) {
+
+	public Limpieza(Integer idInsumo, float precio, CaducidadDTO caducidad) {
 		super(idInsumo, precio, caducidad);
 	}
 
@@ -24,7 +27,5 @@ public class Limpieza extends Insumo {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
-	
-	
+
 }

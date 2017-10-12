@@ -1,32 +1,34 @@
 package org.servidor.negocio;
 
-public class Deposito extends Area{
-	
-	private Stock stockDeposito;
-	private EncargadoArea encargadoDeposito;
-	
-	public Deposito(Integer idArea, Stock stockDeposito, EncargadoArea encargadoDeposito) {
+import org.repositorio.dtos.AreaDTO;
+import org.repositorio.dtos.EncargadoAreaDTO;
+import org.repositorio.dtos.StockDTO;
+
+public class Deposito extends AreaDTO {
+
+	private StockDTO stockDeposito;
+	private EncargadoAreaDTO encargadoDeposito;
+
+	public Deposito(Integer idArea, StockDTO stockDeposito, EncargadoAreaDTO encargadoDeposito) {
 		super(idArea);
 		this.stockDeposito = stockDeposito;
 		this.encargadoDeposito = encargadoDeposito;
 	}
 
-	public Stock getStockDeposito() {
+	public StockDTO getStockDeposito() {
 		return stockDeposito;
 	}
 
-	public void setStockDeposito(Stock stockDeposito) {
+	public void setStockDeposito(StockDTO stockDeposito) {
 		this.stockDeposito = stockDeposito;
 	}
 
-	public EncargadoArea getEncargadoDeposito() {
+	public EncargadoAreaDTO getEncargadoDeposito() {
 		return encargadoDeposito;
 	}
 
-	public void setEncargadoDeposito(EncargadoArea encargadoDeposito) {
+	public void setEncargadoDeposito(EncargadoAreaDTO encargadoDeposito) {
 		this.encargadoDeposito = encargadoDeposito;
 	}
-	
-	
 
 }

@@ -2,34 +2,38 @@ package org.servidor.negocio;
 
 import java.util.List;
 
-public class Elaborado extends ProductoComestible {
+import org.repositorio.dtos.AreaDTO;
+import org.repositorio.dtos.ProductoComestibleDTO;
+import org.repositorio.dtos.UnidadDTO;
 
-	private List<ProductoComestible> productos;
-	private Unidad unidad;
-	
-	public Elaborado(Area area, Integer estimadoStock) {
+public class Elaborado extends ProductoComestibleDTO {
+
+	private List<ProductoComestibleDTO> productos;
+	private UnidadDTO unidad;
+
+	public Elaborado(AreaDTO area, Integer estimadoStock) {
 		super(area, estimadoStock);
 	}
-	
-	public Elaborado(Area area, Integer estimadoStock, List<ProductoComestible> productos, Unidad unidad) {
+
+	public Elaborado(AreaDTO area, Integer estimadoStock, List<ProductoComestibleDTO> productos, UnidadDTO unidad) {
 		super(area, estimadoStock);
 		this.productos = productos;
 		this.unidad = unidad;
 	}
 
-	public List<ProductoComestible> getProductos() {
+	public List<ProductoComestibleDTO> getProductos() {
 		return productos;
 	}
 
-	public void setProductos(List<ProductoComestible> productos) {
+	public void setProductos(List<ProductoComestibleDTO> productos) {
 		this.productos = productos;
 	}
 
-	public Unidad getUnidad() {
+	public UnidadDTO getUnidad() {
 		return unidad;
 	}
 
-	public void setUnidad(Unidad unidad) {
+	public void setUnidad(UnidadDTO unidad) {
 		this.unidad = unidad;
 	}
 

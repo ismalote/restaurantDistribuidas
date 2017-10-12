@@ -2,18 +2,34 @@ package org.servidor.negocio;
 
 import java.util.List;
 
-public class AreaProduccion {
+import org.repositorio.dtos.ComandaDTO;
+import org.repositorio.dtos.EncargadoAreaDTO;
+import org.repositorio.dtos.InsumoDTO;
+import org.repositorio.dtos.PlatoDTO;
+import org.repositorio.dtos.StockDTO;
+
+public abstract class AreaProduccion {
 	private String TipoArea;
-	private EncargadoArea encargadoArea;
-	private Stock stock;
-	private List<Comanda> comandas;
-	
-	public AreaProduccion(String tipoArea, EncargadoArea encargadoArea, Stock stock, List<Comanda> comandas) {
+	private EncargadoAreaDTO encargadoArea;
+	private StockDTO stock;
+	private List<ComandaDTO> comandas;
+
+	public AreaProduccion(String tipoArea, EncargadoAreaDTO encargadoArea, StockDTO stock, List<ComandaDTO> comandas) {
 		super();
 		TipoArea = tipoArea;
 		this.encargadoArea = encargadoArea;
 		this.stock = stock;
 		this.comandas = comandas;
+	}
+
+	public void solicitarADeposito(List<InsumoDTO> insumos) {
+
+	}
+
+	public abstract boolean prepararComanda(ComandaDTO comanda);
+
+	public List<PlatoDTO> pedidoListo(ComandaDTO comanda) {
+		return null;
 	}
 
 	public String getTipoArea() {
@@ -24,31 +40,32 @@ public class AreaProduccion {
 		TipoArea = tipoArea;
 	}
 
-	public EncargadoArea getEncargadoArea() {
+	public EncargadoAreaDTO getEncargadoArea() {
 		return encargadoArea;
 	}
 
-	public void setEncargadoArea(EncargadoArea encargadoArea) {
+	public void setEncargadoArea(EncargadoAreaDTO encargadoArea) {
 		this.encargadoArea = encargadoArea;
 	}
 
-	public Stock getStock() {
+	public StockDTO getStock() {
 		return stock;
 	}
 
-	public void setStock(Stock stock) {
+	public void setStock(StockDTO stock) {
 		this.stock = stock;
 	}
 
-	public List<Comanda> getComandas() {
+	public List<ComandaDTO> getComandas() {
 		return comandas;
 	}
 
-	public void setComandas(List<Comanda> comandas) {
+	public void setComandas(List<ComandaDTO> comandas) {
 		this.comandas = comandas;
 	}
-	
-	
-	// TODO faltan metodos, no puedo justificar la herencia, asi que le meti un parametro tipoArea, en la cual dice que area es ya que por el momento no tienen comportamiento diferente.
-	
+
+	// TODO faltan metodos, no puedo justificar la herencia, asi que le meti un
+	// parametro tipoArea, en la cual dice que area es ya que por el momento no
+	// tienen comportamiento diferente.
+
 }

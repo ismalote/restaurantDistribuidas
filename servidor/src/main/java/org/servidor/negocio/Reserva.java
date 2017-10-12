@@ -3,11 +3,11 @@ package org.servidor.negocio;
 import java.util.Date;
 
 public class Reserva {
-	
+
 	private Boolean estado;
 	private Date horaReserva;
 	private Integer cantidadPersonas;
-	
+
 	public Reserva(Boolean estado, Date horaReserva, Integer cantidadPersonas) {
 		super();
 		this.estado = estado;
@@ -38,9 +38,5 @@ public class Reserva {
 	public void setCantidadPersonas(Integer cantidadPersonas) {
 		this.cantidadPersonas = cantidadPersonas;
 	}
-	
-	
-	
-	
 
 }

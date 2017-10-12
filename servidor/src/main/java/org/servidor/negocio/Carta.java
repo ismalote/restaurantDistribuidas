@@ -2,12 +2,14 @@ package org.servidor.negocio;
 
 import java.util.List;
 
+import org.repositorio.dtos.ItemCartaDTO;
+
 public class Carta {
-	
+
 	private Integer idCarta;
-	private List<ItemCarta> itemsCarta;
-	
-	public Carta(Integer idCarta, List<ItemCarta> itemsCarta) {
+	private List<ItemCartaDTO> itemsCarta;
+
+	public Carta(Integer idCarta, List<ItemCartaDTO> itemsCarta) {
 		super();
 		this.idCarta = idCarta;
 		this.itemsCarta = itemsCarta;
@@ -21,14 +23,12 @@ public class Carta {
 		this.idCarta = idCarta;
 	}
 
-	public List<ItemCarta> getItemsCarta() {
+	public List<ItemCartaDTO> getItemsCarta() {
 		return itemsCarta;
 	}
 
-	public void setItemsCarta(List<ItemCarta> itemsCarta) {
+	public void setItemsCarta(List<ItemCartaDTO> itemsCarta) {
 		this.itemsCarta = itemsCarta;
 	}
-	
-	
 
 }

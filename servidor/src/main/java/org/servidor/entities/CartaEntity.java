@@ -3,11 +3,9 @@ package org.servidor.entities;
 import java.util.List;
 
 public class CartaEntity {
-	
+
 	private Integer idCarta;
 	private List<ItemCartaEntity> itemsCarta;
-	
-	
 
 	public Integer getIdCarta() {
 		return idCarta;
@@ -24,7 +22,5 @@ public class CartaEntity {
 	public void setItemsCarta(List<ItemCartaEntity> itemsCarta) {
 		this.itemsCarta = itemsCarta;
 	}
-	
-	
 
 }

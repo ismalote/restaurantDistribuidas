@@ -5,8 +5,7 @@ public abstract class EncargadoEntity {
 	protected Integer idEncargado;
 	protected String Nombre;
 	protected String Apellido;
-	
-	
+
 	public Integer getIdEncargado() {
 		return idEncargado;
 	}
@@ -30,8 +29,5 @@ public abstract class EncargadoEntity {
 	public void setApellido(String apellido) {
 		Apellido = apellido;
 	}
-	
-	
-	
-	
+
 }

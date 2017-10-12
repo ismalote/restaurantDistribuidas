@@ -1,7 +1,7 @@
 package org.servidor.negocio;
 
 public class Area {
-	
+
 	protected Integer idArea;
 
 	public Area(Integer idArea) {
@@ -16,7 +16,5 @@ public class Area {
 	public void setIdArea(Integer idArea) {
 		this.idArea = idArea;
 	}
-	
-	
 
 }

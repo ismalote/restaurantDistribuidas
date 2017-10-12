@@ -2,21 +2,30 @@ package org.servidor.negocio;
 
 import java.util.List;
 
+import org.repositorio.dtos.AdministracionDTO;
+import org.repositorio.dtos.ComandaDTO;
+import org.repositorio.dtos.DepositoCentralDTO;
+import org.repositorio.dtos.InsumoDTO;
+import org.repositorio.dtos.ListadoComprasDTO;
+import org.repositorio.dtos.LocalDTO;
+import org.repositorio.dtos.PlandeProduccionDTO;
+import org.repositorio.dtos.PlatoDTO;
+
 public class Restaurant {
-	
-	private  Local LocalLogueado;
-	private List<Local> locales;
-	private DepositoCentral depositoCentral;
-	private Administracion administracion;
-	private List<ListadoCompras> cosasAComprar;
-	private List<Plato> platos;
-	private List<Comanda> comandas;
-	private List<PlandeProduccion> planesDeProduccion;
-	private List<Insumo> insumos;
-	
-	public Restaurant(Local localLogueado, List<Local> locales, DepositoCentral depositoCentral,
-			Administracion administracion, List<ListadoCompras> cosasAComprar, List<Plato> platos,
-			List<Comanda> comandas, List<PlandeProduccion> planesDeProduccion, List<Insumo> insumos) {
+
+	private LocalDTO LocalLogueado;
+	private List<LocalDTO> locales;
+	private DepositoCentralDTO depositoCentral;
+	private AdministracionDTO administracion;
+	private List<ListadoComprasDTO> cosasAComprar;
+	private List<PlatoDTO> platos;
+	private List<ComandaDTO> comandas;
+	private List<PlandeProduccionDTO> planesDeProduccion;
+	private List<InsumoDTO> insumos;
+
+	public Restaurant(LocalDTO localLogueado, List<LocalDTO> locales, DepositoCentralDTO depositoCentral,
+			AdministracionDTO administracion, List<ListadoComprasDTO> cosasAComprar, List<PlatoDTO> platos,
+			List<ComandaDTO> comandas, List<PlandeProduccionDTO> planesDeProduccion, List<InsumoDTO> insumos) {
 		super();
 		LocalLogueado = localLogueado;
 		this.locales = locales;
@@ -29,79 +38,76 @@ public class Restaurant {
 		this.insumos = insumos;
 	}
 
-	public Local getLocalLogueado() {
+	public LocalDTO getLocalLogueado() {
 		return LocalLogueado;
 	}
 
-	public void setLocalLogueado(Local localLogueado) {
+	public void setLocalLogueado(LocalDTO localLogueado) {
 		LocalLogueado = localLogueado;
 	}
 
-	public List<Local> getLocales() {
+	public List<LocalDTO> getLocales() {
 		return locales;
 	}
 
-	public void setLocales(List<Local> locales) {
+	public void setLocales(List<LocalDTO> locales) {
 		this.locales = locales;
 	}
 
-	public DepositoCentral getDepositoCentral() {
+	public DepositoCentralDTO getDepositoCentral() {
 		return depositoCentral;
 	}
 
-	public void setDepositoCentral(DepositoCentral depositoCentral) {
+	public void setDepositoCentral(DepositoCentralDTO depositoCentral) {
 		this.depositoCentral = depositoCentral;
 	}
 
-	public Administracion getAdministracion() {
+	public AdministracionDTO getAdministracion() {
 		return administracion;
 	}
 
-	public void setAdministracion(Administracion administracion) {
+	public void setAdministracion(AdministracionDTO administracion) {
 		this.administracion = administracion;
 	}
 
-	public List<ListadoCompras> getCosasAComprar() {
+	public List<ListadoComprasDTO> getCosasAComprar() {
 		return cosasAComprar;
 	}
 
-	public void setCosasAComprar(List<ListadoCompras> cosasAComprar) {
+	public void setCosasAComprar(List<ListadoComprasDTO> cosasAComprar) {
 		this.cosasAComprar = cosasAComprar;
 	}
 
-	public List<Plato> getPlatos() {
+	public List<PlatoDTO> getPlatos() {
 		return platos;
 	}
 
-	public void setPlatos(List<Plato> platos) {
+	public void setPlatos(List<PlatoDTO> platos) {
 		this.platos = platos;
 	}
 
-	public List<Comanda> getComandas() {
+	public List<ComandaDTO> getComandas() {
 		return comandas;
 	}
 
-	public void setComandas(List<Comanda> comandas) {
+	public void setComandas(List<ComandaDTO> comandas) {
 		this.comandas = comandas;
 	}
 
-	public List<PlandeProduccion> getPlanesDeProduccion() {
+	public List<PlandeProduccionDTO> getPlanesDeProduccion() {
 		return planesDeProduccion;
 	}
 
-	public void setPlanesDeProduccion(List<PlandeProduccion> planesDeProduccion) {
+	public void setPlanesDeProduccion(List<PlandeProduccionDTO> planesDeProduccion) {
 		this.planesDeProduccion = planesDeProduccion;
 	}
 
-	public List<Insumo> getInsumos() {
+	public List<InsumoDTO> getInsumos() {
 		return insumos;
 	}
 
-	public void setInsumos(List<Insumo> insumos) {
+	public void setInsumos(List<InsumoDTO> insumos) {
 		this.insumos = insumos;
 	}
-	
-	
-	
 
 }

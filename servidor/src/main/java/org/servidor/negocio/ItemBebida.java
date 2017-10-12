@@ -1,23 +1,25 @@
 package org.servidor.negocio;
 
+import org.repositorio.dtos.BebidaDTO;
+
 public class ItemBebida {
-	
-	private Bebida bebida;
+
+	private BebidaDTO bebida;
 	private Integer cantidad;
 	private double montoSubtotal;
-	
-	public ItemBebida(Bebida bebida, Integer cantidad, double montoSubtotal) {
+
+	public ItemBebida(BebidaDTO bebida, Integer cantidad, double montoSubtotal) {
 		super();
 		this.bebida = bebida;
 		this.cantidad = cantidad;
 		this.montoSubtotal = montoSubtotal;
 	}
 
-	public Bebida getBebida() {
+	public BebidaDTO getBebida() {
 		return bebida;
 	}
 
-	public void setBebida(Bebida bebida) {
+	public void setBebida(BebidaDTO bebida) {
 		this.bebida = bebida;
 	}
 
@@ -36,8 +38,5 @@ public class ItemBebida {
 	public void setMontoSubtotal(double montoSubtotal) {
 		this.montoSubtotal = montoSubtotal;
 	}
-	
-	
-	
 
 }

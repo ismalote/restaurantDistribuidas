@@ -1,13 +1,14 @@
 package org.servidor.negocio;
 
-public class EncargadoArea extends Encargado{
+import org.repositorio.dtos.EncargadoDTO;
+
+public class EncargadoArea extends EncargadoDTO {
 
 	public EncargadoArea(Integer idEncargado, String nombre, String apellido) {
 		super(idEncargado, nombre, apellido);
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	//TODO que onda con este?
-	
+	// TODO que onda con este?
+
 }

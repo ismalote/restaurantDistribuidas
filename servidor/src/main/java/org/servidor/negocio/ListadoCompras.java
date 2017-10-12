@@ -2,13 +2,15 @@ package org.servidor.negocio;
 
 import java.util.List;
 
+import org.repositorio.dtos.ItemListadoDTO;
+
 public class ListadoCompras {
-	
+
 	private Integer idListadoCompras;
 	private String AreaSolicitante;
-	private List<ItemListado> insumos;
-	
-	public ListadoCompras(Integer idListadoCompras, String areaSolicitante, List<ItemListado> insumos) {
+	private List<ItemListadoDTO> insumos;
+
+	public ListadoCompras(Integer idListadoCompras, String areaSolicitante, List<ItemListadoDTO> insumos) {
 		super();
 		this.idListadoCompras = idListadoCompras;
 		AreaSolicitante = areaSolicitante;
@@ -31,14 +33,12 @@ public class ListadoCompras {
 		AreaSolicitante = areaSolicitante;
 	}
 
-	public List<ItemListado> getInsumos() {
+	public List<ItemListadoDTO> getInsumos() {
 		return insumos;
 	}
 
-	public void setInsumos(List<ItemListado> insumos) {
+	public void setInsumos(List<ItemListadoDTO> insumos) {
 		this.insumos = insumos;
 	}
-	
-	
 
 }

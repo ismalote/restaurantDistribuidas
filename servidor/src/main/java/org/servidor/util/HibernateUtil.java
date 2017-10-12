@@ -18,74 +18,76 @@ import java.util.List;
  */
 public class HibernateUtil {
 
-    private static class HibernateUtilHolder {
-        private static final HibernateUtil instance = new HibernateUtil();
-    }
-    private SessionFactory sessionFactory = null;
+	private static class HibernateUtilHolder {
+		private static final HibernateUtil instance = new HibernateUtil();
+	}
 
-    private HibernateUtil(){
-        configurarFactoryHibernate();
-    }
+	private SessionFactory sessionFactory = null;
 
-    @SuppressWarnings("rawtypes")
+	private HibernateUtil() {
+		configurarFactoryHibernate();
+	}
+
+	@SuppressWarnings("rawtypes")
 	private void configurarFactoryHibernate() {
-        try {
-            Configuration configuration = new Configuration();
-            for (Class clase : getEntityClassesFromPackage("edu.uade.prendaDistribuida.servidor.entities")){
-                configuration.addAnnotatedClass(clase);
-            }
-            sessionFactory = configuration.buildSessionFactory(
-                    new StandardServiceRegistryBuilder().build()
-            );
-        } catch (Throwable ex) {
-            System.err.println("Error al iniciar Factory Hibernate." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
-    }
+		try {
+			Configuration configuration = new Configuration();
+			for (Class clase : getEntityClassesFromPackage("edu.uade.prendaDistribuida.servidor.entities")) {
+				configuration.addAnnotatedClass(clase);
+			}
+			sessionFactory = configuration.buildSessionFactory(new StandardServiceRegistryBuilder().build());
+		} catch (Throwable ex) {
+			System.err.println("Error al iniciar Factory Hibernate." + ex);
+			throw new ExceptionInInitializerError(ex);
+		}
+	}
 
-    public static HibernateUtil getInstancia() {
-        return HibernateUtilHolder.instance;
-    }
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
+	public static HibernateUtil getInstancia() {
+		return HibernateUtilHolder.instance;
+	}
 
-    private static List<Class<?>> getEntityClassesFromPackage(String packageName) throws ClassNotFoundException, IOException, URISyntaxException {
-        List<String> classNames = getClassNamesFromPackage(packageName);
-        List<Class<?>> classes = new ArrayList<Class<?>>();
-        for (String className : classNames) {
-            Class<?> cls = Class.forName(packageName + "." + className);
-            Annotation[] annotations = cls.getAnnotations();
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
 
-            for (Annotation annotation : annotations) {
-                System.out.println(cls.getCanonicalName() + ": " + annotation.toString());
-                if (annotation instanceof javax.persistence.Entity) {
-                    classes.add(cls);
-                }
-            }
-        }
+	private static List<Class<?>> getEntityClassesFromPackage(String packageName)
+			throws ClassNotFoundException, IOException, URISyntaxException {
+		List<String> classNames = getClassNamesFromPackage(packageName);
+		List<Class<?>> classes = new ArrayList<Class<?>>();
+		for (String className : classNames) {
+			Class<?> cls = Class.forName(packageName + "." + className);
+			Annotation[] annotations = cls.getAnnotations();
 
-        return classes;
-    }
+			for (Annotation annotation : annotations) {
+				System.out.println(cls.getCanonicalName() + ": " + annotation.toString());
+				if (annotation instanceof javax.persistence.Entity) {
+					classes.add(cls);
+				}
+			}
+		}
 
-    private static ArrayList<String> getClassNamesFromPackage(String packageName) throws IOException, URISyntaxException, ClassNotFoundException {
-        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        ArrayList<String> names = new ArrayList<>();
+		return classes;
+	}
 
-        packageName = packageName.replace(".", "/");
-        URL packageURL = classLoader.getResource(packageName);
+	private static ArrayList<String> getClassNamesFromPackage(String packageName)
+			throws IOException, URISyntaxException, ClassNotFoundException {
+		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+		ArrayList<String> names = new ArrayList<>();
 
-        URI uri = new URI(packageURL.toString());
-        File folder = new File(uri.getPath());
-        File[] files = folder.listFiles();
-        for (File file: files) {
-        	if (!file.isDirectory()){
-        		String name = file.getName();
-                name = name.substring(0, name.lastIndexOf('.'));  // REMUEVE ".class"
-                names.add(name);
-        	}            
-        }
+		packageName = packageName.replace(".", "/");
+		URL packageURL = classLoader.getResource(packageName);
 
-        return names;
-    }
+		URI uri = new URI(packageURL.toString());
+		File folder = new File(uri.getPath());
+		File[] files = folder.listFiles();
+		for (File file : files) {
+			if (!file.isDirectory()) {
+				String name = file.getName();
+				name = name.substring(0, name.lastIndexOf('.')); // REMUEVE ".class"
+				names.add(name);
+			}
+		}
+
+		return names;
+	}
 }

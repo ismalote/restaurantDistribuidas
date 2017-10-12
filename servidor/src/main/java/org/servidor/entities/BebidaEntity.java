@@ -4,8 +4,6 @@ public class BebidaEntity extends InsumoEntity {
 
 	private Integer idBebida;
 	private String descripcion;
-	
-	
 
 	public Integer getIdBebida() {
 		return idBebida;
@@ -22,8 +20,5 @@ public class BebidaEntity extends InsumoEntity {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
 
-	
-	
 }

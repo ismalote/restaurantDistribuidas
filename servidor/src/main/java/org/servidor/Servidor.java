@@ -13,61 +13,62 @@ import org.servidor.util.RMIUtil;
  */
 public class Servidor {
 
-    private static Servidor instancia;
-    private RMIUtil objetoRemoto;
+	private static Servidor instancia;
+	private RMIUtil objetoRemoto;
 
-    private Servidor() {
-        inicializacion();
-    }
+	private Servidor() {
+		inicializacion();
+	}
 
-    public static Servidor getInstancia() {
-        if (instancia == null){
-            instancia = new Servidor();
-        }
-        return instancia;
-    }
+	public static Servidor getInstancia() {
+		if (instancia == null) {
+			instancia = new Servidor();
+		}
+		return instancia;
+	}
 
-    public RMIUtil getObjetoRemoto() {
-        return objetoRemoto;
-    }
-    public void setObjetoRemoto(RMIUtil objetoRemoto) {
-        this.objetoRemoto = objetoRemoto;
-    }
+	public RMIUtil getObjetoRemoto() {
+		return objetoRemoto;
+	}
 
-    private void inicializacion() {
-        try {
-            System.out.println("----------------------------------------------------------");
-        	System.out.println("INICIALIZACION");
-            System.out.println("----------------------------------------------------------");
-            System.out.println("");
-            System.out.println("----------------------------------------------------------");
-        	System.out.println("HIBERNATE:");
-            System.out.println("----------------------------------------------------------");
-        	Session s = HibernateUtil.getInstancia().getSessionFactory().openSession();
-        	s.close();
-            System.out.println("----------------------------------------------------------");
-            System.out.println("RMI:");
-            System.out.println("Fijado en " + IAppRemote.URL_SERVICIO + " puerto: " + IAppRemote.PORT_SERVICIO);
-            System.out.println("----------------------------------------------------------");
-            setObjetoRemoto(new RMIUtil());
-            LocateRegistry.createRegistry(IAppRemote.PORT_SERVICIO);
-            Naming.rebind(IAppRemote.URL_SERVICIO, getObjetoRemoto());
+	public void setObjetoRemoto(RMIUtil objetoRemoto) {
+		this.objetoRemoto = objetoRemoto;
+	}
 
-            // INICIALIZANDO FACTORY
-            System.out.println("----------------------------------------------------------");
-            System.out.println("FACTORY:");
-            System.out.println("----------------------------------------------------------");
+	private void inicializacion() {
+		try {
+			System.out.println("----------------------------------------------------------");
+			System.out.println("INICIALIZACION");
+			System.out.println("----------------------------------------------------------");
+			System.out.println("");
+			System.out.println("----------------------------------------------------------");
+			System.out.println("HIBERNATE:");
+			System.out.println("----------------------------------------------------------");
+			Session s = HibernateUtil.getInstancia().getSessionFactory().openSession();
+			s.close();
+			System.out.println("----------------------------------------------------------");
+			System.out.println("RMI:");
+			System.out.println("Fijado en " + IAppRemote.URL_SERVICIO + " puerto: " + IAppRemote.PORT_SERVICIO);
+			System.out.println("----------------------------------------------------------");
+			setObjetoRemoto(new RMIUtil());
+			LocateRegistry.createRegistry(IAppRemote.PORT_SERVICIO);
+			Naming.rebind(IAppRemote.URL_SERVICIO, getObjetoRemoto());
 
-            System.out.println("----------------------------------------------------------");
-            System.out.println("INICIALIZACION COMPLETO");
-            System.out.println("----------------------------------------------------------");
+			// INICIALIZANDO FACTORY
+			System.out.println("----------------------------------------------------------");
+			System.out.println("FACTORY:");
+			System.out.println("----------------------------------------------------------");
 
-            while (true){
+			System.out.println("----------------------------------------------------------");
+			System.out.println("INICIALIZACION COMPLETO");
+			System.out.println("----------------------------------------------------------");
 
-            }
-        } catch (Exception e){
-            System.out.println("ERROR AL INICIALIZAR SERVIDOR");
-            e.printStackTrace();
-        }
-    }
+			while (true) {
+
+			}
+		} catch (Exception e) {
+			System.out.println("ERROR AL INICIALIZAR SERVIDOR");
+			e.printStackTrace();
+		}
+	}
 }

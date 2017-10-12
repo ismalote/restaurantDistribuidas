@@ -2,12 +2,15 @@ package org.servidor.negocio;
 
 import java.util.List;
 
-public class Salon extends Area {
-	
+import org.repositorio.dtos.AreaDTO;
+import org.repositorio.dtos.SectorDTO;
+
+public class Salon extends AreaDTO {
+
 	private String nombre;
-	private List<Sector> sectores;
-	
-	public Salon(Integer idArea, String nombre, List<Sector> sectores) {
+	private List<SectorDTO> sectores;
+
+	public Salon(Integer idArea, String nombre, List<SectorDTO> sectores) {
 		super(idArea);
 		this.nombre = nombre;
 		this.sectores = sectores;
@@ -21,15 +24,12 @@ public class Salon extends Area {
 		this.nombre = nombre;
 	}
 
-	public List<Sector> getSectores() {
+	public List<SectorDTO> getSectores() {
 		return sectores;
 	}
 
-	public void setSectores(List<Sector> sectores) {
+	public void setSectores(List<SectorDTO> sectores) {
 		this.sectores = sectores;
 	}
-	
-	
-	
 
 }
