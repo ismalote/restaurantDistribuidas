@@ -1,4 +1,4 @@
-package org.repositorio;
+package org.repositorio.bussinessDelegate;
 
 import java.rmi.Naming;
 

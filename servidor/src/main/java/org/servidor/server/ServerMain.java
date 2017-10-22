@@ -1,4 +1,4 @@
-package org.servidor;
+package org.servidor.server;
 
 /**
  * Created by Josue on 22/4/2017.

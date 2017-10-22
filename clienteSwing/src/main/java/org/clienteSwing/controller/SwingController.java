@@ -2,7 +2,7 @@ package org.clienteSwing.controller;
 
 import java.util.ResourceBundle;
 
-import org.repositorio.BussinessDelegate;
+import org.repositorio.bussinessDelegate.BussinessDelegate;
 
 public class SwingController {
 
