@@ -1,32 +1,27 @@
-package org.repositorio;
+package org.servidor.util;
 
-import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
 import org.repositorio.dtos.ComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.interfaces.IAppRemote;
 
-public class BussinessDelegate implements IAppRemote {
+/**
+ * 
+ */
+public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 
-	private static BussinessDelegate instancia;
-	
-	private IAppRemote bussinessDelegate;
+	private static final long serialVersionUID = 1L;
 
-	public static BussinessDelegate getInstancia() throws Exception {
-		if (instancia == null) {
-			instancia = new BussinessDelegate();
-		}
-		return instancia;
-	}
-
-	private BussinessDelegate() throws Exception {
+	public ObjetoRemoto() throws RemoteException {
 		super();
-		this.bussinessDelegate = (IAppRemote) Naming.lookup(IAppRemote.URL_SERVICIO);
 	}
 
 	@Override
 	public boolean crearComanda(ComandaDTO comanda) {
-		return this.bussinessDelegate.crearComanda(comanda);
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
@@ -38,7 +33,7 @@ public class BussinessDelegate implements IAppRemote {
 	@Override
 	public void pedirItemDeComanda(String idItemComanda) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
@@ -46,5 +41,4 @@ public class BussinessDelegate implements IAppRemote {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 }

@@ -6,7 +6,7 @@ import java.rmi.registry.LocateRegistry;
 import org.hibernate.Session;
 import org.repositorio.interfaces.IAppRemote;
 import org.servidor.util.HibernateUtil;
-import org.servidor.util.RMIUtil;
+import org.servidor.util.ObjetoRemoto;
 
 /**
  * Created by Josue on 22/4/2017.
@@ -14,7 +14,7 @@ import org.servidor.util.RMIUtil;
 public class Servidor {
 
 	private static Servidor instancia;
-	private RMIUtil objetoRemoto;
+	private ObjetoRemoto objetoRemoto;
 
 	private Servidor() {
 		inicializacion();
@@ -27,11 +27,11 @@ public class Servidor {
 		return instancia;
 	}
 
-	public RMIUtil getObjetoRemoto() {
+	public ObjetoRemoto getObjetoRemoto() {
 		return objetoRemoto;
 	}
 
-	public void setObjetoRemoto(RMIUtil objetoRemoto) {
+	public void setObjetoRemoto(ObjetoRemoto objetoRemoto) {
 		this.objetoRemoto = objetoRemoto;
 	}
 
@@ -50,7 +50,7 @@ public class Servidor {
 			System.out.println("RMI:");
 			System.out.println("Fijado en " + IAppRemote.URL_SERVICIO + " puerto: " + IAppRemote.PORT_SERVICIO);
 			System.out.println("----------------------------------------------------------");
-			setObjetoRemoto(new RMIUtil());
+			setObjetoRemoto(new ObjetoRemoto());
 			LocateRegistry.createRegistry(IAppRemote.PORT_SERVICIO);
 			Naming.rebind(IAppRemote.URL_SERVICIO, getObjetoRemoto());
 
