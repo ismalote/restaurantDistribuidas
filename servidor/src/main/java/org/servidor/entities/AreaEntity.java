@@ -4,6 +4,8 @@ package org.servidor.entities;
 @Table(name="Area")
 public class AreaEntity {
 
+	@Id
+	@Column(name="idArea")
 	protected Integer idArea;
 
 	public Integer getIdArea() {
