@@ -2,26 +2,18 @@ package org.servidor.negocio;
 
 import java.util.List;
 
-import org.repositorio.dtos.AreaDTO;
-import org.repositorio.dtos.CartaDTO;
-import org.repositorio.dtos.DepositoDTO;
-import org.repositorio.dtos.EncargadoDTO;
-import org.repositorio.dtos.ListadoComprasDTO;
-import org.repositorio.dtos.MozoDTO;
-import org.repositorio.dtos.SalonDTO;
-
 public class Local {
 
-	private List<EncargadoDTO> encargadosAreas;
-	private List<MozoDTO> mozos;
-	private SalonDTO salon;
-	private DepositoDTO deposito;
-	private List<AreaDTO> areas;
-	private CartaDTO carta;
-	private List<ListadoComprasDTO> listadosCompras;
+	private List<Encargado> encargadosAreas;
+	private List<Mozo> mozos;
+	private Salon salon;
+	private Deposito deposito;
+	private List<Area> areas;
+	private Carta carta;
+	private List<ListadoCompras> listadosCompras;
 
-	public Local(List<EncargadoDTO> encargadosAreas, List<MozoDTO> mozos, SalonDTO salon, DepositoDTO deposito,
-			List<AreaDTO> areas, CartaDTO carta, List<ListadoComprasDTO> listadosCompras) {
+	public Local(List<Encargado> encargadosAreas, List<Mozo> mozos, Salon salon, Deposito deposito,
+			List<Area> areas, Carta carta, List<ListadoCompras> listadosCompras) {
 		super();
 		this.encargadosAreas = encargadosAreas;
 		this.mozos = mozos;
@@ -32,59 +24,59 @@ public class Local {
 		this.listadosCompras = listadosCompras;
 	}
 
-	public List<EncargadoDTO> getEncargadosAreas() {
+	public List<Encargado> getEncargadosAreas() {
 		return encargadosAreas;
 	}
 
-	public void setEncargadosAreas(List<EncargadoDTO> encargadosAreas) {
+	public void setEncargadosAreas(List<Encargado> encargadosAreas) {
 		this.encargadosAreas = encargadosAreas;
 	}
 
-	public List<MozoDTO> getMozos() {
+	public List<Mozo> getMozos() {
 		return mozos;
 	}
 
-	public void setMozos(List<MozoDTO> mozos) {
+	public void setMozos(List<Mozo> mozos) {
 		this.mozos = mozos;
 	}
 
-	public SalonDTO getSalon() {
+	public Salon getSalon() {
 		return salon;
 	}
 
-	public void setSalon(SalonDTO salon) {
+	public void setSalon(Salon salon) {
 		this.salon = salon;
 	}
 
-	public DepositoDTO getDeposito() {
+	public Deposito getDeposito() {
 		return deposito;
 	}
 
-	public void setDeposito(DepositoDTO deposito) {
+	public void setDeposito(Deposito deposito) {
 		this.deposito = deposito;
 	}
 
-	public List<AreaDTO> getAreas() {
+	public List<Area> getAreas() {
 		return areas;
 	}
 
-	public void setAreas(List<AreaDTO> areas) {
+	public void setAreas(List<Area> areas) {
 		this.areas = areas;
 	}
 
-	public CartaDTO getCarta() {
+	public Carta getCarta() {
 		return carta;
 	}
 
-	public void setCarta(CartaDTO carta) {
+	public void setCarta(Carta carta) {
 		this.carta = carta;
 	}
 
-	public List<ListadoComprasDTO> getListadosCompras() {
+	public List<ListadoCompras> getListadosCompras() {
 		return listadosCompras;
 	}
 
-	public void setListadosCompras(List<ListadoComprasDTO> listadosCompras) {
+	public void setListadosCompras(List<ListadoCompras> listadosCompras) {
 		this.listadosCompras = listadosCompras;
 	}
 

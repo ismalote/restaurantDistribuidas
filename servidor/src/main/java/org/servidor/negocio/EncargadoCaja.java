@@ -10,5 +10,4 @@ public class EncargadoCaja extends EncargadoDTO {
 	}
 
 	// TODO que onda aca? que le ponemos?
-
 }

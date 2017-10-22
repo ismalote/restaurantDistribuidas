@@ -1,23 +1,21 @@
 package org.servidor.negocio;
 
-import org.repositorio.dtos.AreaDTO;
-
 public abstract class ProductoComestible {
 
-	protected AreaDTO area;
+	protected Area area;
 	protected Integer estimadoStock;
 
-	public ProductoComestible(AreaDTO area, Integer estimadoStock) {
+	public ProductoComestible(Area area, Integer estimadoStock) {
 		super();
 		this.area = area;
 		this.estimadoStock = estimadoStock;
 	}
 
-	public AreaDTO getArea() {
+	public Area getArea() {
 		return area;
 	}
 
-	public void setArea(AreaDTO area) {
+	public void setArea(Area area) {
 		this.area = area;
 	}
 
