@@ -1,5 +1,7 @@
 package org.servidor.entities;
 
+@Entity
+@Table(name="Area")
 public class AreaEntity {
 
 	protected Integer idArea;
