@@ -3,6 +3,12 @@ package org.servidor.util;
 import org.hibernate.SessionFactory;
 
 
+<<<<<<< HEAD
+=======
+/**
+ */
+public class HibernateUtil {
+>>>>>>> branch 'master' of https://github.com/ismalote/restaurantDistribuidas.git
 
 
 

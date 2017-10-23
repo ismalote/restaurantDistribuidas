@@ -2,19 +2,16 @@ package org.servidor.negocio;
 
 import java.util.Date;
 
-import org.repositorio.dtos.EstadoMesaDTO;
-import org.repositorio.dtos.ReservaDTO;
-
 public class Mesa {
 
 	private Integer idMesa;
-	private EstadoMesaDTO estadoMesa;
-	private ReservaDTO reserva;
+	private EstadoMesa estadoMesa;
+	private Reserva reserva;
 	private Integer cantidadSillas;
 	private Date horaOcupacion;
 	private Date horaLiberacion;
 
-	public Mesa(Integer idMesa, EstadoMesaDTO estadoMesa, ReservaDTO reserva, Integer cantidadSillas,
+	public Mesa(Integer idMesa, EstadoMesa estadoMesa, Reserva reserva, Integer cantidadSillas,
 			Date horaOcupacion, Date horaLiberacion) {
 		super();
 		this.idMesa = idMesa;
@@ -33,19 +30,19 @@ public class Mesa {
 		this.idMesa = idMesa;
 	}
 
-	public EstadoMesaDTO getEstadoMesa() {
+	public EstadoMesa getEstadoMesa() {
 		return estadoMesa;
 	}
 
-	public void setEstadoMesa(EstadoMesaDTO estadoMesa) {
+	public void setEstadoMesa(EstadoMesa estadoMesa) {
 		this.estadoMesa = estadoMesa;
 	}
 
-	public ReservaDTO getReserva() {
+	public Reserva getReserva() {
 		return reserva;
 	}
 
-	public void setReserva(ReservaDTO reserva) {
+	public void setReserva(Reserva reserva) {
 		this.reserva = reserva;
 	}
 

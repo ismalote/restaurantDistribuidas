@@ -8,8 +8,13 @@ import org.repositorio.interfaces.IAppRemote;
 import org.servidor.objetoRemoto.ObjetoRemoto;
 import org.servidor.util.HibernateUtil;
 
+<<<<<<< HEAD
 
 
+=======
+/**
+ */
+>>>>>>> branch 'master' of https://github.com/ismalote/restaurantDistribuidas.git
 public class Servidor {
 
 	private static Servidor instancia;

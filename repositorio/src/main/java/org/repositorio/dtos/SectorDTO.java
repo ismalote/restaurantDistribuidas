@@ -1,9 +1,14 @@
 package org.repositorio.dtos;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class SectorDTO {
+public class SectorDTO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6463345235529204106L;
 	private List<MozoDTO> mozos;
 	private List<MesaDTO> mesas;
 	private Integer idSalon;

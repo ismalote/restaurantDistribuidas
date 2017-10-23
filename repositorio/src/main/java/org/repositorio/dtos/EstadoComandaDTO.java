@@ -1,7 +1,13 @@
 package org.repositorio.dtos;
 
-public class EstadoComandaDTO {
+import java.io.Serializable;
 
+public class EstadoComandaDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 789057936644448278L;
 	private boolean estadoCocina;
 	private boolean estadoCafeteria;
 	private boolean estadoBarra;

@@ -2,15 +2,13 @@ package org.servidor.negocio;
 
 import java.util.List;
 
-import org.repositorio.dtos.PlatoDTO;
-
 public class ItemCarta {
 
 	private Float precio;
 	private String descripcion;
-	private List<PlatoDTO> plato;
+	private List<Plato> plato;
 
-	public ItemCarta(Float precio, String descripcion, List<PlatoDTO> plato) {
+	public ItemCarta(Float precio, String descripcion, List<Plato> plato) {
 		super();
 		this.precio = precio;
 		this.descripcion = descripcion;
@@ -33,11 +31,11 @@ public class ItemCarta {
 		this.descripcion = descripcion;
 	}
 
-	public List<PlatoDTO> getPlato() {
+	public List<Plato> getPlato() {
 		return plato;
 	}
 
-	public void setPlato(List<PlatoDTO> plato) {
+	public void setPlato(List<Plato> plato) {
 		this.plato = plato;
 	}
 

@@ -1,7 +1,13 @@
 package org.repositorio.dtos;
 
-public abstract class InsumoDTO {
+import java.io.Serializable;
 
+public abstract class InsumoDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8263014237296991697L;
 	protected Integer idInsumo;
 	protected Float precio;
 	protected CaducidadDTO caducidad;

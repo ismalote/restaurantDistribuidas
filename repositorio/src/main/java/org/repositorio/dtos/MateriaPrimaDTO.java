@@ -1,7 +1,13 @@
 package org.repositorio.dtos;
 
-public class MateriaPrimaDTO {
+import java.io.Serializable;
 
+public class MateriaPrimaDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8371237561112477683L;
 	private String codigo;
 	private String descripcion;
 	private UnidadDTO unidadCompra;

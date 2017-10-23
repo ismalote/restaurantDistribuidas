@@ -1,7 +1,13 @@
 package org.repositorio.dtos;
 
-public class AreaDTO {
+import java.io.Serializable;
 
+public class AreaDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7445287877217300934L;
 	protected Integer idArea;
 
 	public AreaDTO(Integer idArea) {

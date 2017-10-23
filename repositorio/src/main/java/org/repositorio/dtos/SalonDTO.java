@@ -1,9 +1,14 @@
 package org.repositorio.dtos;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class SalonDTO extends AreaDTO {
+public class SalonDTO extends AreaDTO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7476299187136406150L;
 	private String nombre;
 	private List<SectorDTO> sectores;
 

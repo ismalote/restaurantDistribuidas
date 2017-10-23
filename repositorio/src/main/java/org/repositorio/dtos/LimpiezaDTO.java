@@ -1,7 +1,13 @@
 package org.repositorio.dtos;
 
-public class LimpiezaDTO extends InsumoDTO {
+import java.io.Serializable;
 
+public class LimpiezaDTO extends InsumoDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7293589359196626795L;
 	private Integer idProductoLimpieza;
 	private String descripcion;
 

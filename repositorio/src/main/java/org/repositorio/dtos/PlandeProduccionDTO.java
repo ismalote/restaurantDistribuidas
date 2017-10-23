@@ -1,10 +1,15 @@
 package org.repositorio.dtos;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class PlandeProduccionDTO {
+public class PlandeProduccionDTO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7726274102316419922L;
 	private Integer idPP;
 	private List<ItemPlandeProduccionDTO> itemPP;
 	private Date fecha;

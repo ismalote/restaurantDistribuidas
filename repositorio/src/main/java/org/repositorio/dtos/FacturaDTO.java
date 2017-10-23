@@ -1,9 +1,14 @@
 package org.repositorio.dtos;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class FacturaDTO {
+public class FacturaDTO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1371403022295984753L;
 	private String cliente;
 	private double montoTotal;
 	private List<ItemPlatoDTO> itemsPlato;

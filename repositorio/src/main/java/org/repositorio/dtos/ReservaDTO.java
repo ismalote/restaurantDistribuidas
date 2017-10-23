@@ -1,9 +1,14 @@
 package org.repositorio.dtos;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ReservaDTO {
+public class ReservaDTO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -766515447721507901L;
 	private Boolean estado;
 	private Date horaReserva;
 	private Integer cantidadPersonas;

@@ -1,9 +1,14 @@
 package org.repositorio.dtos;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CajaDTO extends AreaDTO {
+public class CajaDTO extends AreaDTO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7108738382536831595L;
 	private EncargadoAreaDTO encargadoCaja;
 	private List<ComandaDTO> comandas;
 

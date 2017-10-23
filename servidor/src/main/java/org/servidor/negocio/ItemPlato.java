@@ -1,25 +1,23 @@
 package org.servidor.negocio;
 
-import org.repositorio.dtos.PlatoDTO;
-
 public class ItemPlato {
 
-	private PlatoDTO plato;
+	private Plato plato;
 	private Integer cantidad;
 	private double montoSubtotal;
 
-	public ItemPlato(PlatoDTO plato, Integer cantidad, double montoSubtotal) {
+	public ItemPlato(Plato plato, Integer cantidad, double montoSubtotal) {
 		super();
 		this.plato = plato;
 		this.cantidad = cantidad;
 		this.montoSubtotal = montoSubtotal;
 	}
 
-	public PlatoDTO getPlato() {
+	public Plato getPlato() {
 		return plato;
 	}
 
-	public void setPlato(PlatoDTO plato) {
+	public void setPlato(Plato plato) {
 		this.plato = plato;
 	}
 

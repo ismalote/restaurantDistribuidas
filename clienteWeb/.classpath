@@ -13,12 +13,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="/repositorio"/>
-	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
-		<attributes>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="lib/tomcat-api-8.0.44.jar"/>
 	<classpathentry kind="lib" path="lib/tomcat-el-api-8.0.44.jar"/>
 	<classpathentry kind="lib" path="lib/tomcat-embed-core-8.0.44.jar"/>

@@ -2,28 +2,24 @@ package org.servidor.negocio;
 
 import java.util.List;
 
-import org.repositorio.dtos.AreaDTO;
-import org.repositorio.dtos.MateriaPrimaDTO;
-import org.repositorio.dtos.ProductoComestibleDTO;
+public class SemiElaborado extends ProductoComestible {
 
-public class SemiElaborado extends ProductoComestibleDTO {
+	private List<MateriaPrima> materiales;
 
-	private List<MateriaPrimaDTO> materiales;
-
-	public SemiElaborado(AreaDTO area, Integer estimadoStock) {
+	public SemiElaborado(Area area, Integer estimadoStock) {
 		super(area, estimadoStock);
 	}
 
-	public SemiElaborado(AreaDTO area, Integer estimadoStock, List<MateriaPrimaDTO> materiales) {
+	public SemiElaborado(Area area, Integer estimadoStock, List<MateriaPrima> materiales) {
 		super(area, estimadoStock);
 		this.materiales = materiales;
 	}
 
-	public List<MateriaPrimaDTO> getMateriales() {
+	public List<MateriaPrima> getMateriales() {
 		return materiales;
 	}
 
-	public void setMateriales(List<MateriaPrimaDTO> materiales) {
+	public void setMateriales(List<MateriaPrima> materiales) {
 		this.materiales = materiales;
 	}
 

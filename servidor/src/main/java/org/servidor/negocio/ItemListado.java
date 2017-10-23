@@ -1,23 +1,21 @@
 package org.servidor.negocio;
 
-import org.repositorio.dtos.InsumoDTO;
-
 public class ItemListado {
 
-	private InsumoDTO insumo;
+	private Insumo insumo;
 	private Integer cantidad;
 
-	public ItemListado(InsumoDTO insumo, Integer cantidad) {
+	public ItemListado(Insumo insumo, Integer cantidad) {
 		super();
 		this.insumo = insumo;
 		this.cantidad = cantidad;
 	}
 
-	public InsumoDTO getInsumo() {
+	public Insumo getInsumo() {
 		return insumo;
 	}
 
-	public void setInsumo(InsumoDTO insumo) {
+	public void setInsumo(Insumo insumo) {
 		this.insumo = insumo;
 	}
 

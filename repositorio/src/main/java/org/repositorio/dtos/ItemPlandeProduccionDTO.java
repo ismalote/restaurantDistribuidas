@@ -1,7 +1,13 @@
 package org.repositorio.dtos;
 
-public class ItemPlandeProduccionDTO {
+import java.io.Serializable;
 
+public class ItemPlandeProduccionDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1038983125942479592L;
 	private PlatoDTO plato;
 	private Integer cantidadEstimada;
 
