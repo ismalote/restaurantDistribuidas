@@ -19,6 +19,10 @@ public class BussinessDelegate implements IAppRemote {
 		return instancia;
 	}
 
+	/*
+	 * 
+	 * contructor
+	 */
 	private BussinessDelegate() throws Exception {
 		super();
 		this.setBussinessDelegate((IAppRemote) Naming.lookup(IAppRemote.URL_SERVICIO));
