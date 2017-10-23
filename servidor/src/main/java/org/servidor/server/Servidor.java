@@ -9,7 +9,6 @@ import org.servidor.util.HibernateUtil;
 import org.servidor.util.ObjetoRemoto;
 
 /**
- * Created by Josue on 22/4/2017.
  */
 public class Servidor {
 

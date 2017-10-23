@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Josue on 22/4/2017.
  */
 public class HibernateUtil {
 

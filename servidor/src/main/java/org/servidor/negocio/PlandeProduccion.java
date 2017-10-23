@@ -3,16 +3,14 @@ package org.servidor.negocio;
 import java.util.Date;
 import java.util.List;
 
-import org.repositorio.dtos.ItemPlandeProduccionDTO;
-
 public class PlandeProduccion {
 
 	private Integer idPP;
-	private List<ItemPlandeProduccionDTO> itemPP;
+	private List<ItemPlandeProduccion> itemPP;
 	private Date fecha;
 	private Date tiempoDeEjecucion;
 
-	public PlandeProduccion(Integer idPP, List<ItemPlandeProduccionDTO> itemPP, Date fecha, Date tiempoDeEjecucion) {
+	public PlandeProduccion(Integer idPP, List<ItemPlandeProduccion> itemPP, Date fecha, Date tiempoDeEjecucion) {
 		super();
 		this.idPP = idPP;
 		this.itemPP = itemPP;
@@ -28,11 +26,11 @@ public class PlandeProduccion {
 		this.idPP = idPP;
 	}
 
-	public List<ItemPlandeProduccionDTO> getItemPP() {
+	public List<ItemPlandeProduccion> getItemPP() {
 		return itemPP;
 	}
 
-	public void setItemPP(List<ItemPlandeProduccionDTO> itemPP) {
+	public void setItemPP(List<ItemPlandeProduccion> itemPP) {
 		this.itemPP = itemPP;
 	}
 
