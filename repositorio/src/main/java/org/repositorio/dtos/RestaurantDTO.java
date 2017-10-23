@@ -1,9 +1,14 @@
 package org.repositorio.dtos;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class RestaurantDTO {
+public class RestaurantDTO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7870287831909181555L;
 	private LocalDTO LocalLogueado;
 	private List<LocalDTO> locales;
 	private DepositoCentralDTO depositoCentral;

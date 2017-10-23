@@ -1,7 +1,13 @@
 package org.repositorio.dtos;
 
-public abstract class EncargadoDTO {
+import java.io.Serializable;
 
+public abstract class EncargadoDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -377661009498013031L;
 	protected Integer idEncargado;
 	protected String Nombre;
 	protected String Apellido;

@@ -1,7 +1,13 @@
 package org.repositorio.dtos;
 
-public class DepositoCentralDTO {
+import java.io.Serializable;
 
+public class DepositoCentralDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7914275300366352242L;
 	private StockDTO stockDeposito;
 
 	public DepositoCentralDTO(StockDTO stockDeposito) {

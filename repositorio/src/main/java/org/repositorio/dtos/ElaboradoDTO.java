@@ -1,9 +1,14 @@
 package org.repositorio.dtos;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ElaboradoDTO extends ProductoComestibleDTO {
+public class ElaboradoDTO extends ProductoComestibleDTO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 324201138116302605L;
 	private List<ProductoComestibleDTO> productos;
 	private UnidadDTO unidad;
 

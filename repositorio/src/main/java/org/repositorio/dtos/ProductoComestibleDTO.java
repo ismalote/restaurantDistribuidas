@@ -1,7 +1,13 @@
 package org.repositorio.dtos;
 
-public abstract class ProductoComestibleDTO {
+import java.io.Serializable;
 
+public abstract class ProductoComestibleDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4320034626363737189L;
 	protected AreaDTO area;
 	protected Integer estimadoStock;
 

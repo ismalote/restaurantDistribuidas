@@ -1,7 +1,13 @@
 package org.repositorio.dtos;
 
-public class BebidaDTO extends InsumoDTO {
+import java.io.Serializable;
 
+public class BebidaDTO extends InsumoDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2621467313550474435L;
 	private Integer idBebida;
 	private String descripcion;
 

@@ -1,9 +1,14 @@
 package org.repositorio.dtos;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CaducidadDTO {
+public class CaducidadDTO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3106643802468988757L;
 	private Date fechaCreacion;
 	private Date fechaCaducidad;
 

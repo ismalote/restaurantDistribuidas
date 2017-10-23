@@ -1,7 +1,13 @@
 package org.repositorio.dtos;
 
-public class DepositoDTO extends AreaDTO {
+import java.io.Serializable;
 
+public class DepositoDTO extends AreaDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8790809135225160135L;
 	private StockDTO stockDeposito;
 	private EncargadoAreaDTO encargadoDeposito;
 

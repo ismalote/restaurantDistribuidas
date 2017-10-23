@@ -1,7 +1,13 @@
 package org.repositorio.dtos;
 
-public class ItemBebidaDTO {
+import java.io.Serializable;
 
+public class ItemBebidaDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1133558864305634483L;
 	private BebidaDTO bebida;
 	private Integer cantidad;
 	private double montoSubtotal;

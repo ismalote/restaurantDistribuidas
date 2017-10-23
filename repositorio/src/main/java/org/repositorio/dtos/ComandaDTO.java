@@ -1,9 +1,14 @@
 package org.repositorio.dtos;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ComandaDTO {
+public class ComandaDTO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2220270292730634477L;
 	private List<PlatoDTO> platos;
 	private MozoDTO mozo;
 	private Boolean comandaLista;
