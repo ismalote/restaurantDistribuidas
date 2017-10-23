@@ -3,10 +3,7 @@ package org.servidor.objetoRemoto;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-import org.repositorio.dtos.ComandaDTO;
-import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.interfaces.IAppRemote;
-
 
 public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 
@@ -16,8 +13,4 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		super();
 	}
 
-	
-	
-	
-	
 }
