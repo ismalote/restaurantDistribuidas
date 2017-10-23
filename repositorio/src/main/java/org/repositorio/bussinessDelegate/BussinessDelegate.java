@@ -21,30 +21,17 @@ public class BussinessDelegate implements IAppRemote {
 
 	private BussinessDelegate() throws Exception {
 		super();
-		this.bussinessDelegate = (IAppRemote) Naming.lookup(IAppRemote.URL_SERVICIO);
+		this.setBussinessDelegate((IAppRemote) Naming.lookup(IAppRemote.URL_SERVICIO));
 	}
 
-	@Override
-	public boolean crearComanda(ComandaDTO comanda) {
-		return this.bussinessDelegate.crearComanda(comanda);
+	public IAppRemote getBussinessDelegate() {
+		return bussinessDelegate;
 	}
 
-	@Override
-	public boolean agregarItemAComanda(ItemComandaDTO item) {
-		// TODO Auto-generated method stub
-		return false;
+	public void setBussinessDelegate(IAppRemote bussinessDelegate) {
+		this.bussinessDelegate = bussinessDelegate;
 	}
 
-	@Override
-	public void pedirItemDeComanda(String idItemComanda) {
-		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public boolean cerrarcomanda(String idComanda) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }
