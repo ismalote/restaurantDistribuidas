@@ -18,7 +18,7 @@ public class PlatoDAO {
 	private PlatoDAO(){
 		
 	}
-	
+	//.
 	
 	public Plato obtenerProducto(int idPlato){
 		Session s = HibernateUtil.getSessionFactory().getCurrentSession();
