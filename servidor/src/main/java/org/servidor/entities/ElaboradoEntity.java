@@ -6,6 +6,17 @@ public class ElaboradoEntity extends ProductoComestibleEntity {
 
 	private List<ProductoComestibleEntity> productos;
 	private UnidadEntity unidad;
+	
+	public ElaboradoEntity () {
+		
+	}
+	
+	public ElaboradoEntity (Integer id, AreaEntity area1, Integer estimado, UnidadEntity unidad, 
+			List<ProductoComestibleEntity> productos) {
+		super (id,area1,estimado);
+		this.productos= productos;
+		this.unidad= unidad;
+	}
 
 	public List<ProductoComestibleEntity> getProductos() {
 		return productos;

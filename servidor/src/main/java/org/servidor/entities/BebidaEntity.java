@@ -1,10 +1,19 @@
 package org.servidor.entities;
 
 public class BebidaEntity extends InsumoEntity {
+	
 
-	private Integer idBebida;
 	private String descripcion;
+	
+	public BebidaEntity
 
+	public BebidaEntity(){}
+	
+	public BebidaEntity(Interger id, Float precio, Date fechaCreacion, Date caducidad, String tipo){
+		super(id,precio,fechaCreacion,caducidad);
+		this.descripcion=tipo;
+		
+	}
 	public Integer getIdBebida() {
 		return idBebida;
 	}

@@ -2,8 +2,17 @@ package org.servidor.entities;
 
 public class DepositoEntity extends AreaEntity {
 
+	
 	private StockEntity stockDeposito;
 	private EncargadoAreaEntity encargadoDeposito;
+	
+	public DepositoEntity (){}
+	
+	public DepositoEntity (Integer id, EncargadoAreaEntity encargado, StockDeposito stock){
+		super (id);
+		this.encargadoDeposito= encargado;
+		this.stockDeposito= stock;
+	}
 
 	public StockEntity getStockDeposito() {
 		return stockDeposito;

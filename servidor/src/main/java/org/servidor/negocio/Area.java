@@ -1,6 +1,8 @@
 package org.servidor.negocio;
 
 public class Area {
+	
+	// to do: verificar si es necesario  que exista  esta clase y su entity
 
 	protected Integer idArea;
 

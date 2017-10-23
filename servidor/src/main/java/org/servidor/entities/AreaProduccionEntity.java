@@ -3,11 +3,37 @@ package org.servidor.entities;
 import java.util.List;
 
 public class AreaProduccionEntity {
+	
+		
+	@Id
+	@Column(name="IdAreaProdu")
+	private Integer IdAreaProduccion;
+	
 	private String TipoArea;
+	
+	@OneToOne
+	@JoinColumn(name="idEncargadoArea")
 	private EncargadoAreaEntity encargadoArea;
+	
+	
 	private StockEntity stock;
+	
+	@OneToMany
+	@JoinColumn(mappedBy="comanda")
 	private List<ComandaEntity> comandas;
+	
+	
+	public AreaProduccionEntity(){}
 
+	public AreaProduccionEntity(Integer nroArea, String tipo, EncargadoAreaDTO encargado, StockDTO stock, List<ComandaEntity> comandas){
+		IdAreaProduccion= nroArea;
+		TipoArea= tipo;
+		encargadoArea= encargado;
+		this.stock= stock;
+		this.comandas= comandas;
+			
+	}
+	
 	public String getTipoArea() {
 		return TipoArea;
 	}

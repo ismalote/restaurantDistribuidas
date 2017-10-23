@@ -6,8 +6,29 @@ public class ItemCartaEntity {
 
 	private Float precio;
 	private String descripcion;
+	
+	@OneToMany
+	@JoinColumn(name="idCarta")
 	private List<PlatoEntity> plato;
+	
+	@OneToOne(mappedBy="ItemCartaEntity")
+	private CartaEntity carta;
+	
+	
+	
+	public ItemCartaEntity () {
+		
+	}
+	
+	public ItemCartaEntity (Float precio, String descripcion, List <PlatoEntity> platos, CartaEntity carta) {
+		this.carta= carta;
+		this.descripcion= descripcion;
+		this.precio= precio;
+		this.plato= platos;
+		
+	}
 
+	
 	public Float getPrecio() {
 		return precio;
 	}

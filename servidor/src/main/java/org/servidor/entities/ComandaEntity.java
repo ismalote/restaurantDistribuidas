@@ -4,13 +4,31 @@ import java.util.List;
 
 public class ComandaEntity {
 
+	//preguntar a los chicos sobbre redefinir la comanda como item camandas 
+	@Id
+	private idComanda;
+	
+	@OneToMany(mappedBy="plato")
 	private List<PlatoEntity> platos;
+	
+	@OneToOne(name="idMozo")
 	private MozoEntity mozo;
+	
 	private Boolean comandaLista;
+	
+	@OneToOne(name="idMesa")
 	private MesaEntity mesa;
+	
+	@OneToMany(mappedBy="plato")
 	private List<BebidaEntity> bebidas;
+	
 	private EstadoComandaEntity estadoComanda;
-	private FacturaEntity factura;
+	
+	
+	//ver si esta bien esto este one to one 
+	@OneToOne(mappedBy="FacturaEntity")
+	private 
+	//private FacturaEntity factura;
 
 	public List<PlatoEntity> getPlatos() {
 		return platos;

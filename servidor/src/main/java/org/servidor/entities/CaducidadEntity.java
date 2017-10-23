@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class CaducidadEntity {
 
+		// borrar esta clase ya, complica para la generacion de las bases de datos
+	
 	private Date fechaCreacion;
 	private Date fechaCaducidad;
 

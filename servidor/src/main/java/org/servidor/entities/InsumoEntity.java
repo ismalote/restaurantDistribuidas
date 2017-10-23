@@ -1,11 +1,26 @@
 package org.servidor.entities;
 
 public abstract class InsumoEntity {
-
+	
+	@Id
+	@Column(name="idInsumo")
 	protected Integer idInsumo;
 	protected Float precio;
-	protected CaducidadEntity caducidad;
-
+	protected Date fechaCreacion;
+	protected Date fechaCaducidad;
+	
+	
+	public InsumoEntity (){}
+	
+	public InsumoEntity (Integer id, Float pre, Date fCreacion, Date fCaducidad){
+		this.idInsumo= id;
+		this.precio= pre;
+		this.fechaCreacion= fCreacion;
+		this.fechaCaducidad= fCaducidad;
+	}
+	
+	
+	
 	public Integer getIdInsumo() {
 		return idInsumo;
 	}
@@ -22,12 +37,21 @@ public abstract class InsumoEntity {
 		this.precio = precio;
 	}
 
-	public CaducidadEntity getCaducidad() {
-		return caducidad;
+
+	public Date getFechaCreacion() {
+		return fechaCreacion;
 	}
 
-	public void setCaducidad(CaducidadEntity caducidad) {
-		this.caducidad = caducidad;
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public Date getFechaCaducidad() {
+		return fechaCaducidad;
+	}
+
+	public void setFechaCaducidad(Date fechaCaducidad) {
+		this.fechaCaducidad = fechaCaducidad;
 	}
 
 }
