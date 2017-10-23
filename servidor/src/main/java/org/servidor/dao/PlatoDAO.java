@@ -4,6 +4,8 @@ import org.hibernate.Session;
 import org.servidor.negocio.Plato;
 import org.servidor.util.HibernateUtil;
 
+
+
 public class PlatoDAO {
 
 	private static PlatoDAO instancia;
@@ -19,7 +21,7 @@ public class PlatoDAO {
 	
 	
 	public Plato obtenerProducto(int idPlato){
-		Session s = HibernateUtil.getInstancia().getSessionFactory().openSession();
+		Session s = HibernateUtil.getSessionFactory().getCurrentSession();
 		Plato p = (Plato) s.createQuery("from Plato where idPlato = :idPlato").setInteger("idPlato", idPlato).uniqueResult();
 		
 		return p;	
