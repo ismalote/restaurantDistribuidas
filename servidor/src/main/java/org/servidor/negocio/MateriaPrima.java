@@ -1,16 +1,13 @@
 package org.servidor.negocio;
 
-import org.repositorio.dtos.CaducidadDTO;
-import org.repositorio.dtos.UnidadDTO;
-
 public class MateriaPrima {
 
 	private String codigo;
 	private String descripcion;
-	private UnidadDTO unidadCompra;
-	private CaducidadDTO caducidad;
+	private Unidad unidadCompra;
+	private Caducidad caducidad;
 
-	public MateriaPrima(String codigo, String descripcion, UnidadDTO unidadCompra, CaducidadDTO caducidad) {
+	public MateriaPrima(String codigo, String descripcion, Unidad unidadCompra, Caducidad caducidad) {
 		super();
 		this.codigo = codigo;
 		this.descripcion = descripcion;
@@ -34,19 +31,19 @@ public class MateriaPrima {
 		this.descripcion = descripcion;
 	}
 
-	public UnidadDTO getUnidadCompra() {
+	public Unidad getUnidadCompra() {
 		return unidadCompra;
 	}
 
-	public void setUnidadCompra(UnidadDTO unidadCompra) {
+	public void setUnidadCompra(Unidad unidadCompra) {
 		this.unidadCompra = unidadCompra;
 	}
 
-	public CaducidadDTO getCaducidad() {
+	public Caducidad getCaducidad() {
 		return caducidad;
 	}
 
-	public void setCaducidad(CaducidadDTO caducidad) {
+	public void setCaducidad(Caducidad caducidad) {
 		this.caducidad = caducidad;
 	}
 

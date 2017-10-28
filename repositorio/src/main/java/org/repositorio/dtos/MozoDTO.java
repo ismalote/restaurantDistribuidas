@@ -1,7 +1,13 @@
 package org.repositorio.dtos;
 
-public class MozoDTO {
+import java.io.Serializable;
 
+public class MozoDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -493855349530985514L;
 	private Integer idMozo;
 	private Float porcentajeComision;
 	private String Nombre;

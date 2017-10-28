@@ -2,17 +2,14 @@ package org.servidor.negocio;
 
 import java.util.List;
 
-import org.repositorio.dtos.MesaDTO;
-import org.repositorio.dtos.MozoDTO;
-
 public class Sector {
 
-	private List<MozoDTO> mozos;
-	private List<MesaDTO> mesas;
+	private List<Mozo> mozos;
+	private List<Mesa> mesas;
 	private Integer idSalon;
 	private String nombre;
 
-	public Sector(List<MozoDTO> mozos, List<MesaDTO> mesas, Integer idSalon, String nombre) {
+	public Sector(List<Mozo> mozos, List<Mesa> mesas, Integer idSalon, String nombre) {
 		super();
 		this.mozos = mozos;
 		this.mesas = mesas;
@@ -20,19 +17,19 @@ public class Sector {
 		this.nombre = nombre;
 	}
 
-	public List<MozoDTO> getMozos() {
+	public List<Mozo> getMozos() {
 		return mozos;
 	}
 
-	public void setMozos(List<MozoDTO> mozos) {
+	public void setMozos(List<Mozo> mozos) {
 		this.mozos = mozos;
 	}
 
-	public List<MesaDTO> getMesas() {
+	public List<Mesa> getMesas() {
 		return mesas;
 	}
 
-	public void setMesas(List<MesaDTO> mesas) {
+	public void setMesas(List<Mesa> mesas) {
 		this.mesas = mesas;
 	}
 

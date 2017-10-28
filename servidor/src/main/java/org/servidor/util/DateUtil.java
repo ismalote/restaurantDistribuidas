@@ -4,7 +4,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Created by Josue on 2/7/2017.
  */
 public class DateUtil {
 

@@ -2,19 +2,13 @@ package org.servidor.negocio;
 
 import java.util.List;
 
-import org.repositorio.dtos.ComandaDTO;
-import org.repositorio.dtos.EncargadoAreaDTO;
-import org.repositorio.dtos.InsumoDTO;
-import org.repositorio.dtos.PlatoDTO;
-import org.repositorio.dtos.StockDTO;
-
 public abstract class AreaProduccion {
 	private String TipoArea;
-	private EncargadoAreaDTO encargadoArea;
-	private StockDTO stock;
-	private List<ComandaDTO> comandas;
+	private EncargadoArea encargadoArea;
+	private Stock stock;
+	private List<Comanda> comandas;
 
-	public AreaProduccion(String tipoArea, EncargadoAreaDTO encargadoArea, StockDTO stock, List<ComandaDTO> comandas) {
+	public AreaProduccion(String tipoArea, EncargadoArea encargadoArea, Stock stock, List<Comanda> comandas) {
 		super();
 		TipoArea = tipoArea;
 		this.encargadoArea = encargadoArea;
@@ -22,13 +16,13 @@ public abstract class AreaProduccion {
 		this.comandas = comandas;
 	}
 
-	public void solicitarADeposito(List<InsumoDTO> insumos) {
+	public void solicitarADeposito(List<Insumo> insumos) {
 
 	}
 
-	public abstract boolean prepararComanda(ComandaDTO comanda);
+	public abstract boolean prepararComanda(Comanda comanda);
 
-	public List<PlatoDTO> pedidoListo(ComandaDTO comanda) {
+	public List<Plato> pedidoListo(Comanda comanda) {
 		return null;
 	}
 
@@ -40,27 +34,27 @@ public abstract class AreaProduccion {
 		TipoArea = tipoArea;
 	}
 
-	public EncargadoAreaDTO getEncargadoArea() {
+	public EncargadoArea getEncargadoArea() {
 		return encargadoArea;
 	}
 
-	public void setEncargadoArea(EncargadoAreaDTO encargadoArea) {
+	public void setEncargadoArea(EncargadoArea encargadoArea) {
 		this.encargadoArea = encargadoArea;
 	}
 
-	public StockDTO getStock() {
+	public Stock getStock() {
 		return stock;
 	}
 
-	public void setStock(StockDTO stock) {
+	public void setStock(Stock stock) {
 		this.stock = stock;
 	}
 
-	public List<ComandaDTO> getComandas() {
+	public List<Comanda> getComandas() {
 		return comandas;
 	}
 
-	public void setComandas(List<ComandaDTO> comandas) {
+	public void setComandas(List<Comanda> comandas) {
 		this.comandas = comandas;
 	}
 

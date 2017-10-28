@@ -1,9 +1,14 @@
 package org.repositorio.dtos;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class MesaDTO {
+public class MesaDTO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1172104457781444998L;
 	private Integer idMesa;
 	private EstadoMesaDTO estadoMesa;
 	private ReservaDTO reserva;

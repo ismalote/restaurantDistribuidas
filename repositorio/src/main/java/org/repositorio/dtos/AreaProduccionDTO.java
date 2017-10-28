@@ -1,8 +1,13 @@
 package org.repositorio.dtos;
 
+import java.io.Serializable;
 import java.util.List;
 
-public abstract class AreaProduccionDTO {
+public abstract class AreaProduccionDTO implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1959001633436079009L;
 	private String TipoArea;
 	private EncargadoAreaDTO encargadoArea;
 	private StockDTO stock;

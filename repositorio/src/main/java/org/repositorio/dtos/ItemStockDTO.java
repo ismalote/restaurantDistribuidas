@@ -1,7 +1,13 @@
 package org.repositorio.dtos;
 
-public class ItemStockDTO {
+import java.io.Serializable;
 
+public class ItemStockDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3349436372116671575L;
 	private InsumoDTO producto;
 	private Integer CantidadEnStock;
 	private Integer estimadoStock;

@@ -1,6 +1,13 @@
 package org.repositorio.dtos;
 
-public class EncargadoAreaDTO extends EncargadoDTO {
+import java.io.Serializable;
+
+public class EncargadoAreaDTO extends EncargadoDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4034024290307345428L;
 
 	public EncargadoAreaDTO(Integer idEncargado, String nombre, String apellido) {
 		super(idEncargado, nombre, apellido);

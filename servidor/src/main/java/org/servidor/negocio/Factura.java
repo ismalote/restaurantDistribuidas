@@ -2,17 +2,14 @@ package org.servidor.negocio;
 
 import java.util.List;
 
-import org.repositorio.dtos.ItemBebidaDTO;
-import org.repositorio.dtos.ItemPlatoDTO;
-
 public class Factura {
 
 	private String cliente;
 	private double montoTotal;
-	private List<ItemPlatoDTO> itemsPlato;
-	private List<ItemBebidaDTO> itemsBebida;
+	private List<ItemPlato> itemsPlato;
+	private List<ItemBebida> itemsBebida;
 
-	public Factura(String cliente, double montoTotal, List<ItemPlatoDTO> itemsPlato, List<ItemBebidaDTO> itemsBebida) {
+	public Factura(String cliente, double montoTotal, List<ItemPlato> itemsPlato, List<ItemBebida> itemsBebida) {
 		this.cliente = cliente;
 		this.montoTotal = montoTotal;
 		this.itemsPlato = itemsPlato;
@@ -35,19 +32,19 @@ public class Factura {
 		this.montoTotal = montoTotal;
 	}
 
-	public List<ItemPlatoDTO> getItemsPlato() {
+	public List<ItemPlato> getItemsPlato() {
 		return itemsPlato;
 	}
 
-	public void setItemsPlato(List<ItemPlatoDTO> itemsPlato) {
+	public void setItemsPlato(List<ItemPlato> itemsPlato) {
 		this.itemsPlato = itemsPlato;
 	}
 
-	public List<ItemBebidaDTO> getItemsBebida() {
+	public List<ItemBebida> getItemsBebida() {
 		return itemsBebida;
 	}
 
-	public void setItemsBebida(List<ItemBebidaDTO> itemsBebida) {
+	public void setItemsBebida(List<ItemBebida> itemsBebida) {
 		this.itemsBebida = itemsBebida;
 	}
 

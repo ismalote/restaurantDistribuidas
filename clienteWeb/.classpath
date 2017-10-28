@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="lib"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="/repositorio"/>
+	<classpathentry kind="lib" path="lib/tomcat-api-8.0.44.jar"/>
+	<classpathentry kind="lib" path="lib/tomcat-el-api-8.0.44.jar"/>
+	<classpathentry kind="lib" path="lib/tomcat-embed-core-8.0.44.jar"/>
+	<classpathentry kind="lib" path="lib/tomcat-embed-el-8.0.44.jar"/>
+	<classpathentry kind="lib" path="lib/tomcat-embed-jasper-8.0.44.jar"/>
+	<classpathentry kind="lib" path="lib/tomcat-embed-logging-juli-8.0.44.jar"/>
+	<classpathentry kind="lib" path="lib/tomcat-jasper-8.0.44.jar"/>
+	<classpathentry kind="lib" path="lib/tomcat-jasper-el-8.0.44.jar"/>
+	<classpathentry kind="lib" path="lib/tomcat-jsp-api-8.0.44.jar"/>
+	<classpathentry kind="lib" path="lib/tomcat-juli-8.0.44.jar"/>
+	<classpathentry kind="lib" path="lib/tomcat-servlet-api-8.0.44.jar"/>
+	<classpathentry kind="lib" path="lib/tomcat-util-8.0.44.jar"/>
+	<classpathentry kind="lib" path="lib/tomcat-util-scan-8.0.44.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

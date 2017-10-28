@@ -1,9 +1,14 @@
 package org.repositorio.dtos;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ListadoComprasDTO {
+public class ListadoComprasDTO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5021348000961538761L;
 	private Integer idListadoCompras;
 	private String AreaSolicitante;
 	private List<ItemListadoDTO> insumos;

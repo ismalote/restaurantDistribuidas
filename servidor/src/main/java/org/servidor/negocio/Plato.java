@@ -2,17 +2,14 @@ package org.servidor.negocio;
 
 import java.util.List;
 
-import org.repositorio.dtos.AreaDTO;
-import org.repositorio.dtos.ElaboradoDTO;
-
 public class Plato {
 
-	private List<ElaboradoDTO> plato;
+	private List<Elaborado> plato;
 	private Float precio;
-	private AreaDTO area;
+	private Area area;
 	private Float comisionExtra;
 
-	public Plato(List<ElaboradoDTO> plato, Float precio, AreaDTO area, Float comisionExtra) {
+	public Plato(List<Elaborado> plato, Float precio, Area area, Float comisionExtra) {
 		super();
 		this.plato = plato;
 		this.precio = precio;
@@ -20,11 +17,11 @@ public class Plato {
 		this.comisionExtra = comisionExtra;
 	}
 
-	public List<ElaboradoDTO> getPlato() {
+	public List<Elaborado> getPlato() {
 		return plato;
 	}
 
-	public void setPlato(List<ElaboradoDTO> plato) {
+	public void setPlato(List<Elaborado> plato) {
 		this.plato = plato;
 	}
 
@@ -36,11 +33,11 @@ public class Plato {
 		this.precio = precio;
 	}
 
-	public AreaDTO getArea() {
+	public Area getArea() {
 		return area;
 	}
 
-	public void setArea(AreaDTO area) {
+	public void setArea(Area area) {
 		this.area = area;
 	}
 

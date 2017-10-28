@@ -1,22 +1,19 @@
 package org.servidor.negocio;
 
-import org.repositorio.dtos.StockDTO;
-
 public class DepositoCentral {
 
-	private StockDTO stockDeposito;
+	private Stock stockDeposito;
 
-	public DepositoCentral(StockDTO stockDeposito) {
+	public DepositoCentral(Stock stockDeposito) {
 		super();
 		this.stockDeposito = stockDeposito;
 	}
 
-	public StockDTO getStockDeposito() {
+	public Stock getStockDeposito() {
 		return stockDeposito;
 	}
 
-	public void setStockDeposito(StockDTO stockDeposito) {
+	public void setStockDeposito(Stock stockDeposito) {
 		this.stockDeposito = stockDeposito;
 	}
-
 }

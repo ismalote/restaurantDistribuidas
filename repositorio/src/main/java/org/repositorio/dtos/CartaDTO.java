@@ -1,9 +1,14 @@
 package org.repositorio.dtos;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CartaDTO {
+public class CartaDTO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3425289682319203009L;
 	private Integer idCarta;
 	private List<ItemCartaDTO> itemsCarta;
 

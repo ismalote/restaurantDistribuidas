@@ -1,14 +1,12 @@
 package org.servidor.negocio;
 
-import org.repositorio.dtos.CaducidadDTO;
-
 public abstract class Insumo {
 
 	protected Integer idInsumo;
 	protected Float precio;
-	protected CaducidadDTO caducidad;
+	protected Caducidad caducidad;
 
-	public Insumo(Integer idInsumo, Float precio, CaducidadDTO caducidad) {
+	public Insumo(Integer idInsumo, Float precio, Caducidad caducidad) {
 		super();
 		this.idInsumo = idInsumo;
 		this.precio = precio;
@@ -31,11 +29,11 @@ public abstract class Insumo {
 		this.precio = precio;
 	}
 
-	public CaducidadDTO getCaducidad() {
+	public Caducidad getCaducidad() {
 		return caducidad;
 	}
 
-	public void setCaducidad(CaducidadDTO caducidad) {
+	public void setCaducidad(Caducidad caducidad) {
 		this.caducidad = caducidad;
 	}
 
