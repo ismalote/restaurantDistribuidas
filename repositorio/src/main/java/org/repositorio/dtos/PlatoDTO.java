@@ -9,25 +9,25 @@ public class PlatoDTO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -156561835293452117L;
-	private List<ElaboradoDTO> plato;
+	private List<ProductoComestibleDTO> productos;
 	private Float precio;
 	private AreaDTO area;
 	private Float comisionExtra;
 
-	public PlatoDTO(List<ElaboradoDTO> plato, Float precio, AreaDTO area, Float comisionExtra) {
+	public PlatoDTO(List<ProductoComestibleDTO> plato, Float precio, AreaDTO area, Float comisionExtra) {
 		super();
-		this.plato = plato;
+		this.productos = plato;
 		this.precio = precio;
 		this.area = area;
 		this.comisionExtra = comisionExtra;
 	}
 
-	public List<ElaboradoDTO> getPlato() {
-		return plato;
+	public List<ProductoComestibleDTO> getProductos() {
+		return productos;
 	}
 
-	public void setPlato(List<ElaboradoDTO> plato) {
-		this.plato = plato;
+	public void setProductos(List<ProductoComestibleDTO> plato) {
+		this.productos = plato;
 	}
 
 	public Float getPrecio() {

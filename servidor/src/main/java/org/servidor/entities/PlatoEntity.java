@@ -4,17 +4,17 @@ import java.util.List;
 
 public class PlatoEntity {
 
-	private List<ElaboradoEntity> plato;
+	private List<ProductoComestibleEntity> productos;
 	private Float precio;
 	private AreaEntity area;
 	private Float comisionExtra;
 
-	public List<ElaboradoEntity> getPlato() {
-		return plato;
+	public List<ProductoComestibleEntity> getProductos() {
+		return productos;
 	}
 
-	public void setPlato(List<ElaboradoEntity> plato) {
-		this.plato = plato;
+	public void setProductos(List<ProductoComestibleEntity> productos) {
+		this.productos = productos;
 	}
 
 	public Float getPrecio() {

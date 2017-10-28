@@ -16,7 +16,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 	}
 
 	@Override
-	public boolean crearComanda(ComandaDTO comanda) {
+	public boolean crearComanda(ComandaDTO comanda) throws RemoteException {
 		return false;
 	}
 

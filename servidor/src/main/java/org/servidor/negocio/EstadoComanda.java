@@ -1,5 +1,8 @@
 package org.servidor.negocio;
 
+import org.repositorio.dtos.EstadoComandaDTO;
+import org.servidor.entities.EstadoComandaEntity;
+
 public class EstadoComanda {
 
 	private boolean estadoCocina;
@@ -11,6 +14,19 @@ public class EstadoComanda {
 		this.estadoCocina = estadoCocina;
 		this.estadoCafeteria = estadoCafeteria;
 		this.estadoBarra = estadoBarra;
+	}
+
+	public EstadoComanda(EstadoComandaEntity entity) {
+		this.estadoCocina= entity.isEstadoCocina();
+		this.estadoCafeteria= entity.isEstadoCafeteria();
+		this.estadoBarra= entity.isEstadoBarra();
+	}
+
+	public EstadoComanda(EstadoComandaDTO dto) {
+		this.estadoCocina= dto.isEstadoCocina();
+		this.estadoCafeteria= dto.isEstadoCafeteria();
+		this.estadoBarra= dto.isEstadoBarra();
+		
 	}
 
 	public boolean isEstadoCocina() {

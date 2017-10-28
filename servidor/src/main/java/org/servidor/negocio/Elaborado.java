@@ -1,6 +1,10 @@
 package org.servidor.negocio;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.servidor.entities.ElaboradoEntity;
+import org.servidor.entities.ProductoComestibleEntity;
 
 public class Elaborado extends ProductoComestible {
 
@@ -15,6 +19,15 @@ public class Elaborado extends ProductoComestible {
 		super(area, estimadoStock);
 		this.productos = productos;
 		this.unidad = unidad;
+	}
+
+	public Elaborado(ProductoComestibleEntity p) {
+		super(p);
+		this.productos = new ArrayList<ProductoComestible>();
+		for (ProductoComestibleEntity pc : p) {
+			this.productos.add(ProductoComestible.getNew(pc));
+		}
+		this.unidad = new Unidad(p.getUnidad());
 	}
 
 	public List<ProductoComestible> getProductos() {

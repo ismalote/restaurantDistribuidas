@@ -1,6 +1,12 @@
 package org.servidor.negocio;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.repositorio.dtos.FacturaDTO;
+import org.repositorio.dtos.ItemPlatoDTO;
+import org.servidor.entities.FacturaEntity;
+import org.servidor.entities.ItemPlatoEntity;
 
 public class Factura {
 
@@ -14,6 +20,26 @@ public class Factura {
 		this.montoTotal = montoTotal;
 		this.itemsPlato = itemsPlato;
 		this.itemsBebida = itemsBebida;
+	}
+
+	public Factura(FacturaEntity entity) {
+		this.cliente = entity.getCliente();
+		this.montoTotal=entity.getMontoTotal();
+		this.itemsPlato = new ArrayList<ItemPlato>();
+		for (ItemPlatoEntity item : entity.getItemsPlato()) {
+			this.itemsPlato.add(new ItemPlato(item));
+		}
+		
+		
+	}
+
+	public Factura(FacturaDTO dto) {
+		this.cliente = dto.getCliente();
+		this.montoTotal=dto.getMontoTotal();
+		this.itemsPlato = new ArrayList<ItemPlato>();
+		for (ItemPlatoDTO item : dto.getItemsPlato()) {
+			this.itemsPlato.add(new ItemPlato(item));
+		}
 	}
 
 	public String getCliente() {

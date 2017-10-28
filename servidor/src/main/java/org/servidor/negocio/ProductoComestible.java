@@ -1,5 +1,9 @@
 package org.servidor.negocio;
 
+import org.repositorio.dtos.ProductoComestibleDTO;
+import org.servidor.entities.ElaboradoEntity;
+import org.servidor.entities.ProductoComestibleEntity;
+
 public abstract class ProductoComestible {
 
 	protected Area area;
@@ -9,6 +13,10 @@ public abstract class ProductoComestible {
 		super();
 		this.area = area;
 		this.estimadoStock = estimadoStock;
+	}
+
+	public ProductoComestible(ElaboradoEntity entity) {
+		
 	}
 
 	public Area getArea() {
@@ -25,6 +33,15 @@ public abstract class ProductoComestible {
 
 	public void setEstimadoStock(Integer estimadoStock) {
 		this.estimadoStock = estimadoStock;
+	}
+	
+	public static ProductoComestible getNew(ProductoComestibleEntity entity) {
+		
+		return null;
+	}
+	public static ProductoComestible getNewDTO(ProductoComestibleDTO dto) {
+		
+		return null;
 	}
 
 }
