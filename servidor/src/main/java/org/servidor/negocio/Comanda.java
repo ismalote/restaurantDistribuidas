@@ -9,7 +9,7 @@ import org.servidor.entities.ComandaEntity;
 import org.servidor.entities.PlatoEntity;
 
 public class Comanda {
-	
+
 	private Integer idComanda;
 	private List<Plato> platos;
 	private Mozo mozo;
@@ -18,7 +18,7 @@ public class Comanda {
 	private EstadoComanda estadoComanda;
 	private Factura fact;
 	private Local Local;
-	
+
 	public Comanda(Integer idComanda, List<Plato> platos, Mozo mozo, Boolean comandaLista, Mesa mesa,
 			EstadoComanda estadoComanda, Factura fact) {
 		super();
@@ -30,12 +30,15 @@ public class Comanda {
 		this.estadoComanda = estadoComanda;
 		this.fact = fact;
 	}
+
 	public Integer getIdComanda() {
 		return idComanda;
 	}
+
 	public void setIdComanda(Integer idComanda) {
 		this.idComanda = idComanda;
 	}
+
 	public Comanda(ComandaEntity entity) {
 		this.platos = new ArrayList<Plato>();
 		for (PlatoEntity plato : entity.getPlatos()) {
@@ -43,11 +46,10 @@ public class Comanda {
 		}
 		this.estadoComanda = new EstadoComanda(entity.getEstadoComanda());
 		this.mozo = new Mozo(entity.getMozo());
-		this.mesa = new Mesa (entity.getMesa());
-		this.factura = new Factura ( entity.getFactura());
-		
+		this.mesa = new Mesa(entity.getMesa());
+		this.fact = new Factura(entity.getFact());
 	}
-	
+
 	public Comanda(ComandaDTO dto) {
 		this.platos = new ArrayList<Plato>();
 		for (PlatoDTO plato : dto.getPlatos()) {
@@ -55,54 +57,65 @@ public class Comanda {
 		}
 		this.estadoComanda = new EstadoComanda(dto.getEstadoComanda());
 		this.mozo = new Mozo(dto.getMozo());
-		this.mesa = new Mesa (dto.getMesa());
-		this.factura = new Factura ( dto.getFactura());
-		
+		this.mesa = new Mesa(dto.getMesa());
+		this.fact = new Factura(dto.getFactura());
+
 	}
-	
+
 	public List<Plato> getPlatos() {
 		return platos;
 	}
+
 	public void setPlatos(List<Plato> platos) {
 		this.platos = platos;
 	}
+
 	public Mozo getMozo() {
 		return mozo;
 	}
+
 	public void setMozo(Mozo mozo) {
 		this.mozo = mozo;
 	}
+
 	public Boolean getComandaLista() {
 		return comandaLista;
 	}
+
 	public void setComandaLista(Boolean comandaLista) {
 		this.comandaLista = comandaLista;
 	}
+
 	public Mesa getMesa() {
 		return mesa;
 	}
+
 	public void setMesa(Mesa mesa) {
 		this.mesa = mesa;
 	}
+
 	public EstadoComanda getEstadoComanda() {
 		return estadoComanda;
 	}
+
 	public void setEstadoComanda(EstadoComanda estadoComanda) {
 		this.estadoComanda = estadoComanda;
 	}
+
 	public Factura getFact() {
 		return fact;
 	}
+
 	public void setFact(Factura fact) {
 		this.fact = fact;
 	}
+
 	public Local getLocal() {
 		return Local;
 	}
+
 	public void setLocal(Local local) {
 		Local = local;
 	}
-	
-
 
 }

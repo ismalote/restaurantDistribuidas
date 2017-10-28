@@ -1,12 +1,9 @@
 package org.servidor.negocio;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.repositorio.dtos.FacturaDTO;
-import org.repositorio.dtos.ItemPlatoDTO;
 import org.servidor.entities.FacturaEntity;
-import org.servidor.entities.ItemPlatoEntity;
 
 public class Factura {
 
@@ -23,22 +20,12 @@ public class Factura {
 
 	public Factura(FacturaEntity entity) {
 		this.cliente = entity.getCliente();
-		this.montoTotal=entity.getMontoTotal();
-		this.itemsPlato = new ArrayList<ItemPlato>();
-		for (ItemPlatoEntity item : entity.getItemsPlato()) {
-			this.itemsPlato.add(new ItemPlato(item));
-		}
-		
-		
+		this.montoTotal = entity.getMontoTotal();
 	}
 
 	public Factura(FacturaDTO dto) {
 		this.cliente = dto.getCliente();
-		this.montoTotal=dto.getMontoTotal();
-		this.itemsPlato = new ArrayList<ItemPlato>();
-		for (ItemPlatoDTO item : dto.getItemsPlato()) {
-			this.itemsPlato.add(new ItemPlato(item));
-		}
+		this.montoTotal = dto.getMontoTotal();
 	}
 
 	public String getCliente() {
@@ -66,17 +53,18 @@ public class Factura {
 	}
 
 	public void calcularPrecio() {
-		
+
 		// TODO Auto-generated method stub
-		 float resultado =0;
-				
+		float resultado = 0;
+
 		List<Plato> aux = comanda.getPlatos();
-		for (Plato p: aux){
+		for (Plato p : aux) {
 			p.calcularPrecio();
-			resultado=resultado + p.getPrecio();
-			
+			resultado = resultado + p.getPrecio();
+
 		}
 	}
+
 	@Override
 	public String toString() {
 		return "Factura [cliente=" + cliente + ", montoTotal=" + montoTotal + "]";

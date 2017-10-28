@@ -1,31 +1,16 @@
 package org.servidor.negocio;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import org.servidor.entities.ElaboradoEntity;
-import org.servidor.entities.ProductoComestibleEntity;
 
 public class Elaborado extends ProductoComestible {
 
 	private List<ProductoComestible> productos;
 	private Unidad unidad;
 
-
-
 	public Elaborado(Integer idProducto, AreaProduccion area, Integer cantidadPedido, Integer puntoPedido,
 			String descripcion, Integer stock, Float precio) {
 		super(idProducto, area, cantidadPedido, puntoPedido, descripcion, stock, precio);
 		// TODO Auto-generated constructor stub
-	}
-
-	public Elaborado(ProductoComestibleEntity p) {
-		super(p);
-		this.productos = new ArrayList<ProductoComestible>();
-		for (ProductoComestibleEntity pc : p) {
-			this.productos.add(ProductoComestible.getNew(pc));
-		}
-		this.unidad = new Unidad(p.getUnidad());
 	}
 
 	public List<ProductoComestible> getProductos() {

@@ -9,7 +9,6 @@ import javax.persistence.ManyToOne;
 
 public class PlatoEntity {
 
-<<<<<<< HEAD
 	@Id
 	private Integer idPlato;
 
@@ -19,9 +18,6 @@ public class PlatoEntity {
 	@ManyToOne
 	private ComandaEntity comanda;
 
-=======
-	private List<ProductoComestibleEntity> productos;
->>>>>>> branch 'master' of https://github.com/ismalote/restaurantDistribuidas
 	private Float precio;
 
 	@ManyToOne
@@ -30,16 +26,6 @@ public class PlatoEntity {
 
 	private Float comisionExtra;
 
-<<<<<<< HEAD
-	public Integer getIdPlato() {
-		return idPlato;
-=======
-	public List<ProductoComestibleEntity> getProductos() {
-		return productos;
->>>>>>> branch 'master' of https://github.com/ismalote/restaurantDistribuidas
-	}
-
-<<<<<<< HEAD
 	public void setIdPlato(Integer idPlato) {
 		this.idPlato = idPlato;
 	}
@@ -58,10 +44,6 @@ public class PlatoEntity {
 
 	public void setComandas(ComandaEntity comandas) {
 		this.comanda = comandas;
-=======
-	public void setProductos(List<ProductoComestibleEntity> productos) {
-		this.productos = productos;
->>>>>>> branch 'master' of https://github.com/ismalote/restaurantDistribuidas
 	}
 
 	public Float getPrecio() {

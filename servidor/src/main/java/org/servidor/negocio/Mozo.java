@@ -1,6 +1,7 @@
 package org.servidor.negocio;
 
 import java.util.List;
+
 import org.repositorio.dtos.MozoDTO;
 import org.servidor.entities.MozoEntity;
 
@@ -22,28 +23,23 @@ public class Mozo {
 		this.antiguedad = antiguedad;
 	}
 
-
 	public Mozo(MozoEntity entity) {
-		this.idMozo= entity.getIdMozo();
-		this.porcentajeComision= entity.getPorcentajeComision();
-		this.Nombre= entity.getNombre();
-		this.Apellido= entity.getApellido();
-		this.antiguedad= entity.getAntiguedad();
-		
+		this.idMozo = entity.getIdMozo();
+		this.porcentajeComision = entity.getPorcentajeComision();
+		this.nombre = entity.getNombre();
+		this.apellido = entity.getApellido();
+		this.antiguedad = entity.getAntiguedad();
+
 	}
-
-
 
 	public Mozo(MozoDTO dto) {
-		
-		this.idMozo= dto.getIdMozo();
-		this.porcentajeComision= dto.getPorcentajeComision();
-		this.Nombre= dto.getNombre();
-		this.Apellido= dto.getApellido();
-		this.antiguedad= dto.getAntiguedad();
+
+		this.idMozo = dto.getIdMozo();
+		this.porcentajeComision = dto.getPorcentajeComision();
+		this.nombre = dto.getNombre();
+		this.apellido = dto.getApellido();
+		this.antiguedad = dto.getAntiguedad();
 	}
-
-
 
 	public Integer getIdMozo() {
 		return idMozo;
