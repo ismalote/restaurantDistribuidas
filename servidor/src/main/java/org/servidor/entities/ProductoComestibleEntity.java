@@ -104,4 +104,9 @@ public abstract class ProductoComestibleEntity {
 		this.platos = platos;
 	}
 
+	public UnidadEntity getUnidad() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

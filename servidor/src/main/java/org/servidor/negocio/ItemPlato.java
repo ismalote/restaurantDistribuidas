@@ -1,5 +1,8 @@
 package org.servidor.negocio;
 
+import org.repositorio.dtos.ItemPlatoDTO;
+import org.servidor.entities.ItemPlatoEntity;
+
 public class ItemPlato {
 
 	private Plato plato;
@@ -11,6 +14,20 @@ public class ItemPlato {
 		this.plato = plato;
 		this.cantidad = cantidad;
 		this.montoSubtotal = montoSubtotal;
+	}
+
+	public ItemPlato(ItemPlatoEntity entity) {
+		this.plato= new Plato(entity.getPlato());
+		this.cantidad= entity.getCantidad();
+		this.montoSubtotal=entity.getMontoSubtotal();
+		
+	}
+
+	public ItemPlato(ItemPlatoDTO dto) {
+		this.plato= new Plato(dto.getPlato());
+		this.cantidad= dto.getCantidad();
+		this.montoSubtotal=dto.getMontoSubtotal();
+	
 	}
 
 	public Plato getPlato() {

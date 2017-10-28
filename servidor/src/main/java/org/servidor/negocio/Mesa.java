@@ -1,7 +1,9 @@
 package org.servidor.negocio;
 
 import java.util.Date;
-import java.util.List;
+
+import org.repositorio.dtos.MesaDTO;
+import org.servidor.entities.MesaEntity;
 
 public class Mesa {
 
@@ -21,6 +23,26 @@ public class Mesa {
 		this.cantidadSillas = cantidadSillas;
 		this.horaOcupacion = horaOcupacion;
 		this.horaLiberacion = horaLiberacion;
+	}
+
+	public Mesa(MesaEntity entity) {
+		this.idMesa= entity.getIdMesa();
+		this.estadoMesa = new EstadoMesa(entity.getEstadoMesa());
+		this.reserva= new Reserva (entity.getReserva());
+		this.cantidadSillas= entity.getCantidadSillas();
+		this.horaOcupacion=entity.getHoraOcupacion();
+		this.horaLiberacion= entity.getHoraLiberacion();
+		
+		
+	}
+
+	public Mesa(MesaDTO dto) {
+		this.idMesa= dto.getIdMesa();
+		this.estadoMesa = new EstadoMesa(dto.getEstadoMesa());
+		this.reserva= new Reserva (dto.getReserva());
+		this.cantidadSillas= dto.getCantidadSillas();
+		this.horaOcupacion=dto.getHoraOcupacion();
+		this.horaLiberacion= dto.getHoraLiberacion();
 	}
 
 	public Integer getIdMesa() {

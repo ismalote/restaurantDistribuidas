@@ -1,6 +1,12 @@
 package org.servidor.negocio;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.repositorio.dtos.ComandaDTO;
+import org.repositorio.dtos.PlatoDTO;
+import org.servidor.entities.ComandaEntity;
+import org.servidor.entities.PlatoEntity;
 
 public class Comanda {
 	
@@ -30,6 +36,30 @@ public class Comanda {
 	public void setIdComanda(Integer idComanda) {
 		this.idComanda = idComanda;
 	}
+	public Comanda(ComandaEntity entity) {
+		this.platos = new ArrayList<Plato>();
+		for (PlatoEntity plato : entity.getPlatos()) {
+			this.platos.add(new Plato(plato));
+		}
+		this.estadoComanda = new EstadoComanda(entity.getEstadoComanda());
+		this.mozo = new Mozo(entity.getMozo());
+		this.mesa = new Mesa (entity.getMesa());
+		this.factura = new Factura ( entity.getFactura());
+		
+	}
+	
+	public Comanda(ComandaDTO dto) {
+		this.platos = new ArrayList<Plato>();
+		for (PlatoDTO plato : dto.getPlatos()) {
+			this.platos.add(new Plato(plato));
+		}
+		this.estadoComanda = new EstadoComanda(dto.getEstadoComanda());
+		this.mozo = new Mozo(dto.getMozo());
+		this.mesa = new Mesa (dto.getMesa());
+		this.factura = new Factura ( dto.getFactura());
+		
+	}
+	
 	public List<Plato> getPlatos() {
 		return platos;
 	}

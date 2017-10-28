@@ -1,6 +1,7 @@
 package org.repositorio.bussinessDelegate;
 
 import java.rmi.Naming;
+import java.rmi.RemoteException;
 
 import org.repositorio.dtos.ComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
@@ -29,7 +30,7 @@ public class BussinessDelegate implements IAppRemote {
 	}
 
 	@Override
-	public boolean crearComanda(ComandaDTO comanda) {
+	public boolean crearComanda(ComandaDTO comanda) throws RemoteException {
 		return this.bussinessDelegate.crearComanda(comanda);
 	}
 

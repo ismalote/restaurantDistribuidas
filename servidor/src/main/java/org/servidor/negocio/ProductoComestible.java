@@ -1,5 +1,9 @@
 package org.servidor.negocio;
 
+import org.repositorio.dtos.ProductoComestibleDTO;
+import org.servidor.entities.ElaboradoEntity;
+import org.servidor.entities.ProductoComestibleEntity;
+
 public abstract class ProductoComestible {
 
 	protected Integer idProducto;
@@ -76,6 +80,15 @@ public abstract class ProductoComestible {
 
 	public void setPrecio(Float precio) {
 		this.precio = precio;
+	}
+	
+	public static ProductoComestible getNew(ProductoComestibleEntity entity) {
+		
+		return null;
+	}
+	public static ProductoComestible getNewDTO(ProductoComestibleDTO dto) {
+		
+		return null;
 	}
 
 }
