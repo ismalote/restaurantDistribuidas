@@ -12,14 +12,12 @@ public class ElaboradoDTO extends ProductoComestibleDTO implements Serializable 
 	private List<ProductoComestibleDTO> productos;
 	private UnidadDTO unidad;
 
-	public ElaboradoDTO(AreaDTO area, Integer estimadoStock) {
-		super(area, estimadoStock);
-	}
 
-	public ElaboradoDTO(AreaDTO area, Integer estimadoStock, List<ProductoComestibleDTO> productos, UnidadDTO unidad) {
-		super(area, estimadoStock);
-		this.productos = productos;
-		this.unidad = unidad;
+
+	public ElaboradoDTO(Integer idProducto, AreaProduccionDTO area, Integer cantidadPedido, Integer puntoPedido,
+			String descripcion, Integer stock, Float precio) {
+		super(idProducto, area, cantidadPedido, puntoPedido, descripcion, stock, precio);
+		// TODO Auto-generated constructor stub
 	}
 
 	public List<ProductoComestibleDTO> getProductos() {

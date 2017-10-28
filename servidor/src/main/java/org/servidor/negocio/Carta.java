@@ -5,12 +5,12 @@ import java.util.List;
 public class Carta {
 
 	private Integer idCarta;
-	private List<ItemCarta> itemsCarta;
+	private List<Plato> platos;
 
-	public Carta(Integer idCarta, List<ItemCarta> itemsCarta) {
+	public Carta(Integer idCarta, List<Plato> platos) {
 		super();
 		this.idCarta = idCarta;
-		this.itemsCarta = itemsCarta;
+		this.platos = platos;
 	}
 
 	public Integer getIdCarta() {
@@ -21,12 +21,12 @@ public class Carta {
 		this.idCarta = idCarta;
 	}
 
-	public List<ItemCarta> getItemsCarta() {
-		return itemsCarta;
+	public List<Plato> getPlatos() {
+		return platos;
 	}
 
-	public void setItemsCarta(List<ItemCarta> itemsCarta) {
-		this.itemsCarta = itemsCarta;
+	public void setPlatos(List<Plato> platos) {
+		this.platos = platos;
 	}
 
 }

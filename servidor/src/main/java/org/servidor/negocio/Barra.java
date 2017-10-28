@@ -4,8 +4,12 @@ import java.util.List;
 
 public class Barra extends AreaProduccion {
 
-	public Barra(String tipoArea, EncargadoArea encargadoArea, Stock stock, List<Comanda> comandas) {
-		super(tipoArea, encargadoArea, stock, comandas);
+
+
+	public Barra(Integer id, String tipoArea, Encargado encargado, List<ProductoComestible> productos,
+			List<Comanda> comandas) {
+		super(id, tipoArea, encargado, productos, comandas);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override

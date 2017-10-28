@@ -2,20 +2,23 @@ package org.servidor.entities;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 public class CartaEntity {
-	
+
 	@Id
-	@Column(name="idCarta")
+	@Column(name = "idCarta")
 	private Integer idCarta;
-	
-	@OneToMany(mappedBy="itemCarta")
-	private List<ItemCartaEntity> itemsCarta;
-	
-	public CartaEntity(){}
-	
-	public CartaEntity(Integer idCarta,List<ItemCartaEntity> items){
-		this.idCarta= idCarta;
-		this.itemsCarta= items;
+
+	@OneToMany(mappedBy = "plato")
+	private List<PlatoEntity> platos;
+
+	public CartaEntity(Integer idCarta, List<PlatoEntity> platos) {
+		super();
+		this.idCarta = idCarta;
+		this.platos = platos;
 	}
 
 	public Integer getIdCarta() {
@@ -26,12 +29,14 @@ public class CartaEntity {
 		this.idCarta = idCarta;
 	}
 
-	public List<ItemCartaEntity> getItemsCarta() {
-		return itemsCarta;
+	public List<PlatoEntity> getPlatos() {
+		return platos;
 	}
 
-	public void setItemsCarta(List<ItemCartaEntity> itemsCarta) {
-		this.itemsCarta = itemsCarta;
+	public void setPlatos(List<PlatoEntity> platos) {
+		this.platos = platos;
 	}
+
+
 
 }

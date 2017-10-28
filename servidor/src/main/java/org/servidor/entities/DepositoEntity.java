@@ -8,7 +8,7 @@ public class DepositoEntity extends AreaEntity {
 	
 	public DepositoEntity (){}
 	
-	public DepositoEntity (Integer id, EncargadoAreaEntity encargado, StockDeposito stock){
+	public DepositoEntity (Integer id, EncargadoAreaEntity encargado, StockEntity stock){
 		super (id);
 		this.encargadoDeposito= encargado;
 		this.stockDeposito= stock;

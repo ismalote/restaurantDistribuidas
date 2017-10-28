@@ -1,6 +1,7 @@
 package org.repositorio.dtos;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class MozoDTO implements Serializable {
 
@@ -13,6 +14,7 @@ public class MozoDTO implements Serializable {
 	private String Nombre;
 	private String Apellido;
 	private Integer antiguedad;
+	private List<MesaDTO> mesas;
 
 	public MozoDTO(Integer idMozo, Float porcentajeComision, String nombre, String apellido, Integer antiguedad) {
 		super();
@@ -61,6 +63,14 @@ public class MozoDTO implements Serializable {
 
 	public void setAntiguedad(Integer antiguedad) {
 		this.antiguedad = antiguedad;
+	}
+
+	public List<MesaDTO> getMesas() {
+		return mesas;
+	}
+
+	public void setMesas(List<MesaDTO> mesas) {
+		this.mesas = mesas;
 	}
 
 	// TODO faltan metodos

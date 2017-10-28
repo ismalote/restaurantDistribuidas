@@ -2,25 +2,31 @@ package org.servidor.negocio;
 
 import java.util.List;
 
+import org.servidor.entities.SemiElaboradoEntity;
+
 public class SemiElaborado extends ProductoComestible {
 
-	private List<MateriaPrima> materiales;
+	private List<ProductoComestible> materiales;
 
-	public SemiElaborado(Area area, Integer estimadoStock) {
-		super(area, estimadoStock);
+
+
+
+	public SemiElaborado(Integer idProducto, AreaProduccion area, Integer cantidadPedido, Integer puntoPedido,
+			String descripcion, Integer stock, Float precio) {
+		super(idProducto, area, cantidadPedido, puntoPedido, descripcion, stock, precio);
+		// TODO Auto-generated constructor stub
 	}
 
-	public SemiElaborado(Area area, Integer estimadoStock, List<MateriaPrima> materiales) {
-		super(area, estimadoStock);
-		this.materiales = materiales;
-	}
-
-	public List<MateriaPrima> getMateriales() {
+	public List<ProductoComestible> getMateriales() {
 		return materiales;
 	}
 
-	public void setMateriales(List<MateriaPrima> materiales) {
+	public void setMateriales(List<ProductoComestible> materiales) {
 		this.materiales = materiales;
 	}
+
+
+
+
 
 }

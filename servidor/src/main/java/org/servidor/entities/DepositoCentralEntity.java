@@ -6,15 +6,13 @@ public class DepositoCentralEntity {
 
 	private StockEntity stockDeposito;
 	
-	public public DepositoCentralEntity() {
-		// TODO Auto-generated constructor stub
-	}
 
-	public public DepositoCentralEntity( StockEntity stock) {
-		// TODO Auto-generated constructor stub
-		this.stockDeposito= stock;
-	}
 
+
+	public DepositoCentralEntity(StockEntity stockDeposito) {
+		super();
+		this.stockDeposito = stockDeposito;
+	}
 
 	public StockEntity getStockDeposito() {
 		return stockDeposito;

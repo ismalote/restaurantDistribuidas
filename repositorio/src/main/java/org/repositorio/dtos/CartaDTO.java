@@ -10,12 +10,12 @@ public class CartaDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = -3425289682319203009L;
 	private Integer idCarta;
-	private List<ItemCartaDTO> itemsCarta;
+	private List<PlatoDTO> platos;
 
-	public CartaDTO(Integer idCarta, List<ItemCartaDTO> itemsCarta) {
+	public CartaDTO(Integer idCarta, List<PlatoDTO> itemsCarta) {
 		super();
 		this.idCarta = idCarta;
-		this.itemsCarta = itemsCarta;
+		this.platos = itemsCarta;
 	}
 
 	public Integer getIdCarta() {
@@ -26,12 +26,12 @@ public class CartaDTO implements Serializable {
 		this.idCarta = idCarta;
 	}
 
-	public List<ItemCartaDTO> getItemsCarta() {
-		return itemsCarta;
+	public List<PlatoDTO> getItemsCarta() {
+		return platos;
 	}
 
-	public void setItemsCarta(List<ItemCartaDTO> itemsCarta) {
-		this.itemsCarta = itemsCarta;
+	public void setItemsCarta(List<PlatoDTO> itemsCarta) {
+		this.platos = itemsCarta;
 	}
 
 }

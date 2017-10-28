@@ -2,19 +2,52 @@ package org.servidor.entities;
 
 import java.util.List;
 
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
 public class PlatoEntity {
 
-	private List<ElaboradoEntity> plato;
+	@Id
+	private Integer idPlato;
+
+	@ManyToMany
+	private List<ProductoComestibleEntity> productos;
+
+	@ManyToOne
+	private ComandaEntity comanda;
+
 	private Float precio;
-	private AreaEntity area;
+
+	@ManyToOne
+	@JoinColumn(name = "idCarta")
+	private CartaEntity carta;
+
 	private Float comisionExtra;
 
-	public List<ElaboradoEntity> getPlato() {
-		return plato;
+	public Integer getIdPlato() {
+		return idPlato;
 	}
 
-	public void setPlato(List<ElaboradoEntity> plato) {
-		this.plato = plato;
+	public void setIdPlato(Integer idPlato) {
+		this.idPlato = idPlato;
+	}
+
+	public List<ProductoComestibleEntity> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<ProductoComestibleEntity> productos) {
+		this.productos = productos;
+	}
+
+	public ComandaEntity getComandas() {
+		return comanda;
+	}
+
+	public void setComandas(ComandaEntity comandas) {
+		this.comanda = comandas;
 	}
 
 	public Float getPrecio() {
@@ -25,12 +58,12 @@ public class PlatoEntity {
 		this.precio = precio;
 	}
 
-	public AreaEntity getArea() {
-		return area;
+	public CartaEntity getCarta() {
+		return carta;
 	}
 
-	public void setArea(AreaEntity area) {
-		this.area = area;
+	public void setCarta(CartaEntity carta) {
+		this.carta = carta;
 	}
 
 	public Float getComisionExtra() {

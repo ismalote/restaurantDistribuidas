@@ -1,13 +1,22 @@
 package org.servidor.entities;
 
-import java.util.List;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 public class FacturaEntity {
 
 	private String cliente;
 	private double montoTotal;
-	private List<ItemPlatoEntity> itemsPlato;
-	private List<ItemBebidaEntity> itemsBebida;
+	@OneToOne
+	@JoinColumn(name = "idComanda")
+	private ComandaEntity comanda;
+
+	public FacturaEntity(String cliente, double montoTotal, ComandaEntity comanda) {
+		super();
+		this.cliente = cliente;
+		this.montoTotal = montoTotal;
+		this.comanda = comanda;
+	}
 
 	public String getCliente() {
 		return cliente;
@@ -25,20 +34,12 @@ public class FacturaEntity {
 		this.montoTotal = montoTotal;
 	}
 
-	public List<ItemPlatoEntity> getItemsPlato() {
-		return itemsPlato;
+	public ComandaEntity getComanda() {
+		return comanda;
 	}
 
-	public void setItemsPlato(List<ItemPlatoEntity> itemsPlato) {
-		this.itemsPlato = itemsPlato;
-	}
-
-	public List<ItemBebidaEntity> getItemsBebida() {
-		return itemsBebida;
-	}
-
-	public void setItemsBebida(List<ItemBebidaEntity> itemsBebida) {
-		this.itemsBebida = itemsBebida;
+	public void setComanda(ComandaEntity comanda) {
+		this.comanda = comanda;
 	}
 
 }

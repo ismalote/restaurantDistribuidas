@@ -1,7 +1,6 @@
 package org.repositorio.dtos;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class FacturaDTO implements Serializable {
 
@@ -11,15 +10,13 @@ public class FacturaDTO implements Serializable {
 	private static final long serialVersionUID = 1371403022295984753L;
 	private String cliente;
 	private double montoTotal;
-	private List<ItemPlatoDTO> itemsPlato;
-	private List<ItemBebidaDTO> itemsBebida;
+	private ComandaDTO comanda;
 
-	public FacturaDTO(String cliente, double montoTotal, List<ItemPlatoDTO> itemsPlato,
-			List<ItemBebidaDTO> itemsBebida) {
+	public FacturaDTO(String cliente, double montoTotal, ComandaDTO comanda) {
+		super();
 		this.cliente = cliente;
 		this.montoTotal = montoTotal;
-		this.itemsPlato = itemsPlato;
-		this.itemsBebida = itemsBebida;
+		this.comanda = comanda;
 	}
 
 	public String getCliente() {
@@ -38,22 +35,14 @@ public class FacturaDTO implements Serializable {
 		this.montoTotal = montoTotal;
 	}
 
-	public List<ItemPlatoDTO> getItemsPlato() {
-		return itemsPlato;
+	public ComandaDTO getComanda() {
+		return comanda;
 	}
 
-	public void setItemsPlato(List<ItemPlatoDTO> itemsPlato) {
-		this.itemsPlato = itemsPlato;
+	public void setComanda(ComandaDTO comanda) {
+		this.comanda = comanda;
 	}
-
-	public List<ItemBebidaDTO> getItemsBebida() {
-		return itemsBebida;
-	}
-
-	public void setItemsBebida(List<ItemBebidaDTO> itemsBebida) {
-		this.itemsBebida = itemsBebida;
-	}
-
+	
 	@Override
 	public String toString() {
 		return "Factura [cliente=" + cliente + ", montoTotal=" + montoTotal + "]";

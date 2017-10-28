@@ -4,24 +4,37 @@ import java.util.List;
 
 public class Plato {
 
-	private List<Elaborado> plato;
+	private Integer idPlato;
+	private List<ProductoComestible> plato;
 	private Float precio;
-	private Area area;
+	private Carta carta;
+	private Comanda comanda;
 	private Float comisionExtra;
 
-	public Plato(List<Elaborado> plato, Float precio, Area area, Float comisionExtra) {
+	public Plato(Integer idPlato, List<ProductoComestible> plato, Float precio, Carta carta, Comanda comandas,
+			Float comisionExtra) {
 		super();
+		this.idPlato = idPlato;
 		this.plato = plato;
 		this.precio = precio;
-		this.area = area;
+		this.carta = carta;
+		this.comanda = comandas;
 		this.comisionExtra = comisionExtra;
 	}
 
-	public List<Elaborado> getPlato() {
+	public Integer getIdPlato() {
+		return idPlato;
+	}
+
+	public void setIdPlato(Integer idPlato) {
+		this.idPlato = idPlato;
+	}
+
+	public List<ProductoComestible> getPlato() {
 		return plato;
 	}
 
-	public void setPlato(List<Elaborado> plato) {
+	public void setPlato(List<ProductoComestible> plato) {
 		this.plato = plato;
 	}
 
@@ -33,12 +46,20 @@ public class Plato {
 		this.precio = precio;
 	}
 
-	public Area getArea() {
-		return area;
+	public Carta getCarta() {
+		return carta;
 	}
 
-	public void setArea(Area area) {
-		this.area = area;
+	public void setCarta(Carta carta) {
+		this.carta = carta;
+	}
+
+	public Comanda getComandas() {
+		return comanda;
+	}
+
+	public void setComandas(Comanda comandas) {
+		this.comanda = comandas;
 	}
 
 	public Float getComisionExtra() {
@@ -47,6 +68,11 @@ public class Plato {
 
 	public void setComisionExtra(Float comisionExtra) {
 		this.comisionExtra = comisionExtra;
+	}
+
+	public void calcularPrecio() {
+		// TODO Auto-generated method stub
+
 	}
 
 }

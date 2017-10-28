@@ -6,14 +6,13 @@ public class Factura {
 
 	private String cliente;
 	private double montoTotal;
-	private List<ItemPlato> itemsPlato;
-	private List<ItemBebida> itemsBebida;
+	private Comanda comanda;
 
-	public Factura(String cliente, double montoTotal, List<ItemPlato> itemsPlato, List<ItemBebida> itemsBebida) {
+	public Factura(String cliente, double montoTotal, Comanda comanda) {
+		super();
 		this.cliente = cliente;
 		this.montoTotal = montoTotal;
-		this.itemsPlato = itemsPlato;
-		this.itemsBebida = itemsBebida;
+		this.comanda = comanda;
 	}
 
 	public String getCliente() {
@@ -32,22 +31,26 @@ public class Factura {
 		this.montoTotal = montoTotal;
 	}
 
-	public List<ItemPlato> getItemsPlato() {
-		return itemsPlato;
+	public Comanda getComanda() {
+		return comanda;
 	}
 
-	public void setItemsPlato(List<ItemPlato> itemsPlato) {
-		this.itemsPlato = itemsPlato;
+	public void setComanda(Comanda comanda) {
+		this.comanda = comanda;
 	}
 
-	public List<ItemBebida> getItemsBebida() {
-		return itemsBebida;
+	public void calcularPrecio() {
+		
+		// TODO Auto-generated method stub
+		 float resultado =0;
+				
+		List<Plato> aux = comanda.getPlatos();
+		for (Plato p: aux){
+			p.calcularPrecio();
+			resultado=resultado + p.getPrecio();
+			
+		}
 	}
-
-	public void setItemsBebida(List<ItemBebida> itemsBebida) {
-		this.itemsBebida = itemsBebida;
-	}
-
 	@Override
 	public String toString() {
 		return "Factura [cliente=" + cliente + ", montoTotal=" + montoTotal + "]";

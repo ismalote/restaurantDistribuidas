@@ -8,64 +8,55 @@ public abstract class AreaProduccionDTO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -1959001633436079009L;
+	private Integer id;
 	private String TipoArea;
-	private EncargadoAreaDTO encargadoArea;
-	private StockDTO stock;
+	private EncargadoDTO encargado;
+	private List<ProductoComestibleDTO> productos;
 	private List<ComandaDTO> comandas;
-
-	public AreaProduccionDTO(String tipoArea, EncargadoAreaDTO encargadoArea, StockDTO stock,
+	
+	public AreaProduccionDTO(Integer id, String tipoArea, EncargadoDTO encargado, List<ProductoComestibleDTO> productos,
 			List<ComandaDTO> comandas) {
 		super();
+		this.id = id;
 		TipoArea = tipoArea;
-		this.encargadoArea = encargadoArea;
-		this.stock = stock;
+		this.encargado = encargado;
+		this.productos = productos;
 		this.comandas = comandas;
 	}
-
-	public void solicitarADeposito(List<InsumoDTO> insumos) {
-
+	public Integer getId() {
+		return id;
 	}
-
-	public abstract boolean prepararComanda(ComandaDTO comanda);
-
-	public List<PlatoDTO> pedidoListo(ComandaDTO comanda) {
-		return null;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-
 	public String getTipoArea() {
 		return TipoArea;
 	}
-
 	public void setTipoArea(String tipoArea) {
 		TipoArea = tipoArea;
 	}
-
-	public EncargadoAreaDTO getEncargadoArea() {
-		return encargadoArea;
+	public EncargadoDTO getEncargado() {
+		return encargado;
 	}
-
-	public void setEncargadoArea(EncargadoAreaDTO encargadoArea) {
-		this.encargadoArea = encargadoArea;
+	public void setEncargado(EncargadoDTO encargado) {
+		this.encargado = encargado;
 	}
-
-	public StockDTO getStock() {
-		return stock;
+	public List<ProductoComestibleDTO> getProductos() {
+		return productos;
 	}
-
-	public void setStock(StockDTO stock) {
-		this.stock = stock;
+	public void setProductos(List<ProductoComestibleDTO> productos) {
+		this.productos = productos;
 	}
-
 	public List<ComandaDTO> getComandas() {
 		return comandas;
 	}
-
 	public void setComandas(List<ComandaDTO> comandas) {
 		this.comandas = comandas;
 	}
+	public boolean prepararComanda(ComandaDTO comanda) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
-	// TODO faltan metodos, no puedo justificar la herencia, asi que le meti un
-	// parametro tipoArea, en la cual dice que area es ya que por el momento no
-	// tienen comportamiento diferente.
-
+	
 }

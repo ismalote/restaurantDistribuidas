@@ -7,14 +7,12 @@ public class Elaborado extends ProductoComestible {
 	private List<ProductoComestible> productos;
 	private Unidad unidad;
 
-	public Elaborado(Area area, Integer estimadoStock) {
-		super(area, estimadoStock);
-	}
 
-	public Elaborado(Area area, Integer estimadoStock, List<ProductoComestible> productos, Unidad unidad) {
-		super(area, estimadoStock);
-		this.productos = productos;
-		this.unidad = unidad;
+
+	public Elaborado(Integer idProducto, AreaProduccion area, Integer cantidadPedido, Integer puntoPedido,
+			String descripcion, Integer stock, Float precio) {
+		super(idProducto, area, cantidadPedido, puntoPedido, descripcion, stock, precio);
+		// TODO Auto-generated constructor stub
 	}
 
 	public List<ProductoComestible> getProductos() {

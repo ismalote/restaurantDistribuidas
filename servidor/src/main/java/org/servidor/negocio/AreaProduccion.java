@@ -3,63 +3,56 @@ package org.servidor.negocio;
 import java.util.List;
 
 public abstract class AreaProduccion {
+	private Integer id;
 	private String TipoArea;
-	private EncargadoArea encargadoArea;
-	private Stock stock;
+	private Encargado encargado;
+	private List<ProductoComestible> productos;
 	private List<Comanda> comandas;
-
-	public AreaProduccion(String tipoArea, EncargadoArea encargadoArea, Stock stock, List<Comanda> comandas) {
+	public AreaProduccion(Integer id, String tipoArea, Encargado encargado, List<ProductoComestible> productos,
+			List<Comanda> comandas) {
 		super();
+		this.id = id;
 		TipoArea = tipoArea;
-		this.encargadoArea = encargadoArea;
-		this.stock = stock;
+		this.encargado = encargado;
+		this.productos = productos;
 		this.comandas = comandas;
 	}
-
-	public void solicitarADeposito(List<Insumo> insumos) {
-
+	public Integer getId() {
+		return id;
 	}
-
-	public abstract boolean prepararComanda(Comanda comanda);
-
-	public List<Plato> pedidoListo(Comanda comanda) {
-		return null;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-
 	public String getTipoArea() {
 		return TipoArea;
 	}
-
 	public void setTipoArea(String tipoArea) {
 		TipoArea = tipoArea;
 	}
-
-	public EncargadoArea getEncargadoArea() {
-		return encargadoArea;
+	public Encargado getEncargado() {
+		return encargado;
 	}
-
-	public void setEncargadoArea(EncargadoArea encargadoArea) {
-		this.encargadoArea = encargadoArea;
+	public void setEncargado(Encargado encargado) {
+		this.encargado = encargado;
 	}
-
-	public Stock getStock() {
-		return stock;
+	public List<ProductoComestible> getProductos() {
+		return productos;
 	}
-
-	public void setStock(Stock stock) {
-		this.stock = stock;
+	public void setProductos(List<ProductoComestible> productos) {
+		this.productos = productos;
 	}
-
 	public List<Comanda> getComandas() {
 		return comandas;
 	}
-
 	public void setComandas(List<Comanda> comandas) {
 		this.comandas = comandas;
 	}
+	public boolean prepararComanda(Comanda comanda) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	
 
-	// TODO faltan metodos, no puedo justificar la herencia, asi que le meti un
-	// parametro tipoArea, en la cual dice que area es ya que por el momento no
-	// tienen comportamiento diferente.
-
+	
 }

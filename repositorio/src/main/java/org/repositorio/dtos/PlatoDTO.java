@@ -9,24 +9,38 @@ public class PlatoDTO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -156561835293452117L;
-	private List<ElaboradoDTO> plato;
+	private Integer idPlato;
+	private List<ProductoComestibleDTO> plato;
 	private Float precio;
-	private AreaDTO area;
+
+	private ComandaDTO comandas;
+	private CartaDTO carta;
 	private Float comisionExtra;
 
-	public PlatoDTO(List<ElaboradoDTO> plato, Float precio, AreaDTO area, Float comisionExtra) {
+	public PlatoDTO(Integer idPlato, List<ProductoComestibleDTO> plato, Float precio, ComandaDTO comandas,
+			CartaDTO carta, Float comisionExtra) {
 		super();
+		this.idPlato = idPlato;
 		this.plato = plato;
 		this.precio = precio;
-		this.area = area;
+		this.comandas = comandas;
+		this.carta = carta;
 		this.comisionExtra = comisionExtra;
 	}
 
-	public List<ElaboradoDTO> getPlato() {
+	public Integer getIdPlato() {
+		return idPlato;
+	}
+
+	public void setIdPlato(Integer idPlato) {
+		this.idPlato = idPlato;
+	}
+
+	public List<ProductoComestibleDTO> getPlato() {
 		return plato;
 	}
 
-	public void setPlato(List<ElaboradoDTO> plato) {
+	public void setPlato(List<ProductoComestibleDTO> plato) {
 		this.plato = plato;
 	}
 
@@ -38,12 +52,20 @@ public class PlatoDTO implements Serializable {
 		this.precio = precio;
 	}
 
-	public AreaDTO getArea() {
-		return area;
+	public ComandaDTO getComandas() {
+		return comandas;
 	}
 
-	public void setArea(AreaDTO area) {
-		this.area = area;
+	public void setComandas(ComandaDTO comandas) {
+		this.comandas = comandas;
+	}
+
+	public CartaDTO getCarta() {
+		return carta;
+	}
+
+	public void setCarta(CartaDTO carta) {
+		this.carta = carta;
 	}
 
 	public Float getComisionExtra() {

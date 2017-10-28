@@ -2,38 +2,57 @@ package org.servidor.entities;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;;
+
 public class AreaProduccionEntity {
 	
 		
 	@Id
 	@Column(name="IdAreaProdu")
-	private Integer IdAreaProduccion;
+	protected Integer IdAreaProduccion;
 	
-	private String TipoArea;
+	@OneToMany(mappedBy="AreaProdu")
+	protected List<ProductoComestibleEntity> productos ;
 	
+	
+	protected String TipoArea;
 	@OneToOne
-	@JoinColumn(name="idEncargadoArea")
-	private EncargadoAreaEntity encargadoArea;
+	@JoinColumn(name="idEncargado")
+	protected EncargadoEntity encargado;
 	
-	
-	private StockEntity stock;
-	
-	@OneToMany
-	@JoinColumn(mappedBy="comanda")
-	private List<ComandaEntity> comandas;
-	
-	
-	public AreaProduccionEntity(){}
+	@OneToMany(mappedBy="comanda")
+	protected List<ComandaEntity> comandas;
 
-	public AreaProduccionEntity(Integer nroArea, String tipo, EncargadoAreaDTO encargado, StockDTO stock, List<ComandaEntity> comandas){
-		IdAreaProduccion= nroArea;
-		TipoArea= tipo;
-		encargadoArea= encargado;
-		this.stock= stock;
-		this.comandas= comandas;
-			
+	public AreaProduccionEntity(Integer idAreaProduccion, List<ProductoComestibleEntity> productos, String tipoArea,
+			EncargadoEntity encargado, List<ComandaEntity> comandas) {
+		super();
+		IdAreaProduccion = idAreaProduccion;
+		this.productos = productos;
+		TipoArea = tipoArea;
+		this.encargado = encargado;
+		this.comandas = comandas;
 	}
-	
+
+	public Integer getIdAreaProduccion() {
+		return IdAreaProduccion;
+	}
+
+	public void setIdAreaProduccion(Integer idAreaProduccion) {
+		IdAreaProduccion = idAreaProduccion;
+	}
+
+	public List<ProductoComestibleEntity> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<ProductoComestibleEntity> productos) {
+		this.productos = productos;
+	}
+
 	public String getTipoArea() {
 		return TipoArea;
 	}
@@ -42,20 +61,12 @@ public class AreaProduccionEntity {
 		TipoArea = tipoArea;
 	}
 
-	public EncargadoAreaEntity getEncargadoArea() {
-		return encargadoArea;
+	public EncargadoEntity getEncargado() {
+		return encargado;
 	}
 
-	public void setEncargadoArea(EncargadoAreaEntity encargadoArea) {
-		this.encargadoArea = encargadoArea;
-	}
-
-	public StockEntity getStock() {
-		return stock;
-	}
-
-	public void setStock(StockEntity stock) {
-		this.stock = stock;
+	public void setEncargado(EncargadoEntity encargado) {
+		this.encargado = encargado;
 	}
 
 	public List<ComandaEntity> getComandas() {
@@ -65,9 +76,8 @@ public class AreaProduccionEntity {
 	public void setComandas(List<ComandaEntity> comandas) {
 		this.comandas = comandas;
 	}
-
-	// TODO faltan metodos, no puedo justificar la herencia, asi que le meti un
-	// parametro tipoArea, en la cual dice que area es ya que por el momento no
-	// tienen comportamiento diferente.
-
-}
+	
+	
+	
+	
+	}

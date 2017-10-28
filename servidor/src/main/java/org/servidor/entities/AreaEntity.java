@@ -1,7 +1,8 @@
 package org.servidor.entities;
 
-@Entity
-@Table(name="Area")
+import javax.persistence.Column;
+import javax.persistence.Id;
+
 public class AreaEntity {
 	
 	// borrar esta clase ? 
@@ -10,7 +11,7 @@ public class AreaEntity {
 	@Column(name="idArea")
 	protected Integer idArea;
 	
-	private public AreaEntity() {
+	public AreaEntity() {
 		// TODO Auto-generated constructor stub
 	}
 	public AreaEntity(Integer id) {

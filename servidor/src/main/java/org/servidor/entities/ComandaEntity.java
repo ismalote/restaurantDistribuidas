@@ -2,88 +2,124 @@ package org.servidor.entities;
 
 import java.util.List;
 
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+
 public class ComandaEntity {
 
-	//preguntar a los chicos sobbre redefinir la comanda como item camandas 
+
 	@Id
-	private idComanda;
+	private Integer idComanda;
 	
 	@OneToMany(mappedBy="plato")
 	private List<PlatoEntity> platos;
 	
-	@OneToOne(name="idMozo")
+	@OneToOne(mappedBy="idMozo")
 	private MozoEntity mozo;
 	
 	private Boolean comandaLista;
 	
-	@OneToOne(name="idMesa")
+	@OneToOne(mappedBy="idMesa")
 	private MesaEntity mesa;
 	
-	@OneToMany(mappedBy="bebida")
-	private List<BebidaEntity> bebidas;
-	
+	@OneToOne
+	@JoinColumn(name="idMesaEstado")
 	private EstadoComandaEntity estadoComanda;
 	
-	
-	//ver si esta bien esto este one to one 
+	@ManyToOne
+	@JoinColumn (name="idLocal")
+	private LocalEntity local;
+
 	@OneToOne(mappedBy="FacturaEntity")
-	private 
-	//private FacturaEntity factura;
+	private FacturaEntity fact;
+
+
+	public ComandaEntity(Integer idComanda, List<PlatoEntity> platos, MozoEntity mozo, Boolean comandaLista,
+			MesaEntity mesa, EstadoComandaEntity estadoComanda, FacturaEntity fact) {
+		super();
+		this.idComanda = idComanda;
+		this.platos = platos;
+		this.mozo = mozo;
+		this.comandaLista = comandaLista;
+		this.mesa = mesa;
+		this.estadoComanda = estadoComanda;
+		this.fact = fact;
+	}
+
+
+	public Integer getIdComanda() {
+		return idComanda;
+	}
+
+
+	public void setIdComanda(Integer idComanda) {
+		this.idComanda = idComanda;
+	}
+
 
 	public List<PlatoEntity> getPlatos() {
 		return platos;
 	}
 
+
 	public void setPlatos(List<PlatoEntity> platos) {
 		this.platos = platos;
 	}
+
 
 	public MozoEntity getMozo() {
 		return mozo;
 	}
 
+
 	public void setMozo(MozoEntity mozo) {
 		this.mozo = mozo;
 	}
+
 
 	public Boolean getComandaLista() {
 		return comandaLista;
 	}
 
+
 	public void setComandaLista(Boolean comandaLista) {
 		this.comandaLista = comandaLista;
 	}
+
 
 	public MesaEntity getMesa() {
 		return mesa;
 	}
 
+
 	public void setMesa(MesaEntity mesa) {
 		this.mesa = mesa;
 	}
 
-	public List<BebidaEntity> getBebidas() {
-		return bebidas;
-	}
-
-	public void setBebidas(List<BebidaEntity> bebidas) {
-		this.bebidas = bebidas;
-	}
 
 	public EstadoComandaEntity getEstadoComanda() {
 		return estadoComanda;
 	}
 
+
 	public void setEstadoComanda(EstadoComandaEntity estadoComanda) {
 		this.estadoComanda = estadoComanda;
 	}
 
-	public FacturaEntity getFactura() {
-		return factura;
+
+	public FacturaEntity getFact() {
+		return fact;
 	}
 
-	public void setFactura(FacturaEntity factura) {
-		this.factura = factura;
+
+	public void setFact(FacturaEntity fact) {
+		this.fact = fact;
 	}
+
+
 
 }

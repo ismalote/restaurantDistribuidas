@@ -4,8 +4,12 @@ import java.util.List;
 
 public class Cocina extends AreaProduccion {
 
-	public Cocina(String tipoArea, EncargadoArea encargadoArea, Stock stock, List<Comanda> comandas) {
-		super(tipoArea, encargadoArea, stock, comandas);
+
+
+	public Cocina(Integer id, String tipoArea, Encargado encargado, List<ProductoComestible> productos,
+			List<Comanda> comandas) {
+		super(id, tipoArea, encargado, productos, comandas);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override

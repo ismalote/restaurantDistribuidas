@@ -9,22 +9,19 @@ public class SemiElaboradoDTO extends ProductoComestibleDTO implements Serializa
 	 * 
 	 */
 	private static final long serialVersionUID = -2340867769513938568L;
-	private List<MateriaPrimaDTO> materiales;
+	private List<ProductoComestibleDTO> materiales;
 
-	public SemiElaboradoDTO(AreaDTO area, Integer estimadoStock) {
-		super(area, estimadoStock);
+	public SemiElaboradoDTO(Integer idProducto, AreaProduccionDTO area, Integer cantidadPedido, Integer puntoPedido,
+			String descripcion, Integer stock, Float precio) {
+		super(idProducto, area, cantidadPedido, puntoPedido, descripcion, stock, precio);
+		// TODO Auto-generated constructor stub
 	}
 
-	public SemiElaboradoDTO(AreaDTO area, Integer estimadoStock, List<MateriaPrimaDTO> materiales) {
-		super(area, estimadoStock);
-		this.materiales = materiales;
-	}
-
-	public List<MateriaPrimaDTO> getMateriales() {
+	public List<ProductoComestibleDTO> getMateriales() {
 		return materiales;
 	}
 
-	public void setMateriales(List<MateriaPrimaDTO> materiales) {
+	public void setMateriales(List<ProductoComestibleDTO> materiales) {
 		this.materiales = materiales;
 	}
 

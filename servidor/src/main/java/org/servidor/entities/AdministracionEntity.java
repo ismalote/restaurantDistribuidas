@@ -1,5 +1,10 @@
 package org.servidor.entities;
 
+import java.util.List;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
 public class AdministracionEntity {
 	// TODO falta atributos en administracion, cuales serian??
 	
@@ -7,24 +12,20 @@ public class AdministracionEntity {
 	
 	@OneToMany
 	@JoinColumn(name="idPP")
-	private List<PlanDeProduccionEntity> planesProd;
+	private List<PlandeProduccionEntity> planesProd;
 
 
-	public AdministracionEntity(Integer codArea, AreaRest area,
-			List<PlanDeProduccionEntity> planesProd) {
-		super(codArea, area);
+
+	public AdministracionEntity(List<PlandeProduccionEntity> planesProd) {
+		super();
 		this.planesProd = planesProd;
 	}
 
-	public AdministracionEntity(){
-		
-	}
-
-	public List<PlanDeProduccionEntity> getPlanesProd() {
+	public List<PlandeProduccionEntity> getPlanesProd() {
 		return planesProd;
 	}
 
-	public void setPlanesProd(List<PlanDeProduccionEntity> planesProd) {
+	public void setPlanesProd(List<PlandeProduccionEntity> planesProd) {
 		this.planesProd = planesProd;
 	}
 	

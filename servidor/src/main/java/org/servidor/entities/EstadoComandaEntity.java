@@ -1,10 +1,17 @@
 package org.servidor.entities;
 
+import javax.persistence.OneToOne;
+
+import org.servidor.negocio.Comanda;
+
 public class EstadoComandaEntity {
 
+	private Integer idMesaEstado;
 	private boolean estadoCocina;
 	private boolean estadoCafeteria;
 	private boolean estadoBarra;
+	@OneToOne(mappedBy = "comanda")
+	private Comanda comanda;
 
 	public boolean isEstadoCocina() {
 		return estadoCocina;
@@ -28,6 +35,14 @@ public class EstadoComandaEntity {
 
 	public void setEstadoBarra(boolean estadoBarra) {
 		this.estadoBarra = estadoBarra;
+	}
+
+	public Integer getIdMesaEstado() {
+		return idMesaEstado;
+	}
+
+	public void setIdMesaEstado(Integer idMesaEstado) {
+		this.idMesaEstado = idMesaEstado;
 	}
 
 }

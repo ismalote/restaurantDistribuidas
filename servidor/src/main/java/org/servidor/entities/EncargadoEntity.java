@@ -1,10 +1,26 @@
 package org.servidor.entities;
 
-public abstract class EncargadoEntity {
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
+public abstract class EncargadoEntity {
+	
+	@Id
+	@Column(name="idEncargado")
 	protected Integer idEncargado;
 	protected String Nombre;
 	protected String Apellido;
+	@OneToOne(mappedBy="AreaProdu")
+	protected AreaProduccionEntity areaProdu;
+	
+	public EncargadoEntity(Integer idEncargado, String nombre, String apellido, AreaProduccionEntity areaProdu) {
+		super();
+		this.idEncargado = idEncargado;
+		Nombre = nombre;
+		Apellido = apellido;
+		this.areaProdu = areaProdu;
+	}
 
 	public Integer getIdEncargado() {
 		return idEncargado;
@@ -29,5 +45,15 @@ public abstract class EncargadoEntity {
 	public void setApellido(String apellido) {
 		Apellido = apellido;
 	}
+
+	public AreaProduccionEntity getAreaProdu() {
+		return areaProdu;
+	}
+
+	public void setAreaProdu(AreaProduccionEntity areaProdu) {
+		this.areaProdu = areaProdu;
+	}
+
+
 
 }

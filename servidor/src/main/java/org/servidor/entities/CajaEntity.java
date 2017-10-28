@@ -2,6 +2,12 @@ package org.servidor.entities;
 
 import java.util.List;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import org.repositorio.dtos.EncargadoAreaDTO;
+
 public class CajaEntity extends AreaEntity {
 	
 	// la herencia debe ser de la clase AreaProduccion o Area ?
@@ -10,19 +16,21 @@ public class CajaEntity extends AreaEntity {
 	@JoinColumn(name="idEncargadoArea")
 	private EncargadoAreaEntity encargadoCaja;
 	
-	@OneToMany
-	@JoinColumn(mappedBy="comanda")
+	@OneToMany(mappedBy ="comanda")
 	private List<ComandaEntity> comandas;
 
-	public CajaEntity(){}
 	
-	public CajaEntity(Integer nroArea, EncargadoAreaDTO encargado, List<ComandaEntity> comandas){
-		super(nroArea);
-		this.encargadoCaja= encargado;
-		this.comandas= comandas
+	
+	public CajaEntity() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	
-	
+
+	public CajaEntity(Integer id) {
+		super(id);
+		// TODO Auto-generated constructor stub
+	}
+
 	public EncargadoAreaEntity getEncargadoCaja() {
 		return encargadoCaja;
 	}
