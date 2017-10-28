@@ -19,7 +19,7 @@ public class ComandaEntity {
 	@OneToOne(name="idMesa")
 	private MesaEntity mesa;
 	
-	@OneToMany(mappedBy="plato")
+	@OneToMany(mappedBy="bebida")
 	private List<BebidaEntity> bebidas;
 	
 	private EstadoComandaEntity estadoComanda;
