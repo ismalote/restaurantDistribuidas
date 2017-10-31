@@ -14,65 +14,99 @@ public class MozoDTO implements Serializable {
 	private String Nombre;
 	private String Apellido;
 	private Integer antiguedad;
-	private List<MesaDTO> mesas;
+	private List<ComandaDTO> comandasAbiertas;
 
-	public MozoDTO(Integer idMozo, Float porcentajeComision, String nombre, String apellido, Integer antiguedad) {
+	
+
+	public MozoDTO(Integer idMozo, Float porcentajeComision, String nombre, String apellido, Integer antiguedad,
+			List<ComandaDTO> comandasAbiertas) {
 		super();
 		this.idMozo = idMozo;
 		this.porcentajeComision = porcentajeComision;
 		Nombre = nombre;
 		Apellido = apellido;
 		this.antiguedad = antiguedad;
+		this.comandasAbiertas = comandasAbiertas;
 	}
+
+
 
 	public Integer getIdMozo() {
 		return idMozo;
 	}
 
+
+
 	public void setIdMozo(Integer idMozo) {
 		this.idMozo = idMozo;
 	}
+
+
 
 	public Float getPorcentajeComision() {
 		return porcentajeComision;
 	}
 
+
+
 	public void setPorcentajeComision(Float porcentajeComision) {
 		this.porcentajeComision = porcentajeComision;
 	}
+
+
 
 	public String getNombre() {
 		return Nombre;
 	}
 
+
+
 	public void setNombre(String nombre) {
 		Nombre = nombre;
 	}
+
+
 
 	public String getApellido() {
 		return Apellido;
 	}
 
+
+
 	public void setApellido(String apellido) {
 		Apellido = apellido;
 	}
+
+
 
 	public Integer getAntiguedad() {
 		return antiguedad;
 	}
 
+
+
 	public void setAntiguedad(Integer antiguedad) {
 		this.antiguedad = antiguedad;
 	}
 
-	public List<MesaDTO> getMesas() {
-		return mesas;
+
+
+	public List<ComandaDTO> getComandasAbiertas() {
+		return comandasAbiertas;
 	}
 
-	public void setMesas(List<MesaDTO> mesas) {
-		this.mesas = mesas;
+
+
+	public void setComandasAbiertas(List<ComandaDTO> comandasAbiertas) {
+		this.comandasAbiertas = comandasAbiertas;
 	}
 
-	// TODO faltan metodos
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
 
 }

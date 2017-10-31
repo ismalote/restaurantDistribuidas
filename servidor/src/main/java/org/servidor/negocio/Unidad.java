@@ -1,5 +1,6 @@
 package org.servidor.negocio;
 
+import org.repositorio.dtos.UnidadDTO;
 import org.servidor.entities.UnidadEntity;
 
 public class Unidad {
@@ -16,6 +17,11 @@ public class Unidad {
 	public Unidad(UnidadEntity entity) {
 		this.codigo= entity.getCodigo();
 		this.descripcion= entity.getDescripcion();
+		
+	}
+	public Unidad(UnidadDTO dto) {
+		this.codigo= dto.getCodigo();
+		this.descripcion= dto.getDescripcion();
 		
 	}
 

@@ -10,18 +10,18 @@ import org.servidor.entities.ProductoComestibleEntity;
 
 public class Plato {
 
-	private Integer idPlato;
-	private List<ProductoComestible> plato;
+	private Integer idProductos;
+	private List<ProductoComestible> productos;
 	private Float precio;
 	private Carta carta;
 	private Comanda comanda;
 	private Float comisionExtra;
 
-	public Plato(Integer idPlato, List<ProductoComestible> plato, Float precio, Carta carta, Comanda comandas,
+	public Plato(Integer idPlato, List<ProductoComestible> productos, Float precio, Carta carta, Comanda comandas,
 			Float comisionExtra) {
 		super();
-		this.idPlato = idPlato;
-		this.plato = plato;
+		this.idProductos = idPlato;
+		this.productos = productos;
 		this.precio = precio;
 		this.carta = carta;
 		this.comanda = comandas;
@@ -29,9 +29,9 @@ public class Plato {
 	}
 
 	public Plato(PlatoEntity entity) {
-		this.plato = new ArrayList<ProductoComestible>();
+		this.productos = new ArrayList<ProductoComestible>();
 		for (ProductoComestibleEntity p : entity.getProductos()) {
-			this.plato.add(ProductoComestible.getNew(p));
+			this.productos.add(ProductoComestible.getNew(p));
 
 		}
 		this.precio = entity.getPrecio();
@@ -39,29 +39,29 @@ public class Plato {
 	}
 
 	public Plato(PlatoDTO dto) {
-		this.plato = new ArrayList<ProductoComestible>();
+		this.productos = new ArrayList<ProductoComestible>();
 		for (ProductoComestibleDTO p : dto.getProductos()) {
-			this.plato.add(ProductoComestible.getNewDTO(p));
+			this.productos.add(ProductoComestible.getNewDTO(p));
 
 		}
 		this.precio = dto.getPrecio();
 		this.comisionExtra = dto.getComisionExtra();
 	}
 
-	public List<ProductoComestible> getPlato() {
-		return plato;
+	public List<ProductoComestible> getProducto() {
+		return productos;
 	}
 
-	public void setPlato(List<ProductoComestible> plato) {
-		this.plato = plato;
+	public void setProducto(List<ProductoComestible> plato) {
+		this.productos = plato;
 	}
 
-	public Integer getIdPlato() {
-		return idPlato;
+	public Integer getIdProducto() {
+		return idProductos;
 	}
 
-	public void setIdPlato(Integer idPlato) {
-		this.idPlato = idPlato;
+	public void setIdProducto(Integer idProductos) {
+		this.idProductos = idProductos;
 	}
 
 	public Float getPrecio() {
