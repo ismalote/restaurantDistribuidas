@@ -3,6 +3,7 @@ package org.servidor.entities;
 import javax.persistence.OneToOne;
 
 import org.servidor.negocio.Comanda;
+import org.servidor.negocio.EstadoComanda;
 
 public class EstadoComandaEntity {
 
@@ -10,8 +11,21 @@ public class EstadoComandaEntity {
 	private boolean estadoCocina;
 	private boolean estadoCafeteria;
 	private boolean estadoBarra;
-	@OneToOne(mappedBy = "comanda")
-	private Comanda comanda;
+	
+
+	public EstadoComandaEntity(EstadoComanda ec) {
+		EstadoComandaEntity entity = new EstadoComandaEntity();
+		entity.setIdMesaEstado(0);
+		
+		
+		
+		
+		
+	}
+
+	public EstadoComandaEntity() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public boolean isEstadoCocina() {
 		return estadoCocina;

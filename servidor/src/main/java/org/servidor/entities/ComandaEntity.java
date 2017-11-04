@@ -51,6 +51,11 @@ public class ComandaEntity {
 	}
 
 
+	public ComandaEntity() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public Integer getIdComanda() {
 		return idComanda;
 	}

@@ -1,12 +1,36 @@
 package org.servidor.controlador;
 
-import org.repositorio.dtos.ComandaDTO;
-import org.servidor.dao.ComandaDAO;
+
+import org.repositorio.dtos.CrearComandaDTO;
 import org.servidor.dao.PlatoDAO;
 import org.servidor.negocio.Comanda;
 import org.servidor.negocio.Plato;
 
 public class Controlador {
+	
+	private static Controlador instancia;
+	
+	
+	
+
+	public Controlador() {
+		
+	
+	}
+	public static Controlador getInstancia() {
+		if(instancia==null) {
+			instancia= new Controlador();
+		}
+		return instancia;
+	}
+
+
+
+	public static void setInstancia(Controlador instancia) {
+		Controlador.instancia = instancia;
+	}
+
+
 
 	public Plato obtenerPlatoporId(int idPlato) {
 
@@ -14,16 +38,16 @@ public class Controlador {
 
 	}
 	
-	public boolean crearComanda(ComandaDTO comanda) {
-		
 	
-		ComandaDAO.getInstancia().grabarComanda(new Comanda(comanda));
+	public void crearNuevacomanda(CrearComandaDTO comanda ) {
 		
-		
-		
-		return true;
+		Comanda aux = new Comanda(comanda);
+		aux.save();
 		
 		
 	}
 
+
+	
+	
 }

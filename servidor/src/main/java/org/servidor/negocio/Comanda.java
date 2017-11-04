@@ -1,10 +1,15 @@
 package org.servidor.negocio;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.repositorio.dtos.ComandaDTO;
+import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.PlatoDTO;
+import org.servidor.dao.ComandaDAO;
+import org.servidor.dao.MesaDAO;
+import org.servidor.dao.MozoDAO;
 import org.servidor.entities.ComandaEntity;
 import org.servidor.entities.PlatoEntity;
 
@@ -17,10 +22,12 @@ public class Comanda {
 	private Mesa mesa;
 	private EstadoComanda estadoComanda;
 	private Factura fact;
+	private Date fecha;
 	private Local Local;
 
+	
 	public Comanda(Integer idComanda, List<Plato> platos, Mozo mozo, Boolean comandaLista, Mesa mesa,
-			EstadoComanda estadoComanda, Factura fact) {
+			EstadoComanda estadoComanda, Factura fact, Date fecha, org.servidor.negocio.Local local) {
 		super();
 		this.idComanda = idComanda;
 		this.platos = platos;
@@ -29,6 +36,8 @@ public class Comanda {
 		this.mesa = mesa;
 		this.estadoComanda = estadoComanda;
 		this.fact = fact;
+		this.fecha = fecha;
+		this.Local = local;
 	}
 
 	public Integer getIdComanda() {
@@ -61,6 +70,13 @@ public class Comanda {
 		this.fact = new Factura(dto.getFactura());
 
 	}
+	public Comanda( CrearComandaDTO comanda) {
+		this.mozo = MozoDAO.getInstancia().obtenerMozo(1);
+		this.mesa= MesaDAO.getInstancia().obtenerMesaPorNumero(comanda.getNumeroMesa());
+		this.fecha= new Date();
+		
+		
+		}
 
 	public List<Plato> getPlatos() {
 		return platos;
@@ -118,4 +134,18 @@ public class Comanda {
 		Local = local;
 	}
 
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+	
+	public void save(){
+		
+		ComandaDAO.getInstancia().grabarComanda(this);
+	}
+
+	
 }

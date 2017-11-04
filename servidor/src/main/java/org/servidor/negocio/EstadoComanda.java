@@ -8,7 +8,6 @@ public class EstadoComanda {
 	private boolean estadoCocina;
 	private boolean estadoCafeteria;
 	private boolean estadoBarra;
-	private Comanda comanda;
 	private Integer id;
 
 	public EstadoComanda(boolean estadoCocina, boolean estadoCafeteria, boolean estadoBarra) {
@@ -56,13 +55,7 @@ public class EstadoComanda {
 		this.estadoBarra = estadoBarra;
 	}
 
-	public Comanda getComanda() {
-		return comanda;
-	}
-
-	public void setComanda(Comanda comanda) {
-		this.comanda = comanda;
-	}
+	
 
 	public Integer getId() {
 		return id;

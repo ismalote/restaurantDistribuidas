@@ -4,8 +4,11 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import org.repositorio.dtos.ComandaDTO;
+import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
+import org.repositorio.exceptions.BusinessException;
 import org.repositorio.interfaces.IAppRemote;
+import org.servidor.controlador.Controlador;
 
 public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 
@@ -15,9 +18,8 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		super();
 	}
 
-	@Override
-	public boolean crearComanda(ComandaDTO comanda) throws RemoteException {
-		return false;
+	public void crearComanda(CrearComandaDTO comanda) throws BusinessException{
+		 Controlador.getInstancia().crearNuevacomanda(comanda);
 	}
 
 	@Override

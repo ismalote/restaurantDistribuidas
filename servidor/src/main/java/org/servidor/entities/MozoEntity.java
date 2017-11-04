@@ -1,6 +1,10 @@
 package org.servidor.entities;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.servidor.negocio.Comanda;
+import org.servidor.negocio.Mozo;
 
 public class MozoEntity {
 
@@ -22,6 +26,21 @@ public class MozoEntity {
 		this.apellido = apellido;
 		this.antiguedad = antiguedad;
 		this.comandasAbiertas = comandasAbiertas;
+	}
+
+
+
+	public MozoEntity(Mozo mozo) {
+		this.idMozo= mozo.getIdMozo();
+		this.antiguedad=mozo.getAntiguedad();
+		this.apellido=mozo.getApellido();
+		this.comandasAbiertas=new ArrayList<>();
+		for (Comanda comanda : mozo.getComandasAbiertas()) {
+			//comandasAbiertas.add());//TODO
+			
+			
+		}
+		this.nombre=mozo.getNombre();
 	}
 
 

@@ -2,9 +2,12 @@ package org.repositorio.bussinessDelegate;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.util.List;
 
 import org.repositorio.dtos.ComandaDTO;
+import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
+import org.repositorio.exceptions.BusinessException;
 import org.repositorio.interfaces.IAppRemote;
 
 public class BussinessDelegate implements IAppRemote {
@@ -29,9 +32,10 @@ public class BussinessDelegate implements IAppRemote {
 		this.bussinessDelegate = (IAppRemote) Naming.lookup(IAppRemote.URL_SERVICIO);
 	}
 
-	@Override
-	public boolean crearComanda(ComandaDTO comanda) throws RemoteException {
-		return this.bussinessDelegate.crearComanda(comanda);
+	
+	
+	public void crearComanda(CrearComandaDTO comanda) throws Exception,BusinessException{
+		bussinessDelegate.crearComanda(comanda);
 	}
 
 	@Override

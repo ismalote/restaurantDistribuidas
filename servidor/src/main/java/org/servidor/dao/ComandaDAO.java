@@ -1,7 +1,18 @@
 package org.servidor.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
+import org.servidor.entities.ComandaEntity;
+import org.servidor.entities.EstadoComandaEntity;
+import org.servidor.entities.FacturaEntity;
+import org.servidor.entities.MesaEntity;
+import org.servidor.entities.MozoEntity;
+import org.servidor.entities.PlatoEntity;
 import org.servidor.negocio.Comanda;
+import org.servidor.negocio.Mozo;
+import org.servidor.negocio.Plato;
 import org.servidor.util.HibernateUtil;
 
 public class ComandaDAO {
@@ -29,14 +40,33 @@ public class ComandaDAO {
 
 
 	public void grabarComanda(Comanda comanda) {
+		ComandaEntity entity = this.toEntity(comanda);
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
-		session.persist(comanda);
+		session.persist(entity);
 		session.flush();
 		session.getTransaction().commit();
 		session.close();
 	}
 	
+	
+	public ComandaEntity toEntity(Comanda c) {
+		ComandaEntity entity = new ComandaEntity();
+		entity.setIdComanda(c.getIdComanda());
+		entity.setComandaLista(c.getComandaLista());
+		entity.setMozo(new MozoEntity(c.getMozo()));
+	//	entity.setFact(new FacturaEntity(c.getFact()));
+		//entity.setMesa(new MesaEntity(c.getMesa()));
+		List<PlatoEntity> p = new ArrayList<>();
+		for (Plato aux : c.getPlatos()) {
+//			p.add(new PlatoEntity(aux));
+			}
+		entity.setPlatos(p);
+		return entity;
+	
+		
+		
+	}
 	
 	
 }

@@ -60,6 +60,12 @@ public class Mozo {
 		}
 	}
 
+	public Mozo() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public Integer getIdMozo() {
 		return idMozo;
 	}
