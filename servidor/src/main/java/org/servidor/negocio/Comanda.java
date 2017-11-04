@@ -5,12 +5,9 @@ import java.util.List;
 
 import org.repositorio.dtos.ComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
-import org.repositorio.dtos.PlatoDTO;
 import org.repositorio.exceptions.MesaNotFoundException;
 import org.repositorio.exceptions.MozoNotFoundException;
-import org.servidor.dao.ComandaDAO;
 import org.servidor.entities.ComandaEntity;
-import org.servidor.entities.PlatoEntity;
 
 public class Comanda {
 
@@ -45,9 +42,9 @@ public class Comanda {
 
 	public Comanda(ComandaEntity entity) {
 		this.platos = new ArrayList<ItemComanda>();
-		for (PlatoEntity plato : entity.getPlatos()) {
-			// this.platos.add(new Plato(plato));
-		}
+		// for (PlatoEntity plato : entity.getPlatos()) {
+		// this.platos.add(new Plato(plato));
+		// }
 		this.estadoComanda = new EstadoComanda(entity.getEstadoComanda());
 		this.mozo = new Mozo(entity.getMozo());
 		this.mesa = new Mesa(entity.getMesa());
@@ -66,8 +63,8 @@ public class Comanda {
 		this.mesa = new Mesa(dto.getMesa());
 
 		this.platos = new ArrayList<ItemComanda>();
-		for (PlatoDTO plato : dto.getPlatos()) {
-			this.platos.add(new ItemComanda(new Plato(plato)));
+		for (ItemComandaDTO item : dto.getPlatos()) {
+			this.platos.add(new ItemComanda(item));
 		}
 
 		if (dto.getEstadoComanda() == null) {

@@ -4,28 +4,31 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Table(name="insumo")
 public abstract class InsumoEntity {
-	
+
 	@Id
-	@Column(name="idInsumo")
+	@Column(name = "idInsumo")
 	protected Integer idInsumo;
 	protected Float precio;
 	protected Date fechaCreacion;
 	protected Date fechaCaducidad;
-	
-	
-	public InsumoEntity (){}
-	
-	public InsumoEntity (Integer id, Float pre, Date fCreacion, Date fCaducidad){
-		this.idInsumo= id;
-		this.precio= pre;
-		this.fechaCreacion= fCreacion;
-		this.fechaCaducidad= fCaducidad;
+	protected String descripcion;
+	protected String unidad;
+
+	public InsumoEntity(Integer idInsumo, Float precio, Date fechaCreacion, Date fechaCaducidad, String descripcion,
+			 String unidad) {
+		super();
+		this.idInsumo = idInsumo;
+		this.precio = precio;
+		this.fechaCreacion = fechaCreacion;
+		this.fechaCaducidad = fechaCaducidad;
+		this.descripcion = descripcion;
+		this.unidad = unidad;
 	}
-	
-	
-	
+
 	public Integer getIdInsumo() {
 		return idInsumo;
 	}
@@ -42,7 +45,6 @@ public abstract class InsumoEntity {
 		this.precio = precio;
 	}
 
-
 	public Date getFechaCreacion() {
 		return fechaCreacion;
 	}
@@ -57,6 +59,23 @@ public abstract class InsumoEntity {
 
 	public void setFechaCaducidad(Date fechaCaducidad) {
 		this.fechaCaducidad = fechaCaducidad;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+
+	public String getUnidad() {
+		return unidad;
+	}
+
+	public void setUnidad(String unidad) {
+		this.unidad = unidad;
 	}
 
 }

@@ -5,7 +5,7 @@ import java.util.List;
 public class Elaborado extends ProductoComestible {
 
 	private List<ProductoComestible> productos;
-	private Unidad unidad;
+
 
 	public Elaborado(Integer idProducto, AreaProduccion area, Integer cantidadPedido, Integer puntoPedido,
 			String descripcion, Integer stock, Float precio) {
@@ -21,12 +21,6 @@ public class Elaborado extends ProductoComestible {
 		this.productos = productos;
 	}
 
-	public Unidad getUnidad() {
-		return unidad;
-	}
 
-	public void setUnidad(Unidad unidad) {
-		this.unidad = unidad;
-	}
 
 }

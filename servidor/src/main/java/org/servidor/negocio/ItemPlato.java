@@ -5,29 +5,33 @@ import org.servidor.entities.ItemPlatoEntity;
 
 public class ItemPlato {
 
+	private Integer idItemPlato;
 	private Plato plato;
 	private Integer cantidad;
 	private double montoSubtotal;
 
-	public ItemPlato(Plato plato, Integer cantidad, double montoSubtotal) {
+	public ItemPlato(Integer idItemPlato, Plato plato, Integer cantidad, double montoSubtotal) {
 		super();
+		this.idItemPlato = idItemPlato;
 		this.plato = plato;
 		this.cantidad = cantidad;
 		this.montoSubtotal = montoSubtotal;
 	}
 
-	public ItemPlato(ItemPlatoEntity entity) {
-		this.plato= new Plato(entity.getPlato());
-		this.cantidad= entity.getCantidad();
-		this.montoSubtotal=entity.getMontoSubtotal();
-		
+	public ItemPlato(ItemPlatoDTO plato2) {
+		// TODO Auto-generated constructor stub
 	}
 
-	public ItemPlato(ItemPlatoDTO dto) {
-		this.plato= new Plato(dto.getPlato());
-		this.cantidad= dto.getCantidad();
-		this.montoSubtotal=dto.getMontoSubtotal();
-	
+	public ItemPlato(ItemPlatoEntity plato2) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Integer getIdItemPlato() {
+		return idItemPlato;
+	}
+
+	public void setIdItemPlato(Integer idItemPlato) {
+		this.idItemPlato = idItemPlato;
 	}
 
 	public Plato getPlato() {

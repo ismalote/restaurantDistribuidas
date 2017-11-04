@@ -1,10 +1,12 @@
 package org.servidor.entities;
 
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 public class EstadoMesaEntity {
 
 	private Boolean ocupada;
+	@Id
 	private Integer idEstadoMesa;
 	@OneToOne(mappedBy = "EstadoMesa")
 	private MesaEntity mesa;

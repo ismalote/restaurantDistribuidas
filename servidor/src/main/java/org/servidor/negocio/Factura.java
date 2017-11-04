@@ -21,13 +21,13 @@ public class Factura {
 	public Factura(FacturaEntity entity) {
 		this.cliente = entity.getCliente();
 		this.montoTotal = entity.getMontoTotal();
-		this.comanda= new Comanda(entity.getComanda());
+		this.comanda = new Comanda(entity.getComanda());
 	}
 
 	public Factura(FacturaDTO dto) {
 		this.cliente = dto.getCliente();
 		this.montoTotal = dto.getMontoTotal();
-		this.comanda= new Comanda(dto.getComanda());
+		this.comanda = new Comanda(dto.getComanda());
 	}
 
 	public String getCliente() {

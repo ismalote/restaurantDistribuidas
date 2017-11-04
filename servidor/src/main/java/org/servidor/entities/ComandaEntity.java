@@ -7,16 +7,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
+@Table(name="comanda")
 public class ComandaEntity {
 
 
 	@Id
 	private Integer idComanda;
 	
-	@OneToMany(mappedBy="plato")
-	private List<PlatoEntity> platos;
+	@OneToMany(mappedBy="itemPlato")
+	private List<ItemPlatoEntity> platos;
 	
 	@OneToOne(mappedBy="idMozo")
 	private MozoEntity mozo;
@@ -38,7 +40,7 @@ public class ComandaEntity {
 	private FacturaEntity fact;
 
 
-	public ComandaEntity(Integer idComanda, List<PlatoEntity> platos, MozoEntity mozo, Boolean comandaLista,
+	public ComandaEntity(Integer idComanda, List<ItemPlatoEntity> platos, MozoEntity mozo, Boolean comandaLista,
 			MesaEntity mesa, EstadoComandaEntity estadoComanda, FacturaEntity fact) {
 		super();
 		this.idComanda = idComanda;
@@ -61,12 +63,12 @@ public class ComandaEntity {
 	}
 
 
-	public List<PlatoEntity> getPlatos() {
+	public List<ItemPlatoEntity> getPlatos() {
 		return platos;
 	}
 
 
-	public void setPlatos(List<PlatoEntity> platos) {
+	public void setPlatos(List<ItemPlatoEntity> platos) {
 		this.platos = platos;
 	}
 

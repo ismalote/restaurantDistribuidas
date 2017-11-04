@@ -4,17 +4,27 @@ import java.util.List;
 
 public class Sector {
 
+	private Integer idSector;
 	private List<Mozo> mozos;
 	private List<Mesa> mesas;
 	private Integer idSalon;
 	private String nombre;
 
-	public Sector(List<Mozo> mozos, List<Mesa> mesas, Integer idSalon, String nombre) {
+	public Sector(Integer idSector, List<Mozo> mozos, List<Mesa> mesas, Integer idSalon, String nombre) {
 		super();
+		this.idSector = idSector;
 		this.mozos = mozos;
 		this.mesas = mesas;
 		this.idSalon = idSalon;
 		this.nombre = nombre;
+	}
+
+	public Integer getIdSector() {
+		return idSector;
+	}
+
+	public void setIdSector(Integer idSector) {
+		this.idSector = idSector;
 	}
 
 	public List<Mozo> getMozos() {

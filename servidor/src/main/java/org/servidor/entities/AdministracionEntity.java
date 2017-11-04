@@ -2,23 +2,31 @@ package org.servidor.entities;
 
 import java.util.List;
 
-import javax.persistence.JoinColumn;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 public class AdministracionEntity {
 	// TODO falta atributos en administracion, cuales serian??
-	
+
 	// definir si estos atributos estan bien ?
-	
-	@OneToMany
-	@JoinColumn(name="idPP")
+
+	@Id
+	private Integer idAdmin;
+	@OneToMany(mappedBy = "planProduccion")
 	private List<PlandeProduccionEntity> planesProd;
 
-
-
-	public AdministracionEntity(List<PlandeProduccionEntity> planesProd) {
+	public AdministracionEntity(Integer idAdmin, List<PlandeProduccionEntity> planesProd) {
 		super();
+		this.idAdmin = idAdmin;
 		this.planesProd = planesProd;
+	}
+
+	public Integer getIdAdmin() {
+		return idAdmin;
+	}
+
+	public void setIdAdmin(Integer idAdmin) {
+		this.idAdmin = idAdmin;
 	}
 
 	public List<PlandeProduccionEntity> getPlanesProd() {
@@ -28,5 +36,12 @@ public class AdministracionEntity {
 	public void setPlanesProd(List<PlandeProduccionEntity> planesProd) {
 		this.planesProd = planesProd;
 	}
-	
+
+	public void eliminarPlanProd(PlandeProduccionEntity aux) {
+		for (PlandeProduccionEntity pp : planesProd) {
+			if (pp.getIdPP() == aux.getIdPP()) {
+				planesProd.remove(pp);
+			}
+		}
+	}
 }

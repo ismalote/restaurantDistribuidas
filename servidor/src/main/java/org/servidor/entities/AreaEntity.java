@@ -2,7 +2,9 @@ package org.servidor.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Table(name="area")
 public class AreaEntity {
 	
 	// borrar esta clase ? 

@@ -1,11 +1,13 @@
 package org.servidor.entities;
 
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import org.servidor.negocio.Comanda;
 
 public class EstadoComandaEntity {
 
+	@Id
 	private Integer idMesaEstado;
 	private boolean estadoCocina;
 	private boolean estadoCafeteria;
