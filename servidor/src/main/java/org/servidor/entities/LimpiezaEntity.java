@@ -1,24 +1,21 @@
 package org.servidor.entities;
 
+import java.sql.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="limpieza")
 public class LimpiezaEntity extends InsumoEntity {
 
-	private Integer idProductoLimpieza;
-	private String descripcion;
-
-	public Integer getIdProductoLimpieza() {
-		return idProductoLimpieza;
+	public LimpiezaEntity(Integer idInsumo, Float precio, Date fechaCreacion, Date fechaCaducidad, String descripcion,
+			Float cantidad, String unidad) {
+		super(idInsumo, precio, fechaCreacion, fechaCaducidad, descripcion, unidad);
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setIdProductoLimpieza(Integer idProductoLimpieza) {
-		this.idProductoLimpieza = idProductoLimpieza;
-	}
 
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
 
 }

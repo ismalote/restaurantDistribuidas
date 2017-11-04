@@ -1,26 +1,23 @@
 package org.servidor.entities;
 
-import javax.persistence.OneToOne;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import org.servidor.negocio.Comanda;
 import org.servidor.negocio.EstadoComanda;
 
+@Entity
+@Table(name = "estadoComanda")
 public class EstadoComandaEntity {
 
-	private Integer idMesaEstado;
+	@Id
+	private Integer idComandaEstado;
 	private boolean estadoCocina;
 	private boolean estadoCafeteria;
 	private boolean estadoBarra;
-	
 
 	public EstadoComandaEntity(EstadoComanda ec) {
 		EstadoComandaEntity entity = new EstadoComandaEntity();
-		entity.setIdMesaEstado(0);
-		
-		
-		
-		
-		
 	}
 
 	public EstadoComandaEntity() {
@@ -51,12 +48,12 @@ public class EstadoComandaEntity {
 		this.estadoBarra = estadoBarra;
 	}
 
-	public Integer getIdMesaEstado() {
-		return idMesaEstado;
+	public Integer getIdComandaEstado() {
+		return idComandaEstado;
 	}
 
-	public void setIdMesaEstado(Integer idMesaEstado) {
-		this.idMesaEstado = idMesaEstado;
+	public void setIdComandaEstado(Integer idMesaEstado) {
+		this.idComandaEstado = idMesaEstado;
 	}
 
 }

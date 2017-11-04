@@ -1,9 +1,19 @@
 package org.servidor.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="deposito")
 public class DepositoEntity extends AreaEntity {
 
-	
+	@OneToOne 
+	@JoinColumn (name="idStock")
 	private StockEntity stockDeposito;
+	@OneToOne
+	@JoinColumn(name="idEncargado")
 	private EncargadoAreaEntity encargadoDeposito;
 	
 	public DepositoEntity (){}

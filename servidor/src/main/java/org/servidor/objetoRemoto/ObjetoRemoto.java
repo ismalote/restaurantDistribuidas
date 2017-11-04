@@ -3,10 +3,8 @@ package org.servidor.objetoRemoto;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-import org.repositorio.dtos.ComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
-import org.repositorio.exceptions.BusinessException;
 import org.repositorio.interfaces.IAppRemote;
 import org.servidor.controlador.Controlador;
 
@@ -18,8 +16,9 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		super();
 	}
 
-	public void crearComanda(CrearComandaDTO comanda) throws BusinessException{
-		 Controlador.getInstancia().crearNuevacomanda(comanda);
+	public boolean crearComanda(CrearComandaDTO comanda) {
+		Controlador.getInstancia().crearNuevacomanda(comanda);
+		return false;
 	}
 
 	@Override
@@ -31,7 +30,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 	@Override
 	public void pedirItemDeComanda(String item) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

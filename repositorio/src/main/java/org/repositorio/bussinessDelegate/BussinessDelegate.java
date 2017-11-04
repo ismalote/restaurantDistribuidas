@@ -13,7 +13,7 @@ import org.repositorio.interfaces.IAppRemote;
 public class BussinessDelegate implements IAppRemote {
 
 	private static BussinessDelegate instancia;
-	
+
 	private IAppRemote bussinessDelegate;
 
 	public static BussinessDelegate getInstancia() throws Exception {
@@ -32,10 +32,8 @@ public class BussinessDelegate implements IAppRemote {
 		this.bussinessDelegate = (IAppRemote) Naming.lookup(IAppRemote.URL_SERVICIO);
 	}
 
-	
-	
-	public void crearComanda(CrearComandaDTO comanda) throws Exception,BusinessException{
-		bussinessDelegate.crearComanda(comanda);
+	public boolean crearComanda(CrearComandaDTO comanda) throws RemoteException {
+		return bussinessDelegate.crearComanda(comanda);
 	}
 
 	@Override

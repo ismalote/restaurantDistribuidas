@@ -1,9 +1,36 @@
 package org.servidor.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="itemPlandeProduccion")
 public class ItemPlandeProduccionEntity {
 
+	@Id
+	private Integer idIPP;
+	@OneToOne
+	@JoinColumn(name = "idPlato")
 	private PlatoEntity plato;
 	private Integer cantidadEstimada;
+
+	public ItemPlandeProduccionEntity(Integer idIPP, PlatoEntity plato, Integer cantidadEstimada) {
+		super();
+		this.idIPP = idIPP;
+		this.plato = plato;
+		this.cantidadEstimada = cantidadEstimada;
+	}
+
+	public Integer getIdIPP() {
+		return idIPP;
+	}
+
+	public void setIdIPP(Integer idIPP) {
+		this.idIPP = idIPP;
+	}
 
 	public PlatoEntity getPlato() {
 		return plato;

@@ -1,42 +1,14 @@
 package org.servidor.entities;
 
-public class MateriaPrimaEntity {
+import java.sql.Date;
 
-	private String codigo;
-	private String descripcion;
-	private UnidadEntity unidadCompra;
-	private CaducidadEntity caducidad;
+public class MateriaPrimaEntity extends InsumoEntity{
 
-	public String getCodigo() {
-		return codigo;
+	public MateriaPrimaEntity(Integer idInsumo, Float precio, Date fechaCreacion, Date fechaCaducidad,
+			String descripcion, String unidad) {
+		super(idInsumo, precio, fechaCreacion, fechaCaducidad, descripcion, unidad);
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public UnidadEntity getUnidadCompra() {
-		return unidadCompra;
-	}
-
-	public void setUnidadCompra(UnidadEntity unidadCompra) {
-		this.unidadCompra = unidadCompra;
-	}
-
-	public CaducidadEntity getCaducidad() {
-		return caducidad;
-	}
-
-	public void setCaducidad(CaducidadEntity caducidad) {
-		this.caducidad = caducidad;
-	}
-
+		
 }

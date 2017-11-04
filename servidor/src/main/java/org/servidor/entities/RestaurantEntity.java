@@ -2,17 +2,56 @@ package org.servidor.entities;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="restaurante")
 public class RestaurantEntity {
 
+	@Id
+	private Integer idRestaurante;
+
 	private LocalEntity LocalLogueado;
+	@OneToMany(mappedBy = "local")
 	private List<LocalEntity> locales;
+	@OneToOne
+	@JoinColumn(name = "idDeposito")
 	private DepositoCentralEntity depositoCentral;
+	@OneToOne
+	@JoinColumn(name = "idAdmin")
 	private AdministracionEntity administracion;
+	@OneToMany(mappedBy = "listadoCompras")
 	private List<ListadoComprasEntity> cosasAComprar;
+	@OneToMany(mappedBy = "plato")
 	private List<PlatoEntity> platos;
+	@OneToMany(mappedBy = "comanda")
 	private List<ComandaEntity> comandas;
+	@OneToMany(mappedBy = "planProduccion")
 	private List<PlandeProduccionEntity> planesDeProduccion;
+	@OneToMany(mappedBy = "insumo")
 	private List<InsumoEntity> insumos;
+
+	public RestaurantEntity(Integer idRestaurante, LocalEntity localLogueado, List<LocalEntity> locales,
+			DepositoCentralEntity depositoCentral, AdministracionEntity administracion,
+			List<ListadoComprasEntity> cosasAComprar, List<PlatoEntity> platos, List<ComandaEntity> comandas,
+			List<PlandeProduccionEntity> planesDeProduccion, List<InsumoEntity> insumos) {
+		super();
+		this.idRestaurante = idRestaurante;
+		LocalLogueado = localLogueado;
+		this.locales = locales;
+		this.depositoCentral = depositoCentral;
+		this.administracion = administracion;
+		this.cosasAComprar = cosasAComprar;
+		this.platos = platos;
+		this.comandas = comandas;
+		this.planesDeProduccion = planesDeProduccion;
+		this.insumos = insumos;
+	}
 
 	public LocalEntity getLocalLogueado() {
 		return LocalLogueado;
@@ -84,6 +123,14 @@ public class RestaurantEntity {
 
 	public void setInsumos(List<InsumoEntity> insumos) {
 		this.insumos = insumos;
+	}
+
+	public Integer getIdRestaurante() {
+		return idRestaurante;
+	}
+
+	public void setIdRestaurante(Integer idRestaurante) {
+		this.idRestaurante = idRestaurante;
 	}
 
 }

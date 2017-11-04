@@ -1,50 +1,15 @@
 package org.servidor.negocio;
 
-public class MateriaPrima {
+import java.sql.Date;
 
-	private String codigo;
-	private String descripcion;
-	private Unidad unidadCompra;
-	private Caducidad caducidad;
+public class MateriaPrima extends Insumo {
 
-	public MateriaPrima(String codigo, String descripcion, Unidad unidadCompra, Caducidad caducidad) {
-		super();
-		this.codigo = codigo;
-		this.descripcion = descripcion;
-		this.unidadCompra = unidadCompra;
-		this.caducidad = caducidad;
+	public MateriaPrima(Integer idInsumo, Float precio, Date fechaCreacion, Date fechaCaducidad, String descripcion,
+			String unidad) {
+		super(idInsumo, precio, fechaCreacion, fechaCaducidad, descripcion, unidad);
+		// TODO Auto-generated constructor stub
 	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public Unidad getUnidadCompra() {
-		return unidadCompra;
-	}
-
-	public void setUnidadCompra(Unidad unidadCompra) {
-		this.unidadCompra = unidadCompra;
-	}
-
-	public Caducidad getCaducidad() {
-		return caducidad;
-	}
-
-	public void setCaducidad(Caducidad caducidad) {
-		this.caducidad = caducidad;
-	}
+	
+	
 
 }
