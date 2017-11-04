@@ -2,8 +2,6 @@ package org.servidor.negocio;
 
 import java.util.List;
 
-import org.servidor.entities.SemiElaboradoEntity;
-
 public class SemiElaborado extends ProductoComestible {
 
 	private List<ProductoComestible> materiales;

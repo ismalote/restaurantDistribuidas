@@ -5,7 +5,7 @@ import java.util.List;
 public class ElaboradoEntity extends ProductoComestibleEntity {
 
 	private List<ProductoComestibleEntity> productos;
-	private UnidadEntity unidad;
+
 	
 
 	
@@ -13,10 +13,10 @@ public class ElaboradoEntity extends ProductoComestibleEntity {
 
 	public ElaboradoEntity(Integer idProducto, AreaProduccionEntity areaProdu, Integer cantidadPedido,
 			String descripcion, Integer stock, Integer puntoPedido, Float precio, List<PlatoEntity> platos,
-			List<ProductoComestibleEntity> pro,UnidadEntity uni) {
+			List<ProductoComestibleEntity> pro) {
 		super(idProducto, areaProdu, cantidadPedido, descripcion, stock, puntoPedido, precio, platos);
 		this.productos=pro;
-		this.unidad=uni;
+		
 		// TODO Auto-generated constructor stub
 	}
 
@@ -28,12 +28,6 @@ public class ElaboradoEntity extends ProductoComestibleEntity {
 		this.productos = productos;
 	}
 
-	public UnidadEntity getUnidad() {
-		return unidad;
-	}
 
-	public void setUnidad(UnidadEntity unidad) {
-		this.unidad = unidad;
-	}
 
 }

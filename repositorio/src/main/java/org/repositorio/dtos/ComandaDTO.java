@@ -11,7 +11,7 @@ public class ComandaDTO implements Serializable {
 	private static final long serialVersionUID = -2220270292730634477L;
 	
 	private Integer idComanda;
-	private List<PlatoDTO> platos;
+	private List<ItemPlatoDTO> platos;
 	private MozoDTO mozo;
 	private Boolean comandaLista;
 	private MesaDTO mesa;
@@ -19,7 +19,7 @@ public class ComandaDTO implements Serializable {
 	private FacturaDTO factura;
 	private LocalDTO local;
 	
-	public ComandaDTO(Integer id,List<PlatoDTO> platos, MozoDTO mozo, Boolean comandaLista, MesaDTO mesa,
+	public ComandaDTO(Integer id,List<ItemPlatoDTO> platos, MozoDTO mozo, Boolean comandaLista, MesaDTO mesa,
 			EstadoComandaDTO estadoComanda, FacturaDTO factura) {
 		super();
 		this.idComanda=id;
@@ -31,11 +31,11 @@ public class ComandaDTO implements Serializable {
 		this.factura = factura;
 	}
 
-	public List<PlatoDTO> getPlatos() {
+	public List<ItemPlatoDTO> getPlatos() {
 		return platos;
 	}
 
-	public void setPlatos(List<PlatoDTO> platos) {
+	public void setPlatos(List<ItemPlatoDTO> platos) {
 		this.platos = platos;
 	}
 

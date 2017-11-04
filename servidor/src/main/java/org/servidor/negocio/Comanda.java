@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.repositorio.dtos.ComandaDTO;
-import org.repositorio.dtos.PlatoDTO;
+import org.repositorio.dtos.ItemPlatoDTO;
 import org.servidor.entities.ComandaEntity;
-import org.servidor.entities.PlatoEntity;
+import org.servidor.entities.ItemPlatoEntity;
 
 public class Comanda {
 
 	private Integer idComanda;
-	private List<Plato> platos;
+	private List<ItemPlato> platos;
 	private Mozo mozo;
 	private Boolean comandaLista;
 	private Mesa mesa;
@@ -19,7 +19,7 @@ public class Comanda {
 	private Factura fact;
 	private Local Local;
 
-	public Comanda(Integer idComanda, List<Plato> platos, Mozo mozo, Boolean comandaLista, Mesa mesa,
+	public Comanda(Integer idComanda, List<ItemPlato> platos, Mozo mozo, Boolean comandaLista, Mesa mesa,
 			EstadoComanda estadoComanda, Factura fact) {
 		super();
 		this.idComanda = idComanda;
@@ -40,9 +40,9 @@ public class Comanda {
 	}
 
 	public Comanda(ComandaEntity entity) {
-		this.platos = new ArrayList<Plato>();
-		for (PlatoEntity plato : entity.getPlatos()) {
-			this.platos.add(new Plato(plato));
+		this.platos = new ArrayList<ItemPlato>();
+		for (ItemPlatoEntity plato : entity.getPlatos()) {
+			this.platos.add(new ItemPlato(plato));
 		}
 		this.estadoComanda = new EstadoComanda(entity.getEstadoComanda());
 		this.mozo = new Mozo(entity.getMozo());
@@ -51,9 +51,9 @@ public class Comanda {
 	}
 
 	public Comanda(ComandaDTO dto) {
-		this.platos = new ArrayList<Plato>();
-		for (PlatoDTO plato : dto.getPlatos()) {
-			this.platos.add(new Plato(plato));
+		this.platos = new ArrayList<ItemPlato>();
+		for (ItemPlatoDTO plato : dto.getPlatos()) {
+			this.platos.add(new ItemPlato(plato));
 		}
 		this.estadoComanda = new EstadoComanda(dto.getEstadoComanda());
 		this.mozo = new Mozo(dto.getMozo());
@@ -62,11 +62,11 @@ public class Comanda {
 
 	}
 
-	public List<Plato> getPlatos() {
+	public List<ItemPlato> getPlatos() {
 		return platos;
 	}
 
-	public void setPlatos(List<Plato> platos) {
+	public void setPlatos(List<ItemPlato> platos) {
 		this.platos = platos;
 	}
 

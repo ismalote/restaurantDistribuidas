@@ -8,15 +8,25 @@ public class ItemPlatoDTO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -6286571821367259567L;
+	private Integer idItemPlato;
 	private PlatoDTO plato;
 	private Integer cantidad;
 	private double montoSubtotal;
 
-	public ItemPlatoDTO(PlatoDTO plato, Integer cantidad, double montoSubtotal) {
+	public ItemPlatoDTO(Integer idItemPlato, PlatoDTO plato, Integer cantidad, double montoSubtotal) {
 		super();
+		this.idItemPlato = idItemPlato;
 		this.plato = plato;
 		this.cantidad = cantidad;
 		this.montoSubtotal = montoSubtotal;
+	}
+
+	public Integer getIdItemPlato() {
+		return idItemPlato;
+	}
+
+	public void setIdItemPlato(Integer idItemPlato) {
+		this.idItemPlato = idItemPlato;
 	}
 
 	public PlatoDTO getPlato() {
@@ -41,6 +51,10 @@ public class ItemPlatoDTO implements Serializable {
 
 	public void setMontoSubtotal(double montoSubtotal) {
 		this.montoSubtotal = montoSubtotal;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

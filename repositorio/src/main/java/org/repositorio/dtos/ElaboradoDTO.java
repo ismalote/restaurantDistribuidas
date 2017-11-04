@@ -10,9 +10,6 @@ public class ElaboradoDTO extends ProductoComestibleDTO implements Serializable 
 	 */
 	private static final long serialVersionUID = 324201138116302605L;
 	private List<ProductoComestibleDTO> productos;
-	private UnidadDTO unidad;
-
-
 
 	public ElaboradoDTO(Integer idProducto, AreaProduccionDTO area, Integer cantidadPedido, Integer puntoPedido,
 			String descripcion, Integer stock, Float precio) {
@@ -26,14 +23,6 @@ public class ElaboradoDTO extends ProductoComestibleDTO implements Serializable 
 
 	public void setProductos(List<ProductoComestibleDTO> productos) {
 		this.productos = productos;
-	}
-
-	public UnidadDTO getUnidad() {
-		return unidad;
-	}
-
-	public void setUnidad(UnidadDTO unidad) {
-		this.unidad = unidad;
 	}
 
 }
