@@ -2,8 +2,12 @@ package org.servidor.entities;
 
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="salon")
 public class SalonEntity extends AreaEntity {
 
 	private String nombre;

@@ -2,12 +2,14 @@ package org.servidor.entities;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+@Entity
 @Table(name="mesa")
 public class MesaEntity {
 	
@@ -16,7 +18,8 @@ public class MesaEntity {
 	@OneToOne
 	@JoinColumn(name = "idEstadoMesa")
 	private EstadoMesaEntity estadoMesa;
-
+//	private Integer estadoMesa;
+	
 	@OneToMany(mappedBy = "reserva")
 	private ReservaEntity reserva;
 

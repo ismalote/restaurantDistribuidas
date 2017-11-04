@@ -2,9 +2,13 @@ package org.servidor.entities;
 
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="administracion")
 public class AdministracionEntity {
 	// TODO falta atributos en administracion, cuales serian??
 

@@ -1,9 +1,11 @@
 package org.servidor.entities;
 
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+@Entity
 @Table(name="deposito")
 public class DepositoEntity extends AreaEntity {
 

@@ -2,6 +2,12 @@ package org.servidor.entities;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="elaborado")
 public class ElaboradoEntity extends ProductoComestibleEntity {
 
 	private List<ProductoComestibleEntity> productos;

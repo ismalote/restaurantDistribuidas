@@ -1,11 +1,12 @@
 package org.servidor.entities;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
+@Entity
 @Table(name="encargado")
 public abstract class EncargadoEntity {
 	

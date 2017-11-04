@@ -16,12 +16,12 @@ public class Comanda {
 	private Mozo mozo;
 	private Boolean comandaLista;
 	private Mesa mesa;
-	private EstadoComanda estadoComanda;
+	private Integer estadoComanda;
 	private Factura fact;
 	private Local Local;
 
 	public Comanda(Integer idComanda, List<ItemComanda> platos, Mozo mozo, Boolean comandaLista, Mesa mesa,
-			EstadoComanda estadoComanda, Factura fact) {
+			Integer estadoComanda, Factura fact) {
 		super();
 		this.idComanda = idComanda;
 		this.platos = platos;
@@ -45,7 +45,7 @@ public class Comanda {
 		// for (PlatoEntity plato : entity.getPlatos()) {
 		// this.platos.add(new Plato(plato));
 		// }
-		this.estadoComanda = new EstadoComanda(entity.getEstadoComanda());
+		this.estadoComanda = (entity.getEstadoComanda());
 		this.mozo = new Mozo(entity.getMozo());
 		this.mesa = new Mesa(entity.getMesa());
 		this.fact = new Factura(entity.getFact());
@@ -68,9 +68,9 @@ public class Comanda {
 		}
 
 		if (dto.getEstadoComanda() == null) {
-			this.estadoComanda = new EstadoComanda(true, true, true); // TODO
+			this.estadoComanda = 0; // TODO
 		} else {
-			this.estadoComanda = new EstadoComanda(dto.getEstadoComanda());
+			this.estadoComanda = (dto.getEstadoComanda());
 		}
 
 		if (dto.getFactura() == null) {
@@ -126,11 +126,11 @@ public class Comanda {
 		this.mesa = mesa;
 	}
 
-	public EstadoComanda getEstadoComanda() {
+	public Integer getEstadoComanda() {
 		return estadoComanda;
 	}
 
-	public void setEstadoComanda(EstadoComanda estadoComanda) {
+	public void setEstadoComanda(Integer estadoComanda) {
 		this.estadoComanda = estadoComanda;
 	}
 

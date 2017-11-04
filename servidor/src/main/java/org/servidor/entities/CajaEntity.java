@@ -2,10 +2,14 @@ package org.servidor.entities;
 
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="caja")
 public class CajaEntity extends AreaEntity {
 
 	// la herencia debe ser de la clase AreaProduccion o Area ?

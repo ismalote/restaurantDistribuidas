@@ -1,9 +1,13 @@
 package org.servidor.entities;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="depositoCentral")
 public class DepositoCentralEntity {
 
 	// verificar la clase stock
