@@ -6,8 +6,10 @@ import org.servidor.dao.PlatoDAO;
 import org.servidor.negocio.Comanda;
 import org.servidor.negocio.Plato;
 
-public class Controlador {
+public enum Controlador {
 
+	INSTANCE;
+	
 	public Plato obtenerPlatoporId(int idPlato) {
 
 		return PlatoDAO.getInstancia().obtenerProducto(idPlato);
