@@ -4,14 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.repositorio.dtos.ComandaDTO;
+import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.PlatoDTO;
+import org.repositorio.exceptions.MesaNotFoundException;
+import org.repositorio.exceptions.MozoNotFoundException;
+import org.servidor.dao.ComandaDAO;
 import org.servidor.entities.ComandaEntity;
 import org.servidor.entities.PlatoEntity;
 
 public class Comanda {
 
 	private Integer idComanda;
-	private List<Plato> platos;
+	private List<ItemComanda> platos;
 	private Mozo mozo;
 	private Boolean comandaLista;
 	private Mesa mesa;
@@ -19,7 +23,7 @@ public class Comanda {
 	private Factura fact;
 	private Local Local;
 
-	public Comanda(Integer idComanda, List<Plato> platos, Mozo mozo, Boolean comandaLista, Mesa mesa,
+	public Comanda(Integer idComanda, List<ItemComanda> platos, Mozo mozo, Boolean comandaLista, Mesa mesa,
 			EstadoComanda estadoComanda, Factura fact) {
 		super();
 		this.idComanda = idComanda;
@@ -40,9 +44,9 @@ public class Comanda {
 	}
 
 	public Comanda(ComandaEntity entity) {
-		this.platos = new ArrayList<Plato>();
+		this.platos = new ArrayList<ItemComanda>();
 		for (PlatoEntity plato : entity.getPlatos()) {
-			this.platos.add(new Plato(plato));
+			// this.platos.add(new Plato(plato));
 		}
 		this.estadoComanda = new EstadoComanda(entity.getEstadoComanda());
 		this.mozo = new Mozo(entity.getMozo());
@@ -51,22 +55,53 @@ public class Comanda {
 	}
 
 	public Comanda(ComandaDTO dto) {
-		this.platos = new ArrayList<Plato>();
-		for (PlatoDTO plato : dto.getPlatos()) {
-			this.platos.add(new Plato(plato));
+		if (dto.getMozo() == null) {
+			throw new MozoNotFoundException("new Comanda(ComandaEntity entity)");
 		}
-		this.estadoComanda = new EstadoComanda(dto.getEstadoComanda());
 		this.mozo = new Mozo(dto.getMozo());
-		this.mesa = new Mesa(dto.getMesa());
-		this.fact = new Factura(dto.getFactura());
 
+		if (dto.getMesa() == null) {
+			throw new MesaNotFoundException("new Comanda(ComandaEntity entity)");
+		}
+		this.mesa = new Mesa(dto.getMesa());
+
+		this.platos = new ArrayList<ItemComanda>();
+		for (PlatoDTO plato : dto.getPlatos()) {
+			this.platos.add(new ItemComanda(new Plato(plato)));
+		}
+
+		if (dto.getEstadoComanda() == null) {
+			this.estadoComanda = new EstadoComanda(true, true, true); // TODO
+		} else {
+			this.estadoComanda = new EstadoComanda(dto.getEstadoComanda());
+		}
+
+		if (dto.getFactura() == null) {
+			this.fact = null;
+		} else {
+			this.fact = new Factura(dto.getFactura());
+		}
 	}
 
-	public List<Plato> getPlatos() {
+	/*
+	 * Public Business Methods
+	 * 
+	 */
+
+	public boolean agregarItem(ItemComandaDTO item) {
+		ItemComanda itemNuevo = new ItemComanda(item);
+		return false;
+	}
+
+	/*
+	 * Getters & Setters
+	 */
+
+	public List<ItemComanda> getPlatos() {
 		return platos;
 	}
 
-	public void setPlatos(List<Plato> platos) {
+	public void setPlatos(List<ItemComanda> platos) {
 		this.platos = platos;
 	}
 

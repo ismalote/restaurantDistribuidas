@@ -59,10 +59,10 @@ public class Factura {
 		// TODO Auto-generated method stub
 		float resultado = 0;
 
-		List<Plato> aux = comanda.getPlatos();
-		for (Plato p : aux) {
-			p.calcularPrecio();
-			resultado = resultado + p.getPrecio();
+		List<ItemComanda> aux = comanda.getPlatos();
+		for (ItemComanda p : aux) {
+			p.getPlato().calcularPrecio();
+			resultado = resultado + p.getPlato().getPrecio();
 
 		}
 	}

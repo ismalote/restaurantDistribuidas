@@ -15,7 +15,7 @@ public interface IAppRemote extends Remote {
 	
 	boolean agregarItemAComanda(ItemComandaDTO item);
 	
-	void pedirItemDeComanda(String item);
+	void pedirItemDeComanda(String item); // TODO BORRRAR
 	
 	boolean cerrarcomanda(String idComanda);
 }
