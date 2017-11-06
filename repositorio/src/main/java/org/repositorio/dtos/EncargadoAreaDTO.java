@@ -14,8 +14,6 @@ public class EncargadoAreaDTO extends EncargadoDTO implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-
-
 	// TODO que onda con este?
 
 }
