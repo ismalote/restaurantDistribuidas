@@ -1,7 +1,7 @@
 package org.servidor.negocio;
 
 import org.repositorio.dtos.ItemPlatoDTO;
-import org.servidor.entities.ItemPlatoEntity;
+import org.servidor.entities.ItemComandaEntity;
 
 public class ItemPlato {
 
@@ -22,7 +22,7 @@ public class ItemPlato {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ItemPlato(ItemPlatoEntity plato2) {
+	public ItemPlato(ItemComandaEntity plato2) {
 		// TODO Auto-generated constructor stub
 	}
 

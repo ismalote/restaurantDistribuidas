@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,7 +16,7 @@ public class CartaEntity {
 	@Column(name = "idCarta")
 	private Integer idCarta;
 
-	@OneToMany(mappedBy = "plato")
+	@ManyToMany
 	private List<PlatoEntity> platos;
 
 	public CartaEntity(Integer idCarta, List<PlatoEntity> platos) {

@@ -4,6 +4,8 @@ import java.sql.Date;
 
 public class MateriaPrimaEntity extends InsumoEntity{
 
+	//sacar  ?? ya que insumo viene cubriendo las propiedades de materia prima
+	// preguntar
 	public MateriaPrimaEntity(Integer idInsumo, Float precio, Date fechaCreacion, Date fechaCaducidad,
 			String descripcion, String unidad) {
 		super(idInsumo, precio, fechaCreacion, fechaCaducidad, descripcion, unidad);

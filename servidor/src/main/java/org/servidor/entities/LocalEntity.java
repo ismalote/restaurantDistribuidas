@@ -8,7 +8,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Table(name = "local")
+@Table(name = "localRestaurante")
 public class LocalEntity {
 
 	@Id

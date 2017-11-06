@@ -2,13 +2,12 @@ package org.servidor.entities;
 
 import java.util.List;
 
-import org.servidor.negocio.Comanda;
-import org.servidor.negocio.Mozo;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.servidor.negocio.Mozo;
 
 @Entity
 @Table(name = "mozo")

@@ -4,9 +4,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,14 +17,13 @@ public class PlatoEntity {
 	@ManyToMany
 	private List<ProductoComestibleEntity> productos;
 
-	@ManyToOne
-	private ComandaEntity comanda;
+//	@ManyToMany
+//	private ComandaEntity comanda;
 
 	private Float precio;
 
-	@ManyToOne
-	@JoinColumn(name = "idCarta")
-	private CartaEntity carta;
+	@ManyToMany
+	private List<CartaEntity> carta;
 
 	private Float comisionExtra;
 
@@ -42,13 +39,13 @@ public class PlatoEntity {
 		this.productos = productos;
 	}
 
-	public ComandaEntity getComandas() {
-		return comanda;
-	}
+//	public ComandaEntity getComandas() {
+//		return comanda;
+//	}
 
-	public void setComandas(ComandaEntity comandas) {
-		this.comanda = comandas;
-	}
+//	public void setComandas(ComandaEntity comandas) {
+//		this.comanda = comandas;
+//	}
 
 	public Float getPrecio() {
 		return precio;
@@ -58,11 +55,11 @@ public class PlatoEntity {
 		this.precio = precio;
 	}
 
-	public CartaEntity getCarta() {
+	public List<CartaEntity> getCarta() {
 		return carta;
 	}
 
-	public void setCarta(CartaEntity carta) {
+	public void setCarta(List<CartaEntity> carta) {
 		this.carta = carta;
 	}
 

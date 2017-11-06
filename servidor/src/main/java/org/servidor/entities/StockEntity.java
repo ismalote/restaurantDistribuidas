@@ -16,15 +16,15 @@ public class StockEntity {
 	private Integer idStock;
 	@OneToMany(mappedBy = "ItemStock")
 	private List<ItemStockEntity> itemsStock;
-	@Id
-	@Column(name = "IdInsumo")
-	private Integer idInsumo;
+//	@Id
+//	@Column(name = "IdInsumo")
+//	private Integer idInsumo;
 
-	public StockEntity(Integer idStock, List<ItemStockEntity> itemsStock, Integer idInsumo) {
+	public StockEntity(Integer idStock, List<ItemStockEntity> itemsStock /*, Integer idInsumo*/) {
 		super();
 		this.idStock = idStock;
 		this.itemsStock = itemsStock;
-		this.idInsumo = idInsumo;
+	//	this.idInsumo = idInsumo;
 	}
 
 	public Integer getIdStock() {
@@ -43,13 +43,13 @@ public class StockEntity {
 		this.itemsStock = itemsStock;
 	}
 
-	public Integer getIdInsumo() {
-		return idInsumo;
-	}
+//	public Integer getIdInsumo() {
+//		return idInsumo;
+//	}
 
-	public void setIdInsumo(Integer idInsumo) {
-		this.idInsumo = idInsumo;
-	}
+//	public void setIdInsumo(Integer idInsumo) {
+//		this.idInsumo = idInsumo;
+//	}
 
 	// TODO faltan metodos
 

@@ -18,7 +18,7 @@ public class ComandaEntity {
 	private Integer idComanda;
 
 	@OneToMany(mappedBy = "itemPlato")
-	private List<ItemPlatoEntity> platos;
+	private List<ItemComandaEntity> platos;
 
 	@OneToOne(mappedBy = "idMozo")
 	private MozoEntity mozo;
@@ -40,7 +40,7 @@ public class ComandaEntity {
 	@OneToOne(mappedBy = "FacturaEntity")
 	private FacturaEntity fact;
 
-	public ComandaEntity(Integer idComanda, List<ItemPlatoEntity> platos, MozoEntity mozo, Boolean comandaLista,
+	public ComandaEntity(Integer idComanda, List<ItemComandaEntity> platos, MozoEntity mozo, Boolean comandaLista,
 			MesaEntity mesa, Integer estadoComanda, FacturaEntity fact) {
 		super();
 		this.idComanda = idComanda;
@@ -63,11 +63,11 @@ public class ComandaEntity {
 		this.idComanda = idComanda;
 	}
 
-	public List<ItemPlatoEntity> getPlatos() {
+	public List<ItemComandaEntity> getPlatos() {
 		return platos;
 	}
 
-	public void setPlatos(List<ItemPlatoEntity> platos) {
+	public void setPlatos(List<ItemComandaEntity> platos) {
 		this.platos = platos;
 	}
 
