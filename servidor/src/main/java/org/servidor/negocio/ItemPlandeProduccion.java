@@ -2,13 +2,23 @@ package org.servidor.negocio;
 
 public class ItemPlandeProduccion {
 
+	private Integer idIPP;
 	private Plato plato;
 	private Integer cantidadEstimada;
 
-	public ItemPlandeProduccion(Plato plato, Integer cantidadEstimada) {
+	public ItemPlandeProduccion(Integer idIPP, Plato plato, Integer cantidadEstimada) {
 		super();
+		this.idIPP = idIPP;
 		this.plato = plato;
 		this.cantidadEstimada = cantidadEstimada;
+	}
+
+	public Integer getIdIPP() {
+		return idIPP;
+	}
+
+	public void setIdIPP(Integer idIPP) {
+		this.idIPP = idIPP;
 	}
 
 	public Plato getPlato() {

@@ -37,6 +37,8 @@ public class Servidor {
 			LocateRegistry.createRegistry(IAppRemote.PORT_SERVICIO);
 			Naming.rebind(IAppRemote.URL_SERVICIO, getObjetoRemoto());
 
+			Class.forName("org.servidor.util.HibernateUtil");
+			
 			System.out.println("SERVIDOR:");
 			System.out.println("Fijado en " + IAppRemote.URL_SERVICIO + " puerto: " + IAppRemote.PORT_SERVICIO);
 			System.out.println("----------------------------------------------------------");

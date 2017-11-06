@@ -2,24 +2,40 @@ package org.servidor.entities;
 
 import java.util.List;
 
+import org.servidor.negocio.Comanda;
+import org.servidor.negocio.Mozo;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "mozo")
 public class MozoEntity {
 
+	@Id
 	private Integer idMozo;
 	private Float porcentajeComision;
 	private String nombre;
 	private String apellido;
 	private Integer antiguedad;
-	private List<MesaEntity> mesas;
+	@OneToMany(mappedBy = "comanda")
+	private List<ComandaEntity> comandasAbiertas;
 
 	public MozoEntity(Integer idMozo, Float porcentajeComision, String nombre, String apellido, Integer antiguedad,
-			List<MesaEntity> mesas) {
+			List<ComandaEntity> comandasAbiertas) {
 		super();
 		this.idMozo = idMozo;
 		this.porcentajeComision = porcentajeComision;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.antiguedad = antiguedad;
-		this.setMesas(mesas);
+		this.comandasAbiertas = comandasAbiertas;
+	}
+
+	public MozoEntity(Mozo mozo) {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getIdMozo() {
@@ -62,12 +78,12 @@ public class MozoEntity {
 		this.antiguedad = antiguedad;
 	}
 
-	public List<MesaEntity> getMesas() {
-		return mesas;
+	public List<ComandaEntity> getComandasAbiertas() {
+		return comandasAbiertas;
 	}
 
-	public void setMesas(List<MesaEntity> mesas) {
-		this.mesas = mesas;
+	public void setComandasAbiertas(List<ComandaEntity> comandasAbiertas) {
+		this.comandasAbiertas = comandasAbiertas;
 	}
 
 }

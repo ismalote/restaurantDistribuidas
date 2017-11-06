@@ -2,15 +2,56 @@ package org.servidor.entities;
 
 import java.util.List;
 
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Table(name = "local")
 public class LocalEntity {
 
+	@Id
+	private Integer idLocal;
+	@OneToMany(mappedBy = "encargado")
 	private List<EncargadoEntity> encargadosAreas;
+	@OneToMany(mappedBy = "mozo")
 	private List<MozoEntity> mozos;
+	@OneToOne
+	@JoinColumn(name = "idArea")
 	private SalonEntity salon;
+	@OneToOne
+	@JoinColumn(name = "idArea")
 	private DepositoEntity deposito;
+	@OneToMany(mappedBy = "area")
 	private List<AreaEntity> areas;
+	@OneToOne
+	@JoinColumn(name = "idCarta")
 	private CartaEntity carta;
+	@OneToMany(mappedBy = "listadoCompras")
 	private List<ListadoComprasEntity> listadosCompras;
+
+	public LocalEntity(Integer idLocal, List<EncargadoEntity> encargadosAreas, List<MozoEntity> mozos,
+			SalonEntity salon, DepositoEntity deposito, List<AreaEntity> areas, CartaEntity carta,
+			List<ListadoComprasEntity> listadosCompras) {
+		super();
+		this.idLocal = idLocal;
+		this.encargadosAreas = encargadosAreas;
+		this.mozos = mozos;
+		this.salon = salon;
+		this.deposito = deposito;
+		this.areas = areas;
+		this.carta = carta;
+		this.listadosCompras = listadosCompras;
+	}
+
+	public Integer getIdLocal() {
+		return idLocal;
+	}
+
+	public void setIdLocal(Integer idLocal) {
+		this.idLocal = idLocal;
+	}
 
 	public List<EncargadoEntity> getEncargadosAreas() {
 		return encargadosAreas;
@@ -67,7 +108,5 @@ public class LocalEntity {
 	public void setListadosCompras(List<ListadoComprasEntity> listadosCompras) {
 		this.listadosCompras = listadosCompras;
 	}
-
-	// TODO faltan metodos
 
 }

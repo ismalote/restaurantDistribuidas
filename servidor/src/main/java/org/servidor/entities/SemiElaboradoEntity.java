@@ -2,8 +2,12 @@ package org.servidor.entities;
 
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="semielaborado")
 public class SemiElaboradoEntity extends ProductoComestibleEntity {
 
 	@OneToMany(mappedBy = "department")

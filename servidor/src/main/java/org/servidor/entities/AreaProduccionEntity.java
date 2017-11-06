@@ -2,47 +2,35 @@ package org.servidor.entities;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;;
 
-public class AreaProduccionEntity {
-	
-		
-	@Id
-	@Column(name="IdAreaProdu")
-	protected Integer IdAreaProduccion;
-	
-	@OneToMany(mappedBy="AreaProdu")
-	protected List<ProductoComestibleEntity> productos ;
-	
-	
+@Entity
+@Table (name="areaProduccion")
+public class AreaProduccionEntity extends AreaEntity {
+
+	@OneToMany(mappedBy = "AreaProdu")
+	protected List<ProductoComestibleEntity> productos;
+
 	protected String TipoArea;
 	@OneToOne
-	@JoinColumn(name="idEncargado")
+	@JoinColumn(name = "idEncargado")
 	protected EncargadoEntity encargado;
-	
-	@OneToMany(mappedBy="comanda")
+
+	@OneToMany(mappedBy = "comanda")
 	protected List<ComandaEntity> comandas;
 
 	public AreaProduccionEntity(Integer idAreaProduccion, List<ProductoComestibleEntity> productos, String tipoArea,
 			EncargadoEntity encargado, List<ComandaEntity> comandas) {
-		super();
-		IdAreaProduccion = idAreaProduccion;
+		super(idAreaProduccion);
+
 		this.productos = productos;
 		TipoArea = tipoArea;
 		this.encargado = encargado;
 		this.comandas = comandas;
-	}
-
-	public Integer getIdAreaProduccion() {
-		return IdAreaProduccion;
-	}
-
-	public void setIdAreaProduccion(Integer idAreaProduccion) {
-		IdAreaProduccion = idAreaProduccion;
 	}
 
 	public List<ProductoComestibleEntity> getProductos() {
@@ -76,8 +64,5 @@ public class AreaProduccionEntity {
 	public void setComandas(List<ComandaEntity> comandas) {
 		this.comandas = comandas;
 	}
-	
-	
-	
-	
-	}
+
+}

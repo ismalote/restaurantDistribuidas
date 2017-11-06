@@ -2,18 +2,25 @@ package org.servidor.entities;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="mesa")
 public class MesaEntity {
-
+	
+	@Id
 	private Integer idMesa;
 	@OneToOne
 	@JoinColumn(name = "idEstadoMesa")
 	private EstadoMesaEntity estadoMesa;
-
-	@OneToMany(mappedBy = "Reserva")
+//	private Integer estadoMesa;
+	
+	@OneToMany(mappedBy = "reserva")
 	private ReservaEntity reserva;
 
 	private Integer cantidadSillas;

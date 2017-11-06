@@ -45,6 +45,10 @@ public class Mesa {
 		this.horaLiberacion= dto.getHoraLiberacion();
 	}
 
+	public Mesa() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Integer getIdMesa() {
 		return idMesa;
 	}

@@ -10,14 +10,12 @@ public class MateriaPrimaDTO implements Serializable {
 	private static final long serialVersionUID = 8371237561112477683L;
 	private String codigo;
 	private String descripcion;
-	private UnidadDTO unidadCompra;
 	private CaducidadDTO caducidad;
 
-	public MateriaPrimaDTO(String codigo, String descripcion, UnidadDTO unidadCompra, CaducidadDTO caducidad) {
+	public MateriaPrimaDTO(String codigo, String descripcion, CaducidadDTO caducidad) {
 		super();
 		this.codigo = codigo;
 		this.descripcion = descripcion;
-		this.unidadCompra = unidadCompra;
 		this.caducidad = caducidad;
 	}
 
@@ -35,14 +33,6 @@ public class MateriaPrimaDTO implements Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-
-	public UnidadDTO getUnidadCompra() {
-		return unidadCompra;
-	}
-
-	public void setUnidadCompra(UnidadDTO unidadCompra) {
-		this.unidadCompra = unidadCompra;
 	}
 
 	public CaducidadDTO getCaducidad() {
