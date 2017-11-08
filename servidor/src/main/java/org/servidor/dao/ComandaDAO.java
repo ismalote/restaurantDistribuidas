@@ -13,7 +13,7 @@ import org.servidor.util.HibernateUtil;
 
 public class ComandaDAO {
 
-	public static ComandaDAO instancia;
+	private static ComandaDAO instancia;
 
 	public static ComandaDAO getInstancia() {
 		if (instancia == null) {
@@ -22,11 +22,7 @@ public class ComandaDAO {
 		return instancia;
 	}
 
-	public static void setInstancia(ComandaDAO instancia) {
-		ComandaDAO.instancia = instancia;
-	}
-
-	public void grabarComanda(Comanda comanda) {
+	public boolean save(Comanda comanda) {
 		ComandaEntity entity = this.toEntity(comanda);
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
@@ -34,6 +30,7 @@ public class ComandaDAO {
 		session.flush();
 		session.getTransaction().commit();
 		session.close();
+		return true;
 	}
 
 	public ComandaEntity toEntity(Comanda c) {
@@ -50,6 +47,27 @@ public class ComandaDAO {
 		// entity.setPlatos(p); // TODO FIX
 		return entity;
 
+	}
+
+	public boolean existeComanda(int idComanda) {
+		ComandaEntity comandaEntity = getComandaEntity(idComanda);
+		return comandaEntity != null;
+	}
+
+	public Comanda getComanda(int idComanda) {
+		ComandaEntity comandaEntity = getComandaEntity(idComanda);
+		return toNegocio(comandaEntity);
+	}
+
+	private ComandaEntity getComandaEntity(int idComanda) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		ComandaEntity comandaEntity = session.get(ComandaEntity.class, idComanda);
+		session.close();
+		return comandaEntity;
+	}
+
+	private Comanda toNegocio(ComandaEntity ce) {
+		return null;
 	}
 
 }

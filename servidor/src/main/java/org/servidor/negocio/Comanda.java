@@ -88,6 +88,12 @@ public class Comanda {
 		}
 	}
 
+	public Comanda(CrearComandaDTO comanda) { // TODO Revisar con otro constructor
+		this.mozo = MozoDAO.getInstancia().obtenerMozo(1);
+		this.mesa = MesaDAO.getInstancia().obtenerMesaPorNumero(comanda.getNumeroMesa());
+		this.fecha = new Date();
+	}
+
 	/*
 	 * Public Business Methods
 	 * 
@@ -95,14 +101,10 @@ public class Comanda {
 
 	public boolean agregarItem(ItemComandaDTO item) {
 		ItemComanda itemNuevo = new ItemComanda(item);
+		if (this.platos.add(itemNuevo)) {
+			return save();
+		}
 		return false;
-	}
-
-	public Comanda(CrearComandaDTO comanda) {
-		this.mozo = MozoDAO.getInstancia().obtenerMozo(1);
-		this.mesa = MesaDAO.getInstancia().obtenerMesaPorNumero(comanda.getNumeroMesa());
-		this.fecha = new Date();
-
 	}
 
 	/*
@@ -173,9 +175,8 @@ public class Comanda {
 		this.fecha = fecha;
 	}
 
-	public void save() {
-
-		ComandaDAO.getInstancia().grabarComanda(this);
+	public boolean save() {
+		return ComandaDAO.getInstancia().save(this);
 	}
 
 }

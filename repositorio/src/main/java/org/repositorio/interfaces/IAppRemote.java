@@ -3,8 +3,8 @@ package org.repositorio.interfaces;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
-import org.repositorio.dtos.ItemComandaDTO;
 
 public interface IAppRemote extends Remote {
 	String URL_SERVICIO = "localhost/RestaurantDistribuida";
@@ -12,7 +12,7 @@ public interface IAppRemote extends Remote {
 
 	boolean crearComanda(CrearComandaDTO comanda) throws RemoteException;
 
-	boolean agregarItemAComanda(ItemComandaDTO item) throws RemoteException;
+	boolean agregarItemAComanda(AgregarItemComandaDTO item) throws RemoteException;
 
 	void pedirItemDeComanda(String item) throws RemoteException; // TODO BORRRAR
 

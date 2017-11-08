@@ -1,5 +1,6 @@
 package org.servidor.negocio;
 
+import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.servidor.dao.PlatoDAO;
 
@@ -7,30 +8,54 @@ public class ItemComanda {
 
 	private Plato plato;
 
-	private int cantidad;
+	private boolean entregado;
 
-	public ItemComanda(Plato plato, int cantidad) {
+	private boolean reclamo;
+
+	public ItemComanda(Plato plato, boolean entregado, boolean reclamo) {
 		super();
 		this.plato = plato;
-		this.cantidad = cantidad;
+		this.entregado = entregado;
+		this.reclamo = reclamo;
 	}
 
 	public ItemComanda(Plato plato) {
 		super();
 		this.plato = plato;
-		this.cantidad = 1;
+		this.entregado = false;
+		this.reclamo = false;
 	}
 
 	public ItemComanda(ItemComandaDTO dto) {
 		super();
 		this.plato = PlatoDAO.getInstancia().obtenerProducto(dto.getIdPlato());
-		this.cantidad = dto.getCantidad();
+		this.entregado = false;
+		this.reclamo = false;
+	}
+
+	public ItemComanda(AgregarItemComandaDTO dto) {
+		this((ItemComandaDTO)dto);
 	}
 
 	public ItemComanda(int idPlato) {
 		super();
 		this.plato = PlatoDAO.getInstancia().obtenerProducto(idPlato);
-		this.cantidad = 1;
+	}
+
+	public boolean isEntregado() {
+		return entregado;
+	}
+
+	public void setEntregado(boolean entregado) {
+		this.entregado = entregado;
+	}
+
+	public boolean isReclamo() {
+		return reclamo;
+	}
+
+	public void setReclamo(boolean reclamo) {
+		this.reclamo = reclamo;
 	}
 
 	public Plato getPlato() {
@@ -39,14 +64,6 @@ public class ItemComanda {
 
 	public void setPlato(Plato plato) {
 		this.plato = plato;
-	}
-
-	public int getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
 	}
 
 }

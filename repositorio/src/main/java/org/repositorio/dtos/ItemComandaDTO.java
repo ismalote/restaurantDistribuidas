@@ -3,12 +3,9 @@ package org.repositorio.dtos;
 import java.io.Serializable;
 
 /**
- * TODO Agregar en negocio
- * 
  * @author Juan
- *
  */
-public abstract class ItemComandaDTO implements Serializable {
+public class ItemComandaDTO implements Serializable {
 
 	/**
 	 * 
@@ -17,12 +14,15 @@ public abstract class ItemComandaDTO implements Serializable {
 
 	private int idPlato;
 
-	private int cantidad;
+	private boolean entregado;
 
-	public ItemComandaDTO(int idPlato, int cantidad) {
+	private boolean reclamo;
+
+	public ItemComandaDTO(int idPlato, boolean entregado, boolean reclamo) {
 		super();
 		this.idPlato = idPlato;
-		this.cantidad = cantidad;
+		this.entregado = entregado;
+		this.reclamo = reclamo;
 	}
 
 	public int getIdPlato() {
@@ -33,12 +33,20 @@ public abstract class ItemComandaDTO implements Serializable {
 		this.idPlato = idPlato;
 	}
 
-	public int getCantidad() {
-		return cantidad;
+	public boolean isEntregado() {
+		return entregado;
 	}
 
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
+	public void setEntregado(boolean entregado) {
+		this.entregado = entregado;
+	}
+
+	public boolean isReclamo() {
+		return reclamo;
+	}
+
+	public void setReclamo(boolean reclamo) {
+		this.reclamo = reclamo;
 	}
 
 }
