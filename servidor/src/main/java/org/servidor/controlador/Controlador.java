@@ -35,20 +35,17 @@ public class Controlador {
 	}
 
 	public Plato obtenerPlatoporId(int idPlato) {
-
 		return PlatoDAO.getInstancia().obtenerProducto(idPlato);
-
 	}
 
 	public boolean crearNuevacomanda(CrearComandaDTO comanda) {
-
 		Comanda aux = new Comanda(comanda);
 		return aux.save();
 	}
 
 	public boolean agregarItemAComanda(AgregarItemComandaDTO item) {
-		Comanda comanda;
-		if ((comanda = ComandaDAO.getInstancia().getComanda(item.getIdComanda())) == null) {
+		Comanda comanda = ComandaDAO.getInstancia().getComanda(item.getIdComanda());
+		if (comanda == null) {
 			throw new ComandaNotFoundException("agregarItemAComanda(AgregarItemComandaDTO item)");
 		}
 		return comanda.agregarItem(item);

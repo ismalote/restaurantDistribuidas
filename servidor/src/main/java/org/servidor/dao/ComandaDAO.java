@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.repositorio.exceptions.SaveFailedException;
 import org.servidor.entities.ComandaEntity;
 import org.servidor.entities.MozoEntity;
 import org.servidor.entities.PlatoEntity;
@@ -24,12 +25,16 @@ public class ComandaDAO {
 
 	public boolean save(Comanda comanda) {
 		ComandaEntity entity = this.toEntity(comanda);
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		session.beginTransaction();
-		session.persist(entity);
-		session.flush();
-		session.getTransaction().commit();
-		session.close();
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			session.beginTransaction();
+			session.persist(entity);
+			session.flush();
+			session.getTransaction().commit();
+			session.close();
+		} catch (Exception e) {
+			throw new SaveFailedException(e);
+		}
 		return true;
 	}
 
