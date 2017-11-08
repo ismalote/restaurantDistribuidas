@@ -20,8 +20,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 	}
 
 	public boolean crearComanda(CrearComandaDTO comanda) {
-		this.controlador.crearNuevacomanda(comanda);
-		return false;
+		return this.controlador.crearNuevacomanda(comanda);
 	}
 
 	@Override

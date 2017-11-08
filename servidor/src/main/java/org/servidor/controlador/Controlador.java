@@ -40,11 +40,10 @@ public class Controlador {
 
 	}
 
-	public void crearNuevacomanda(CrearComandaDTO comanda) {
+	public boolean crearNuevacomanda(CrearComandaDTO comanda) {
 
 		Comanda aux = new Comanda(comanda);
-		aux.save();
-
+		return aux.save();
 	}
 
 	public boolean agregarItemAComanda(AgregarItemComandaDTO item) {
