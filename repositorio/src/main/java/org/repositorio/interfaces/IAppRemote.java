@@ -14,8 +14,6 @@ public interface IAppRemote extends Remote {
 
 	boolean agregarItemAComanda(AgregarItemComandaDTO item) throws RemoteException;
 
-	void pedirItemDeComanda(String item) throws RemoteException; // TODO BORRRAR
-
 	boolean cerrarcomanda(String idComanda) throws RemoteException;
 
 }

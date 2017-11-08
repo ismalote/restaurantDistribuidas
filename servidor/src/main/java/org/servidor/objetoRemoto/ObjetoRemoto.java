@@ -11,12 +11,12 @@ import org.servidor.controlador.Controlador;
 public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Controlador controlador;
 
 	public ObjetoRemoto() throws RemoteException {
 		super();
-		this.controlador = Controlador.getInstancia(); 
+		this.controlador = Controlador.getInstancia();
 	}
 
 	public boolean crearComanda(CrearComandaDTO comanda) {
@@ -27,12 +27,6 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 	@Override
 	public boolean agregarItemAComanda(AgregarItemComandaDTO item) {
 		return this.controlador.agregarItemAComanda(item);
-	}
-
-	@Override
-	public void pedirItemDeComanda(String item) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
