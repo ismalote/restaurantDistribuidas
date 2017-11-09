@@ -62,8 +62,9 @@ public class Controlador {
 		return itemsComanda;
 	}
 
-	public boolean cerrarComanda(String idComanda) {
-		return false;
+	public boolean cerrarComanda(int idComanda) {
+		Comanda comanda = getComanda(idComanda, "cerrarComanda(int idComanda)");
+		return comanda.cerrarComanda();
 	}
 
 	private Comanda getComanda(int idComanda, String method) {

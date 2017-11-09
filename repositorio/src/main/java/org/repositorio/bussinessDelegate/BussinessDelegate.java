@@ -55,7 +55,7 @@ public class BussinessDelegate implements IAppRemote {
 	}
 
 	@Override
-	public boolean cerrarcomanda(String idComanda) {
+	public boolean cerrarcomanda(int idComanda) {
 		// TODO Auto-generated method stub
 		return false;
 	}

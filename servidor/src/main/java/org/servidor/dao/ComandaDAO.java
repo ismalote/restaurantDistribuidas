@@ -41,7 +41,7 @@ public class ComandaDAO {
 	public ComandaEntity toEntity(Comanda c) {
 		ComandaEntity entity = new ComandaEntity();
 		entity.setIdComanda(c.getIdComanda());
-		entity.setComandaLista(c.getComandaLista());
+		entity.setCerrada(c.estaCerrada());
 		entity.setMozo(new MozoEntity(c.getMozo()));
 		// entity.setFact(new FacturaEntity(c.getFact()));
 		// entity.setMesa(new MesaEntity(c.getMesa()));

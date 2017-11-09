@@ -21,20 +21,20 @@ public class Comanda {
 	private Integer idComanda;
 	private List<ItemComanda> platos;
 	private Mozo mozo;
-	private Boolean comandaLista;
+	private boolean cerrada;
 	private Mesa mesa;
 	private Integer estadoComanda;
 	private Factura fact;
 	private Date fecha;
 	private Local Local;
 
-	public Comanda(Integer idComanda, List<ItemComanda> platos, Mozo mozo, Boolean comandaLista, Mesa mesa,
+	public Comanda(Integer idComanda, List<ItemComanda> platos, Mozo mozo, Boolean cerrada, Mesa mesa,
 			int estadoComanda, Factura fact, Date fecha, org.servidor.negocio.Local local) {
 		super();
 		this.idComanda = idComanda;
 		this.platos = platos;
 		this.mozo = mozo;
-		this.comandaLista = comandaLista;
+		this.cerrada = cerrada;
 		this.mesa = mesa;
 		this.estadoComanda = estadoComanda;
 		this.fact = fact;
@@ -123,6 +123,15 @@ public class Comanda {
 		return save();
 	}
 
+	public boolean save() {
+		return ComandaDAO.getInstancia().save(this);
+	}
+
+	public boolean cerrarComanda() {
+		this.cerrada = true;
+		return save();
+	}
+
 	/*
 	 * Getters & Setters
 	 */
@@ -143,12 +152,8 @@ public class Comanda {
 		this.mozo = mozo;
 	}
 
-	public Boolean getComandaLista() {
-		return comandaLista;
-	}
-
-	public void setComandaLista(Boolean comandaLista) {
-		this.comandaLista = comandaLista;
+	public boolean estaCerrada() {
+		return cerrada;
 	}
 
 	public Mesa getMesa() {
@@ -189,10 +194,6 @@ public class Comanda {
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
-	}
-
-	public boolean save() {
-		return ComandaDAO.getInstancia().save(this);
 	}
 
 }

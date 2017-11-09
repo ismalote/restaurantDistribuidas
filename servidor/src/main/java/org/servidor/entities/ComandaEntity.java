@@ -23,7 +23,7 @@ public class ComandaEntity {
 	@OneToOne(mappedBy = "idMozo")
 	private MozoEntity mozo;
 
-	private Boolean comandaLista;
+	private Boolean cerrada;
 
 	@OneToOne(mappedBy = "idMesa")
 	private MesaEntity mesa;
@@ -40,13 +40,13 @@ public class ComandaEntity {
 	@OneToOne(mappedBy = "FacturaEntity")
 	private FacturaEntity fact;
 
-	public ComandaEntity(Integer idComanda, List<ItemComandaEntity> platos, MozoEntity mozo, Boolean comandaLista,
+	public ComandaEntity(Integer idComanda, List<ItemComandaEntity> platos, MozoEntity mozo, Boolean cerrada,
 			MesaEntity mesa, Integer estadoComanda, FacturaEntity fact) {
 		super();
 		this.idComanda = idComanda;
 		this.platos = platos;
 		this.mozo = mozo;
-		this.comandaLista = comandaLista;
+		this.cerrada = cerrada;
 		this.mesa = mesa;
 		this.estadoComanda = estadoComanda;
 		this.fact = fact;
@@ -79,12 +79,12 @@ public class ComandaEntity {
 		this.mozo = mozo;
 	}
 
-	public Boolean getComandaLista() {
-		return comandaLista;
+	public Boolean getCerrada() {
+		return cerrada;
 	}
 
-	public void setComandaLista(Boolean comandaLista) {
-		this.comandaLista = comandaLista;
+	public void setCerrada(Boolean cerrada) {
+		this.cerrada = cerrada;
 	}
 
 	public MesaEntity getMesa() {

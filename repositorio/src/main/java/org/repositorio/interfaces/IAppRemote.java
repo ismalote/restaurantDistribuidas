@@ -17,6 +17,6 @@ public interface IAppRemote extends Remote {
 
 	AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO item) throws RemoteException;
 
-	boolean cerrarcomanda(String idComanda) throws RemoteException;
+	boolean cerrarcomanda(int idComanda) throws RemoteException;
 
 }

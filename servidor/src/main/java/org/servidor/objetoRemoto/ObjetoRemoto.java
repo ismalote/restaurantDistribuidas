@@ -35,7 +35,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 	}
 
 	@Override
-	public boolean cerrarcomanda(String idComanda) {
+	public boolean cerrarcomanda(int idComanda) {
 		return this.controlador.cerrarComanda(idComanda);
 	}
 
