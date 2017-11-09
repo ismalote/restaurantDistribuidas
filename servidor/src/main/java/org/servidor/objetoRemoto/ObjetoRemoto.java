@@ -36,8 +36,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 
 	@Override
 	public boolean cerrarcomanda(String idComanda) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.controlador.cerrarComanda(idComanda);
 	}
 
 }

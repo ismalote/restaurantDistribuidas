@@ -46,21 +46,31 @@ public class Controlador {
 	}
 
 	public boolean agregarItemAComanda(AgregarItemComandaDTO item) {
-		Comanda comanda = ComandaDAO.getInstancia().getComanda(item.getIdComanda());
-		if (comanda == null) {
-			throw new ComandaNotFoundException("agregarItemAComanda(AgregarItemComandaDTO item)");
-		}
+		String method = "agregarItemAComanda(AgregarItemComandaDTO item)";
+
+		Comanda comanda = getComanda(item.getIdComanda(), method);
 		return comanda.agregarItem(item);
 	}
 
 	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO itemsComanda) {
-		Comanda comanda = ComandaDAO.getInstancia().getComanda(itemsComanda.getIdComanda());
-		if (comanda == null) {
-			throw new ComandaNotFoundException("agregarItemsAComanda(AgregarItemsComandaDTO itemsComanda)");
-		}
+		String method = "agregarItemsAComanda(AgregarItemsComandaDTO itemsComanda)";
+
+		Comanda comanda = getComanda(itemsComanda.getIdComanda(), method);
 		if (!comanda.agregarItems(itemsComanda)) {
-			throw new ItemComandaFailException("agregarItemsAComanda(AgregarItemsComandaDTO itemsComanda)");
+			throw new ItemComandaFailException(method);
 		}
 		return itemsComanda;
+	}
+
+	public boolean cerrarComanda(String idComanda) {
+		return false;
+	}
+
+	private Comanda getComanda(int idComanda, String method) {
+		Comanda comanda = ComandaDAO.getInstancia().getComanda(idComanda);
+		if (comanda == null) {
+			throw new ComandaNotFoundException();
+		}
+		return comanda;
 	}
 }
