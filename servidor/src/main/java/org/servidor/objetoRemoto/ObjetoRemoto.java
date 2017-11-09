@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import org.repositorio.dtos.AgregarItemComandaDTO;
+import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.interfaces.IAppRemote;
 import org.servidor.controlador.Controlador;
@@ -26,6 +27,11 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 	@Override
 	public boolean agregarItemAComanda(AgregarItemComandaDTO item) {
 		return this.controlador.agregarItemAComanda(item);
+	}
+
+	@Override
+	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO item) throws RemoteException {
+		return this.controlador.agregarItemsAComanda(item);
 	}
 
 	@Override

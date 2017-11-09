@@ -56,7 +56,7 @@ public class Controlador {
 	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO itemsComanda) {
 		Comanda comanda = ComandaDAO.getInstancia().getComanda(itemsComanda.getIdComanda());
 		if (comanda == null) {
-			throw new ComandaNotFoundException("agregarItemsAComanda(AgregarItemsComandaDTO item)");
+			throw new ComandaNotFoundException("agregarItemsAComanda(AgregarItemsComandaDTO itemsComanda)");
 		}
 		if (!comanda.agregarItems(itemsComanda)) {
 			throw new ItemComandaFailException("agregarItemsAComanda(AgregarItemsComandaDTO itemsComanda)");

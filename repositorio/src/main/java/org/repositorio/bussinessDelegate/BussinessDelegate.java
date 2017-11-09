@@ -4,6 +4,7 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 
 import org.repositorio.dtos.AgregarItemComandaDTO;
+import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.interfaces.IAppRemote;
 
@@ -46,6 +47,11 @@ public class BussinessDelegate implements IAppRemote {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	@Override
+	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO item) throws RemoteException {
+		return this.objetoRemoto.agregarItemsAComanda(item);
 	}
 
 	@Override
