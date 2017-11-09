@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.ComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
+import org.repositorio.exceptions.ItemComandaFailException;
 import org.repositorio.exceptions.MesaNotFoundException;
 import org.repositorio.exceptions.MozoNotFoundException;
 import org.servidor.dao.ComandaDAO;
@@ -105,6 +107,20 @@ public class Comanda {
 			return save();
 		}
 		return false;
+	}
+
+	public boolean agregarItems(AgregarItemsComandaDTO dto) {
+		List<ItemComandaDTO> items = dto.getItems();
+		int i = 0;
+		while (i < items.size()) {
+			ItemComandaDTO itemActual = items.get(i);
+			ItemComanda itemNuevo = new ItemComanda(itemActual); // Negocio
+
+			if (!this.platos.add(itemNuevo)) {
+				throw new ItemComandaFailException("agregarItems(AgregarItemsComandaDTO dto)");
+			}
+		}
+		return save();
 	}
 
 	/*

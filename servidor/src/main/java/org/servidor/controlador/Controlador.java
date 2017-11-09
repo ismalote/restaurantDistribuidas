@@ -1,8 +1,10 @@
 package org.servidor.controlador;
 
 import org.repositorio.dtos.AgregarItemComandaDTO;
+import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.exceptions.ComandaNotFoundException;
+import org.repositorio.exceptions.ItemComandaFailException;
 import org.servidor.dao.ComandaDAO;
 import org.servidor.dao.PlatoDAO;
 import org.servidor.negocio.Comanda;
@@ -49,5 +51,16 @@ public class Controlador {
 			throw new ComandaNotFoundException("agregarItemAComanda(AgregarItemComandaDTO item)");
 		}
 		return comanda.agregarItem(item);
+	}
+
+	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO itemsComanda) {
+		Comanda comanda = ComandaDAO.getInstancia().getComanda(itemsComanda.getIdComanda());
+		if (comanda == null) {
+			throw new ComandaNotFoundException("agregarItemsAComanda(AgregarItemsComandaDTO item)");
+		}
+		if (!comanda.agregarItems(itemsComanda)) {
+			throw new ItemComandaFailException("agregarItemsAComanda(AgregarItemsComandaDTO itemsComanda)");
+		}
+		return itemsComanda;
 	}
 }
