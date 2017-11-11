@@ -8,7 +8,7 @@ import org.servidor.Enum.EstadoMesa;
 public class MesaCompuesta extends Mesa {
 
 	private List<Mesa> mesas;
-	
+
 	public MesaCompuesta() {
 		super();
 	}
@@ -27,11 +27,26 @@ public class MesaCompuesta extends Mesa {
 		this.mesas = mesas;
 	}
 
-
 	@Override
 	public void cerrarMesa() {
 		for (Mesa mesa : this.mesas) {
 			mesa.cerrarMesa();
+		}
+	}
+
+	@Override
+	public int getNumeroMesa() {
+		int mayor = 0;
+		for (Mesa mesa : mesas) {
+			int numeroMesa = mesa.getNumeroMesa();
+			if (numeroMesa > mayor) {
+				mayor = numeroMesa;
+			}
+		}
+		if (mayor > 0) {
+			return mayor;
+		} else {
+			throw new RuntimeException();
 		}
 	}
 

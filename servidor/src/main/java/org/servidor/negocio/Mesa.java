@@ -52,6 +52,8 @@ public abstract class Mesa {
 	}
 
 	public abstract void cerrarMesa();
+	
+	public abstract int getNumeroMesa();
 
 	public Integer getIdMesa() {
 		return idMesa;

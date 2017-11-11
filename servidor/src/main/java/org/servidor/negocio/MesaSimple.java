@@ -8,6 +8,8 @@ import org.servidor.entities.MesaEntity;
 
 public class MesaSimple extends Mesa {
 
+	private int numeroMesa;
+	
 	public MesaSimple() {
 		super();
 	}
@@ -29,6 +31,11 @@ public class MesaSimple extends Mesa {
 	public void cerrarMesa() {
 		this.estadoMesa = EstadoMesa.LIBRE;
 		this.save();
+	}
+
+	@Override
+	public int getNumeroMesa() {
+		return this.numeroMesa;
 	}
 
 }
