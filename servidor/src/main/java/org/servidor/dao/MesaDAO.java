@@ -41,8 +41,8 @@ public class MesaDAO {
 	private Mesa toNegocio(MesaEntity entity) {
 		Mesa aux= new Mesa();
 		aux.setIdMesa(entity.getIdMesa());
-		aux.setEstadoMesa(new EstadoMesa(entity.getEstadoMesa()));
-		aux.setReserva(new Reserva(entity.getReserva()));
+//		aux.setEstadoMesa(new EstadoMesa(entity.getEstadoMesa()));
+//		aux.setReserva(new Reserva(entity.getReserva()));
 		aux.setCantidadSillas(entity.getCantidadSillas());
 		aux.setHoraOcupacion(entity.getHoraOcupacion());
 		aux.setHoraLiberacion(entity.getHoraLiberacion());

@@ -27,8 +27,8 @@ public class Mesa {
 
 	public Mesa(MesaEntity entity) {
 		this.idMesa= entity.getIdMesa();
-		this.estadoMesa = new EstadoMesa(entity.getEstadoMesa());
-		this.reserva= new Reserva (entity.getReserva());
+		this.estadoMesa =null;
+		this.reserva= null;
 		this.cantidadSillas= entity.getCantidadSillas();
 		this.horaOcupacion=entity.getHoraOcupacion();
 		this.horaLiberacion= entity.getHoraLiberacion();

@@ -21,13 +21,53 @@ public class ComandaEntity {
 	private List<ItemComandaEntity> platos;
 
 	@ManyToOne
-	@JoinColumn(name="idMozo")
+	@JoinColumn(name = "idMozo")
 	private MozoEntity mozo;
+
+	public List<ItemComandaEntity> getPlatos() {
+		return platos;
+	}
+
+	public void setPlatos(List<ItemComandaEntity> platos) {
+		this.platos = platos;
+	}
+
+	public MozoEntity getMozo() {
+		return mozo;
+	}
+
+	public void setMozo(MozoEntity mozo) {
+		this.mozo = mozo;
+	}
+
+	public LocalEntity getLocalRestaurante() {
+		return localRestaurante;
+	}
+
+	public void setLocalRestaurante(LocalEntity localRestaurante) {
+		this.localRestaurante = localRestaurante;
+	}
+
+	public RestaurantEntity getRestauranteComandas() {
+		return restauranteComandas;
+	}
+
+	public void setRestauranteComandas(RestaurantEntity restauranteComandas) {
+		this.restauranteComandas = restauranteComandas;
+	}
+
+	public FacturaEntity getFact() {
+		return fact;
+	}
+
+	public void setFact(FacturaEntity fact) {
+		this.fact = fact;
+	}
 
 	private Boolean cerrada;
 
 	@ManyToOne
-	@JoinColumn(name="idMesa")
+	@JoinColumn(name = "idMesa")
 	private MesaEntity mesa;
 
 	// @OneToOne
@@ -37,7 +77,7 @@ public class ComandaEntity {
 
 	@ManyToOne
 	private LocalEntity localRestaurante;
-	
+
 	@ManyToOne
 	private RestaurantEntity restauranteComandas;
 
@@ -67,21 +107,21 @@ public class ComandaEntity {
 		this.idComanda = idComanda;
 	}
 
-//	public List<ItemComandaEntity> getPlatos() {
-//		return platos;
-//	}
+	// public List<ItemComandaEntity> getPlatos() {
+	// return platos;
+	// }
 
-//	public void setPlatos(List<ItemComandaEntity> platos) {
-//		this.platos = platos;
-//	}
+	// public void setPlatos(List<ItemComandaEntity> platos) {
+	// this.platos = platos;
+	// }
 
-//	public MozoEntity getMozo() {
-//		return mozo;
-//	}
+	// public MozoEntity getMozo() {
+	// return mozo;
+	// }
 
-//	public void setMozo(MozoEntity mozo) {
-//		this.mozo = mozo;
-//	}
+	// public void setMozo(MozoEntity mozo) {
+	// this.mozo = mozo;
+	// }
 
 	public Boolean getCerrada() {
 		return cerrada;
@@ -106,6 +146,5 @@ public class ComandaEntity {
 	public void setEstadoComanda(Integer estadoComanda) {
 		this.estadoComanda = estadoComanda;
 	}
-
 
 }

@@ -56,9 +56,9 @@ public class Comanda {
 		// this.platos.add(new Plato(plato));
 		// }
 		this.estadoComanda = (entity.getEstadoComanda());
-		this.mozo = new Mozo(entity.getMozo());
+//		this.mozo = new Mozo(entity.getMozo());
 		this.mesa = new Mesa(entity.getMesa());
-		this.fact = new Factura(entity.getFact());
+//		this.fact = new Factura(entity.getFact());
 	}
 
 	public Comanda(ComandaDTO dto) {

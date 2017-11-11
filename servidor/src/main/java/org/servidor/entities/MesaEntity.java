@@ -22,6 +22,22 @@ public class MesaEntity {
 
 	@ManyToOne
 	private SectorEntity sector;
+	public Integer getEstadoMesa() {
+		return estadoMesa;
+	}
+
+	public void setEstadoMesa(Integer estadoMesa) {
+		this.estadoMesa = estadoMesa;
+	}
+
+	public SectorEntity getSector() {
+		return sector;
+	}
+
+	public void setSector(SectorEntity sector) {
+		this.sector = sector;
+	}
+
 	private Integer cantidadSillas;
 	private Date horaOcupacion;
 	private Date horaLiberacion;
