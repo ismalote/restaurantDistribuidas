@@ -1,55 +1,43 @@
 package org.servidor.entities;
 
+import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
 
 @Entity
-@Table(name="productoComestible")
-public abstract class ProductoComestibleEntity {
+public abstract class ProductoComestibleEntity extends InsumoEntity {
 
-	@Id
-	@Column(name = "idProducto")
-	protected Integer idProducto;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	@OneToOne
-	@JoinColumn(name = "idAreaProdu")
+	@ManyToOne
 	protected AreaProduccionEntity AreaProdu;
 
 	protected Integer cantidadPedido;
 	protected String descripcion;
 	protected Integer stock;
 	protected Integer puntoPedido;
-	protected Float precio;
 
 	@ManyToMany
 	protected List<PlatoEntity> platos;
 
-	public ProductoComestibleEntity(Integer idProducto, AreaProduccionEntity areaProdu, Integer cantidadPedido,
-			String descripcion, Integer stock, Integer puntoPedido, Float precio, List<PlatoEntity> platos) {
-		super();
-		this.idProducto = idProducto;
-		AreaProdu = areaProdu;
-		this.cantidadPedido = cantidadPedido;
-		this.descripcion = descripcion;
-		this.stock = stock;
-		this.puntoPedido = puntoPedido;
-		this.precio = precio;
-		this.platos = platos;
+	@ManyToOne
+	private SemiElaboradoEntity semielaborado;
+
+	public ProductoComestibleEntity() {
+		// TODO Auto-generated constructor stub
 	}
 
-	public Integer getIdProducto() {
-		return idProducto;
-	}
-
-	public void setIdProducto(Integer idProducto) {
-		this.idProducto = idProducto;
+	public ProductoComestibleEntity(Integer idInsumo, Float precio, Date fechaCreacion, Date fechaCaducidad,
+			String descripcion, String unidad) {
+		super(idInsumo, precio, fechaCreacion, fechaCaducidad, descripcion, unidad);
+		// TODO Auto-generated constructor stub
 	}
 
 	public AreaProduccionEntity getAreaProdu() {
@@ -92,14 +80,6 @@ public abstract class ProductoComestibleEntity {
 		this.puntoPedido = puntoPedido;
 	}
 
-	public Float getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(Float precio) {
-		this.precio = precio;
-	}
-
 	public List<PlatoEntity> getPlatos() {
 		return platos;
 	}
@@ -108,6 +88,12 @@ public abstract class ProductoComestibleEntity {
 		this.platos = platos;
 	}
 
+	public SemiElaboradoEntity getSemielaborado() {
+		return semielaborado;
+	}
 
+	public void setSemielaborado(SemiElaboradoEntity semielaborado) {
+		this.semielaborado = semielaborado;
+	}
 
 }

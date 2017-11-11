@@ -7,7 +7,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="factura")
+@Table(name = "factura")
 public class FacturaEntity {
 
 	@Id
@@ -24,6 +24,10 @@ public class FacturaEntity {
 		this.cliente = cliente;
 		this.montoTotal = montoTotal;
 		this.comanda = comanda;
+	}
+
+	public FacturaEntity() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getIdFactura() {

@@ -19,7 +19,7 @@ public class EstadoMesaEntity {
 		super();
 		this.ocupada = ocupada;
 		this.idEstadoMesa = idEstadoMesa;
-		this.mesa = mesa;
+//		this.mesa = mesa;
 	}
 
 	public Boolean getOcupada() {

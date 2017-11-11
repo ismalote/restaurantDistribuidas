@@ -4,28 +4,42 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="mesa")
+@Table(name = "mesa")
 public class MesaEntity {
-	
+
 	@Id
 	private Integer idMesa;
-	@OneToOne
-	@JoinColumn(name = "idEstadoMesa")
-	private EstadoMesaEntity estadoMesa;
-//	private Integer estadoMesa;
-	
-	@OneToMany(mappedBy = "mesa")
-	private ReservaEntity reserva;
 
+	private Integer estadoMesa;
+	// private Integer estadoMesa;
+
+	// @OneToMany(mappedBy = "mesa")
+	// private ReservaEntity reserva;
+
+	@ManyToOne
+	private SectorEntity sector;
 	private Integer cantidadSillas;
 	private Date horaOcupacion;
 	private Date horaLiberacion;
+
+	public MesaEntity() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public MesaEntity(Integer idMesa, Integer estadoMesa, SectorEntity sector, Integer cantidadSillas,
+			Date horaOcupacion, Date horaLiberacion) {
+		super();
+		this.idMesa = idMesa;
+		this.estadoMesa = estadoMesa;
+		this.sector = sector;
+		this.cantidadSillas = cantidadSillas;
+		this.horaOcupacion = horaOcupacion;
+		this.horaLiberacion = horaLiberacion;
+	}
 
 	public Integer getIdMesa() {
 		return idMesa;
@@ -35,21 +49,13 @@ public class MesaEntity {
 		this.idMesa = idMesa;
 	}
 
-	public EstadoMesaEntity getEstadoMesa() {
-		return estadoMesa;
-	}
+	// public ReservaEntity getReserva() {
+	// return reserva;
+	// }
 
-	public void setEstadoMesa(EstadoMesaEntity estadoMesa) {
-		this.estadoMesa = estadoMesa;
-	}
-
-	public ReservaEntity getReserva() {
-		return reserva;
-	}
-
-	public void setReserva(ReservaEntity reserva) {
-		this.reserva = reserva;
-	}
+	// public void setReserva(ReservaEntity reserva) {
+	// this.reserva = reserva;
+	// }
 
 	public Integer getCantidadSillas() {
 		return cantidadSillas;

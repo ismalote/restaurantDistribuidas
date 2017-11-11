@@ -14,7 +14,6 @@ import org.servidor.entities.ElaboradoEntity;
 import org.servidor.entities.EncargadoAreaEntity;
 import org.servidor.entities.EncargadoCajaEntity;
 import org.servidor.entities.EncargadoEntity;
-import org.servidor.entities.EstadoMesaEntity;
 import org.servidor.entities.FacturaEntity;
 import org.servidor.entities.InsumoEntity;
 import org.servidor.entities.ItemComandaEntity;
@@ -43,46 +42,65 @@ public class HibernateUtil {
 	static {
 		try {
 			Configuration config = new Configuration();
-			config.addAnnotatedClass(AdministracionEntity.class);
+			
 			config.addAnnotatedClass(AreaEntity.class);
+			config.addAnnotatedClass(InsumoEntity.class);
+//			config.addAnnotatedClass(EstadoMesaEntity.class);
+			config.addAnnotatedClass(ItemStockEntity.class);			
+			config.addAnnotatedClass(StockEntity.class);
 			config.addAnnotatedClass(AreaProduccionEntity.class);
+			config.addAnnotatedClass(ReservaEntity.class);
+			
+			
+			config.addAnnotatedClass(MozoEntity.class);
+			config.addAnnotatedClass(MesaEntity.class);
+			
+			config.addAnnotatedClass(EncargadoEntity.class);
+			config.addAnnotatedClass(EncargadoAreaEntity.class);
+			config.addAnnotatedClass(EncargadoCajaEntity.class);
+			
 			config.addAnnotatedClass(CajaEntity.class);
-			config.addAnnotatedClass(CartaEntity.class);
+
+			
+			config.addAnnotatedClass(ItemComandaEntity.class);			
 			config.addAnnotatedClass(ComandaEntity.class);
+			
 			config.addAnnotatedClass(DepositoCentralEntity.class);
+			config.addAnnotatedClass(LimpiezaEntity.class);
+			config.addAnnotatedClass(MateriaPrimaEntity.class);
+			config.addAnnotatedClass(SectorEntity.class);			
+			config.addAnnotatedClass(SalonEntity.class);
+			
+			config.addAnnotatedClass(ProductoComestibleEntity.class);
+			
+			config.addAnnotatedClass(SemiElaboradoEntity.class);			
+//			config.addAnnotatedClass(ElaboradoEntity.class);
+
+			config.addAnnotatedClass(PlatoEntity.class);
+			config.addAnnotatedClass(CartaEntity.class);	
+
+
+			config.addAnnotatedClass(ItemListadoEntity.class);
+			config.addAnnotatedClass(ItemPlandeProduccionEntity.class);
+			
+			config.addAnnotatedClass(PlandeProduccionEntity.class);
+			config.addAnnotatedClass(AdministracionEntity.class);
 			
 
 			config.addAnnotatedClass(DepositoEntity.class);
-			config.addAnnotatedClass(ElaboradoEntity.class);
-			config.addAnnotatedClass(EncargadoAreaEntity.class);
-			config.addAnnotatedClass(EncargadoCajaEntity.class);
-			config.addAnnotatedClass(EncargadoEntity.class);
-			config.addAnnotatedClass(EstadoMesaEntity.class);
 			config.addAnnotatedClass(FacturaEntity.class);
 
-	
-			config.addAnnotatedClass(InsumoEntity.class);
-			config.addAnnotatedClass(ItemComandaEntity.class);
-			config.addAnnotatedClass(ItemListadoEntity.class);
-			config.addAnnotatedClass(ItemPlandeProduccionEntity.class);
-			config.addAnnotatedClass(ItemStockEntity.class);
-			config.addAnnotatedClass(LimpiezaEntity.class);
+
 			config.addAnnotatedClass(ListadoComprasEntity.class);
+			
 			config.addAnnotatedClass(LocalEntity.class);
-			config.addAnnotatedClass(MateriaPrimaEntity.class);
-			config.addAnnotatedClass(MesaEntity.class);
-			config.addAnnotatedClass(MozoEntity.class);
-			config.addAnnotatedClass(PlandeProduccionEntity.class);
-			config.addAnnotatedClass(PlatoEntity.class);
-			config.addAnnotatedClass(ProductoComestibleEntity.class);
+
 
 			
-			config.addAnnotatedClass(ReservaEntity.class);
-			config.addAnnotatedClass(SalonEntity.class);
-			config.addAnnotatedClass(SectorEntity.class);
+
 			config.addAnnotatedClass(RestaurantEntity.class);
-			config.addAnnotatedClass(SemiElaboradoEntity.class);
-			config.addAnnotatedClass(StockEntity.class);
+
+
 
 			
 			sessionFactory = config.buildSessionFactory();

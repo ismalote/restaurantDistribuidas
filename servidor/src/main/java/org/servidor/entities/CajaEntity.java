@@ -2,14 +2,13 @@ package org.servidor.entities;
 
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="caja")
+@DiscriminatorValue("caja")
 public class CajaEntity extends AreaEntity {
 
 	// la herencia debe ser de la clase AreaProduccion o Area ?
@@ -18,20 +17,15 @@ public class CajaEntity extends AreaEntity {
 	@JoinColumn(name = "idEncargadoArea")
 	private EncargadoAreaEntity encargadoCaja;
 
-	@OneToMany(mappedBy = "caja")
-	private List<ComandaEntity> comandas;
+	public CajaEntity(Integer idArea, LocalEntity localRestaurante) {
+		super(idArea, localRestaurante);
+		// TODO Auto-generated constructor stub
+	}
 
 	public CajaEntity() {
-		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public CajaEntity(Integer id, EncargadoAreaEntity encargado, List<ComandaEntity> comandas) {
-		super(id);
-		this.encargadoCaja = encargado;
-		this.comandas = comandas;
-
-		// TODO Auto-generated constructor stub
-	}
+	// @OneToMany(mappedBy = "caja")
+	// private List<ComandaEntity> comandas;
 
 }

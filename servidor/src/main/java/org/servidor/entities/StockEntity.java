@@ -9,22 +9,29 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="stock")
+@Table(name = "stock")
 public class StockEntity {
 
 	@Id
 	private Integer idStock;
-	@OneToMany(mappedBy = "stock")
-	private List<ItemStockEntity> itemsStock;
-//	@Id
-//	@Column(name = "IdInsumo")
-//	private Integer idInsumo;
 
-	public StockEntity(Integer idStock, List<ItemStockEntity> itemsStock /*, Integer idInsumo*/) {
+	 @OneToMany(mappedBy = "stock")
+	 private List<ItemStockEntity> itemsStock;
+
+	// @Id
+	// @Column(name = "IdInsumo")
+	// private Integer idInsumo;
+
+	public StockEntity(Integer idStock,
+			List<ItemStockEntity> itemsStock /* , Integer idInsumo */) {
 		super();
 		this.idStock = idStock;
-		this.itemsStock = itemsStock;
-	//	this.idInsumo = idInsumo;
+		// this.itemsStock = itemsStock;
+		// this.idInsumo = idInsumo;
+	}
+
+	public StockEntity() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getIdStock() {
@@ -35,21 +42,21 @@ public class StockEntity {
 		this.idStock = idStock;
 	}
 
-	public List<ItemStockEntity> getItemsStock() {
-		return itemsStock;
-	}
+	// public List<ItemStockEntity> getItemsStock() {
+	// return itemsStock;
+	// }
 
-	public void setItemsStock(List<ItemStockEntity> itemsStock) {
-		this.itemsStock = itemsStock;
-	}
+	// public void setItemsStock(List<ItemStockEntity> itemsStock) {
+	// this.itemsStock = itemsStock;
+	// }
 
-//	public Integer getIdInsumo() {
-//		return idInsumo;
-//	}
+	// public Integer getIdInsumo() {
+	// return idInsumo;
+	// }
 
-//	public void setIdInsumo(Integer idInsumo) {
-//		this.idInsumo = idInsumo;
-//	}
+	// public void setIdInsumo(Integer idInsumo) {
+	// this.idInsumo = idInsumo;
+	// }
 
 	// TODO faltan metodos
 

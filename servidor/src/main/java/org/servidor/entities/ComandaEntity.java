@@ -20,12 +20,14 @@ public class ComandaEntity {
 	@OneToMany(mappedBy = "comanda")
 	private List<ItemComandaEntity> platos;
 
-	@OneToOne(mappedBy = "comanda")
+	@ManyToOne
+	@JoinColumn(name="idMozo")
 	private MozoEntity mozo;
 
 	private Boolean cerrada;
 
-	@OneToOne(mappedBy = "comanda")
+	@ManyToOne
+	@JoinColumn(name="idMesa")
 	private MesaEntity mesa;
 
 	// @OneToOne
@@ -34,8 +36,10 @@ public class ComandaEntity {
 	private Integer estadoComanda;
 
 	@ManyToOne
-	@JoinColumn(name = "idLocal")
-	private LocalEntity local;
+	private LocalEntity localRestaurante;
+	
+	@ManyToOne
+	private RestaurantEntity restauranteComandas;
 
 	@OneToOne(mappedBy = "comanda")
 	private FacturaEntity fact;
@@ -63,21 +67,21 @@ public class ComandaEntity {
 		this.idComanda = idComanda;
 	}
 
-	public List<ItemComandaEntity> getPlatos() {
-		return platos;
-	}
+//	public List<ItemComandaEntity> getPlatos() {
+//		return platos;
+//	}
 
-	public void setPlatos(List<ItemComandaEntity> platos) {
-		this.platos = platos;
-	}
+//	public void setPlatos(List<ItemComandaEntity> platos) {
+//		this.platos = platos;
+//	}
 
-	public MozoEntity getMozo() {
-		return mozo;
-	}
+//	public MozoEntity getMozo() {
+//		return mozo;
+//	}
 
-	public void setMozo(MozoEntity mozo) {
-		this.mozo = mozo;
-	}
+//	public void setMozo(MozoEntity mozo) {
+//		this.mozo = mozo;
+//	}
 
 	public Boolean getCerrada() {
 		return cerrada;
@@ -103,12 +107,5 @@ public class ComandaEntity {
 		this.estadoComanda = estadoComanda;
 	}
 
-	public FacturaEntity getFact() {
-		return fact;
-	}
-
-	public void setFact(FacturaEntity fact) {
-		this.fact = fact;
-	}
 
 }
