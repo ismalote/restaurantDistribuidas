@@ -16,7 +16,7 @@ public abstract class MesaEntity {
 	@Id
 	private Integer idMesa;
 
-	private Integer estadoMesa;
+	private EstadoMesa estadoMesa;
 	// private Integer estadoMesa;
 
 	// @OneToMany(mappedBy = "mesa")
@@ -24,11 +24,11 @@ public abstract class MesaEntity {
 
 	@ManyToOne
 	private SectorEntity sector;
-	public Integer getEstadoMesa() {
+	public EstadoMesa getEstadoMesa() {
 		return estadoMesa;
 	}
 
-	public void setEstadoMesa(Integer estadoMesa) {
+	public void setEstadoMesa(EstadoMesa estadoMesa) {
 		this.estadoMesa = estadoMesa;
 	}
 
@@ -48,7 +48,7 @@ public abstract class MesaEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MesaEntity(Integer idMesa, Integer estadoMesa, SectorEntity sector, Integer cantidadSillas,
+	public MesaEntity(Integer idMesa, EstadoMesa estadoMesa, SectorEntity sector, Integer cantidadSillas,
 			Date horaOcupacion, Date horaLiberacion) {
 		super();
 		this.idMesa = idMesa;
@@ -98,6 +98,8 @@ public abstract class MesaEntity {
 	public void setHoraLiberacion(Date horaLiberacion) {
 		this.horaLiberacion = horaLiberacion;
 	}
+	
+	public abstract int getNumeroMesa();
 
 	// TODO falta metodo y nose como poner simple y compuesta
 

@@ -45,6 +45,7 @@ public abstract class Mesa {
 		this.cantidadSillas = dto.getCantidadSillas();
 		this.horaOcupacion = dto.getHoraOcupacion();
 		this.horaLiberacion = dto.getHoraLiberacion();
+		
 	}
 
 	public Mesa() {

@@ -2,6 +2,7 @@ package org.repositorio.bussinessDelegate;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.repositorio.dtos.AbrirMesaDTO;
@@ -79,6 +80,26 @@ public class BussinessDelegate implements IAppRemote {
 	public boolean AbrirMesa(List<Integer> nrosMesas) throws RuntimeException, RemoteException {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	public List<Integer> listarMesasLibres(int sector) throws RemoteException {
+		List<Integer> resultado= new ArrayList<>();	
+		AbrirMesaDTO dto = objetoRemoto.mesasLibres(sector);
+		resultado.addAll(dto.getNumerodeMesa());
+		return resultado;
+		
+	}
+
+	@Override
+	public void AbrirMesa(AbrirMesaDTO dto) throws RuntimeException, RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public AbrirMesaDTO mesasLibres(Integer numeroSector) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

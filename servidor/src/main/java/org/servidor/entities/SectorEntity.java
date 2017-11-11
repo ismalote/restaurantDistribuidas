@@ -62,4 +62,29 @@ public class SectorEntity {
 		this.nombre = nombre;
 	}
 
+	public List<MozoEntity> getMozos() {
+		return mozos;
+	}
+
+	public void setMozos(List<MozoEntity> mozos) {
+		this.mozos = mozos;
+	}
+
+	public List<MesaEntity> getMesas() {
+		return mesas;
+	}
+
+	public void setMesas(List<MesaEntity> mesas) {
+		this.mesas = mesas;
+	}
+
+	public SalonEntity getSalon() {
+		return salon;
+	}
+
+	public void setSalon(SalonEntity salon) {
+		this.salon = salon;
+	}
+	
+
 }

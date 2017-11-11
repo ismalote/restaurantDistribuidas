@@ -15,12 +15,14 @@ import org.servidor.Enum.EstadoMesa;
 import org.servidor.dao.ComandaDAO;
 import org.servidor.dao.MesaDAO;
 import org.servidor.dao.PlatoDAO;
+import org.servidor.dao.SectorDAO;
 import org.servidor.negocio.Comanda;
 import org.servidor.negocio.Mesa;
 import org.servidor.negocio.MesaCompuesta;
 import org.servidor.negocio.MesaSimple;
 import org.servidor.negocio.Plato;
 import org.servidor.negocio.Reserva;
+import org.servidor.negocio.Sector;
 
 /**
  * Controlador de Negocio: Recibe Unicamente objetos DTO o bien primitivos.
@@ -134,6 +136,14 @@ public class Controlador {
 		return mesa;
 	}
 	
+	
+	public AbrirMesaDTO mesasLibres(Integer numeroSector){
+		AbrirMesaDTO dto = new AbrirMesaDTO();
+		List<Integer> resultado= SectorDAO.getInstancia().listarMesaLibrePorSector(numeroSector);
+		dto.setNumerodeMesa(resultado);
+		return dto;
+		
+	}
 	
 	
 }
