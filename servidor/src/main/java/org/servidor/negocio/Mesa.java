@@ -4,7 +4,6 @@ import java.util.Date;
 
 import org.repositorio.dtos.MesaDTO;
 import org.servidor.Enum.EstadoMesa;
-import org.servidor.dao.ComandaDAO;
 import org.servidor.dao.MesaDAO;
 import org.servidor.entities.MesaEntity;
 
@@ -15,7 +14,7 @@ public abstract class Mesa {
 	private Integer cantidadSillas;
 	private Date horaOcupacion;
 	private Date horaLiberacion;
-	private EstadoMesa estadoMesa;
+	protected EstadoMesa estadoMesa;
 
 	public Mesa(Integer idMesa, Reserva reserva, Integer cantidadSillas,
 			Date horaOcupacion, Date horaLiberacion, EstadoMesa estadoMesa) {
@@ -51,6 +50,8 @@ public abstract class Mesa {
 	public Mesa() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public abstract void cerrarMesa();
 
 	public Integer getIdMesa() {
 		return idMesa;

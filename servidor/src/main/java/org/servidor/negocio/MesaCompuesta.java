@@ -8,15 +8,15 @@ import org.servidor.Enum.EstadoMesa;
 public class MesaCompuesta extends Mesa {
 
 	private List<Mesa> mesas;
+	
 	public MesaCompuesta() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public MesaCompuesta(Integer idMesa, Reserva reserva, Integer cantidadSillas, Date horaOcupacion,
-			Date horaLiberacion, EstadoMesa estadoMesa) {
+			Date horaLiberacion, EstadoMesa estadoMesa, List<Mesa> mesas) {
 		super(idMesa, reserva, cantidadSillas, horaOcupacion, horaLiberacion, estadoMesa);
-		// TODO Auto-generated constructor stub
+		this.mesas = mesas;
 	}
 
 	public List<Mesa> getMesas() {
@@ -28,5 +28,11 @@ public class MesaCompuesta extends Mesa {
 	}
 
 
-	
+	@Override
+	public void cerrarMesa() {
+		for (Mesa mesa : this.mesas) {
+			mesa.cerrarMesa();
+		}
+	}
+
 }

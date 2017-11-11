@@ -92,7 +92,7 @@ public class Comanda {
 
 	public Comanda(CrearComandaDTO comanda) { // TODO Revisar con otro constructor
 		this.mozo = MozoDAO.getInstancia().obtenerMozo(1);
-		this.mesa = MesaDAO.getInstancia().obtenerMesaSimplePorNumero(comanda.getNumeroMesa());
+		this.mesa = MesaDAO.getInstancia().obtenerMesaPorNumero(comanda.getNumeroMesa());
 		this.fecha = new Date();
 	}
 

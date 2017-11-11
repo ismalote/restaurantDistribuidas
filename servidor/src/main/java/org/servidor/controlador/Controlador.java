@@ -9,6 +9,7 @@ import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.MesaCompuestaDTO;
 import org.repositorio.exceptions.ComandaNotFoundException;
 import org.repositorio.exceptions.ItemComandaFailException;
+import org.repositorio.exceptions.MesaNotFoundException;
 import org.servidor.Enum.EstadoMesa;
 import org.servidor.dao.ComandaDAO;
 import org.servidor.dao.MesaDAO;
@@ -83,7 +84,7 @@ public class Controlador {
 		}
 		return comanda;
 	}
-	
+
 	public boolean AbrirMesa(List<Integer> nrosMesas) {
 				
 			if(nrosMesas.size()==1) {
@@ -108,5 +109,16 @@ public class Controlador {
 	
 	
 	
-}
+	public void cerrarMesa(int idMesa) {
+		String method = "cerrarMesa(int idMesa)";
+		Mesa mesa = getMesa(idMesa, method);
+	}
 
+	private Mesa getMesa(int idMesa, String method) {
+		Mesa mesa = MesaDAO.getInstancia().obtenerMesaPorNumero(idMesa);
+		if(mesa == null) {
+			throw new MesaNotFoundException(method);
+		}
+		return mesa;
+	}
+}

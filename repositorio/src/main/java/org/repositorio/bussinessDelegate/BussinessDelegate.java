@@ -55,9 +55,13 @@ public class BussinessDelegate implements IAppRemote {
 	}
 
 	@Override
-	public boolean cerrarcomanda(int idComanda) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean cerrarcomanda(int idComanda) throws RemoteException {
+		return this.objetoRemoto.cerrarcomanda(idComanda);
+	}
+
+	@Override
+	public void cerrarMesa(int idMesa) throws RemoteException {
+		this.objetoRemoto.cerrarMesa(idMesa);
 	}
 
 }
