@@ -1,8 +1,10 @@
 package org.servidor.controlador;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
@@ -19,6 +21,7 @@ import org.servidor.negocio.Mesa;
 import org.servidor.negocio.MesaCompuesta;
 import org.servidor.negocio.MesaSimple;
 import org.servidor.negocio.Plato;
+import org.servidor.negocio.Reserva;
 
 /**
  * Controlador de Negocio: Recibe Unicamente objetos DTO o bien primitivos.
@@ -85,25 +88,34 @@ public class Controlador {
 		return comanda;
 	}
 
-	public boolean AbrirMesa(List<Integer> nrosMesas) {
+	public void AbrirMesa(AbrirMesaDTO dto) {
 				
+			List<Integer> nrosMesas= new ArrayList<>();
+			nrosMesas.addAll(dto.getNumerodeMesa());
 			if(nrosMesas.size()==1) {
 				MesaSimple m=   MesaDAO.getInstancia().obtenerMesaSimplePorNumero(nrosMesas.get(0));
 				m.setEstadoMesa(EstadoMesa.OCUPADA);
 				m.save();
 			}
 			else {
-				List<MesaSimple> ms = new ArrayList<MesaSimple>();
+				List<Mesa> m = new ArrayList<Mesa>();
 				for (Integer numero : nrosMesas) {
-					ms.add(MesaDAO.getInstancia().obtenerMesaSimplePorNumero(numero));
+					m.add(MesaDAO.getInstancia().obtenerMesaPorNumero(numero));
 					
 				}
 				MesaCompuesta mc = new MesaCompuesta();
-				mc.getMesas();
+				mc.setMesas(m);
+				mc.setCantidadSillas(mc.getCantidadSillas());
+				mc.setEstadoMesa(EstadoMesa.OCUPADA);
+				mc.setHoraLiberacion(null);
+				mc.setHoraOcupacion(new Date());
+				mc.setReserva(new Reserva());
+				mc.save();
+				
 				
 				
 		}
-			return true;
+		
 			
 			}
 	
@@ -121,4 +133,7 @@ public class Controlador {
 		}
 		return mesa;
 	}
+	
+	
+	
 }

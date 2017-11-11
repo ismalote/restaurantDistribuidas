@@ -54,6 +54,7 @@ public abstract class Mesa {
 	public abstract void cerrarMesa();
 	
 	public abstract int getNumeroMesa();
+	
 
 	public Integer getIdMesa() {
 		return idMesa;
@@ -72,9 +73,7 @@ public abstract class Mesa {
 		this.reserva = reserva;
 	}
 
-	public Integer getCantidadSillas() {
-		return cantidadSillas;
-	}
+	public abstract Integer getCantidadSillas();
 
 	public void setCantidadSillas(Integer cantidadSillas) {
 		this.cantidadSillas = cantidadSillas;

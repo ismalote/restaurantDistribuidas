@@ -30,6 +30,10 @@ public class Reserva {
 		this.cantidadPersonas=dto.getCantidadPersonas();
 	}
 
+	public Reserva() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Boolean getEstado() {
 		return estado;
 	}

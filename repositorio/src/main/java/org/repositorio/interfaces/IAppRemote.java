@@ -2,7 +2,9 @@ package org.repositorio.interfaces;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.List;
 
+import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
@@ -20,5 +22,7 @@ public interface IAppRemote extends Remote {
 	boolean cerrarcomanda(int idComanda) throws RemoteException;
 
 	void cerrarMesa(int idMesa) throws RemoteException;
+	
+	public void AbrirMesa(AbrirMesaDTO dto) throws RuntimeException, RemoteException;
 
 }
