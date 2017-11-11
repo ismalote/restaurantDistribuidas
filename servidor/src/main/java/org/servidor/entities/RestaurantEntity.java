@@ -10,30 +10,40 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="restaurante")
+@Table(name = "restaurante")
 public class RestaurantEntity {
 
 	@Id
 	private Integer idRestaurante;
 
+	@OneToOne
+	@JoinColumn(name = "idLocal")
 	private LocalEntity LocalLogueado;
+
 	@OneToMany(mappedBy = "restaurante")
 	private List<LocalEntity> locales;
+
 	@OneToOne
 	@JoinColumn(name = "idDeposito")
 	private DepositoCentralEntity depositoCentral;
+
 	@OneToOne
 	@JoinColumn(name = "idAdmin")
 	private AdministracionEntity administracion;
-	@OneToMany(mappedBy = "restaurante")
+
+	@OneToMany(mappedBy = "restauranteLista")
 	private List<ListadoComprasEntity> cosasAComprar;
-	@OneToMany(mappedBy = "restaurante")
+
+	@OneToMany(mappedBy = "restaurantePlatos")
 	private List<PlatoEntity> platos;
-	@OneToMany(mappedBy = "restaurante")
+
+	@OneToMany(mappedBy = "restauranteComandas")
 	private List<ComandaEntity> comandas;
-	@OneToMany(mappedBy = "restaurante")
+
+	@OneToMany(mappedBy = "restaurantePlanes")
 	private List<PlandeProduccionEntity> planesDeProduccion;
-	@OneToMany(mappedBy = "restaurante")
+
+	@OneToMany(mappedBy = "restauranteInsumos")
 	private List<InsumoEntity> insumos;
 
 	public RestaurantEntity(Integer idRestaurante, LocalEntity localLogueado, List<LocalEntity> locales,
@@ -51,6 +61,10 @@ public class RestaurantEntity {
 		this.comandas = comandas;
 		this.planesDeProduccion = planesDeProduccion;
 		this.insumos = insumos;
+	}
+
+	public RestaurantEntity() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public LocalEntity getLocalLogueado() {

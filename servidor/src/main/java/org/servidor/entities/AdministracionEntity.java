@@ -25,6 +25,10 @@ public class AdministracionEntity {
 		this.planesProd = planesProd;
 	}
 
+	public AdministracionEntity() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Integer getIdAdmin() {
 		return idAdmin;
 	}

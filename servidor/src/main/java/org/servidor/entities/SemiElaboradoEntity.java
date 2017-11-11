@@ -1,30 +1,26 @@
 package org.servidor.entities;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@Table(name="semielaborado")
+@PrimaryKeyJoinColumn(name="idInsumo")
 public class SemiElaboradoEntity extends ProductoComestibleEntity {
 
 	@OneToMany(mappedBy = "semielaborado")
 	private List<ProductoComestibleEntity> materiales;
 
-	public SemiElaboradoEntity(Integer idProducto, AreaProduccionEntity areaProdu, Integer cantidadPedido,
-			String descripcion, Integer stock, Integer puntoPedido, Float precio, List<PlatoEntity> platos) {
-		super(idProducto, areaProdu, cantidadPedido, descripcion, stock, puntoPedido, precio, platos);
+	public SemiElaboradoEntity(Integer idInsumo, Float precio, Date fechaCreacion, Date fechaCaducidad,
+			String descripcion, String unidad) {
+		super(idInsumo, precio, fechaCreacion, fechaCaducidad, descripcion, unidad);
 		// TODO Auto-generated constructor stub
 	}
 
-	public List<ProductoComestibleEntity> getMateriales() {
-		return materiales;
+	public SemiElaboradoEntity() {
+		// TODO Auto-generated constructor stub
 	}
-
-	public void setMateriales(List<ProductoComestibleEntity> materiales) {
-		this.materiales = materiales;
-	}
-
 }

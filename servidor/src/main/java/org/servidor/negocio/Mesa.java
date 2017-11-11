@@ -28,12 +28,14 @@ public abstract class Mesa {
 	}
 
 	public Mesa(MesaEntity entity) {
-		this.idMesa = entity.getIdMesa();
+		this.idMesa= entity.getIdMesa();
 
 		this.reserva = new Reserva(entity.getReserva());
-		this.cantidadSillas = entity.getCantidadSillas();
-		this.horaOcupacion = entity.getHoraOcupacion();
-		this.horaLiberacion = entity.getHoraLiberacion();
+		this.cantidadSillas= entity.getCantidadSillas();
+		this.horaOcupacion=entity.getHoraOcupacion();
+		this.horaLiberacion= entity.getHoraLiberacion();
+		
+		
 	}
 
 	public Mesa(MesaDTO dto) {

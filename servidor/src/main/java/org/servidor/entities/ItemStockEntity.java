@@ -16,20 +16,24 @@ public class ItemStockEntity {
 	@OneToOne
 	@JoinColumn(name = "idInsumo")
 	private InsumoEntity producto;
-	@ManyToOne
-	@JoinColumn(name = "idStock")
-	private StockEntity stock;
+	 @ManyToOne
+	// @JoinColumn(name = "idStock")
+	 private StockEntity stock;
 	private Integer CantidadEnStock;
 	private Integer estimadoStock;
 
-	public ItemStockEntity(Integer idItemStock, InsumoEntity producto, StockEntity stock, Integer cantidadEnStock,
-			Integer estimadoStock) {
+	public ItemStockEntity(Integer idItemStock,
+			InsumoEntity producto /* , StockEntity stock */, Integer cantidadEnStock, Integer estimadoStock) {
 		super();
 		this.idItemStock = idItemStock;
 		this.producto = producto;
-		this.stock = stock;
+		// this.stock = stock;
 		CantidadEnStock = cantidadEnStock;
 		this.estimadoStock = estimadoStock;
+	}
+
+	public ItemStockEntity() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getIdItemStock() {
@@ -48,13 +52,13 @@ public class ItemStockEntity {
 		this.producto = producto;
 	}
 
-	public StockEntity getStock() {
-		return stock;
-	}
+	// public StockEntity getStock() {
+	// return stock;
+	// }
 
-	public void setStock(StockEntity stock) {
-		this.stock = stock;
-	}
+	// public void setStock(StockEntity stock) {
+	// this.stock = stock;
+	// }
 
 	public Integer getCantidadEnStock() {
 		return CantidadEnStock;

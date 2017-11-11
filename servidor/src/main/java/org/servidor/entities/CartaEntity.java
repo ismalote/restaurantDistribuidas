@@ -5,27 +5,30 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="carta")
+@Table(name = "carta")
 public class CartaEntity {
 
 	@Id
 	@Column(name = "idCarta")
 	private Integer idCarta;
 
-	@OneToOne(mappedBy="comanda")
-	private LocalEntity local;
-	@ManyToMany
+	// @OneToOne(mappedBy="comanda")
+	// private LocalEntity local;
+	@OneToMany(mappedBy = "carta")
 	private List<PlatoEntity> platos;
 
 	public CartaEntity(Integer idCarta, List<PlatoEntity> platos) {
 		super();
 		this.idCarta = idCarta;
-		this.platos = platos;
+		// this.platos = platos;
+	}
+
+	public CartaEntity() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getIdCarta() {
@@ -36,14 +39,12 @@ public class CartaEntity {
 		this.idCarta = idCarta;
 	}
 
-	public List<PlatoEntity> getPlatos() {
-		return platos;
-	}
+	// public List<PlatoEntity> getPlatos() {
+	// return platos;
+	// }
 
-	public void setPlatos(List<PlatoEntity> platos) {
-		this.platos = platos;
-	}
-
-
+	// public void setPlatos(List<PlatoEntity> platos) {
+	// this.platos = platos;
+	// }
 
 }

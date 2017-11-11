@@ -24,6 +24,9 @@ public class DepositoCentralEntity {
 		this.stockDeposito = stockDeposito;
 	}
 
+	public DepositoCentralEntity() {
+		// TODO Auto-generated constructor stub
+	}
 	public Integer getId() {
 		return idDeposito;
 	}
