@@ -1,13 +1,13 @@
 package org.servidor.negocio;
 
 import java.util.Date;
+import java.util.List;
 
-import org.repositorio.dtos.MesaDTO;
 import org.servidor.Enum.EstadoMesa;
-import org.servidor.entities.MesaEntity;
 
 public class MesaCompuesta extends Mesa {
 
+	private List<Mesa> mesas;
 	public MesaCompuesta() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -19,15 +19,14 @@ public class MesaCompuesta extends Mesa {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MesaCompuesta(MesaDTO dto) {
-		super(dto);
-		// TODO Auto-generated constructor stub
+	public List<Mesa> getMesas() {
+		return mesas;
 	}
 
-	public MesaCompuesta(MesaEntity entity) {
-		super(entity);
-		// TODO Auto-generated constructor stub
+	public void setMesas(List<Mesa> mesas) {
+		this.mesas = mesas;
 	}
+
 
 	
 }

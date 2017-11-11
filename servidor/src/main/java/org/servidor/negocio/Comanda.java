@@ -57,7 +57,7 @@ public class Comanda {
 		// }
 		this.estadoComanda = (entity.getEstadoComanda());
 		this.mozo = new Mozo(entity.getMozo());
-		this.mesa = new Mesa(entity.getMesa());
+		this.mesa = new MesaSimple(entity.getMesa());
 		this.fact = new Factura(entity.getFact());
 	}
 
@@ -70,7 +70,7 @@ public class Comanda {
 		if (dto.getMesa() == null) {
 			throw new MesaNotFoundException("new Comanda(ComandaEntity entity)");
 		}
-		this.mesa = new Mesa(dto.getMesa());
+		this.mesa = new MesaSimple(dto.getMesa());
 
 		this.platos = new ArrayList<ItemComanda>();
 		for (ItemComandaDTO item : dto.getPlatos()) {
@@ -92,7 +92,7 @@ public class Comanda {
 
 	public Comanda(CrearComandaDTO comanda) { // TODO Revisar con otro constructor
 		this.mozo = MozoDAO.getInstancia().obtenerMozo(1);
-		this.mesa = MesaDAO.getInstancia().obtenerMesaPorNumero(comanda.getNumeroMesa());
+		this.mesa = MesaDAO.getInstancia().obtenerMesaSimplePorNumero(comanda.getNumeroMesa());
 		this.fecha = new Date();
 	}
 

@@ -4,11 +4,13 @@ package org.servidor.dao;
 
 import org.hibernate.Session;
 import org.repositorio.exceptions.SaveFailedException;
-import org.servidor.entities.ComandaEntity;
+
 import org.servidor.entities.MesaEntity;
+import org.servidor.entities.MesaSimpleEntity;
 import org.servidor.entities.ReservaEntity;
-import org.servidor.negocio.Comanda;
+
 import org.servidor.negocio.Mesa;
+import org.servidor.negocio.MesaSimple;
 import org.servidor.negocio.Reserva;
 import org.servidor.util.HibernateUtil;
 
@@ -28,7 +30,19 @@ public class MesaDAO {
 	}
 	
 	
-	public Mesa obtenerMesaPorNumero(int numeroMesa) {
+	public MesaSimple obtenerMesaSimplePorNumero(int numeroMesa) {
+		
+		MesaSimple resultado = null;
+		
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		s.beginTransaction();
+		MesaEntity entity = (MesaEntity) s.createQuery("From MesaSimpleEntity m where idMesa=?").setInteger(0, numeroMesa).uniqueResult();
+		resultado= this.toNegocio(entity);
+		s.getTransaction().commit();
+		s.close();
+		return resultado;
+	}
+public Mesa obtenerMesaPorNumero(int numeroMesa) {
 		
 		Mesa resultado = null;
 		
@@ -41,8 +55,8 @@ public class MesaDAO {
 		return resultado;
 	}
 
-	private Mesa toNegocio(MesaEntity entity) {
-		Mesa aux= new Mesa();
+	private MesaSimple toNegocio(MesaEntity entity) {
+		MesaSimple aux= new MesaSimple();
 		aux.setIdMesa(entity.getIdMesa());
 		aux.setEstadoMesa(entity.getEstadoMesa());
 		aux.setReserva(new Reserva(entity.getReserva()));
@@ -69,8 +83,8 @@ public class MesaDAO {
 		return true;
 	}
 
-	private MesaEntity toEntity(Mesa m) {
-		MesaEntity entity = new MesaEntity();
+	private MesaSimpleEntity toEntity(Mesa m) {
+		MesaEntity entity = new MesaSimpleEntity();
 		entity.setCantidadSillas(m.getCantidadSillas());
 		entity.setEstadoMesa(m.getEstadoMesa());
 		entity.setHoraLiberacion(m.getHoraLiberacion());

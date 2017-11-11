@@ -13,7 +13,7 @@ import org.servidor.Enum.EstadoMesa;
 
 @Entity
 @Table(name="mesa")
-public class MesaEntity {
+public abstract class MesaEntity {
 	
 	@Id
 	private Integer idMesa;
