@@ -16,7 +16,7 @@ public class AdministracionEntity {
 
 	@Id
 	private Integer idAdmin;
-	@OneToMany(mappedBy = "planProduccion")
+	@OneToMany(mappedBy = "administracion")
 	private List<PlandeProduccionEntity> planesProd;
 
 	public AdministracionEntity(Integer idAdmin, List<PlandeProduccionEntity> planesProd) {

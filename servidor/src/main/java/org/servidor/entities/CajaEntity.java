@@ -18,7 +18,7 @@ public class CajaEntity extends AreaEntity {
 	@JoinColumn(name = "idEncargadoArea")
 	private EncargadoAreaEntity encargadoCaja;
 
-	@OneToMany(mappedBy = "comanda")
+	@OneToMany(mappedBy = "caja")
 	private List<ComandaEntity> comandas;
 
 	public CajaEntity() {

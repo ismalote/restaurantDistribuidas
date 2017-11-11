@@ -20,7 +20,7 @@ public class MesaEntity {
 	private EstadoMesaEntity estadoMesa;
 //	private Integer estadoMesa;
 	
-	@OneToMany(mappedBy = "reserva")
+	@OneToMany(mappedBy = "mesa")
 	private ReservaEntity reserva;
 
 	private Integer cantidadSillas;

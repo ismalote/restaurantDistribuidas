@@ -14,7 +14,7 @@ public class PlandeProduccionEntity {
 
 	@Id
 	private Integer idPP;
-	@OneToMany(mappedBy = "itemPlandeProduccion")
+	@OneToMany(mappedBy = "planProduccion")
 	private List<ItemPlandeProduccionEntity> itemPP;
 	private Date fecha;
 	private Date tiempoDeEjecucion;

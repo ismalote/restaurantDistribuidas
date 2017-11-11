@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +17,8 @@ public class CartaEntity {
 	@Column(name = "idCarta")
 	private Integer idCarta;
 
+	@OneToOne(mappedBy="comanda")
+	private LocalEntity local;
 	@ManyToMany
 	private List<PlatoEntity> platos;
 

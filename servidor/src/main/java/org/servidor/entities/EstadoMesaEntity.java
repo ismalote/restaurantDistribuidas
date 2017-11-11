@@ -12,10 +12,10 @@ public class EstadoMesaEntity {
 	private Boolean ocupada;
 	@Id
 	private Integer idEstadoMesa;
-	@OneToOne(mappedBy = "EstadoMesa")
+	@OneToOne(mappedBy = "estadoMesa")
 	private MesaEntity mesa;
 
-	public EstadoMesaEntity(Boolean ocupada, Integer idEstadoMesa, MesaEntity mesa) {
+	public EstadoMesaEntity(Boolean ocupada, Integer idEstadoMesa/*, MesaEntity mesa*/) {
 		super();
 		this.ocupada = ocupada;
 		this.idEstadoMesa = idEstadoMesa;

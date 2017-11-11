@@ -15,7 +15,7 @@ public class SectorEntity {
 	private Integer idSector;
 	@OneToMany(mappedBy="mozo")
 	private List<MozoEntity> mozos;
-	@OneToMany(mappedBy="mesa")
+	@OneToMany(mappedBy="sector")
 	private List<MesaEntity> mesas;
 	private Integer idSalon;
 	private String nombre;

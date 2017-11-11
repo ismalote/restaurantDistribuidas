@@ -12,7 +12,7 @@ public class ListadoComprasEntity {
 	@Id
 	private Integer idListadoCompras;
 	private String AreaSolicitante;
-	@OneToMany(mappedBy = "itemListado")
+	@OneToMany(mappedBy = "listadoCompras")
 	private List<ItemListadoEntity> insumos;
 
 	public ListadoComprasEntity(Integer idListadoCompras, String areaSolicitante, List<ItemListadoEntity> insumos) {

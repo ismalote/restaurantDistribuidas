@@ -14,7 +14,7 @@ public class StockEntity {
 
 	@Id
 	private Integer idStock;
-	@OneToMany(mappedBy = "ItemStock")
+	@OneToMany(mappedBy = "stock")
 	private List<ItemStockEntity> itemsStock;
 //	@Id
 //	@Column(name = "IdInsumo")

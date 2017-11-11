@@ -19,7 +19,7 @@ public class MozoEntity {
 	private String nombre;
 	private String apellido;
 	private Integer antiguedad;
-	@OneToMany(mappedBy = "comanda")
+	@OneToMany(mappedBy = "mozo")
 	private List<ComandaEntity> comandasAbiertas;
 
 	public MozoEntity(Integer idMozo, Float porcentajeComision, String nombre, String apellido, Integer antiguedad,

@@ -15,7 +15,7 @@ public abstract class EncargadoEntity {
 	protected Integer idEncargado;
 	protected String Nombre;
 	protected String Apellido;
-	@OneToOne(mappedBy="AreaProdu")
+	@OneToOne(mappedBy="encargado")
 	protected AreaProduccionEntity areaProdu;
 	
 	public EncargadoEntity(Integer idEncargado, String nombre, String apellido, AreaProduccionEntity areaProdu) {

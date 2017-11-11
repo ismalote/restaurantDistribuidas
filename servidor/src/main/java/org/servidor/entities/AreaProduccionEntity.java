@@ -12,7 +12,7 @@ import javax.persistence.Table;;
 @Table (name="areaProduccion")
 public class AreaProduccionEntity extends AreaEntity {
 
-	@OneToMany(mappedBy = "AreaProdu")
+	@OneToMany(mappedBy = "areaProduccion")
 	protected List<ProductoComestibleEntity> productos;
 
 	protected String TipoArea;
@@ -20,7 +20,7 @@ public class AreaProduccionEntity extends AreaEntity {
 	@JoinColumn(name = "idEncargado")
 	protected EncargadoEntity encargado;
 
-	@OneToMany(mappedBy = "comanda")
+	@OneToMany(mappedBy = "areaProduccion")
 	protected List<ComandaEntity> comandas;
 
 	public AreaProduccionEntity(Integer idAreaProduccion, List<ProductoComestibleEntity> productos, String tipoArea,

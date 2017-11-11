@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class SalonEntity extends AreaEntity {
 
 	private String nombre;
-	@OneToMany(mappedBy = "sector")
+	@OneToMany(mappedBy = "salon")
 	private List<SectorEntity> sectores;
 
 	public SalonEntity() {

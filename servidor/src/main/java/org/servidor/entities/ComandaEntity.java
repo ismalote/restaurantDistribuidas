@@ -17,15 +17,15 @@ public class ComandaEntity {
 	@Id
 	private Integer idComanda;
 
-	@OneToMany(mappedBy = "itemPlato")
+	@OneToMany(mappedBy = "comanda")
 	private List<ItemComandaEntity> platos;
 
-	@OneToOne(mappedBy = "idMozo")
+	@OneToOne(mappedBy = "comanda")
 	private MozoEntity mozo;
 
 	private Boolean comandaLista;
 
-	@OneToOne(mappedBy = "idMesa")
+	@OneToOne(mappedBy = "comanda")
 	private MesaEntity mesa;
 
 	// @OneToOne
@@ -37,7 +37,7 @@ public class ComandaEntity {
 	@JoinColumn(name = "idLocal")
 	private LocalEntity local;
 
-	@OneToOne(mappedBy = "FacturaEntity")
+	@OneToOne(mappedBy = "comanda")
 	private FacturaEntity fact;
 
 	public ComandaEntity(Integer idComanda, List<ItemComandaEntity> platos, MozoEntity mozo, Boolean comandaLista,

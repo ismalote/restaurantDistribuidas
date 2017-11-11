@@ -13,9 +13,9 @@ public class LocalEntity {
 
 	@Id
 	private Integer idLocal;
-	@OneToMany(mappedBy = "encargado")
+	@OneToMany(mappedBy = "localRestaurante")
 	private List<EncargadoEntity> encargadosAreas;
-	@OneToMany(mappedBy = "mozo")
+	@OneToMany(mappedBy = "localRestaurante")
 	private List<MozoEntity> mozos;
 	@OneToOne
 	@JoinColumn(name = "idArea")
@@ -23,12 +23,12 @@ public class LocalEntity {
 	@OneToOne
 	@JoinColumn(name = "idArea")
 	private DepositoEntity deposito;
-	@OneToMany(mappedBy = "area")
+	@OneToMany(mappedBy = "localRestaurante")
 	private List<AreaEntity> areas;
 	@OneToOne
 	@JoinColumn(name = "idCarta")
 	private CartaEntity carta;
-	@OneToMany(mappedBy = "listadoCompras")
+	@OneToMany(mappedBy = "localRestaurante")
 	private List<ListadoComprasEntity> listadosCompras;
 
 	public LocalEntity(Integer idLocal, List<EncargadoEntity> encargadosAreas, List<MozoEntity> mozos,

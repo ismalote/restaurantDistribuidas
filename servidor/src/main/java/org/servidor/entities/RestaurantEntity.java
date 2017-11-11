@@ -17,7 +17,7 @@ public class RestaurantEntity {
 	private Integer idRestaurante;
 
 	private LocalEntity LocalLogueado;
-	@OneToMany(mappedBy = "local")
+	@OneToMany(mappedBy = "restaurante")
 	private List<LocalEntity> locales;
 	@OneToOne
 	@JoinColumn(name = "idDeposito")
@@ -25,15 +25,15 @@ public class RestaurantEntity {
 	@OneToOne
 	@JoinColumn(name = "idAdmin")
 	private AdministracionEntity administracion;
-	@OneToMany(mappedBy = "listadoCompras")
+	@OneToMany(mappedBy = "restaurante")
 	private List<ListadoComprasEntity> cosasAComprar;
-	@OneToMany(mappedBy = "plato")
+	@OneToMany(mappedBy = "restaurante")
 	private List<PlatoEntity> platos;
-	@OneToMany(mappedBy = "comanda")
+	@OneToMany(mappedBy = "restaurante")
 	private List<ComandaEntity> comandas;
-	@OneToMany(mappedBy = "planProduccion")
+	@OneToMany(mappedBy = "restaurante")
 	private List<PlandeProduccionEntity> planesDeProduccion;
-	@OneToMany(mappedBy = "insumo")
+	@OneToMany(mappedBy = "restaurante")
 	private List<InsumoEntity> insumos;
 
 	public RestaurantEntity(Integer idRestaurante, LocalEntity localLogueado, List<LocalEntity> locales,

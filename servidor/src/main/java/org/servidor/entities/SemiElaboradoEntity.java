@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Table(name="semielaborado")
 public class SemiElaboradoEntity extends ProductoComestibleEntity {
 
-	@OneToMany(mappedBy = "department")
+	@OneToMany(mappedBy = "semielaborado")
 	private List<ProductoComestibleEntity> materiales;
 
 	public SemiElaboradoEntity(Integer idProducto, AreaProduccionEntity areaProdu, Integer cantidadPedido,
