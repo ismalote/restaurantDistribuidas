@@ -27,7 +27,7 @@ public class SectorDAO {
 	}
 	
 	
-	public List<Integer> listarMesaLibrePorSector (int sector){
+	public List<Integer> listarMesaLibrePorSector (Integer sector, Integer cantidadComensales){
 		List<Integer> resultado= new ArrayList<>();
 		List<MesaEntity> aux= new ArrayList<>();
 		Session s= HibernateUtil.getSessionFactory().openSession();
@@ -36,12 +36,11 @@ public class SectorDAO {
 		SectorEntity entity= (SectorEntity) q.uniqueResult();
 		aux.addAll(entity.getMesas());
 		for (MesaEntity mesaEntity : aux) {
-			if (mesaEntity.getEstadoMesa()==EstadoMesa.LIBRE)
+			if (mesaEntity.getEstadoMesa()==EstadoMesa.LIBRE && mesaEntity.getCantidadSillas()>=cantidadComensales) {
 			resultado.add(mesaEntity.getNumeroMesa());
 		}
-		
-				return resultado;
-		}
+			}
+		return resultado;
 	
-
+	}
 }

@@ -137,9 +137,9 @@ public class Controlador {
 	}
 	
 	
-	public AbrirMesaDTO mesasLibres(Integer numeroSector){
+	public AbrirMesaDTO mesasLibres(Integer numeroSector,Integer cantidadComensales){
 		AbrirMesaDTO dto = new AbrirMesaDTO();
-		List<Integer> resultado= SectorDAO.getInstancia().listarMesaLibrePorSector(numeroSector);
+		List<Integer> resultado= SectorDAO.getInstancia().listarMesaLibrePorSector(numeroSector,cantidadComensales);
 		dto.setNumerodeMesa(resultado);
 		return dto;
 		

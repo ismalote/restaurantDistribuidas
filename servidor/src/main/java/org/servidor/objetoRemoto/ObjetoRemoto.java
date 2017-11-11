@@ -49,9 +49,9 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		Controlador.getInstancia().AbrirMesa(dto);
 	}
 	
-	public AbrirMesaDTO mesasLibres(Integer numeroSector){
+	public AbrirMesaDTO mesasLibres(Integer numeroSector, Integer cantidadComensales){
 	
-	return Controlador.getInstancia().mesasLibres(numeroSector);
+	return Controlador.getInstancia().mesasLibres(numeroSector,cantidadComensales);
 	}
 
 	@Override
@@ -60,11 +60,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		
 	}
 
-	@Override
-	public boolean AbrirMesa(List<Integer> nrosMesas) throws RuntimeException, RemoteException {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 
 
 }

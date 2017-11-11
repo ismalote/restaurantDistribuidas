@@ -76,15 +76,11 @@ public class BussinessDelegate implements IAppRemote {
 		
 	}
 
-	@Override
-	public boolean AbrirMesa(List<Integer> nrosMesas) throws RuntimeException, RemoteException {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
-	public List<Integer> listarMesasLibres(int sector) throws RemoteException {
+	
+	public List<Integer> listarMesasLibres(Integer sector, Integer cantidadComensales) throws RemoteException {
 		List<Integer> resultado= new ArrayList<>();	
-		AbrirMesaDTO dto = objetoRemoto.mesasLibres(sector);
+		AbrirMesaDTO dto = objetoRemoto.mesasLibres(sector,cantidadComensales);
 		resultado.addAll(dto.getNumerodeMesa());
 		return resultado;
 		
@@ -96,8 +92,13 @@ public class BussinessDelegate implements IAppRemote {
 		
 	}
 
-	@Override
 	public AbrirMesaDTO mesasLibres(Integer numeroSector) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AbrirMesaDTO mesasLibres(Integer numeroSector, Integer cantidadComensales) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

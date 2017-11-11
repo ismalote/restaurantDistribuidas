@@ -30,8 +30,8 @@ public class ControladorCliente {
 		
 	}
 	
-	public List<Integer> listarMesasLibresPorSector(int sector) throws RemoteException, Exception{
+	public List<Integer> listarMesasLibresPorSector(Integer sector, Integer cantidadComensales) throws RemoteException, Exception{
 		
-	return BussinessDelegate.getInstancia().listarMesasLibres(sector);
+	return BussinessDelegate.getInstancia().listarMesasLibres(sector,cantidadComensales);
 	}	
 }
