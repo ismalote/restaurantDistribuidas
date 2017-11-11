@@ -39,4 +39,9 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		return this.controlador.cerrarComanda(idComanda);
 	}
 
+	@Override
+	public void cerrarMesa(int idMesa) throws RemoteException {
+		this.controlador.cerrarMesa(idMesa);
+	}
+
 }

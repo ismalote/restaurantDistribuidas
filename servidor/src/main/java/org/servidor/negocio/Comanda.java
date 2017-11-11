@@ -57,7 +57,7 @@ public class Comanda {
 		// }
 		this.estadoComanda = (entity.getEstadoComanda());
 		this.mozo = new Mozo(entity.getMozo());
-		this.mesa = new Mesa(entity.getMesa());
+//		this.mesa = new Mesa(entity.getMesa());
 		this.fact = new Factura(entity.getFact());
 	}
 
@@ -70,7 +70,7 @@ public class Comanda {
 		if (dto.getMesa() == null) {
 			throw new MesaNotFoundException("new Comanda(ComandaEntity entity)");
 		}
-		this.mesa = new Mesa(dto.getMesa());
+//		this.mesa = new Mesa(dto.getMesa());
 
 		this.platos = new ArrayList<ItemComanda>();
 		for (ItemComandaDTO item : dto.getPlatos()) {

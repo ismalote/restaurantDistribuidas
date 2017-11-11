@@ -19,4 +19,6 @@ public interface IAppRemote extends Remote {
 
 	boolean cerrarcomanda(int idComanda) throws RemoteException;
 
+	void cerrarMesa(int idMesa) throws RemoteException;
+
 }

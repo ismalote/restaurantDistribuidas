@@ -1,6 +1,7 @@
 package org.servidor.negocio;
 
 import java.util.Date;
+import java.util.List;
 
 import org.repositorio.dtos.MesaDTO;
 import org.servidor.Enum.EstadoMesa;
@@ -8,26 +9,31 @@ import org.servidor.entities.MesaEntity;
 
 public class MesaCompuesta extends Mesa {
 
+	private List<Mesa> mesas;
+
 	public MesaCompuesta() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public MesaCompuesta(Integer idMesa, Reserva reserva, Integer cantidadSillas, Date horaOcupacion,
-			Date horaLiberacion, EstadoMesa estadoMesa) {
+			Date horaLiberacion, EstadoMesa estadoMesa, List<Mesa> mesas) {
 		super(idMesa, reserva, cantidadSillas, horaOcupacion, horaLiberacion, estadoMesa);
-		// TODO Auto-generated constructor stub
+		this.mesas = mesas;
 	}
 
 	public MesaCompuesta(MesaDTO dto) {
 		super(dto);
-		// TODO Auto-generated constructor stub
 	}
 
 	public MesaCompuesta(MesaEntity entity) {
 		super(entity);
-		// TODO Auto-generated constructor stub
 	}
 
-	
+	@Override
+	public void cerrarMesa() {
+		for (Mesa mesa : this.mesas) {
+			mesa.cerrarMesa();
+		}
+	}
+
 }
