@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.repositorio.exceptions.SaveFailedException;
 import org.servidor.entities.ComandaEntity;
 import org.servidor.entities.MozoEntity;
 import org.servidor.entities.PlatoEntity;
@@ -13,7 +14,7 @@ import org.servidor.util.HibernateUtil;
 
 public class ComandaDAO {
 
-	public static ComandaDAO instancia;
+	private static ComandaDAO instancia;
 
 	public static ComandaDAO getInstancia() {
 		if (instancia == null) {
@@ -22,24 +23,25 @@ public class ComandaDAO {
 		return instancia;
 	}
 
-	public static void setInstancia(ComandaDAO instancia) {
-		ComandaDAO.instancia = instancia;
-	}
-
-	public void grabarComanda(Comanda comanda) {
+	public boolean save(Comanda comanda) {
 		ComandaEntity entity = this.toEntity(comanda);
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		session.beginTransaction();
-		session.persist(entity);
-		session.flush();
-		session.getTransaction().commit();
-		session.close();
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			session.beginTransaction();
+			session.persist(entity);
+			session.flush();
+			session.getTransaction().commit();
+			session.close();
+		} catch (Exception e) {
+			throw new SaveFailedException(e);
+		}
+		return true;
 	}
 
 	public ComandaEntity toEntity(Comanda c) {
 		ComandaEntity entity = new ComandaEntity();
 		entity.setIdComanda(c.getIdComanda());
-		entity.setComandaLista(c.getComandaLista());
+		entity.setCerrada(c.estaCerrada());
 		entity.setMozo(new MozoEntity(c.getMozo()));
 		// entity.setFact(new FacturaEntity(c.getFact()));
 		// entity.setMesa(new MesaEntity(c.getMesa()));
@@ -50,6 +52,27 @@ public class ComandaDAO {
 		// entity.setPlatos(p); // TODO FIX
 		return entity;
 
+	}
+
+	public boolean existeComanda(int idComanda) {
+		ComandaEntity comandaEntity = getComandaEntity(idComanda);
+		return comandaEntity != null;
+	}
+
+	public Comanda getComanda(int idComanda) {
+		ComandaEntity comandaEntity = getComandaEntity(idComanda);
+		return toNegocio(comandaEntity);
+	}
+
+	private ComandaEntity getComandaEntity(int idComanda) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		ComandaEntity comandaEntity = session.get(ComandaEntity.class, idComanda);
+		session.close();
+		return comandaEntity;
+	}
+
+	private Comanda toNegocio(ComandaEntity ce) {
+		return null;
 	}
 
 }

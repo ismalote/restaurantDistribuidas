@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.ComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
+import org.repositorio.exceptions.ItemComandaFailException;
 import org.repositorio.exceptions.MesaNotFoundException;
 import org.repositorio.exceptions.MozoNotFoundException;
 import org.servidor.dao.ComandaDAO;
@@ -19,20 +21,20 @@ public class Comanda {
 	private Integer idComanda;
 	private List<ItemComanda> platos;
 	private Mozo mozo;
-	private Boolean comandaLista;
+	private boolean cerrada;
 	private Mesa mesa;
 	private Integer estadoComanda;
 	private Factura fact;
 	private Date fecha;
 	private Local Local;
 
-	public Comanda(Integer idComanda, List<ItemComanda> platos, Mozo mozo, Boolean comandaLista, Mesa mesa,
+	public Comanda(Integer idComanda, List<ItemComanda> platos, Mozo mozo, Boolean cerrada, Mesa mesa,
 			int estadoComanda, Factura fact, Date fecha, org.servidor.negocio.Local local) {
 		super();
 		this.idComanda = idComanda;
 		this.platos = platos;
 		this.mozo = mozo;
-		this.comandaLista = comandaLista;
+		this.cerrada = cerrada;
 		this.mesa = mesa;
 		this.estadoComanda = estadoComanda;
 		this.fact = fact;
@@ -88,6 +90,12 @@ public class Comanda {
 		}
 	}
 
+	public Comanda(CrearComandaDTO comanda) { // TODO Revisar con otro constructor
+		this.mozo = MozoDAO.getInstancia().obtenerMozo(1);
+		this.mesa = MesaDAO.getInstancia().obtenerMesaPorNumero(comanda.getNumeroMesa());
+		this.fecha = new Date();
+	}
+
 	/*
 	 * Public Business Methods
 	 * 
@@ -95,14 +103,33 @@ public class Comanda {
 
 	public boolean agregarItem(ItemComandaDTO item) {
 		ItemComanda itemNuevo = new ItemComanda(item);
+		if (this.platos.add(itemNuevo)) {
+			return save();
+		}
 		return false;
 	}
 
-	public Comanda(CrearComandaDTO comanda) {
-		this.mozo = MozoDAO.getInstancia().obtenerMozo(1);
-		this.mesa = MesaDAO.getInstancia().obtenerMesaPorNumero(comanda.getNumeroMesa());
-		this.fecha = new Date();
+	public boolean agregarItems(AgregarItemsComandaDTO dto) {
+		List<ItemComandaDTO> items = dto.getItems();
+		int i = 0;
+		while (i < items.size()) {
+			ItemComandaDTO itemActual = items.get(i);
+			ItemComanda itemNuevo = new ItemComanda(itemActual); // Negocio
 
+			if (!this.platos.add(itemNuevo)) {
+				throw new ItemComandaFailException("agregarItems(AgregarItemsComandaDTO dto)");
+			}
+		}
+		return save();
+	}
+
+	public boolean save() {
+		return ComandaDAO.getInstancia().save(this);
+	}
+
+	public boolean cerrarComanda() {
+		this.cerrada = true;
+		return save();
 	}
 
 	/*
@@ -125,12 +152,8 @@ public class Comanda {
 		this.mozo = mozo;
 	}
 
-	public Boolean getComandaLista() {
-		return comandaLista;
-	}
-
-	public void setComandaLista(Boolean comandaLista) {
-		this.comandaLista = comandaLista;
+	public boolean estaCerrada() {
+		return cerrada;
 	}
 
 	public Mesa getMesa() {
@@ -171,11 +194,6 @@ public class Comanda {
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
-	}
-
-	public void save() {
-
-		ComandaDAO.getInstancia().grabarComanda(this);
 	}
 
 }

@@ -13,19 +13,19 @@ public class ComandaDTO implements Serializable {
 	private Integer idComanda;
 	private List<ItemComandaDTO> platos;
 	private MozoDTO mozo;
-	private Boolean comandaLista;
+	private Boolean cerrada;
 	private MesaDTO mesa;
 	private Integer estadoComanda;
 	private FacturaDTO factura;
 	private LocalDTO local;
 	
-	public ComandaDTO(Integer id,List<ItemComandaDTO> platos, MozoDTO mozo, Boolean comandaLista, MesaDTO mesa,
+	public ComandaDTO(Integer id,List<ItemComandaDTO> platos, MozoDTO mozo, Boolean cerrada, MesaDTO mesa,
 			Integer estadoComanda, FacturaDTO factura) {
 		super();
 		this.idComanda=id;
 		this.platos = platos;
 		this.mozo = mozo;
-		this.comandaLista = comandaLista;
+		this.cerrada = cerrada;
 		this.mesa = mesa;
 		this.estadoComanda = estadoComanda;
 		this.factura = factura;
@@ -47,12 +47,12 @@ public class ComandaDTO implements Serializable {
 		this.mozo = mozo;
 	}
 
-	public Boolean getComandaLista() {
-		return comandaLista;
+	public Boolean getCerrada() {
+		return cerrada;
 	}
 
-	public void setComandaLista(Boolean comandaLista) {
-		this.comandaLista = comandaLista;
+	public void setCerrada(Boolean comandaLista) {
+		this.cerrada = comandaLista;
 	}
 
 	public MesaDTO getMesa() {

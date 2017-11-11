@@ -2,19 +2,17 @@ package org.repositorio.bussinessDelegate;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
-import java.util.List;
 
-import org.repositorio.dtos.ComandaDTO;
+import org.repositorio.dtos.AgregarItemComandaDTO;
+import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
-import org.repositorio.dtos.ItemComandaDTO;
-import org.repositorio.exceptions.BusinessException;
 import org.repositorio.interfaces.IAppRemote;
 
 public class BussinessDelegate implements IAppRemote {
 
 	private static BussinessDelegate instancia;
 
-	private IAppRemote bussinessDelegate;
+	private IAppRemote objetoRemoto;
 
 	public static BussinessDelegate getInstancia() throws Exception {
 		if (instancia == null) {
@@ -29,27 +27,35 @@ public class BussinessDelegate implements IAppRemote {
 	 */
 	private BussinessDelegate() throws Exception {
 		super();
-		this.bussinessDelegate = (IAppRemote) Naming.lookup(IAppRemote.URL_SERVICIO);
+		this.objetoRemoto = (IAppRemote) Naming.lookup(IAppRemote.URL_SERVICIO);
 	}
 
-	public boolean crearComanda(CrearComandaDTO comanda) throws RemoteException {
-		return bussinessDelegate.crearComanda(comanda);
-	}
-
-	@Override
-	public boolean agregarItemAComanda(ItemComandaDTO item) {
-		// TODO Auto-generated method stub
+	public boolean crearComanda(CrearComandaDTO comanda) {
+		try {
+			return objetoRemoto.crearComanda(comanda);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
-	public void pedirItemDeComanda(String idItemComanda) {
-		// TODO Auto-generated method stub
-
+	public boolean agregarItemAComanda(AgregarItemComandaDTO item) {
+		try {
+			return this.objetoRemoto.agregarItemAComanda(item);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	@Override
-	public boolean cerrarcomanda(String idComanda) {
+	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO item) throws RemoteException {
+		return this.objetoRemoto.agregarItemsAComanda(item);
+	}
+
+	@Override
+	public boolean cerrarcomanda(int idComanda) {
 		// TODO Auto-generated method stub
 		return false;
 	}
