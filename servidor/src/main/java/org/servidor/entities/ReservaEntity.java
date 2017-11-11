@@ -28,7 +28,6 @@ public class ReservaEntity {
 
 	public ReservaEntity(Reserva reserva) {
 		this.idReserva= reserva.getCantidadPersonas();
-		this.estado=reserva.getEstado();
 		this.horaReserva=reserva.getHoraReserva();
 		this.cantidadPersonas=reserva.getCantidadPersonas();
 	}

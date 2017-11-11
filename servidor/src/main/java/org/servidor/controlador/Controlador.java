@@ -6,6 +6,7 @@ import java.util.List;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
+import org.repositorio.dtos.ReservaDTO;
 import org.repositorio.exceptions.ComandaNotFoundException;
 import org.repositorio.exceptions.ItemComandaFailException;
 import org.repositorio.exceptions.MesaNotFoundException;
@@ -18,6 +19,7 @@ import org.servidor.negocio.Mesa;
 import org.servidor.negocio.MesaCompuesta;
 import org.servidor.negocio.MesaSimple;
 import org.servidor.negocio.Plato;
+import org.servidor.negocio.Reserva;
 
 /**
  * Controlador de Negocio: Recibe Unicamente objetos DTO o bien primitivos.
@@ -108,6 +110,11 @@ public class Controlador {
 		String method = "cerrarMesa(int idMesa)";
 		Mesa mesa = getMesa(idMesa, method);
 		mesa.cerrarMesa();
+	}
+
+	public boolean reservarMesa(ReservaDTO dto) {
+		Reserva nuevaReserva = new Reserva(dto);
+		return nuevaReserva.save();
 	}
 
 	private Mesa getMesa(int idMesa, String method) {
