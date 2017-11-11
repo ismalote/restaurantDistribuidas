@@ -1,13 +1,20 @@
 package org.servidor.controlador;
 
+import java.util.List;
+
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
+import org.repositorio.dtos.MesaCompuesta;
 import org.repositorio.exceptions.ComandaNotFoundException;
 import org.repositorio.exceptions.ItemComandaFailException;
+import org.servidor.Enum.EstadoMesa;
 import org.servidor.dao.ComandaDAO;
+import org.servidor.dao.MesaDAO;
 import org.servidor.dao.PlatoDAO;
 import org.servidor.negocio.Comanda;
+import org.servidor.negocio.Mesa;
+import org.servidor.negocio.MesaSimple;
 import org.servidor.negocio.Plato;
 
 /**
@@ -74,4 +81,27 @@ public class Controlador {
 		}
 		return comanda;
 	}
+	
+	public boolean AbrirMesa(List<Integer> nrosMesas) {
+				
+			if(nrosMesas.size()==1) {
+				MesaSimple m= (MesaSimple) MesaDAO.getInstancia().obtenerMesaPorNumero(nrosMesas.get(0));
+				m.setEstadoMesa(EstadoMesa.OCUPADA);
+				m.save();
+			}
+			else {
+				for (Integer integer : nrosMesas) {
+					MesaCompuesta m= MesaDAO.getInstancia().obtenerMesaPorNumero(integer);
+					m.setEstadoMesa(EstadoMesa.OCUPADA);
+					m.save();
+				}
+				
+			}
+			return true;
+			
+			}
+	
+	public List>
+	
 }
+

@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.servidor.negocio.Reserva;
+
 @Entity
 @Table(name = "reserva")
 public class ReservaEntity {
@@ -22,6 +24,13 @@ public class ReservaEntity {
 		this.estado = estado;
 		this.horaReserva = horaReserva;
 		this.cantidadPersonas = cantidadPersonas;
+	}
+
+	public ReservaEntity(Reserva reserva) {
+		this.idReserva= reserva.getCantidadPersonas();
+		this.estado=reserva.getEstado();
+		this.horaReserva=reserva.getHoraReserva();
+		this.cantidadPersonas=reserva.getCantidadPersonas();
 	}
 
 	public Integer getIdReserva() {

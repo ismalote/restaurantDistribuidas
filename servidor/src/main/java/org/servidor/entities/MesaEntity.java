@@ -9,6 +9,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.servidor.Enum.EstadoMesa;
+
 @Entity
 @Table(name="mesa")
 public class MesaEntity {
@@ -17,7 +19,7 @@ public class MesaEntity {
 	private Integer idMesa;
 	@OneToOne
 	@JoinColumn(name = "idEstadoMesa")
-	private EstadoMesaEntity estadoMesa;
+	private EstadoMesa estadoMesa;
 //	private Integer estadoMesa;
 	
 	@OneToMany(mappedBy = "mesa")
@@ -35,11 +37,13 @@ public class MesaEntity {
 		this.idMesa = idMesa;
 	}
 
-	public EstadoMesaEntity getEstadoMesa() {
+	
+
+	public EstadoMesa getEstadoMesa() {
 		return estadoMesa;
 	}
 
-	public void setEstadoMesa(EstadoMesaEntity estadoMesa) {
+	public void setEstadoMesa(EstadoMesa estadoMesa) {
 		this.estadoMesa = estadoMesa;
 	}
 
