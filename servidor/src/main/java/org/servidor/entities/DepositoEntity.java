@@ -1,27 +1,28 @@
 package org.servidor.entities;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="deposito")
+@DiscriminatorValue("deposito")
 public class DepositoEntity extends AreaEntity {
 
-	@OneToOne 
-	@JoinColumn (name="idStock")
+	@OneToOne
+	@JoinColumn(name = "idStock")
 	private StockEntity stockDeposito;
 	@OneToOne
-	@JoinColumn(name="idEncargado")
+	@JoinColumn(name = "idEncargado")
 	private EncargadoAreaEntity encargadoDeposito;
-	
-	public DepositoEntity (){}
-	
-	public DepositoEntity (Integer id, EncargadoAreaEntity encargado, StockEntity stock){
-		super (id);
-		this.encargadoDeposito= encargado;
-		this.stockDeposito= stock;
+
+	public DepositoEntity(Integer idArea, LocalEntity localRestaurante) {
+		super(idArea, localRestaurante);
+		// TODO Auto-generated constructor stub
+	}
+
+	public DepositoEntity() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public StockEntity getStockDeposito() {

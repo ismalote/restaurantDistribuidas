@@ -3,12 +3,16 @@ package org.servidor.entities;
 import java.sql.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
-
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@Table(name="limpieza")
+@PrimaryKeyJoinColumn(name = "idInsumo")
 public class LimpiezaEntity extends InsumoEntity {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public LimpiezaEntity(Integer idInsumo, Float precio, Date fechaCreacion, Date fechaCaducidad, String descripcion,
 			Float cantidad, String unidad) {
@@ -16,6 +20,7 @@ public class LimpiezaEntity extends InsumoEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-
-
+	public LimpiezaEntity() {
+		// TODO Auto-generated constructor stub
+	}
 }

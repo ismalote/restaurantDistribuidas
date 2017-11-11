@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,6 +22,10 @@ public class MozoEntity {
 	private Integer antiguedad;
 	@OneToMany(mappedBy = "mozo")
 	private List<ComandaEntity> comandasAbiertas;
+	@ManyToOne
+	private SectorEntity mozoSector;
+	@ManyToOne
+	private LocalEntity localRestaurante;
 
 	public MozoEntity(Integer idMozo, Float porcentajeComision, String nombre, String apellido, Integer antiguedad,
 			List<ComandaEntity> comandasAbiertas) {
@@ -31,6 +36,10 @@ public class MozoEntity {
 		this.apellido = apellido;
 		this.antiguedad = antiguedad;
 		this.comandasAbiertas = comandasAbiertas;
+	}
+
+	public MozoEntity() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public MozoEntity(Mozo mozo) {

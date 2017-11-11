@@ -1,27 +1,42 @@
 package org.servidor.entities;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="insumo")
-public abstract class InsumoEntity {
+@Table(name = "insumo")
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(name = "Insumo_type")
+@Inheritance(strategy=InheritanceType.JOINED)
+public abstract class InsumoEntity implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	@Column(name = "idInsumo")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Integer idInsumo;
 	protected Float precio;
 	protected Date fechaCreacion;
 	protected Date fechaCaducidad;
 	protected String descripcion;
 	protected String unidad;
+	
+	@ManyToOne
+	private RestaurantEntity restauranteInsumos;
 
 	public InsumoEntity(Integer idInsumo, Float precio, Date fechaCreacion, Date fechaCaducidad, String descripcion,
-			 String unidad) {
+			String unidad) {
 		super();
 		this.idInsumo = idInsumo;
 		this.precio = precio;
@@ -29,6 +44,9 @@ public abstract class InsumoEntity {
 		this.fechaCaducidad = fechaCaducidad;
 		this.descripcion = descripcion;
 		this.unidad = unidad;
+	}
+	public InsumoEntity() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getIdInsumo() {
@@ -70,7 +88,6 @@ public abstract class InsumoEntity {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
 
 	public String getUnidad() {
 		return unidad;

@@ -2,17 +2,17 @@ package org.servidor.entities;
 
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;;
+import javax.persistence.OneToOne;;
 
 @Entity
-@Table (name="areaProduccion")
+@DiscriminatorValue("areaProduccion")
 public class AreaProduccionEntity extends AreaEntity {
 
-	@OneToMany(mappedBy = "areaProduccion")
+	@OneToMany(mappedBy = "AreaProdu")
 	protected List<ProductoComestibleEntity> productos;
 
 	protected String TipoArea;
@@ -20,21 +20,18 @@ public class AreaProduccionEntity extends AreaEntity {
 	@JoinColumn(name = "idEncargado")
 	protected EncargadoEntity encargado;
 
-	@OneToMany(mappedBy = "areaProduccion")
-	protected List<ComandaEntity> comandas;
+//	@OneToMany(mappedBy = "areaProduccion")
+//	protected List<ComandaEntity> comandas;
 
-	public AreaProduccionEntity(Integer idAreaProduccion, List<ProductoComestibleEntity> productos, String tipoArea,
-			EncargadoEntity encargado, List<ComandaEntity> comandas) {
-		super(idAreaProduccion);
 
-		this.productos = productos;
-		TipoArea = tipoArea;
-		this.encargado = encargado;
-		this.comandas = comandas;
-	}
 
 	public List<ProductoComestibleEntity> getProductos() {
 		return productos;
+	}
+
+	public AreaProduccionEntity() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public void setProductos(List<ProductoComestibleEntity> productos) {
@@ -43,6 +40,11 @@ public class AreaProduccionEntity extends AreaEntity {
 
 	public String getTipoArea() {
 		return TipoArea;
+	}
+
+	public AreaProduccionEntity(Integer idArea, LocalEntity localRestaurante) {
+		super(idArea, localRestaurante);
+		// TODO Auto-generated constructor stub
 	}
 
 	public void setTipoArea(String tipoArea) {
@@ -57,12 +59,12 @@ public class AreaProduccionEntity extends AreaEntity {
 		this.encargado = encargado;
 	}
 
-	public List<ComandaEntity> getComandas() {
-		return comandas;
-	}
+//	public List<ComandaEntity> getComandas() {
+//		return comandas;
+//	}
 
-	public void setComandas(List<ComandaEntity> comandas) {
-		this.comandas = comandas;
-	}
+//	public void setComandas(List<ComandaEntity> comandas) {
+//		this.comandas = comandas;
+//	}
 
 }

@@ -5,19 +5,32 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="planProduccion")
+@Table(name = "planProduccion")
 public class PlandeProduccionEntity {
 
 	@Id
 	private Integer idPP;
-	@OneToMany(mappedBy = "planProduccion")
+
+	@OneToMany(mappedBy = "pp")
 	private List<ItemPlandeProduccionEntity> itemPP;
+
+	@ManyToOne
+	private AdministracionEntity administracion;
+
+	@ManyToOne
+	private RestaurantEntity restaurantePlanes;
+
 	private Date fecha;
 	private Date tiempoDeEjecucion;
+
+	public PlandeProduccionEntity() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public PlandeProduccionEntity(Integer idPP, List<ItemPlandeProduccionEntity> itemPP, Date fecha,
 			Date tiempoDeEjecucion) {

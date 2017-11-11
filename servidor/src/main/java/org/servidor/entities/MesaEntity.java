@@ -4,30 +4,60 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.servidor.Enum.EstadoMesa;
 
 @Entity
-@Table(name="mesa")
+@Table(name = "mesa")
 public abstract class MesaEntity {
-	
+
 	@Id
 	private Integer idMesa;
-	@OneToOne
-	@JoinColumn(name = "idEstadoMesa")
-	private EstadoMesa estadoMesa;
-//	private Integer estadoMesa;
-	
-	@OneToMany(mappedBy = "mesa")
-	private ReservaEntity reserva;
+
+	private Integer estadoMesa;
+	// private Integer estadoMesa;
+
+	// @OneToMany(mappedBy = "mesa")
+	// private ReservaEntity reserva;
+
+	@ManyToOne
+	private SectorEntity sector;
+	public Integer getEstadoMesa() {
+		return estadoMesa;
+	}
+
+	public void setEstadoMesa(Integer estadoMesa) {
+		this.estadoMesa = estadoMesa;
+	}
+
+	public SectorEntity getSector() {
+		return sector;
+	}
+
+	public void setSector(SectorEntity sector) {
+		this.sector = sector;
+	}
 
 	private Integer cantidadSillas;
 	private Date horaOcupacion;
 	private Date horaLiberacion;
+
+	public MesaEntity() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public MesaEntity(Integer idMesa, Integer estadoMesa, SectorEntity sector, Integer cantidadSillas,
+			Date horaOcupacion, Date horaLiberacion) {
+		super();
+		this.idMesa = idMesa;
+		this.estadoMesa = estadoMesa;
+		this.sector = sector;
+		this.cantidadSillas = cantidadSillas;
+		this.horaOcupacion = horaOcupacion;
+		this.horaLiberacion = horaLiberacion;
+	}
 
 	public Integer getIdMesa() {
 		return idMesa;
@@ -37,23 +67,13 @@ public abstract class MesaEntity {
 		this.idMesa = idMesa;
 	}
 
-	
+	// public ReservaEntity getReserva() {
+	// return reserva;
+	// }
 
-	public EstadoMesa getEstadoMesa() {
-		return estadoMesa;
-	}
-
-	public void setEstadoMesa(EstadoMesa estadoMesa) {
-		this.estadoMesa = estadoMesa;
-	}
-
-	public ReservaEntity getReserva() {
-		return reserva;
-	}
-
-	public void setReserva(ReservaEntity reserva) {
-		this.reserva = reserva;
-	}
+	// public void setReserva(ReservaEntity reserva) {
+	// this.reserva = reserva;
+	// }
 
 	public Integer getCantidadSillas() {
 		return cantidadSillas;

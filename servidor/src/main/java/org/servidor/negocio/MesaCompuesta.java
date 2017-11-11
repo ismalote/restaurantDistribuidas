@@ -30,8 +30,9 @@ public class MesaCompuesta extends Mesa {
 	@Override
 	public void cerrarMesa() {
 		for (Mesa mesa : this.mesas) {
-			mesa.cerrarMesa();
+			mesa.setEstadoMesa(EstadoMesa.LIBRE);
 		}
+		save(); // TODO Check si cascade funca
 	}
 
 	

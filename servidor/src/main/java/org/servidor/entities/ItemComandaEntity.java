@@ -3,6 +3,7 @@ package org.servidor.entities;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,11 +19,18 @@ public class ItemComandaEntity {
 	@JoinColumn(name = "idPlato")
 	private PlatoEntity idPlato;
 
+	@ManyToOne
+	private ComandaEntity comanda;
+
 	public ItemComandaEntity(Integer idItemComanda, Integer cantidad, PlatoEntity idPlato) {
 		super();
 		this.idItemComanda = idItemComanda;
 		this.cantidad = cantidad;
 		this.idPlato = idPlato;
+	}
+
+	public ItemComandaEntity() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getIdItemComanda() {

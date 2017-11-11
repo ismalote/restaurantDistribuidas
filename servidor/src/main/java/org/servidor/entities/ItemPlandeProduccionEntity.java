@@ -3,11 +3,12 @@ package org.servidor.entities;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="itemPlandeProduccion")
+@Table(name = "itemPlandeProduccion")
 public class ItemPlandeProduccionEntity {
 
 	@Id
@@ -16,12 +17,18 @@ public class ItemPlandeProduccionEntity {
 	@JoinColumn(name = "idPlato")
 	private PlatoEntity plato;
 	private Integer cantidadEstimada;
+	@ManyToOne
+	private PlandeProduccionEntity pp;
 
 	public ItemPlandeProduccionEntity(Integer idIPP, PlatoEntity plato, Integer cantidadEstimada) {
 		super();
 		this.idIPP = idIPP;
 		this.plato = plato;
 		this.cantidadEstimada = cantidadEstimada;
+	}
+
+	public ItemPlandeProduccionEntity() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getIdIPP() {

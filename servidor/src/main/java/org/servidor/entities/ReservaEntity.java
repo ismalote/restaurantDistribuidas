@@ -26,6 +26,10 @@ public class ReservaEntity {
 		this.cantidadPersonas = cantidadPersonas;
 	}
 
+	public ReservaEntity() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public ReservaEntity(Reserva reserva) {
 		this.idReserva= reserva.getCantidadPersonas();
 		this.estado=reserva.getEstado();
