@@ -6,7 +6,6 @@ import java.util.List;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
-import org.repositorio.dtos.MesaCompuestaDTO;
 import org.repositorio.exceptions.ComandaNotFoundException;
 import org.repositorio.exceptions.ItemComandaFailException;
 import org.repositorio.exceptions.MesaNotFoundException;
@@ -86,37 +85,34 @@ public class Controlador {
 	}
 
 	public boolean AbrirMesa(List<Integer> nrosMesas) {
-				
-			if(nrosMesas.size()==1) {
-				MesaSimple m=   MesaDAO.getInstancia().obtenerMesaSimplePorNumero(nrosMesas.get(0));
-				m.setEstadoMesa(EstadoMesa.OCUPADA);
-				m.save();
+
+		if (nrosMesas.size() == 1) {
+			MesaSimple m = MesaDAO.getInstancia().obtenerMesaSimplePorNumero(nrosMesas.get(0));
+			m.setEstadoMesa(EstadoMesa.OCUPADA);
+			m.save();
+		} else {
+			List<MesaSimple> ms = new ArrayList<MesaSimple>();
+			for (Integer numero : nrosMesas) {
+				ms.add(MesaDAO.getInstancia().obtenerMesaSimplePorNumero(numero));
+
 			}
-			else {
-				List<MesaSimple> ms = new ArrayList<MesaSimple>();
-				for (Integer numero : nrosMesas) {
-					ms.add(MesaDAO.getInstancia().obtenerMesaSimplePorNumero(numero));
-					
-				}
-				MesaCompuesta mc = new MesaCompuesta();
-				mc.getMesas();
-				
-				
+			MesaCompuesta mc = new MesaCompuesta();
+			mc.getMesas();
+
 		}
-			return true;
-			
-			}
-	
-	
-	
+		return true;
+
+	}
+
 	public void cerrarMesa(int idMesa) {
 		String method = "cerrarMesa(int idMesa)";
 		Mesa mesa = getMesa(idMesa, method);
+		mesa.cerrarMesa();
 	}
 
 	private Mesa getMesa(int idMesa, String method) {
 		Mesa mesa = MesaDAO.getInstancia().obtenerMesaPorNumero(idMesa);
-		if(mesa == null) {
+		if (mesa == null) {
 			throw new MesaNotFoundException(method);
 		}
 		return mesa;
