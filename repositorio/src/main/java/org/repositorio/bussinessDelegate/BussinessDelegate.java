@@ -2,7 +2,10 @@ package org.repositorio.bussinessDelegate;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
@@ -64,4 +67,42 @@ public class BussinessDelegate implements IAppRemote {
 		this.objetoRemoto.cerrarMesa(idMesa);
 	}
 
+	@Override
+	public void AbrirMesaNueva(List<Integer> nrosMesas) throws RemoteException {
+		 AbrirMesaDTO dto = new AbrirMesaDTO();
+		 
+		 dto.setNumerodeMesa(nrosMesas);
+		 objetoRemoto.AbrirMesa(dto);
+		
+	}
+
+	
+	
+	public List<Integer> listarMesasLibres(Integer sector, Integer cantidadComensales) throws RemoteException {
+		List<Integer> resultado= new ArrayList<>();	
+		AbrirMesaDTO dto = objetoRemoto.mesasLibres(sector,cantidadComensales);
+		resultado.addAll(dto.getNumerodeMesa());
+		return resultado;
+		
+	}
+
+	@Override
+	public void AbrirMesa(AbrirMesaDTO dto) throws RuntimeException, RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public AbrirMesaDTO mesasLibres(Integer numeroSector) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AbrirMesaDTO mesasLibres(Integer numeroSector, Integer cantidadComensales) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
 }

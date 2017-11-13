@@ -2,7 +2,9 @@ package org.servidor.objetoRemoto;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.List;
 
+import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
@@ -43,5 +45,22 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 	public void cerrarMesa(int idMesa) throws RemoteException {
 		this.controlador.cerrarMesa(idMesa);
 	}
+	public void AbrirMesa(AbrirMesaDTO dto) throws RemoteException{
+		Controlador.getInstancia().AbrirMesa(dto);
+	}
+	
+	public AbrirMesaDTO mesasLibres(Integer numeroSector, Integer cantidadComensales){
+	
+	return Controlador.getInstancia().mesasLibres(numeroSector,cantidadComensales);
+	}
+
+	@Override
+	public void AbrirMesaNueva(List<Integer> nrosMesas) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
 
 }

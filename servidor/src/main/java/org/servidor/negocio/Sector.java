@@ -2,6 +2,8 @@ package org.servidor.negocio;
 
 import java.util.List;
 
+import org.servidor.dao.SectorDAO;
+
 public class Sector {
 
 	private Integer idSector;
@@ -17,6 +19,10 @@ public class Sector {
 		this.mesas = mesas;
 		this.idSalon = idSalon;
 		this.nombre = nombre;
+	}
+
+	public Sector() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getIdSector() {
@@ -59,6 +65,7 @@ public class Sector {
 		this.nombre = nombre;
 	}
 
+	
 	// TODO faltan metodos
 
 }

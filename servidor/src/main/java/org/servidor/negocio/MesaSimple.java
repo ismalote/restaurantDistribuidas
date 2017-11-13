@@ -38,4 +38,10 @@ public class MesaSimple extends Mesa {
 		return this.numeroMesa;
 	}
 
+	@Override
+	public Integer getCantidadSillas() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

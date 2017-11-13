@@ -35,6 +35,8 @@ public class MesaCompuesta extends Mesa {
 		save(); // TODO Check si cascade funca
 	}
 
+	
+	
 	@Override
 	public int getNumeroMesa() {
 		int mayor = 0;
@@ -49,6 +51,16 @@ public class MesaCompuesta extends Mesa {
 		} else {
 			throw new RuntimeException();
 		}
+	}
+
+	@Override
+	public Integer getCantidadSillas() {
+		int cantidad=0;
+		for ( Mesa mesa : mesas) {
+			cantidad= cantidad+ mesa.getCantidadSillas();
+			
+		}
+		return cantidad;
 	}
 
 }

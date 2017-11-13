@@ -1,8 +1,10 @@
 package org.servidor.controlador;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
@@ -14,12 +16,14 @@ import org.servidor.Enum.EstadoMesa;
 import org.servidor.dao.ComandaDAO;
 import org.servidor.dao.MesaDAO;
 import org.servidor.dao.PlatoDAO;
+import org.servidor.dao.SectorDAO;
 import org.servidor.negocio.Comanda;
 import org.servidor.negocio.Mesa;
 import org.servidor.negocio.MesaCompuesta;
 import org.servidor.negocio.MesaSimple;
 import org.servidor.negocio.Plato;
 import org.servidor.negocio.Reserva;
+import org.servidor.negocio.Sector;
 
 /**
  * Controlador de Negocio: Recibe Unicamente objetos DTO o bien primitivos.
@@ -86,26 +90,39 @@ public class Controlador {
 		return comanda;
 	}
 
-	public boolean AbrirMesa(List<Integer> nrosMesas) {
-
-		if (nrosMesas.size() == 1) {
-			MesaSimple m = MesaDAO.getInstancia().obtenerMesaSimplePorNumero(nrosMesas.get(0));
-			m.setEstadoMesa(EstadoMesa.OCUPADA);
-			m.save();
-		} else {
-			List<MesaSimple> ms = new ArrayList<MesaSimple>();
-			for (Integer numero : nrosMesas) {
-				ms.add(MesaDAO.getInstancia().obtenerMesaSimplePorNumero(numero));
-
+	public void AbrirMesa(AbrirMesaDTO dto) {
+				
+			List<Integer> nrosMesas= new ArrayList<>();
+			nrosMesas.addAll(dto.getNumerodeMesa());
+			if(nrosMesas.size()==1) {
+				MesaSimple m=   MesaDAO.getInstancia().obtenerMesaSimplePorNumero(nrosMesas.get(0));
+				m.setEstadoMesa(EstadoMesa.OCUPADA);
+				m.save();
 			}
-			MesaCompuesta mc = new MesaCompuesta();
-			mc.getMesas();
-
+			else {
+				List<Mesa> m = new ArrayList<Mesa>();
+				for (Integer numero : nrosMesas) {
+					m.add(MesaDAO.getInstancia().obtenerMesaPorNumero(numero));
+					
+				}
+				MesaCompuesta mc = new MesaCompuesta();
+				mc.setMesas(m);
+				mc.setCantidadSillas(mc.getCantidadSillas());
+				mc.setEstadoMesa(EstadoMesa.OCUPADA);
+				mc.setHoraLiberacion(null);
+				mc.setHoraOcupacion(new Date());
+				mc.setReserva(new Reserva());
+				mc.save();
+				
+				
+				
 		}
-		return true;
-
-	}
-
+		
+			
+			}
+	
+	
+	
 	public void cerrarMesa(int idMesa) {
 		String method = "cerrarMesa(int idMesa)";
 		Mesa mesa = getMesa(idMesa, method);
@@ -124,4 +141,15 @@ public class Controlador {
 		}
 		return mesa;
 	}
+	
+	
+	public AbrirMesaDTO mesasLibres(Integer numeroSector,Integer cantidadComensales){
+		AbrirMesaDTO dto = new AbrirMesaDTO();
+		List<Integer> resultado= SectorDAO.getInstancia().listarMesaLibrePorSector(numeroSector,cantidadComensales);
+		dto.setNumerodeMesa(resultado);
+		return dto;
+		
+	}
+	
+	
 }
