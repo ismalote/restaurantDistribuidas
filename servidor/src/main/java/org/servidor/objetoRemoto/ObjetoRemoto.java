@@ -8,6 +8,7 @@ import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
+import org.repositorio.dtos.MesaDTO;
 import org.repositorio.interfaces.IAppRemote;
 import org.servidor.controlador.Controlador;
 
@@ -45,22 +46,20 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 	public void cerrarMesa(int idMesa) throws RemoteException {
 		this.controlador.cerrarMesa(idMesa);
 	}
-	public void AbrirMesa(AbrirMesaDTO dto) throws RemoteException{
+
+	public void AbrirMesa(AbrirMesaDTO dto) throws RemoteException {
 		Controlador.getInstancia().AbrirMesa(dto);
 	}
-	
-	public AbrirMesaDTO mesasLibres(Integer numeroSector, Integer cantidadComensales){
-	
-	return Controlador.getInstancia().mesasLibres(numeroSector,cantidadComensales);
+
+	public List<MesaDTO> mesasLibres(Integer numeroSector) {
+
+		return Controlador.getInstancia().mesasLibres(numeroSector);
 	}
 
 	@Override
 	public void AbrirMesaNueva(List<Integer> nrosMesas) throws RemoteException {
 		// TODO Auto-generated method stub
-		
+
 	}
-
-
-
 
 }

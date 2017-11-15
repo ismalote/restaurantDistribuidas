@@ -1,23 +1,12 @@
 package org.servidor.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.servidor.Enum.EstadoMesa;
-import org.servidor.entities.MesaEntity;
-import org.servidor.entities.SectorEntity;
-import org.servidor.negocio.Mesa;
-import org.servidor.util.HibernateUtil;
-
 public class SectorDAO {
-	
+
 	private static SectorDAO instancia;
 
 	public static SectorDAO getInstancia() {
-		if(instancia==null) {
-			instancia=new SectorDAO();
+		if (instancia == null) {
+			instancia = new SectorDAO();
 		}
 		return instancia;
 	}
@@ -25,22 +14,24 @@ public class SectorDAO {
 	public static void setInstancia(SectorDAO instancia) {
 		SectorDAO.instancia = instancia;
 	}
-	
-	
-	public List<Integer> listarMesaLibrePorSector (Integer sector, Integer cantidadComensales){
-		List<Integer> resultado= new ArrayList<>();
-		List<MesaEntity> aux= new ArrayList<>();
-		Session s= HibernateUtil.getSessionFactory().openSession();
-		Query q= s.createQuery("From SectorEntity as se where se.idSector= :codigo" );
-		q.setInteger("codigo", sector);
-		SectorEntity entity= (SectorEntity) q.uniqueResult();
-		aux.addAll(entity.getMesas());
-		for (MesaEntity mesaEntity : aux) {
-			if (mesaEntity.getEstadoMesa()==EstadoMesa.LIBRE && mesaEntity.getCantidadSillas()>=cantidadComensales) {
-			resultado.add(mesaEntity.getNumeroMesa());
-		}
-			}
-		return resultado;
-	
-	}
+
+	/*
+	 * anulamos el metodo porque no caracteriza al Sector, sino que quiere obtener las Mesas y filtrarlas por Sector. 
+	 */
+//	public List<Integer> listarMesaLibrePorSector(Integer sector, Integer cantidadComensales) {
+//		List<Integer> resultado = new ArrayList<>();
+//		List<MesaEntity> aux = new ArrayList<>();
+//		Session s = HibernateUtil.getSessionFactory().openSession();
+//		Query q = s.createQuery("From SectorEntity as se where se.idSector= :codigo AND ");
+//		q.setInteger("codigo", sector);
+//		SectorEntity entity = (SectorEntity) q.uniqueResult();
+//		aux.addAll(entity.getMesas());
+//		for (MesaEntity mesaEntity : aux) {
+//			if (mesaEntity.getEstadoMesa() == EstadoMesa.LIBRE
+//					&& mesaEntity.getCantidadSillas() >= cantidadComensales) {
+//				resultado.add(mesaEntity.getNumeroMesa());
+//			}
+//		}
+//		return resultado;
+//	}
 }

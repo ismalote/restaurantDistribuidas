@@ -5,16 +5,15 @@ import java.util.List;
 
 import org.repositorio.bussinessDelegate.BussinessDelegate;
 import org.repositorio.dtos.CrearComandaDTO;
+import org.repositorio.dtos.MesaDTO;
 import org.repositorio.exceptions.BusinessException;
 
 public class ControladorCliente {
-	
-	
-	
+
 	public void crearComanda(CrearComandaDTO comanda) throws BusinessException, Exception {
-		
+
 		BussinessDelegate.getInstancia().crearComanda(comanda);
-		
+
 	}
 
 	public void AbrirMesaNueva(List<Integer> numeros) {
@@ -26,12 +25,12 @@ public class ControladorCliente {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
-		
+		}
+
 	}
-	
-	public List<Integer> listarMesasLibresPorSector(Integer sector, Integer cantidadComensales) throws RemoteException, Exception{
-		
-	return BussinessDelegate.getInstancia().listarMesasLibres(sector,cantidadComensales);
-	}	
+
+	public List<MesaDTO> listarMesasLibresPorSector(Integer sector) throws RemoteException, Exception {
+
+		return BussinessDelegate.getInstancia().listarMesasLibres(sector);
+	}
 }

@@ -2,16 +2,16 @@ package org.repositorio.bussinessDelegate;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
+import org.repositorio.dtos.MesaDTO;
 import org.repositorio.interfaces.IAppRemote;
 
-public class BussinessDelegate implements IAppRemote {
+public class BussinessDelegate {
 
 	private static BussinessDelegate instancia;
 
@@ -42,7 +42,6 @@ public class BussinessDelegate implements IAppRemote {
 		return false;
 	}
 
-	@Override
 	public boolean agregarItemAComanda(AgregarItemComandaDTO item) {
 		try {
 			return this.objetoRemoto.agregarItemAComanda(item);
@@ -52,44 +51,33 @@ public class BussinessDelegate implements IAppRemote {
 		return false;
 	}
 
-	@Override
 	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO item) throws RemoteException {
 		return this.objetoRemoto.agregarItemsAComanda(item);
 	}
 
-	@Override
 	public boolean cerrarcomanda(int idComanda) throws RemoteException {
 		return this.objetoRemoto.cerrarcomanda(idComanda);
 	}
 
-	@Override
 	public void cerrarMesa(int idMesa) throws RemoteException {
 		this.objetoRemoto.cerrarMesa(idMesa);
 	}
 
-	@Override
 	public void AbrirMesaNueva(List<Integer> nrosMesas) throws RemoteException {
-		 AbrirMesaDTO dto = new AbrirMesaDTO();
-		 
-		 dto.setNumerodeMesa(nrosMesas);
-		 objetoRemoto.AbrirMesa(dto);
-		
+		AbrirMesaDTO dto = new AbrirMesaDTO();
+
+		dto.setNumerodeMesa(nrosMesas);
+		objetoRemoto.AbrirMesa(dto);
+
 	}
 
-	
-	
-	public List<Integer> listarMesasLibres(Integer sector, Integer cantidadComensales) throws RemoteException {
-		List<Integer> resultado= new ArrayList<>();	
-		AbrirMesaDTO dto = objetoRemoto.mesasLibres(sector,cantidadComensales);
-		resultado.addAll(dto.getNumerodeMesa());
-		return resultado;
-		
+	public List<MesaDTO> listarMesasLibres(Integer sector) throws RemoteException {
+		return objetoRemoto.mesasLibres(sector);
 	}
 
-	@Override
 	public void AbrirMesa(AbrirMesaDTO dto) throws RuntimeException, RemoteException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public AbrirMesaDTO mesasLibres(Integer numeroSector) throws RemoteException {
@@ -97,12 +85,9 @@ public class BussinessDelegate implements IAppRemote {
 		return null;
 	}
 
-	@Override
 	public AbrirMesaDTO mesasLibres(Integer numeroSector, Integer cantidadComensales) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
-	
 }

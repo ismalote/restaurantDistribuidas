@@ -50,4 +50,8 @@ public class Reserva {
 	public boolean save() {
 		return ReservaDAO.getInstancia().save(this);
 	}
+
+	public ReservaDTO toDTO() {
+		return new ReservaDTO(this.horaReserva, this.cantidadPersonas);
+	}
 }
