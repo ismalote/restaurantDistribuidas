@@ -10,6 +10,7 @@ import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
+import org.repositorio.dtos.PlatoDTO;
 import org.repositorio.dtos.ReservaDTO;
 import org.repositorio.exceptions.ComandaNotFoundException;
 import org.repositorio.exceptions.EstadoItemComandaException;
@@ -204,6 +205,11 @@ public class Controlador {
 		item.setEstado(EstadoItemComanda.RECLAMADO);
 		item.save();
 
+	}
+	
+	public void confirmarPedido(List<PlatoDTO> platos) {
+		
+		
 	}
 
 }
