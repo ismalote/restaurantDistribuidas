@@ -3,14 +3,12 @@ package org.servidor.util;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.servidor.entities.AdministracionEntity;
-import org.servidor.entities.AreaEntity;
 import org.servidor.entities.AreaProduccionEntity;
 import org.servidor.entities.CajaEntity;
 import org.servidor.entities.CartaEntity;
 import org.servidor.entities.ComandaEntity;
 import org.servidor.entities.DepositoCentralEntity;
 import org.servidor.entities.DepositoEntity;
-import org.servidor.entities.ElaboradoEntity;
 import org.servidor.entities.EncargadoAreaEntity;
 import org.servidor.entities.EncargadoCajaEntity;
 import org.servidor.entities.EncargadoEntity;
@@ -33,8 +31,6 @@ import org.servidor.entities.PlatoEntity;
 import org.servidor.entities.ProductoComestibleEntity;
 import org.servidor.entities.ReservaEntity;
 import org.servidor.entities.RestaurantEntity;
-import org.servidor.entities.SalonEntity;
-import org.servidor.entities.SectorEntity;
 import org.servidor.entities.SemiElaboradoEntity;
 import org.servidor.entities.StockEntity;
 
@@ -45,7 +41,7 @@ public class HibernateUtil {
 		try {
 			Configuration config = new Configuration();
 			
-			config.addAnnotatedClass(AreaEntity.class);
+
 			config.addAnnotatedClass(InsumoEntity.class);
 //			config.addAnnotatedClass(EstadoMesaEntity.class);
 			config.addAnnotatedClass(ItemStockEntity.class);			
@@ -72,8 +68,6 @@ public class HibernateUtil {
 			config.addAnnotatedClass(DepositoCentralEntity.class);
 			config.addAnnotatedClass(LimpiezaEntity.class);
 			config.addAnnotatedClass(MateriaPrimaEntity.class);
-			config.addAnnotatedClass(SectorEntity.class);			
-			config.addAnnotatedClass(SalonEntity.class);
 			
 			config.addAnnotatedClass(ProductoComestibleEntity.class);
 			
