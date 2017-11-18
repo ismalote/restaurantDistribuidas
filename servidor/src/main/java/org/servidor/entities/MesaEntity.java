@@ -2,8 +2,12 @@ package org.servidor.entities;
 
 import java.util.Date;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -11,34 +15,20 @@ import org.servidor.Enum.EstadoMesa;
 
 @Entity
 @Table(name = "mesa")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(discriminatorType=DiscriminatorType.STRING)
 public abstract class MesaEntity {
 
 	@Id
 	private Integer idMesa;
 
 	private EstadoMesa estadoMesa;
-	// private Integer estadoMesa;
 
 	// @OneToMany(mappedBy = "mesa")
 	// private ReservaEntity reserva;
 
 	@ManyToOne
 	private SectorEntity sector;
-	public EstadoMesa getEstadoMesa() {
-		return estadoMesa;
-	}
-
-	public void setEstadoMesa(EstadoMesa estadoMesa) {
-		this.estadoMesa = estadoMesa;
-	}
-
-	public SectorEntity getSector() {
-		return sector;
-	}
-
-	public void setSector(SectorEntity sector) {
-		this.sector = sector;
-	}
 
 	private Integer cantidadSillas;
 	private Date horaOcupacion;
@@ -59,6 +49,22 @@ public abstract class MesaEntity {
 		this.horaLiberacion = horaLiberacion;
 	}
 
+	public EstadoMesa getEstadoMesa() {
+		return estadoMesa;
+	}
+
+	public void setEstadoMesa(EstadoMesa estadoMesa) {
+		this.estadoMesa = estadoMesa;
+	}
+
+	public SectorEntity getSector() {
+		return sector;
+	}
+
+	public void setSector(SectorEntity sector) {
+		this.sector = sector;
+	}
+
 	public Integer getIdMesa() {
 		return idMesa;
 	}
@@ -67,13 +73,13 @@ public abstract class MesaEntity {
 		this.idMesa = idMesa;
 	}
 
-	// public ReservaEntity getReserva() {
-	// return reserva;
-	// }
+	public ReservaEntity getReserva() {
+		return null; // TODO
+	}
 
-	// public void setReserva(ReservaEntity reserva) {
-	// this.reserva = reserva;
-	// }
+	public void setReserva(ReservaEntity reserva) {
+		// this.reserva = reserva; TODO
+	}
 
 	public Integer getCantidadSillas() {
 		return cantidadSillas;
@@ -98,8 +104,6 @@ public abstract class MesaEntity {
 	public void setHoraLiberacion(Date horaLiberacion) {
 		this.horaLiberacion = horaLiberacion;
 	}
-	
-	public abstract int getNumeroMesa();
 
 	// TODO falta metodo y nose como poner simple y compuesta
 

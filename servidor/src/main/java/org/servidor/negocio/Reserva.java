@@ -3,43 +3,32 @@ package org.servidor.negocio;
 import java.util.Date;
 
 import org.repositorio.dtos.ReservaDTO;
+import org.servidor.dao.ReservaDAO;
 import org.servidor.entities.ReservaEntity;
 
 public class Reserva {
 
-	private Boolean estado;
 	private Date horaReserva;
 	private Integer cantidadPersonas;
 
-	public Reserva(Boolean estado, Date horaReserva, Integer cantidadPersonas) {
+	public Reserva(Date horaReserva, Integer cantidadPersonas) {
 		super();
-		this.estado = estado;
 		this.horaReserva = horaReserva;
 		this.cantidadPersonas = cantidadPersonas;
 	}
 
 	public Reserva(ReservaEntity entity) {
-		this.estado = entity.getEstado();
-		this.horaReserva= entity.getHoraReserva();
-		this.cantidadPersonas=entity.getCantidadPersonas();
+		this.horaReserva = entity.getHoraReserva();
+		this.cantidadPersonas = entity.getCantidadPersonas();
 	}
 
 	public Reserva(ReservaDTO dto) {
-		this.estado = dto.getEstado();
-		this.horaReserva= dto.getHoraReserva();
-		this.cantidadPersonas=dto.getCantidadPersonas();
+		this.horaReserva = dto.getHoraReserva();
+		this.cantidadPersonas = dto.getCantidadPersonas();
 	}
 
 	public Reserva() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public Boolean getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
 	}
 
 	public Date getHoraReserva() {
@@ -58,4 +47,11 @@ public class Reserva {
 		this.cantidadPersonas = cantidadPersonas;
 	}
 
+	public boolean save() {
+		return ReservaDAO.getInstancia().save(this);
+	}
+
+	public ReservaDTO toDTO() {
+		return new ReservaDTO(this.horaReserva, this.cantidadPersonas);
+	}
 }

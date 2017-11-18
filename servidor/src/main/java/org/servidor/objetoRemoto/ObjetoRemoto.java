@@ -8,6 +8,8 @@ import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
+import org.repositorio.dtos.ItemComandaDTO;
+import org.repositorio.dtos.MesaDTO;
 import org.repositorio.interfaces.IAppRemote;
 import org.servidor.controlador.Controlador;
 
@@ -22,45 +24,42 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		this.controlador = Controlador.getInstancia();
 	}
 
-	public boolean crearComanda(CrearComandaDTO comanda) {
+	public boolean crearComanda(CrearComandaDTO comanda) throws RemoteException{
 		return this.controlador.crearNuevacomanda(comanda);
 	}
 
-	@Override
-	public boolean agregarItemAComanda(AgregarItemComandaDTO item) {
+	public boolean agregarItemAComanda(AgregarItemComandaDTO item) throws RemoteException{
 		return this.controlador.agregarItemAComanda(item);
 	}
 
-	@Override
 	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO item) throws RemoteException {
 		return this.controlador.agregarItemsAComanda(item);
 	}
 
-	@Override
-	public boolean cerrarcomanda(int idComanda) {
+	public boolean cerrarcomanda(int idComanda) throws RemoteException{
 		return this.controlador.cerrarComanda(idComanda);
 	}
 
-	@Override
 	public void cerrarMesa(int idMesa) throws RemoteException {
 		this.controlador.cerrarMesa(idMesa);
 	}
-	public void AbrirMesa(AbrirMesaDTO dto) throws RemoteException{
+
+	public void abrirMesa(AbrirMesaDTO dto) throws RemoteException {
 		Controlador.getInstancia().AbrirMesa(dto);
 	}
-	
-	public AbrirMesaDTO mesasLibres(Integer numeroSector, Integer cantidadComensales){
-	
-	return Controlador.getInstancia().mesasLibres(numeroSector,cantidadComensales);
+
+	public List<MesaDTO> mesasLibres(Integer numeroSector) throws RemoteException{
+
+		return Controlador.getInstancia().mesasLibres(numeroSector);
 	}
 
-	@Override
 	public void AbrirMesaNueva(List<Integer> nrosMesas) throws RemoteException {
 		// TODO Auto-generated method stub
-		
+
 	}
-
-
-
+	
+	public List<ItemComandaDTO> listarItemComanda(int idComanda) {
+		return Controlador.getInstancia().listarPedidos(idComanda);
+	}
 
 }

@@ -5,14 +5,11 @@ import org.servidor.negocio.ItemComanda;
 
 public class ItemComandaDAO {
 	
-	public static ItemComandaDAO instancia;
+	private static ItemComandaDAO instancia;
 	
-	
-	public ItemComandaDAO() {
-		super();
-		// TODO Auto-generated constructor stub
+	private ItemComandaDAO() {
+		
 	}
-
 
 	public static ItemComandaDAO getInstancia() {
 		if(instancia==null) {
@@ -21,9 +18,7 @@ public class ItemComandaDAO {
 		return instancia;
 	}
 
-	public static void setInstancia(ItemComandaDAO instancia) {
-		ItemComandaDAO.instancia = instancia;
-	}
+	
 
 
 	public ItemComanda toNegocio(ItemComandaEntity entity) {

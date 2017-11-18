@@ -11,20 +11,24 @@ import org.servidor.entities.ProductoComestibleEntity;
 public class Plato {
 
 	private Integer idProductos;
+	private String nombrePlato;
 	private List<ProductoComestible> productos;
 	private Float precio;
 	private Carta carta;
 	private Comanda comanda;
 	private Float comisionExtra;
 
-	public Plato(Integer idPlato, List<ProductoComestible> productos, Float precio, Carta carta, Comanda comandas,
-			Float comisionExtra) {
+
+
+	public Plato(Integer idProductos, String nombrePlato, List<ProductoComestible> productos, Float precio, Carta carta,
+			Comanda comanda, Float comisionExtra) {
 		super();
-		this.idProductos = idPlato;
+		this.idProductos = idProductos;
+		this.nombrePlato = nombrePlato;
 		this.productos = productos;
 		this.precio = precio;
 		this.carta = carta;
-		this.comanda = comandas;
+		this.comanda = comanda;
 		this.comisionExtra = comisionExtra;
 	}
 
@@ -99,5 +103,38 @@ public class Plato {
 	public void calcularPrecio() {
 		// TODO Auto-generated method stub
 	}
+
+	public Integer getIdProductos() {
+		return idProductos;
+	}
+
+	public void setIdProductos(Integer idProductos) {
+		this.idProductos = idProductos;
+	}
+
+	public String getNombrePlato() {
+		return nombrePlato;
+	}
+
+	public void setNombrePlato(String nombrePlato) {
+		this.nombrePlato = nombrePlato;
+	}
+
+	public List<ProductoComestible> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<ProductoComestible> productos) {
+		this.productos = productos;
+	}
+
+	public Comanda getComanda() {
+		return comanda;
+	}
+
+	public void setComanda(Comanda comanda) {
+		this.comanda = comanda;
+	}
+	
 
 }

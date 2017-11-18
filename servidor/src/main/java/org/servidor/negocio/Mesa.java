@@ -28,14 +28,13 @@ public abstract class Mesa {
 	}
 
 	public Mesa(MesaEntity entity) {
-		this.idMesa= entity.getIdMesa();
+		this.idMesa = entity.getIdMesa();
 
 		this.reserva = new Reserva(entity.getReserva());
-		this.cantidadSillas= entity.getCantidadSillas();
-		this.horaOcupacion=entity.getHoraOcupacion();
-		this.horaLiberacion= entity.getHoraLiberacion();
-		
-		
+		this.cantidadSillas = entity.getCantidadSillas();
+		this.horaOcupacion = entity.getHoraOcupacion();
+		this.horaLiberacion = entity.getHoraLiberacion();
+
 	}
 
 	public Mesa(MesaDTO dto) {
@@ -45,7 +44,7 @@ public abstract class Mesa {
 		this.cantidadSillas = dto.getCantidadSillas();
 		this.horaOcupacion = dto.getHoraOcupacion();
 		this.horaLiberacion = dto.getHoraLiberacion();
-		
+
 	}
 
 	public Mesa() {
@@ -55,7 +54,20 @@ public abstract class Mesa {
 	public abstract void cerrarMesa();
 
 	public abstract int getNumeroMesa();
-	
+
+	protected abstract MesaDTO buildDTO();
+
+	public MesaDTO toDTO() {
+		MesaDTO dto = this.buildDTO();
+		dto.setCantidadSillas(this.cantidadSillas);
+		dto.setEstadoMesa(this.estadoMesa.name());
+		dto.setHoraLiberacion(this.horaLiberacion); // TODO FORMAT
+		dto.setHoraOcupacion(this.horaOcupacion); // TODO FORMAT
+		dto.setIdMesa(this.idMesa);
+		dto.setReserva(this.reserva.toDTO());
+		
+		return dto;
+	}
 
 	public Integer getIdMesa() {
 		return idMesa;

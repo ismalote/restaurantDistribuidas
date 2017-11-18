@@ -17,6 +17,11 @@ import org.servidor.util.HibernateUtil;
 public class ComandaDAO {
 
 	private static ComandaDAO instancia;
+	
+
+	private ComandaDAO() {
+	
+	}
 
 	public static ComandaDAO getInstancia() {
 		if (instancia == null) {
