@@ -17,7 +17,6 @@ public class LocalEntity {
 
 
 	public LocalEntity() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Id

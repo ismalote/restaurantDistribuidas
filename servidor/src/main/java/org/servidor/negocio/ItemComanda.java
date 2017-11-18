@@ -1,44 +1,39 @@
 package org.servidor.negocio;
 
 import org.repositorio.dtos.ItemComandaDTO;
+import org.servidor.Enum.EstadoItemComanda;
 import org.servidor.dao.ItemComandaDAO;
 import org.servidor.dao.PlatoDAO;
 
 public class ItemComanda {
 
-	private int idPlato;
+	private Integer idItemComanda;
 	private Plato plato;
+	private EstadoItemComanda estado;
+	private int cantidad;
 
-	private boolean entregado;
 
-	private boolean reclamo;
 
-	public ItemComanda(int idPlato, Plato plato, boolean entregado, boolean reclamo) {
+	public ItemComanda(Integer idItemComanda, Plato plato, EstadoItemComanda estado, int cantidad) {
 		super();
-		this.idPlato = idPlato;
+		this.idItemComanda = idItemComanda;
 		this.plato = plato;
-		this.entregado = entregado;
-		this.reclamo = reclamo;
+		this.estado = estado;
+		this.cantidad = cantidad;
 	}
 
 	public ItemComanda(ItemComandaDTO item) {
-		this.setIdPlato(item.getIdPlato());
+		this.idItemComanda=item.getIdItemComanda();
 		this.plato= PlatoDAO.getInstancia().obtenerProducto(item.getIdPlato());
-		this.setEntregado(item.isEntregado());
-		this.setReclamo(item.isReclamo());
+		this.setEstado(item.getEstado());
+	
 	}
 
 	public ItemComanda() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getIdPlato() {
-		return idPlato;
-	}
-
-	public void setIdPlato(int idPlato) {
-		this.idPlato = idPlato;
-	}
+	
 
 	public Plato getPlato() {
 		return plato;
@@ -48,29 +43,45 @@ public class ItemComanda {
 		this.plato = plato;
 	}
 
-	public boolean isEntregado() {
-		return entregado;
+
+
+
+	public Integer getIdItemComanda() {
+		return idItemComanda;
 	}
 
-	public void setEntregado(boolean entregado) {
-		this.entregado = entregado;
+	public void setIdItemComanda(Integer idItemComanda) {
+		this.idItemComanda = idItemComanda;
 	}
 
-	public boolean isReclamo() {
-		return reclamo;
+	public EstadoItemComanda getEstado() {
+		return estado;
 	}
 
-	public void setReclamo(boolean reclamo) {
-		this.reclamo = reclamo;
+	public void setEstado(EstadoItemComanda estado) {
+		this.estado = estado;
+	}
+	
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
 	}
 
 	public ItemComandaDTO toDTO(ItemComanda item) {
 		ItemComandaDTO resultado = new ItemComandaDTO();
-		resultado.setIdPlato(item.getIdPlato());
+		resultado.setIdItemComanda(item.getIdItemComanda());
 		resultado.setNombrePlato(item.getPlato().getNombrePlato());
-		resultado.setEntregado(item.isEntregado());
-		resultado.setReclamo(item.isReclamo());
+		resultado.setEstado(item.getEstado());
 		return resultado;
+		
+	}
+	
+	public void save() {
+		ItemComandaDAO.getInstancia().save();
 		
 	}
 

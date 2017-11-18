@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.servidor.negocio.AreaProduccion;
 import javax.persistence.Table;;
 
 @Entity
@@ -33,6 +35,48 @@ public class AreaProduccionEntity {
 
 
 
+	public List<ProductoComestibleEntity> getProductos() {
+		return productos;
+	}
+
+	
+
+	public void setProductos(List<ProductoComestibleEntity> productos) {
+		this.productos = productos;
+	}
+
+	public String getTipoArea() {
+		return TipoArea;
+	}
+
+	public AreaProduccionEntity(Integer idArea, LocalEntity localRestaurante) {
+		super(idArea, localRestaurante);
+		// TODO Auto-generated constructor stub
+	}
+
+	public AreaProduccionEntity(AreaProduccion area) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public void setTipoArea(String tipoArea) {
+		TipoArea = tipoArea;
+	}
+
+	public EncargadoEntity getEncargado() {
+		return encargado;
+	}
+
+	public void setEncargado(EncargadoEntity encargado) {
+		this.encargado = encargado;
+	}
+
+//	public List<ComandaEntity> getComandas() {
+//		return comandas;
+//	}
+
+//	public void setComandas(List<ComandaEntity> comandas) {
+//		this.comandas = comandas;
+//	}
 	
 
 }

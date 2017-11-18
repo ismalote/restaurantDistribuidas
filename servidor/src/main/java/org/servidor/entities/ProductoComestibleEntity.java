@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import org.servidor.negocio.ProductoComestible;
+
 @Entity
 public abstract class ProductoComestibleEntity extends InsumoEntity {
 
@@ -30,9 +32,7 @@ public abstract class ProductoComestibleEntity extends InsumoEntity {
 	@ManyToOne
 	private SemiElaboradoEntity semielaborado;
 
-	public ProductoComestibleEntity() {
-		// TODO Auto-generated constructor stub
-	}
+
 
 	public ProductoComestibleEntity(Integer idInsumo, Float precio, Date fechaCreacion, Date fechaCaducidad,
 			String descripcion, String unidad) {

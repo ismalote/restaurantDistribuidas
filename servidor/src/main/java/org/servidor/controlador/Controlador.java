@@ -7,16 +7,20 @@ import java.util.List;
 import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
+import org.repositorio.dtos.ComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
 import org.repositorio.dtos.ReservaDTO;
 import org.repositorio.exceptions.ComandaNotFoundException;
+import org.repositorio.exceptions.EstadoItemComandaException;
 import org.repositorio.exceptions.FacturaException;
 import org.repositorio.exceptions.ItemComandaFailException;
 import org.repositorio.exceptions.MesaNotFoundException;
+import org.servidor.Enum.EstadoItemComanda;
 import org.servidor.Enum.EstadoMesa;
 import org.servidor.dao.ComandaDAO;
+import org.servidor.dao.ItemComandaDAO;
 import org.servidor.dao.FacturaDAO;
 import org.servidor.dao.MesaDAO;
 import org.servidor.dao.PlatoDAO;
@@ -176,6 +180,38 @@ public class Controlador {
 		}
 		return resultado;
 	}
+	
+	public void cambiarItemCProduccion(int idItemComanda) {
+	
+			ItemComanda item = ItemComandaDAO.getInstancia().obtenerItemComanda(idItemComanda);
+			item.setEstado(EstadoItemComanda.PRODUCCION);
+			item.save();
+	}
+	
+	public void cambiarItemCLISTO(int idItemComanda) {
+		
+		ItemComanda item = ItemComandaDAO.getInstancia().obtenerItemComanda(idItemComanda);
+		if(item.getEstado()!=EstadoItemComanda.PRODUCCION) {
+			throw new EstadoItemComandaException("El producto esta en produccion");	
+		}
+			item.setEstado(EstadoItemComanda.LISTO);
+		item.save();
+			
+		
+			
+		}
+	
+	public void cambiarItemCRECLAMADO(int idItemComanda) {
+		
+		ItemComanda item = ItemComandaDAO.getInstancia().obtenerItemComanda(idItemComanda);
+		if(item.getEstado()!=EstadoItemComanda.LISTO) {
+			throw new EstadoItemComandaException("El producto esta Listo");
+		}
+		item.setEstado(EstadoItemComanda.RECLAMADO);
+		item.save();
+
+	
+}
 
 	public void cerrarCaja(Date fecha, boolean cierre) {
 		

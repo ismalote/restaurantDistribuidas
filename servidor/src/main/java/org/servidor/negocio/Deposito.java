@@ -4,7 +4,7 @@ public class Deposito {
 
 	private Integer idDeposito;
 	private Stock stockDeposito;
-	private EncargadoArea encargadoDeposito;
+	private Encargado encargadoDeposito;
 
 	public Deposito(Integer idArea, Stock stockDeposito, EncargadoArea encargadoDeposito) {
 		this.idDeposito = idArea;
@@ -20,11 +20,11 @@ public class Deposito {
 		this.stockDeposito = stockDeposito;
 	}
 
-	public EncargadoArea getEncargadoDeposito() {
+	public Encargado getEncargadoDeposito() {
 		return encargadoDeposito;
 	}
 
-	public void setEncargadoDeposito(EncargadoArea encargadoDeposito) {
+	public void setEncargadoDeposito(Encargado encargadoDeposito) {
 		this.encargadoDeposito = encargadoDeposito;
 	}
 

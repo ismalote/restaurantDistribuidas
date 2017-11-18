@@ -13,6 +13,7 @@ import org.repositorio.exceptions.ItemComandaFailException;
 import org.repositorio.exceptions.MesaNotFoundException;
 import org.repositorio.exceptions.MozoNotFoundException;
 import org.servidor.dao.ComandaDAO;
+import org.servidor.dao.LocalDAO;
 import org.servidor.dao.MesaDAO;
 import org.servidor.dao.MozoDAO;
 import org.servidor.entities.ComandaEntity;
@@ -24,20 +25,20 @@ public class Comanda {
 	private Mozo mozo;
 	private boolean cerrada;
 	private Mesa mesa;
-	private Integer estadoComanda;
+	private Integer cantidadComensales;
 	private Factura fact;
 	private Date fecha;
 	private Local Local;
 
 	public Comanda(Integer idComanda, List<ItemComanda> platos, Mozo mozo, Boolean cerrada, Mesa mesa,
-			int estadoComanda, Factura fact, Date fecha, org.servidor.negocio.Local local) {
+			int cantidadComensales, Factura fact, Date fecha, Local local) {
 		super();
 		this.idComanda = idComanda;
 		this.platos = platos;
 		this.mozo = mozo;
 		this.cerrada = cerrada;
 		this.mesa = mesa;
-		this.estadoComanda = estadoComanda;
+		this.cantidadComensales = cantidadComensales;
 		this.fact = fact;
 		this.fecha = fecha;
 		this.Local = local;
@@ -56,7 +57,7 @@ public class Comanda {
 		// for (PlatoEntity plato : entity.getPlatos()) {
 		// this.platos.add(new Plato(plato));
 		// }
-		this.estadoComanda = (entity.getEstadoComanda());
+		this.cantidadComensales = (entity.getEstadoComanda());
 		// this.mozo = new Mozo(entity.getMozo());
 		this.mesa = new MesaSimple(entity.getMesa());
 		// this.fact = new Factura(entity.getFact());
@@ -78,10 +79,10 @@ public class Comanda {
 			this.platos.add(new ItemComanda(item));
 		}
 
-		if (dto.getEstadoComanda() == null) {
-			this.estadoComanda = 0; // TODO
+		if (dto.getCantidadComensales() == null) {
+			this.cantidadComensales = 0; // TODO
 		} else {
-			this.estadoComanda = (dto.getEstadoComanda());
+			this.cantidadComensales = (dto.getCantidadComensales());
 		}
 
 		if (dto.getFactura() == null) {
@@ -91,10 +92,11 @@ public class Comanda {
 		}
 	}
 
-	public Comanda(CrearComandaDTO comanda) { // TODO Revisar con otro
-												// constructor
-		this.mozo = MozoDAO.getInstancia().obtenerMozo(1);
+	public Comanda(CrearComandaDTO comanda) {
+		this.mozo = MozoDAO.getInstancia().obtenerMozo(comanda.getIdMozo());
 		this.mesa = MesaDAO.getInstancia().obtenerMesaPorNumero(comanda.getNumeroMesa());
+		this.cantidadComensales = comanda.getCantidadComensales();
+		this.Local = LocalDAO.getInstance().findById(comanda.getIdLocal());
 		this.fecha = new Date();
 	}
 
@@ -181,12 +183,12 @@ public class Comanda {
 		this.mesa = mesa;
 	}
 
-	public Integer getEstadoComanda() {
-		return estadoComanda;
+	public Integer getCantidadComensales() {
+		return cantidadComensales;
 	}
 
-	public void setEstadoComanda(Integer estadoComanda) {
-		this.estadoComanda = estadoComanda;
+	public void setCantidadComensales(Integer cantidadComensales) {
+		this.cantidadComensales = cantidadComensales;
 	}
 
 	public Factura getFact() {
