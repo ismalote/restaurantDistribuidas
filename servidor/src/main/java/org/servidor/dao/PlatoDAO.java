@@ -1,6 +1,7 @@
 package org.servidor.dao;
 
 import org.hibernate.Session;
+import org.servidor.entities.PlatoEntity;
 import org.servidor.negocio.Plato;
 import org.servidor.util.HibernateUtil;
 
@@ -26,6 +27,11 @@ public class PlatoDAO {
 				.uniqueResult();
 
 		return p;
+	}
+
+	public  Plato toNegocio(PlatoEntity entity) {
+		Plato resultado = new Plato(entity);
+		return resultado;
 	}
 
 }

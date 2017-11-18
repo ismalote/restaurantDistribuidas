@@ -8,6 +8,7 @@ import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
+import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.exceptions.ComandaNotFoundException;
 import org.repositorio.exceptions.ItemComandaFailException;
 import org.repositorio.exceptions.MesaNotFoundException;
@@ -17,6 +18,7 @@ import org.servidor.dao.MesaDAO;
 import org.servidor.dao.PlatoDAO;
 import org.servidor.dao.SectorDAO;
 import org.servidor.negocio.Comanda;
+import org.servidor.negocio.ItemComanda;
 import org.servidor.negocio.Mesa;
 import org.servidor.negocio.MesaCompuesta;
 import org.servidor.negocio.MesaSimple;
@@ -143,6 +145,12 @@ public class Controlador {
 		dto.setNumerodeMesa(resultado);
 		return dto;
 		
+	}
+	
+	public List<ItemComandaDTO> listarPedidos(int idComanda){
+		List<ItemComanda>resultado = new ArrayList<>();
+		resultado= ComandaDAO.getInstancia().allItems(idComanda);
+		return 
 	}
 	
 	

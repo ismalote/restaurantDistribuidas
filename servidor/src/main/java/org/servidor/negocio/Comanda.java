@@ -131,6 +131,12 @@ public class Comanda {
 		this.cerrada = true;
 		return save();
 	}
+	
+	public List<ItemComanda> obtenerItems (int idComanda){
+		List<ItemComanda> resultado = ComandaDAO.allItems(idComanda);
+		return resultado;
+		
+	}
 
 	/*
 	 * Getters & Setters

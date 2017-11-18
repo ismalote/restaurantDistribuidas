@@ -42,6 +42,10 @@ public class ItemComanda {
 		this.plato = PlatoDAO.getInstancia().obtenerProducto(idPlato);
 	}
 
+	public ItemComanda() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public boolean isEntregado() {
 		return entregado;
 	}
