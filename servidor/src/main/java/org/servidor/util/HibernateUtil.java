@@ -24,6 +24,7 @@ import org.servidor.entities.LimpiezaEntity;
 import org.servidor.entities.ListadoComprasEntity;
 import org.servidor.entities.LocalEntity;
 import org.servidor.entities.MateriaPrimaEntity;
+import org.servidor.entities.MesaCompuestaEntity;
 import org.servidor.entities.MesaEntity;
 import org.servidor.entities.MesaSimpleEntity;
 import org.servidor.entities.MozoEntity;
@@ -56,6 +57,7 @@ public class HibernateUtil {
 			config.addAnnotatedClass(MozoEntity.class);
 			config.addAnnotatedClass(MesaEntity.class);
 			config.addAnnotatedClass(MesaSimpleEntity.class);
+			config.addAnnotatedClass(MesaCompuestaEntity.class);
 			
 			config.addAnnotatedClass(EncargadoEntity.class);
 			config.addAnnotatedClass(EncargadoAreaEntity.class);

@@ -17,7 +17,7 @@ public class ItemComandaEntity {
 
 	@OneToOne
 	@JoinColumn(name = "idPlato")
-	private PlatoEntity idPlato;
+	private PlatoEntity plato;
 
 	@ManyToOne
 	private ComandaEntity comanda;

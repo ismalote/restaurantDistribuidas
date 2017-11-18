@@ -3,6 +3,8 @@ package org.servidor.negocio;
 import java.util.Date;
 import java.util.List;
 
+import org.repositorio.dtos.MesaCompuestaDTO;
+import org.repositorio.dtos.MesaDTO;
 import org.servidor.Enum.EstadoMesa;
 
 public class MesaCompuesta extends Mesa {
@@ -32,7 +34,7 @@ public class MesaCompuesta extends Mesa {
 		for (Mesa mesa : this.mesas) {
 			mesa.setEstadoMesa(EstadoMesa.LIBRE);
 		}
-		save(); // TODO Check si cascade funca
+		super.save(); // TODO Check si cascade funca
 	}
 
 	@Override
@@ -49,6 +51,21 @@ public class MesaCompuesta extends Mesa {
 		} else {
 			throw new RuntimeException();
 		}
+	}
+
+	@Override
+	public Integer getCantidadSillas() {
+		int cantidad = 0;
+		for (Mesa mesa : mesas) {
+			cantidad = cantidad + mesa.getCantidadSillas();
+
+		}
+		return cantidad;
+	}
+
+	@Override
+	protected MesaDTO buildDTO() {
+		return new MesaCompuestaDTO(); // TODO
 	}
 
 }

@@ -3,6 +3,7 @@ package org.servidor.negocio;
 import java.util.Date;
 
 import org.repositorio.dtos.MesaDTO;
+import org.repositorio.dtos.MesaSimpleDTO;
 import org.servidor.Enum.EstadoMesa;
 import org.servidor.entities.MesaEntity;
 
@@ -36,6 +37,18 @@ public class MesaSimple extends Mesa {
 	@Override
 	public int getNumeroMesa() {
 		return this.numeroMesa;
+	}
+
+	@Override
+	public Integer getCantidadSillas() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MesaDTO buildDTO() {
+		MesaSimpleDTO ms = new MesaSimpleDTO(); // TODO
+		return ms;
 	}
 
 }

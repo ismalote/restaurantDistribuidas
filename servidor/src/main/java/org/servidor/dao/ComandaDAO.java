@@ -3,9 +3,11 @@ package org.servidor.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.repositorio.exceptions.SaveFailedException;
 import org.servidor.entities.ComandaEntity;
+import org.servidor.entities.ItemComandaEntity;
 import org.servidor.entities.MozoEntity;
 import org.servidor.entities.PlatoEntity;
 import org.servidor.negocio.Comanda;
@@ -15,6 +17,11 @@ import org.servidor.util.HibernateUtil;
 public class ComandaDAO {
 
 	private static ComandaDAO instancia;
+	
+
+	private ComandaDAO() {
+	
+	}
 
 	public static ComandaDAO getInstancia() {
 		if (instancia == null) {
@@ -54,6 +61,18 @@ public class ComandaDAO {
 
 	}
 
+	public Comanda obtenerComanda(int idComanda) {
+		
+		Session s= HibernateUtil.getSessionFactory().openSession();
+		ComandaEntity comanda= (ComandaEntity) s.createQuery("FROM ComandaEntity where idComanda = ?").setInteger(0, idComanda).uniqueResult();
+		Comanda resultado = new Comanda(comanda);
+		return resultado;
+		
+	}
+	
+	
+	
+
 	public boolean existeComanda(int idComanda) {
 		ComandaEntity comandaEntity = getComandaEntity(idComanda);
 		return comandaEntity != null;
@@ -61,7 +80,8 @@ public class ComandaDAO {
 
 	public Comanda getComanda(int idComanda) {
 		ComandaEntity comandaEntity = getComandaEntity(idComanda);
-		return toNegocio(comandaEntity);
+		Comanda resultado= new Comanda(comandaEntity);
+		return resultado; 
 	}
 
 	private ComandaEntity getComandaEntity(int idComanda) {
@@ -71,8 +91,6 @@ public class ComandaDAO {
 		return comandaEntity;
 	}
 
-	private Comanda toNegocio(ComandaEntity ce) {
-		return null;
-	}
+	
 
 }

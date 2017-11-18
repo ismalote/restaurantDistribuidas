@@ -3,6 +3,7 @@ package org.servidor.entities;
 import java.util.Date;
 
 import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,26 +18,45 @@ import org.servidor.Enum.EstadoMesa;
 @Entity
 @Table(name = "mesa")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "Mesa_type")
+@DiscriminatorColumn(discriminatorType=DiscriminatorType.STRING)
 public abstract class MesaEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idMesa;
 
-	private Integer estadoMesa;
-	// private Integer estadoMesa;
+	private EstadoMesa estadoMesa;
 
 	// @OneToMany(mappedBy = "mesa")
 	// private ReservaEntity reserva;
 
 	@ManyToOne
 	private SectorEntity sector;
-	public Integer getEstadoMesa() {
+
+	private Integer cantidadSillas;
+	private Date horaOcupacion;
+	private Date horaLiberacion;
+
+	public MesaEntity() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public MesaEntity(Integer idMesa, EstadoMesa estadoMesa, SectorEntity sector, Integer cantidadSillas,
+			Date horaOcupacion, Date horaLiberacion) {
+		super();
+		this.idMesa = idMesa;
+		this.estadoMesa = estadoMesa;
+		this.sector = sector;
+		this.cantidadSillas = cantidadSillas;
+		this.horaOcupacion = horaOcupacion;
+		this.horaLiberacion = horaLiberacion;
+	}
+
+	public EstadoMesa getEstadoMesa() {
 		return estadoMesa;
 	}
 
-	public void setEstadoMesa(Integer estadoMesa) {
+	public void setEstadoMesa(EstadoMesa estadoMesa) {
 		this.estadoMesa = estadoMesa;
 	}
 
@@ -48,25 +68,6 @@ public abstract class MesaEntity {
 		this.sector = sector;
 	}
 
-	private Integer cantidadSillas;
-	private Date horaOcupacion;
-	private Date horaLiberacion;
-
-	public MesaEntity() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public MesaEntity(Integer idMesa, Integer estadoMesa, SectorEntity sector, Integer cantidadSillas,
-			Date horaOcupacion, Date horaLiberacion) {
-		super();
-		this.idMesa = idMesa;
-		this.estadoMesa = estadoMesa;
-		this.sector = sector;
-		this.cantidadSillas = cantidadSillas;
-		this.horaOcupacion = horaOcupacion;
-		this.horaLiberacion = horaLiberacion;
-	}
-
 	public Integer getIdMesa() {
 		return idMesa;
 	}
@@ -75,13 +76,13 @@ public abstract class MesaEntity {
 		this.idMesa = idMesa;
 	}
 
-	// public ReservaEntity getReserva() {
-	// return reserva;
-	// }
+	public ReservaEntity getReserva() {
+		return null; // TODO
+	}
 
-	// public void setReserva(ReservaEntity reserva) {
-	// this.reserva = reserva;
-	// }
+	public void setReserva(ReservaEntity reserva) {
+		// this.reserva = reserva; TODO
+	}
 
 	public Integer getCantidadSillas() {
 		return cantidadSillas;

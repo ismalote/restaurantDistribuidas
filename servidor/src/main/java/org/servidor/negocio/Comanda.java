@@ -131,6 +131,8 @@ public class Comanda {
 		this.cerrada = true;
 		return save();
 	}
+	
+
 
 	/*
 	 * Getters & Setters

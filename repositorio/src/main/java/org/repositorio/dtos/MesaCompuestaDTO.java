@@ -1,7 +1,7 @@
 package org.repositorio.dtos;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 
 public class MesaCompuestaDTO extends MesaDTO implements Serializable {
 
@@ -10,13 +10,17 @@ public class MesaCompuestaDTO extends MesaDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public MesaCompuestaDTO(Integer idMesa, EstadoMesaDTO estadoMesa, ReservaDTO reserva, Integer cantidadSillas,
-			Date horaOcupacion, Date horaLiberacion) {
-		super(idMesa, estadoMesa, reserva, cantidadSillas, horaOcupacion, horaLiberacion);
-		// TODO Auto-generated constructor stub
+	private List<MesaDTO> mesas;
+
+	public MesaCompuestaDTO() {
 	}
 
+	public List<MesaDTO> getMesas() {
+		return mesas;
+	}
 
+	public void setMesas(List<MesaDTO> mesas) {
+		this.mesas = mesas;
+	}
 
-	
 }
