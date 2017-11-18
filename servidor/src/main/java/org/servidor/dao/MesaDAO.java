@@ -15,17 +15,17 @@ import org.servidor.util.HibernateUtil;
 
 public class MesaDAO {
 
-	public static MesaDAO instancia;
+	private static MesaDAO instancia;
+
+	private MesaDAO() {
+
+	}
 
 	public static MesaDAO getInstancia() {
 		if (instancia == null) {
 			instancia = new MesaDAO();
 		}
 		return instancia;
-	}
-
-	public static void setInstancia(MesaDAO instancia) {
-		MesaDAO.instancia = instancia;
 	}
 
 	public MesaSimple obtenerMesaSimplePorNumero(int numeroMesa) {
@@ -56,10 +56,12 @@ public class MesaDAO {
 		return resultado;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Mesa> obtenerMesasPorSector(int sector) {
 		List<Mesa> mesas = new ArrayList<Mesa>();
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		List<MesaEntity> list = (List<MesaEntity>) session.createQuery("From MesaEntity where sector = ?").setInteger(0, sector).list();
+		List<MesaEntity> list = (List<MesaEntity>) session.createQuery("From MesaEntity where sector = ?")
+				.setInteger(0, sector).list();
 		for (MesaEntity mesaEntity : list) {
 			mesas.add(toNegocio(mesaEntity));
 		}

@@ -1,6 +1,6 @@
 package org.servidor.negocio;
 
-public abstract class Encargado {
+public class Encargado {
 
 	protected Integer idEncargado;
 	protected String Nombre;

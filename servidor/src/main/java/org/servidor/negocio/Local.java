@@ -6,18 +6,16 @@ public class Local {
 
 	private List<Encargado> encargadosAreas;
 	private List<Mozo> mozos;
-	private Salon salon;
 	private Deposito deposito;
 	private List<Area> areas;
 	private Carta carta;
 	private List<ListadoCompras> listadosCompras;
 
-	public Local(List<Encargado> encargadosAreas, List<Mozo> mozos, Salon salon, Deposito deposito,
-			List<Area> areas, Carta carta, List<ListadoCompras> listadosCompras) {
+	public Local(List<Encargado> encargadosAreas, List<Mozo> mozos, Deposito deposito, List<Area> areas, Carta carta,
+			List<ListadoCompras> listadosCompras) {
 		super();
 		this.encargadosAreas = encargadosAreas;
 		this.mozos = mozos;
-		this.salon = salon;
 		this.deposito = deposito;
 		this.areas = areas;
 		this.carta = carta;
@@ -38,14 +36,6 @@ public class Local {
 
 	public void setMozos(List<Mozo> mozos) {
 		this.mozos = mozos;
-	}
-
-	public Salon getSalon() {
-		return salon;
-	}
-
-	public void setSalon(Salon salon) {
-		this.salon = salon;
 	}
 
 	public Deposito getDeposito() {
@@ -79,7 +69,6 @@ public class Local {
 	public void setListadosCompras(List<ListadoCompras> listadosCompras) {
 		this.listadosCompras = listadosCompras;
 	}
-
 	// TODO faltan metodos
 
 }

@@ -2,6 +2,7 @@ package org.servidor.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.servidor.dao.LocalDAO;
 import org.servidor.entities.AdministracionEntity;
 import org.servidor.entities.AreaEntity;
 import org.servidor.entities.AreaProduccionEntity;
@@ -117,4 +118,5 @@ public class HibernateUtil {
 	public static SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
+
 }

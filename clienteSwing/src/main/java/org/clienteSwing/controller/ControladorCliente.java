@@ -33,4 +33,9 @@ public class ControladorCliente {
 
 		return BussinessDelegate.getInstancia().listarMesasLibres(sector);
 	}
+
+	public void crearComanda() {
+		CrearComandaDTO comanda = new CrearComandaDTO();
+		BussinessDelegate.getInstancia().crearComanda(comanda);
+	}
 }
