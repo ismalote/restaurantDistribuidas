@@ -7,10 +7,8 @@ import org.hibernate.Session;
 import org.repositorio.exceptions.SaveFailedException;
 import org.servidor.entities.MesaEntity;
 import org.servidor.entities.MesaSimpleEntity;
-import org.servidor.entities.ReservaEntity;
 import org.servidor.negocio.Mesa;
 import org.servidor.negocio.MesaSimple;
-import org.servidor.negocio.Reserva;
 import org.servidor.util.HibernateUtil;
 
 public class MesaDAO {
@@ -72,7 +70,6 @@ public class MesaDAO {
 		MesaSimple aux = new MesaSimple();
 		aux.setIdMesa(entity.getIdMesa());
 		aux.setEstadoMesa(entity.getEstadoMesa());
-		aux.setReserva(new Reserva(entity.getReserva()));
 		aux.setCantidadSillas(entity.getCantidadSillas());
 		aux.setHoraOcupacion(entity.getHoraOcupacion());
 		aux.setHoraLiberacion(entity.getHoraLiberacion());
@@ -102,8 +99,6 @@ public class MesaDAO {
 		entity.setHoraLiberacion(m.getHoraLiberacion());
 		entity.setHoraOcupacion(m.getHoraOcupacion());
 		entity.setIdMesa(m.getIdMesa());
-		entity.setReserva(new ReservaEntity(m.getReserva()));
-
 		return null;
 	}
 

@@ -3,21 +3,10 @@ package org.servidor.negocio;
 public class Deposito {
 
 	private Integer idDeposito;
-	private Stock stockDeposito;
 	private Encargado encargadoDeposito;
 
-	public Deposito(Integer idArea, Stock stockDeposito, EncargadoArea encargadoDeposito) {
-		this.idDeposito = idArea;
-		this.stockDeposito = stockDeposito;
+	public Deposito(Encargado encargadoDeposito) {
 		this.encargadoDeposito = encargadoDeposito;
-	}
-
-	public Stock getStockDeposito() {
-		return stockDeposito;
-	}
-
-	public void setStockDeposito(Stock stockDeposito) {
-		this.stockDeposito = stockDeposito;
 	}
 
 	public Encargado getEncargadoDeposito() {

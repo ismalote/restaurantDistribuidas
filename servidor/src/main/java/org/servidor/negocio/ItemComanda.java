@@ -12,8 +12,6 @@ public class ItemComanda {
 	private EstadoItemComanda estado;
 	private int cantidad;
 
-
-
 	public ItemComanda(Integer idItemComanda, Plato plato, EstadoItemComanda estado, int cantidad) {
 		super();
 		this.idItemComanda = idItemComanda;
@@ -23,17 +21,26 @@ public class ItemComanda {
 	}
 
 	public ItemComanda(ItemComandaDTO item) {
-		this.idItemComanda=item.getIdItemComanda();
-		this.plato= PlatoDAO.getInstancia().obtenerProducto(item.getIdPlato());
-		this.setEstado(item.getEstado());
-	
+		this.idItemComanda = item.getIdItemComanda();
+		this.plato = PlatoDAO.getInstancia().obtenerProducto(item.getIdPlato());
+		switch (item.getIdItemComanda()) {
+		case 0:
+			this.estado = EstadoItemComanda.PRODUCCION;
+			break;
+		case 1:
+			this.estado = EstadoItemComanda.LISTO;
+			break;
+		case 2:
+			this.estado = EstadoItemComanda.RECLAMADO;
+			break;
+		default:
+			break;
+		}
 	}
 
 	public ItemComanda() {
 		// TODO Auto-generated constructor stub
 	}
-
-	
 
 	public Plato getPlato() {
 		return plato;
@@ -42,9 +49,6 @@ public class ItemComanda {
 	public void setPlato(Plato plato) {
 		this.plato = plato;
 	}
-
-
-
 
 	public Integer getIdItemComanda() {
 		return idItemComanda;
@@ -61,7 +65,6 @@ public class ItemComanda {
 	public void setEstado(EstadoItemComanda estado) {
 		this.estado = estado;
 	}
-	
 
 	public int getCantidad() {
 		return cantidad;
@@ -75,17 +78,14 @@ public class ItemComanda {
 		ItemComandaDTO resultado = new ItemComandaDTO();
 		resultado.setIdItemComanda(item.getIdItemComanda());
 		resultado.setNombrePlato(item.getPlato().getNombrePlato());
-		resultado.setEstado(item.getEstado());
+		resultado.setEstado(null); // TODO
 		return resultado;
-		
+
 	}
-	
+
 	public void save() {
 		ItemComandaDAO.getInstancia().save();
-		
+
 	}
-
-
-	
 
 }

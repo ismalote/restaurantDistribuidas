@@ -6,11 +6,9 @@ public class Elaborado extends ProductoComestible {
 
 	private List<ProductoComestible> productos;
 
-
-	public Elaborado(Integer idProducto, AreaProduccion area, Integer cantidadPedido, Integer puntoPedido,
-			String descripcion, Integer stock, Float precio) {
-		super(idProducto, area, cantidadPedido, puntoPedido, descripcion, stock, precio);
-		// TODO Auto-generated constructor stub
+	public Elaborado(Integer idProducto, Integer cantidadPedido, Integer puntoPedido, String descripcion, Integer stock,
+			Float precio) {
+		super(idProducto, cantidadPedido, puntoPedido, descripcion, stock, precio);
 	}
 
 	public List<ProductoComestible> getProductos() {
@@ -20,7 +18,5 @@ public class Elaborado extends ProductoComestible {
 	public void setProductos(List<ProductoComestible> productos) {
 		this.productos = productos;
 	}
-
-
 
 }
