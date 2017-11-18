@@ -1,5 +1,7 @@
 package org.servidor.entities;
 
+import java.util.List;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,19 +22,20 @@ public class CajaEntity {
 	@JoinColumn(name = "idEncargadoArea")
 	private EncargadoAreaEntity encargadoCaja;
 
-	@OneToMany(mappedBy= "caja")
-	private CierredeCajaEntity cierre;
-	
+	@OneToMany(mappedBy = "caja")
+	private List<CierredeCajaEntity> cierre;
+
 	public CajaEntity() {
 		// TODO Auto-generated constructor stub
 	}
 	// @OneToMany(mappedBy = "caja")
 	// private List<ComandaEntity> comandas;
 
-	public CajaEntity(Integer idCaja, EncargadoAreaEntity encargadoCaja) {
+	public CajaEntity(Integer idCaja, EncargadoAreaEntity encargadoCaja, List<CierredeCajaEntity> cierre) {
 		super();
 		this.idCaja = idCaja;
 		this.encargadoCaja = encargadoCaja;
+		this.cierre = cierre;
 	}
 
 	public Integer getIdCaja() {
@@ -49,6 +52,14 @@ public class CajaEntity {
 
 	public void setEncargadoCaja(EncargadoAreaEntity encargadoCaja) {
 		this.encargadoCaja = encargadoCaja;
+	}
+
+	public List<CierredeCajaEntity> getCierre() {
+		return cierre;
+	}
+
+	public void setCierre(List<CierredeCajaEntity> cierre) {
+		this.cierre = cierre;
 	}
 
 }

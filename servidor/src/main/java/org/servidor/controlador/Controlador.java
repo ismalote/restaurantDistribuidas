@@ -20,6 +20,7 @@ import org.servidor.dao.ComandaDAO;
 import org.servidor.dao.FacturaDAO;
 import org.servidor.dao.MesaDAO;
 import org.servidor.dao.PlatoDAO;
+import org.servidor.negocio.CierredeCaja;
 import org.servidor.negocio.Comanda;
 import org.servidor.negocio.Factura;
 import org.servidor.negocio.ItemComanda;
@@ -83,11 +84,11 @@ public class Controlador {
 
 	public boolean cerrarComanda(int idComanda) {
 		Comanda comanda = getComanda(idComanda, "cerrarComanda(int idComanda)");
-		Factura aux = getFacturaComanda (idComanda);
-		if(aux != null ){
+		Factura aux = getFacturaComanda(idComanda);
+		if (aux != null) {
 			throw new FacturaException("Ya existe la factura para la comanda");
 		}
-		
+
 		double precio = comanda.montoTotal();
 		aux = new Factura("", precio, comanda);
 		aux.save();
@@ -104,7 +105,7 @@ public class Controlador {
 	}
 
 	private Factura getFacturaComanda(int idComanda) {
-		Factura fact= FacturaDAO.getInstancia().getFactura(idComanda);
+		Factura fact = FacturaDAO.getInstancia().getFactura(idComanda);
 		if (fact == null) {
 			throw new FacturaException("");
 		}
@@ -175,5 +176,16 @@ public class Controlador {
 		}
 		return resultado;
 	}
+
+	public void cerrarCaja(Date fecha, boolean cierre) {
+		
+		
+	}
+	
+	public void abrirCaja(Date fecha, boolean cierre) {
+		
+		
+	}
+
 
 }
