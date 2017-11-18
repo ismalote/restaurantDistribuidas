@@ -23,40 +23,35 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		this.controlador = Controlador.getInstancia();
 	}
 
-	public boolean crearComanda(CrearComandaDTO comanda) {
+	public boolean crearComanda(CrearComandaDTO comanda) throws RemoteException{
 		return this.controlador.crearNuevacomanda(comanda);
 	}
 
-	@Override
-	public boolean agregarItemAComanda(AgregarItemComandaDTO item) {
+	public boolean agregarItemAComanda(AgregarItemComandaDTO item) throws RemoteException{
 		return this.controlador.agregarItemAComanda(item);
 	}
 
-	@Override
 	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO item) throws RemoteException {
 		return this.controlador.agregarItemsAComanda(item);
 	}
 
-	@Override
-	public boolean cerrarcomanda(int idComanda) {
+	public boolean cerrarcomanda(int idComanda) throws RemoteException{
 		return this.controlador.cerrarComanda(idComanda);
 	}
 
-	@Override
 	public void cerrarMesa(int idMesa) throws RemoteException {
 		this.controlador.cerrarMesa(idMesa);
 	}
 
-	public void AbrirMesa(AbrirMesaDTO dto) throws RemoteException {
+	public void abrirMesa(AbrirMesaDTO dto) throws RemoteException {
 		Controlador.getInstancia().AbrirMesa(dto);
 	}
 
-	public List<MesaDTO> mesasLibres(Integer numeroSector) {
+	public List<MesaDTO> mesasLibres(Integer numeroSector) throws RemoteException{
 
 		return Controlador.getInstancia().mesasLibres(numeroSector);
 	}
 
-	@Override
 	public void AbrirMesaNueva(List<Integer> nrosMesas) throws RemoteException {
 		// TODO Auto-generated method stub
 

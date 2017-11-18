@@ -2,8 +2,12 @@ package org.servidor.entities;
 
 import java.util.Date;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -11,6 +15,8 @@ import org.servidor.Enum.EstadoMesa;
 
 @Entity
 @Table(name = "mesa")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(discriminatorType=DiscriminatorType.STRING)
 public abstract class MesaEntity {
 
 	@Id

@@ -63,11 +63,11 @@ public class BussinessDelegate {
 		this.objetoRemoto.cerrarMesa(idMesa);
 	}
 
-	public void AbrirMesaNueva(List<Integer> nrosMesas) throws RemoteException {
+	public void abrirMesaNueva(List<Integer> nrosMesas) throws RemoteException {
 		AbrirMesaDTO dto = new AbrirMesaDTO();
 
 		dto.setNumerodeMesa(nrosMesas);
-		objetoRemoto.AbrirMesa(dto);
+		objetoRemoto.abrirMesa(dto);
 
 	}
 

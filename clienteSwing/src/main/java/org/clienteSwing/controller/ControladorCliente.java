@@ -16,9 +16,9 @@ public class ControladorCliente {
 
 	}
 
-	public void AbrirMesaNueva(List<Integer> numeros) {
+	public void abrirMesaNueva(List<Integer> numeros) {
 		try {
-			BussinessDelegate.getInstancia().AbrirMesaNueva(numeros);
+			BussinessDelegate.getInstancia().abrirMesaNueva(numeros);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
