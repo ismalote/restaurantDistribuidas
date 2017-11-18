@@ -10,7 +10,6 @@ import org.servidor.entities.MesaEntity;
 public abstract class Mesa {
 
 	private Integer idMesa;
-	private Reserva reserva;
 	private Integer cantidadSillas;
 	private Date horaOcupacion;
 	private Date horaLiberacion;
@@ -20,8 +19,6 @@ public abstract class Mesa {
 			EstadoMesa estadoMesa) {
 		super();
 		this.idMesa = idMesa;
-
-		this.reserva = reserva;
 		this.cantidadSillas = cantidadSillas;
 		this.horaOcupacion = horaOcupacion;
 		this.horaLiberacion = horaLiberacion;
@@ -30,7 +27,7 @@ public abstract class Mesa {
 	public Mesa(MesaEntity entity) {
 		this.idMesa = entity.getIdMesa();
 
-//		this.reserva = new Reserva(entity.getReserva());
+		// this.reserva = new Reserva(entity.getReserva());
 		this.cantidadSillas = entity.getCantidadSillas();
 		this.horaOcupacion = entity.getHoraOcupacion();
 		this.horaLiberacion = entity.getHoraLiberacion();
@@ -40,7 +37,6 @@ public abstract class Mesa {
 	public Mesa(MesaDTO dto) {
 		this.idMesa = dto.getIdMesa();
 
-		this.reserva = new Reserva(dto.getReserva());
 		this.cantidadSillas = dto.getCantidadSillas();
 		this.horaOcupacion = dto.getHoraOcupacion();
 		this.horaLiberacion = dto.getHoraLiberacion();
@@ -64,8 +60,7 @@ public abstract class Mesa {
 		dto.setHoraLiberacion(this.horaLiberacion); // TODO FORMAT
 		dto.setHoraOcupacion(this.horaOcupacion); // TODO FORMAT
 		dto.setIdMesa(this.idMesa);
-		dto.setReserva(this.reserva.toDTO());
-		
+
 		return dto;
 	}
 
@@ -75,14 +70,6 @@ public abstract class Mesa {
 
 	public void setIdMesa(Integer idMesa) {
 		this.idMesa = idMesa;
-	}
-
-	public Reserva getReserva() {
-		return reserva;
-	}
-
-	public void setReserva(Reserva reserva) {
-		this.reserva = reserva;
 	}
 
 	public abstract Integer getCantidadSillas();

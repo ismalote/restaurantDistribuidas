@@ -10,7 +10,6 @@ import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
-import org.servidor.controlador.Controlador;
 
 public interface IAppRemote extends Remote {
 	String URL_SERVICIO = "localhost/RestaurantDistribuida";

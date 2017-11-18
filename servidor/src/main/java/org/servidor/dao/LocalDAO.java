@@ -5,12 +5,11 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.repositorio.exceptions.SaveFailedException;
-import org.servidor.entities.AreaEntity;
 import org.servidor.entities.EncargadoEntity;
 import org.servidor.entities.ListadoComprasEntity;
 import org.servidor.entities.LocalEntity;
 import org.servidor.entities.MozoEntity;
-import org.servidor.negocio.Area;
+import org.servidor.negocio.AreaProduccion;
 import org.servidor.negocio.Carta;
 import org.servidor.negocio.Deposito;
 import org.servidor.negocio.Encargado;
@@ -55,12 +54,10 @@ public class LocalDAO {
 	}
 
 	private LocalEntity toEntity(Local local) {
-		List<Area> areas = local.getAreas();
 		List<Encargado> encargadosAreas = local.getEncargadosAreas();
 		List<ListadoCompras> listadosCompras = local.getListadosCompras();
 		List<Mozo> mozos = local.getMozos();
 
-		List<AreaEntity> areasEntity = new ArrayList<AreaEntity>();
 		List<EncargadoEntity> encargadosAreasEntity = new ArrayList<EncargadoEntity>();
 		List<ListadoComprasEntity> listadosComprasEntity = new ArrayList<ListadoComprasEntity>();
 		List<MozoEntity> mozosEntity = new ArrayList<MozoEntity>();
@@ -83,12 +80,11 @@ public class LocalDAO {
 	}
 
 	public Local toNegocio(LocalEntity le) {
-		List<AreaEntity> areas = le.getAreas();
 		List<EncargadoEntity> encargadosAreas = le.getEncargadosAreas();
 		List<ListadoComprasEntity> listadosCompras = le.getListadosCompras();
 		List<MozoEntity> mozos = le.getMozos();
 
-		List<Area> areaNegocio = new ArrayList<Area>();
+		List<AreaProduccion> areaNegocio = new ArrayList<AreaProduccion>();
 		List<Encargado> encargados = new ArrayList<Encargado>();
 		List<ListadoCompras> listados = new ArrayList<ListadoCompras>();
 		List<Mozo> mozosNegocio = new ArrayList<Mozo>();
@@ -105,12 +101,9 @@ public class LocalDAO {
 			encargados.add(EncargadoDAO.getInstancia().toNegocio(encargadoEntity));
 		}
 
-		for (AreaEntity area : areas) { // TODO Falta DAO
-		}
-
 		Deposito deposito = DepositoDAO.getInstancia().toNegocio(le.getDeposito());
 		Carta carta = CartaDAO.getInstancia().toNegocio(le.getCarta());
-		return new Local(encargados, mozosNegocio, deposito, areaNegocio, carta, listados);
+		return new Local(encargados, mozosNegocio, null, deposito, areaNegocio, null, carta, listados);
 	}
 
 }

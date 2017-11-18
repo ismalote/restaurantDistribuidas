@@ -2,21 +2,20 @@ package org.servidor.entities;
 
 import java.util.List;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-import org.servidor.negocio.AreaProduccion;
-import javax.persistence.Table;;
+import org.servidor.negocio.AreaProduccion;;
 
 @Entity
-@Table(name ="areaProduccion")
+@Table(name = "areaProduccion")
 public class AreaProduccionEntity {
-	
+
 	@Id
 	private Integer idAreaProducion;
 
@@ -30,16 +29,12 @@ public class AreaProduccionEntity {
 
 	@ManyToOne
 	protected LocalEntity localRestaurante;
-//	@OneToMany(mappedBy = "areaProduccion")
-//	protected List<ComandaEntity> comandas;
-
-
+	// @OneToMany(mappedBy = "areaProduccion")
+	// protected List<ComandaEntity> comandas;
 
 	public List<ProductoComestibleEntity> getProductos() {
 		return productos;
 	}
-
-	
 
 	public void setProductos(List<ProductoComestibleEntity> productos) {
 		this.productos = productos;
@@ -50,7 +45,6 @@ public class AreaProduccionEntity {
 	}
 
 	public AreaProduccionEntity(Integer idArea, LocalEntity localRestaurante) {
-		super(idArea, localRestaurante);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -70,13 +64,12 @@ public class AreaProduccionEntity {
 		this.encargado = encargado;
 	}
 
-//	public List<ComandaEntity> getComandas() {
-//		return comandas;
-//	}
+	// public List<ComandaEntity> getComandas() {
+	// return comandas;
+	// }
 
-//	public void setComandas(List<ComandaEntity> comandas) {
-//		this.comandas = comandas;
-//	}
-	
+	// public void setComandas(List<ComandaEntity> comandas) {
+	// this.comandas = comandas;
+	// }
 
 }

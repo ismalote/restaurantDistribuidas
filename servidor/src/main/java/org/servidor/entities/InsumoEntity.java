@@ -14,15 +14,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "insumo")
-//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-//@DiscriminatorColumn(name = "Insumo_type")
-@Inheritance(strategy=InheritanceType.JOINED)
-public abstract class InsumoEntity implements Serializable{
+// @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+// @DiscriminatorColumn(name = "Insumo_type")
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class InsumoEntity {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Integer idInsumo;
@@ -31,7 +27,7 @@ public abstract class InsumoEntity implements Serializable{
 	protected Date fechaCaducidad;
 	protected String descripcion;
 	protected String unidad;
-	
+
 	@ManyToOne
 	private RestaurantEntity restauranteInsumos;
 
@@ -45,8 +41,8 @@ public abstract class InsumoEntity implements Serializable{
 		this.descripcion = descripcion;
 		this.unidad = unidad;
 	}
+
 	public InsumoEntity() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getIdInsumo() {

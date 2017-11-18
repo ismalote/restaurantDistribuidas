@@ -1,7 +1,6 @@
 package org.servidor.entities;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -12,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.servidor.Enum.EstadoMesa;
@@ -29,15 +27,12 @@ public abstract class MesaEntity {
 
 	private EstadoMesa estadoMesa;
 
-	// @OneToMany(mappedBy = "mesa")
-	// private ReservaEntity reserva;
-
 	@ManyToOne
 	private LocalEntity localRestaurante;
 
 	@ManyToOne
 	private MozoEntity mozo;
-	
+
 	private Integer cantidadSillas;
 	private Date horaOcupacion;
 	private Date horaLiberacion;

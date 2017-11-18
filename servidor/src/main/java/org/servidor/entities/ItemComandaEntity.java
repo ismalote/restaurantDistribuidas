@@ -21,30 +21,21 @@ public class ItemComandaEntity {
 	@OneToOne
 	@JoinColumn(name = "idPlato")
 	private PlatoEntity plato;
-	
-	@Column(name="estado")
+
+	@Column(name = "estado")
 	private EstadoItemComanda estado;
 
-	
 	@ManyToOne
 	private ComandaEntity comanda;
-
-	
-
-	
 
 	public ItemComandaEntity(Integer idItemComanda, Integer cantidad, PlatoEntity plato, EstadoItemComanda estado,
 			ComandaEntity comanda) {
 		super();
 		this.idItemComanda = idItemComanda;
 		this.cantidad = cantidad;
-<<<<<<< HEAD
 		this.plato = plato;
 		this.estado = estado;
 		this.comanda = comanda;
-=======
-		this.plato = idPlato;
->>>>>>> branch 'master' of https://github.com/ismalote/restaurantDistribuidas.git
 	}
 
 	public ItemComandaEntity() {
@@ -67,21 +58,12 @@ public class ItemComandaEntity {
 		this.cantidad = cantidad;
 	}
 
-<<<<<<< HEAD
 	public PlatoEntity getPlato() {
-=======
-	public PlatoEntity getIdPlato() {
->>>>>>> branch 'master' of https://github.com/ismalote/restaurantDistribuidas.git
 		return plato;
 	}
 
-<<<<<<< HEAD
 	public void setPlato(PlatoEntity plato) {
 		this.plato = plato;
-=======
-	public void setIdPlato(PlatoEntity idPlato) {
-		this.plato = idPlato;
->>>>>>> branch 'master' of https://github.com/ismalote/restaurantDistribuidas.git
 	}
 
 	public ComandaEntity getComanda() {
@@ -99,7 +81,5 @@ public class ItemComandaEntity {
 	public void setEstado(EstadoItemComanda estado) {
 		this.estado = estado;
 	}
-
-
 
 }

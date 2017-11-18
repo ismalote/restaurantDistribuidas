@@ -20,6 +20,6 @@ public class DepositoDAO {
 
 	public Deposito toNegocio(DepositoEntity e) {
 		Encargado encargado = EncargadoDAO.getInstancia().toNegocio(e.getEncargadoDeposito());
-		return new Deposito(e.getIdArea(), null, encargado);
+		return new Deposito(encargado);
 	}
 }

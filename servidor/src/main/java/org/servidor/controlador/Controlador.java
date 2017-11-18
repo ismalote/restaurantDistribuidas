@@ -7,7 +7,6 @@ import java.util.List;
 import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
-import org.repositorio.dtos.ComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
@@ -20,8 +19,8 @@ import org.repositorio.exceptions.MesaNotFoundException;
 import org.servidor.Enum.EstadoItemComanda;
 import org.servidor.Enum.EstadoMesa;
 import org.servidor.dao.ComandaDAO;
-import org.servidor.dao.ItemComandaDAO;
 import org.servidor.dao.FacturaDAO;
+import org.servidor.dao.ItemComandaDAO;
 import org.servidor.dao.MesaDAO;
 import org.servidor.dao.PlatoDAO;
 import org.servidor.negocio.CierredeCaja;
@@ -136,9 +135,7 @@ public class Controlador {
 			mc.setEstadoMesa(EstadoMesa.OCUPADA);
 			mc.setHoraLiberacion(null);
 			mc.setHoraOcupacion(new Date());
-			mc.setReserva(new Reserva());
 			mc.save();
-
 		}
 
 	}
@@ -180,38 +177,35 @@ public class Controlador {
 		}
 		return resultado;
 	}
-	
+
 	public void cambiarItemCProduccion(int idItemComanda) {
-	
-			ItemComanda item = ItemComandaDAO.getInstancia().obtenerItemComanda(idItemComanda);
-			item.setEstado(EstadoItemComanda.PRODUCCION);
-			item.save();
-	}
-	
-	public void cambiarItemCLISTO(int idItemComanda) {
-		
+
 		ItemComanda item = ItemComandaDAO.getInstancia().obtenerItemComanda(idItemComanda);
-		if(item.getEstado()!=EstadoItemComanda.PRODUCCION) {
-			throw new EstadoItemComandaException("El producto esta en produccion");	
-		}
-			item.setEstado(EstadoItemComanda.LISTO);
+		item.setEstado(EstadoItemComanda.PRODUCCION);
 		item.save();
-			
-		
-			
-		}
-	
-	public void cambiarItemCRECLAMADO(int idItemComanda) {
-		
+	}
+
+	public void cambiarItemCLISTO(int idItemComanda) {
+
 		ItemComanda item = ItemComandaDAO.getInstancia().obtenerItemComanda(idItemComanda);
-		if(item.getEstado()!=EstadoItemComanda.LISTO) {
+		if (item.getEstado() != EstadoItemComanda.PRODUCCION) {
+			throw new EstadoItemComandaException("El producto esta en produccion");
+		}
+		item.setEstado(EstadoItemComanda.LISTO);
+		item.save();
+
+	}
+
+	public void cambiarItemCRECLAMADO(int idItemComanda) {
+
+		ItemComanda item = ItemComandaDAO.getInstancia().obtenerItemComanda(idItemComanda);
+		if (item.getEstado() != EstadoItemComanda.LISTO) {
 			throw new EstadoItemComandaException("El producto esta Listo");
 		}
 		item.setEstado(EstadoItemComanda.RECLAMADO);
 		item.save();
 
-	
-}
+	}
 
 	public void cerrarCaja(Date fecha, boolean cierre) {
 		
