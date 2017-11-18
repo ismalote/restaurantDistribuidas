@@ -6,7 +6,9 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;;
+import javax.persistence.OneToOne;
+
+import org.servidor.negocio.AreaProduccion;;
 
 @Entity
 @DiscriminatorValue("areaProduccion")
@@ -29,10 +31,7 @@ public class AreaProduccionEntity extends AreaEntity {
 		return productos;
 	}
 
-	public AreaProduccionEntity() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	public void setProductos(List<ProductoComestibleEntity> productos) {
 		this.productos = productos;
@@ -44,6 +43,10 @@ public class AreaProduccionEntity extends AreaEntity {
 
 	public AreaProduccionEntity(Integer idArea, LocalEntity localRestaurante) {
 		super(idArea, localRestaurante);
+		// TODO Auto-generated constructor stub
+	}
+
+	public AreaProduccionEntity(AreaProduccion area) {
 		// TODO Auto-generated constructor stub
 	}
 

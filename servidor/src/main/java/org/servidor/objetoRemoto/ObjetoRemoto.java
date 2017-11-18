@@ -62,4 +62,18 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		return Controlador.getInstancia().listarPedidos(idComanda);
 	}
 
+	public void cambiarItemCRECLAMADO(int idItemComanda) {
+		Controlador.getInstancia().cambiarItemCRECLAMADO(idItemComanda);
+}
+	public void cambiarItemCLISTO(int idItemComanda) {
+		Controlador.getInstancia().cambiarItemCLISTO(idItemComanda);
+		
+		
+	}
+	
+	public void cambiarItemCPRODUCCION(int idItemComanda) {
+		Controlador.getInstancia().cambiarItemCProduccion(idItemComanda);
+		
+	}
+	
 }

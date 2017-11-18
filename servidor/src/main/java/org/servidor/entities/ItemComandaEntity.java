@@ -1,11 +1,14 @@
 package org.servidor.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.servidor.Enum.EstadoItemComanda;
 
 @Entity
 @Table(name = "items")
@@ -18,15 +21,26 @@ public class ItemComandaEntity {
 	@OneToOne
 	@JoinColumn(name = "idPlato")
 	private PlatoEntity plato;
+	
+	@Column(name="estado")
+	private EstadoItemComanda estado;
 
+	
 	@ManyToOne
 	private ComandaEntity comanda;
 
-	public ItemComandaEntity(Integer idItemComanda, Integer cantidad, PlatoEntity idPlato) {
+	
+
+	
+
+	public ItemComandaEntity(Integer idItemComanda, Integer cantidad, PlatoEntity plato, EstadoItemComanda estado,
+			ComandaEntity comanda) {
 		super();
 		this.idItemComanda = idItemComanda;
 		this.cantidad = cantidad;
-		this.idPlato = idPlato;
+		this.plato = plato;
+		this.estado = estado;
+		this.comanda = comanda;
 	}
 
 	public ItemComandaEntity() {
@@ -49,12 +63,30 @@ public class ItemComandaEntity {
 		this.cantidad = cantidad;
 	}
 
-	public PlatoEntity getIdPlato() {
-		return idPlato;
+	public PlatoEntity getPlato() {
+		return plato;
 	}
 
-	public void setIdPlato(PlatoEntity idPlato) {
-		this.idPlato = idPlato;
+	public void setPlato(PlatoEntity plato) {
+		this.plato = plato;
 	}
+
+	public ComandaEntity getComanda() {
+		return comanda;
+	}
+
+	public void setComanda(ComandaEntity comanda) {
+		this.comanda = comanda;
+	}
+
+	public EstadoItemComanda getEstado() {
+		return estado;
+	}
+
+	public void setEstado(EstadoItemComanda estado) {
+		this.estado = estado;
+	}
+
+
 
 }
