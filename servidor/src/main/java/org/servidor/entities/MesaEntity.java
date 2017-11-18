@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -20,6 +22,7 @@ import org.servidor.Enum.EstadoMesa;
 public abstract class MesaEntity {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idMesa;
 
 	private EstadoMesa estadoMesa;

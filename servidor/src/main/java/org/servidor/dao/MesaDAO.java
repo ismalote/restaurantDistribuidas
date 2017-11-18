@@ -75,8 +75,8 @@ public class MesaDAO {
 	private MesaSimple toNegocio(MesaEntity entity) {
 		MesaSimple aux = new MesaSimple();
 		aux.setIdMesa(entity.getIdMesa());
-		aux.setEstadoMesa(entity.getEstadoMesa());
-		aux.setReserva(new Reserva(entity.getReserva()));
+//aux.setEstadoMesa(entity.getEstadoMesa());
+//aux.setReserva(new Reserva(entity.getReserva()));
 		aux.setCantidadSillas(entity.getCantidadSillas());
 		aux.setHoraOcupacion(entity.getHoraOcupacion());
 		aux.setHoraLiberacion(entity.getHoraLiberacion());
@@ -102,11 +102,11 @@ public class MesaDAO {
 	private MesaSimpleEntity toEntity(Mesa m) {
 		MesaEntity entity = new MesaSimpleEntity();
 		entity.setCantidadSillas(m.getCantidadSillas());
-		entity.setEstadoMesa(m.getEstadoMesa());
+//entity.setEstadoMesa(m.getEstadoMesa());
 		entity.setHoraLiberacion(m.getHoraLiberacion());
 		entity.setHoraOcupacion(m.getHoraOcupacion());
 		entity.setIdMesa(m.getIdMesa());
-		entity.setReserva(new ReservaEntity(m.getReserva()));
+//entity.setReserva(new ReservaEntity(m.getReserva()));
 
 		return null;
 	}

@@ -26,7 +26,7 @@ public class ItemComandaEntity {
 		super();
 		this.idItemComanda = idItemComanda;
 		this.cantidad = cantidad;
-		this.idPlato = idPlato;
+		this.plato = idPlato;
 	}
 
 	public ItemComandaEntity() {
@@ -50,11 +50,11 @@ public class ItemComandaEntity {
 	}
 
 	public PlatoEntity getIdPlato() {
-		return idPlato;
+		return plato;
 	}
 
 	public void setIdPlato(PlatoEntity idPlato) {
-		this.idPlato = idPlato;
+		this.plato = idPlato;
 	}
 
 }

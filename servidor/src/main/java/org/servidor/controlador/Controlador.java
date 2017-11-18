@@ -3,22 +3,25 @@ package org.servidor.controlador;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
-import org.repositorio.dtos.ComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
 import org.repositorio.dtos.ReservaDTO;
 import org.repositorio.exceptions.ComandaNotFoundException;
+import org.repositorio.exceptions.FacturaException;
 import org.repositorio.exceptions.ItemComandaFailException;
 import org.repositorio.exceptions.MesaNotFoundException;
 import org.servidor.Enum.EstadoMesa;
 import org.servidor.dao.ComandaDAO;
+import org.servidor.dao.FacturaDAO;
 import org.servidor.dao.MesaDAO;
 import org.servidor.dao.PlatoDAO;
 import org.servidor.negocio.Comanda;
+import org.servidor.negocio.Factura;
 import org.servidor.negocio.ItemComanda;
 import org.servidor.negocio.Mesa;
 import org.servidor.negocio.MesaCompuesta;
@@ -80,7 +83,16 @@ public class Controlador {
 
 	public boolean cerrarComanda(int idComanda) {
 		Comanda comanda = getComanda(idComanda, "cerrarComanda(int idComanda)");
+		Factura aux = getFacturaComanda (idComanda);
+		if(aux != null ){
+			throw new FacturaException("Ya existe la factura para la comanda");
+		}
+		
+		double precio = comanda.montoTotal();
+		aux = new Factura("", precio, comanda);
+		aux.save();
 		return comanda.cerrarComanda();
+
 	}
 
 	private Comanda getComanda(int idComanda, String method) {
@@ -89,6 +101,14 @@ public class Controlador {
 			throw new ComandaNotFoundException(method);
 		}
 		return comanda;
+	}
+
+	private Factura getFacturaComanda(int idComanda) {
+		Factura fact= FacturaDAO.getInstancia().getFactura(idComanda);
+		if (fact == null) {
+			throw new FacturaException("");
+		}
+		return fact;
 	}
 
 	public void AbrirMesa(AbrirMesaDTO dto) {
@@ -146,17 +166,14 @@ public class Controlador {
 		return mesas;
 	}
 
-	
-	public List<ItemComandaDTO> listarPedidos( int idComanda) {
-		Comanda c= ComandaDAO.getInstancia().obtenerComanda(idComanda);
-		List<ItemComandaDTO> resultado= new ArrayList<>();
+	public List<ItemComandaDTO> listarPedidos(int idComanda) {
+		Comanda c = ComandaDAO.getInstancia().obtenerComanda(idComanda);
+		List<ItemComandaDTO> resultado = new ArrayList<>();
 		for (ItemComanda item : c.getPlatos()) {
 			resultado.add(item.toDTO(item));
-			
+
 		}
 		return resultado;
 	}
-	
-
 
 }
