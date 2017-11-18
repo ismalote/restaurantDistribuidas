@@ -24,6 +24,7 @@ import org.servidor.dao.FacturaDAO;
 import org.servidor.dao.ItemComandaDAO;
 import org.servidor.dao.MesaDAO;
 import org.servidor.dao.PlatoDAO;
+import org.servidor.negocio.CierredeCaja;
 import org.servidor.negocio.Comanda;
 import org.servidor.negocio.Factura;
 import org.servidor.negocio.ItemComanda;
@@ -211,5 +212,16 @@ public class Controlador {
 		
 		
 	}
+
+	public void cerrarCaja(Date fecha, boolean cierre) {
+		
+		
+	}
+	
+	public void abrirCaja(Date fecha, boolean cierre) {
+		
+		
+	}
+
 
 }

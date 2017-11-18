@@ -50,7 +50,7 @@ public class FacturaDAO {
 	public Factura obtenerFactura(int idComanda) {
 
 		Session s = HibernateUtil.getSessionFactory().openSession();
-		FacturaEntity fact = (FacturaEntity) s.createQuery("FROM factura where idComanda = ?").setInteger(0, idComanda)
+		FacturaEntity fact = (FacturaEntity) s.createQuery("FROM FacturaEntity where idComanda = ?").setInteger(0, idComanda)
 				.uniqueResult();
 		Factura resultado = new Factura(fact);
 		return resultado;

@@ -15,9 +15,9 @@ public class ItemComandaDTO implements Serializable {
 	private Integer idItemComanda;
 	private String nombrePlato;
 
-	private EstadoItemComanda estado;
+	private String estado;
 
-	public ItemComandaDTO(Integer idPlato, Integer idItemComanda, EstadoItemComanda estado) {
+	public ItemComandaDTO(Integer idPlato, Integer idItemComanda, String estado) {
 		super();
 		this.idPlato = idPlato;
 		this.idItemComanda = idItemComanda;
@@ -58,11 +58,11 @@ public class ItemComandaDTO implements Serializable {
 		this.nombrePlato = nombrePlato;
 	}
 
-	public EstadoItemComanda getEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(EstadoItemComanda estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 

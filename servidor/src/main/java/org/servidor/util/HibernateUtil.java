@@ -61,9 +61,9 @@ public class HibernateUtil {
 			config.addAnnotatedClass(EncargadoAreaEntity.class);
 			config.addAnnotatedClass(EncargadoCajaEntity.class);
 
-			config.addAnnotatedClass(CierredeCajaEntity.class);			
+					
 			config.addAnnotatedClass(CajaEntity.class);
-
+			config.addAnnotatedClass(CierredeCajaEntity.class);	
 			
 			config.addAnnotatedClass(ItemComandaEntity.class);			
 			config.addAnnotatedClass(ComandaEntity.class);

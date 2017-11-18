@@ -29,6 +29,14 @@ public class Caja {
 		this.comandas = comandas;
 	}
 
+	public Integer getIdCaja() {
+		return idCaja;
+	}
+
+	public void setIdCaja(Integer idCaja) {
+		this.idCaja = idCaja;
+	}
+
 	// TODO faltan metodos, OJO esto es HERENCIA NO POLIMORFISMO...creo...
 
 }
