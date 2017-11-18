@@ -10,6 +10,7 @@ import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
+import org.repositorio.dtos.PlatoAConfirmarDTO;
 import org.repositorio.dtos.PlatoDTO;
 import org.repositorio.dtos.ReservaDTO;
 import org.repositorio.exceptions.ComandaNotFoundException;
@@ -208,10 +209,21 @@ public class Controlador {
 
 	}
 	
-	public void confirmarPedido(List<PlatoDTO> platos) {
+	/*public void confirmarPedido(List<PlatoAConfirmarDTO> platos) {
+		
+		List<Plato> lista = new ArrayList<>();
+		for (PlatoAConfirmarDTO plato : platos) {
+			Plato aux= PlatoDAO.getInstancia().obtenerProducto(plato.getIdPlato());
+			lista.add(aux);
+			
+		}
+		for (Plato p : lista) {
+			
+			if(p.getArea().get)
+		}
 		
 		
-	}
+	}*/
 
 	public void cerrarCaja(Date fecha, boolean cierre) {
 		
