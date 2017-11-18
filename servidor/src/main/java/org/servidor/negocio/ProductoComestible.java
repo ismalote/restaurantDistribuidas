@@ -6,7 +6,7 @@ import org.servidor.entities.ProductoComestibleEntity;
 public abstract class ProductoComestible {
 
 	protected Integer idProducto;
-	protected AreaProduccion area;
+	
 	protected Integer cantidadPedido;
 	protected Integer puntoPedido;
 	protected String descripcion;

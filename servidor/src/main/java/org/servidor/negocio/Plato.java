@@ -16,16 +16,20 @@ public class Plato {
 	private List<ProductoComestible> productos;
 	private Float precio;
 	private Float comisionExtra;
+	private AreaProduccion area;
 
 
 
-	public Plato(Integer idProductos, String nombrePlato, List<ProductoComestible> productos, Float precio, Float comisionExtra) {
+
+	public Plato(Integer idProductos, String nombrePlato, List<ProductoComestible> productos, Float precio,
+			Float comisionExtra, AreaProduccion area) {
 		super();
 		this.idProductos = idProductos;
 		this.nombrePlato = nombrePlato;
 		this.productos = productos;
 		this.precio = precio;
 		this.comisionExtra = comisionExtra;
+		this.area = area;
 	}
 
 	public Plato(PlatoEntity entity) {
@@ -122,6 +126,14 @@ public class Plato {
 
 	public void setProductos(List<ProductoComestible> productos) {
 		this.productos = productos;
+	}
+
+	public AreaProduccion getArea() {
+		return area;
+	}
+
+	public void setArea(AreaProduccion area) {
+		this.area = area;
 	}
 
 
