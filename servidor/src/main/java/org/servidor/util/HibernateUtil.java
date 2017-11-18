@@ -6,6 +6,7 @@ import org.servidor.entities.AdministracionEntity;
 import org.servidor.entities.AreaProduccionEntity;
 import org.servidor.entities.CajaEntity;
 import org.servidor.entities.CartaEntity;
+import org.servidor.entities.CierredeCajaEntity;
 import org.servidor.entities.ComandaEntity;
 import org.servidor.entities.DepositoCentralEntity;
 import org.servidor.entities.DepositoEntity;
@@ -58,7 +59,8 @@ public class HibernateUtil {
 			config.addAnnotatedClass(EncargadoEntity.class);
 			config.addAnnotatedClass(EncargadoAreaEntity.class);
 			config.addAnnotatedClass(EncargadoCajaEntity.class);
-			
+
+			config.addAnnotatedClass(CierredeCajaEntity.class);			
 			config.addAnnotatedClass(CajaEntity.class);
 
 			

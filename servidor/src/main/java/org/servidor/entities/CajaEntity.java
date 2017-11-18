@@ -4,6 +4,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -19,6 +20,9 @@ public class CajaEntity {
 	@JoinColumn(name = "idEncargadoArea")
 	private EncargadoAreaEntity encargadoCaja;
 
+	@OneToMany(mappedBy= "caja")
+	private CierredeCajaEntity cierre;
+	
 	public CajaEntity() {
 		// TODO Auto-generated constructor stub
 	}
