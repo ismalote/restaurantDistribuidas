@@ -86,7 +86,7 @@ public class Controlador {
 	private Comanda getComanda(int idComanda, String method) {
 		Comanda comanda = ComandaDAO.getInstancia().getComanda(idComanda);
 		if (comanda == null) {
-			throw new ComandaNotFoundException();
+			throw new ComandaNotFoundException(method);
 		}
 		return comanda;
 	}
