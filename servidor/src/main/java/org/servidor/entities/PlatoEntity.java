@@ -22,9 +22,7 @@ public class PlatoEntity {
 	@ManyToMany
 	private List<ProductoComestibleEntity> productos;
 
-	//@ManyToOne
-	//private RestaurantEntity restaurantePlatos;
-
+	
 	private Float precio;
 
 	@ManyToOne
