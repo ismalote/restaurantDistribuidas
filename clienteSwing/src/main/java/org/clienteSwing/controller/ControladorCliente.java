@@ -34,6 +34,11 @@ public class ControladorCliente {
 
 		return BussinessDelegate.getInstancia().listarMesasLibres(sector);
 	}
+
+	public void crearComanda() {
+		CrearComandaDTO comanda = new CrearComandaDTO();
+		BussinessDelegate.getInstancia().crearComanda(comanda);
+	}
 	
 	public List<ItemComandaDTO> listaDeItemComanda (int idComanda) throws RemoteException, Exception{
 		

@@ -2,7 +2,8 @@ package org.servidor.negocio;
 
 import java.util.List;
 
-public abstract class AreaProduccion extends Area {
+public abstract class AreaProduccion {
+	private Integer idAreaProducion;
 	private String TipoArea;
 	private Encargado encargado;
 	private List<ProductoComestible> productos;
@@ -10,11 +11,19 @@ public abstract class AreaProduccion extends Area {
 
 	public AreaProduccion(Integer id, String tipoArea, Encargado encargado, List<ProductoComestible> productos,
 			List<Comanda> comandas) {
-		super(id);
+		this.idAreaProducion = id;
 		TipoArea = tipoArea;
 		this.encargado = encargado;
 		this.productos = productos;
 		this.comandas = comandas;
+	}
+
+	public Integer getId() {
+		return idAreaProducion;
+	}
+
+	public void setId(Integer id) {
+		this.idAreaProducion = id;
 	}
 
 	public String getTipoArea() {

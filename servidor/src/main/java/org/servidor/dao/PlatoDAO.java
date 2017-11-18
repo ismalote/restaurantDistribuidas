@@ -24,7 +24,6 @@ public class PlatoDAO {
 	private PlatoDAO() {
 
 	}
-	// .
 
 	public Plato obtenerProducto(int idPlato) {
 		Session s = HibernateUtil.getSessionFactory().openSession();
@@ -48,9 +47,8 @@ public class PlatoDAO {
 		return p;
 	}
 
-	public  Plato toNegocio(PlatoEntity entity) {
-		Plato resultado = new Plato(entity);
-		return resultado;
+	public Plato toNegocio(PlatoEntity pe) {
+		return new Plato(pe);
 	}
 	
 	public PlatoEntity toEntity(Plato plato) {
@@ -64,4 +62,6 @@ public class PlatoDAO {
 		
 	}
 
+	public PlatoEntity toEntity(Plato plato) {
+		return new PlatoEntity();
 }

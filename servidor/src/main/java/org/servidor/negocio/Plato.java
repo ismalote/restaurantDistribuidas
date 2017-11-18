@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.repositorio.dtos.PlatoDTO;
+import org.repositorio.dtos.PlatoMenuDTO;
 import org.repositorio.dtos.ProductoComestibleDTO;
 import org.servidor.entities.PlatoEntity;
 import org.servidor.entities.ProductoComestibleEntity;
@@ -14,21 +15,16 @@ public class Plato {
 	private String nombrePlato;
 	private List<ProductoComestible> productos;
 	private Float precio;
-	private Carta carta;
-	private Comanda comanda;
 	private Float comisionExtra;
 
 
 
-	public Plato(Integer idProductos, String nombrePlato, List<ProductoComestible> productos, Float precio, Carta carta,
-			Comanda comanda, Float comisionExtra) {
+	public Plato(Integer idProductos, String nombrePlato, List<ProductoComestible> productos, Float precio, Float comisionExtra) {
 		super();
 		this.idProductos = idProductos;
 		this.nombrePlato = nombrePlato;
 		this.productos = productos;
 		this.precio = precio;
-		this.carta = carta;
-		this.comanda = comanda;
 		this.comisionExtra = comisionExtra;
 	}
 
@@ -50,6 +46,21 @@ public class Plato {
 		}
 		this.precio = dto.getPrecio();
 		this.comisionExtra = dto.getComisionExtra();
+	}
+	
+	//Metodo que sirve para poder listar los productos a la hora de crear una comanda y ver el stock de cada plato
+	public PlatoMenuDTO toDTOMenu(){
+		
+		Boolean estadoStock = true;
+		
+		for (ProductoComestible prod : this.productos) {
+			if (prod.getStock() == 0){
+				estadoStock = false;
+			}
+
+		}
+		
+		return new PlatoMenuDTO(this.idProductos, this.precio, estadoStock);
 	}
 
 	public List<ProductoComestible> getProducto() {
@@ -76,22 +87,7 @@ public class Plato {
 		this.precio = precio;
 	}
 
-	public Carta getCarta() {
-		return carta;
-	}
-
-	public void setCarta(Carta carta) {
-		this.carta = carta;
-	}
-
-	public Comanda getComandas() {
-		return comanda;
-	}
-
-	public void setComandas(Comanda comandas) {
-		this.comanda = comandas;
-	}
-
+	
 	public Float getComisionExtra() {
 		return comisionExtra;
 	}
@@ -128,13 +124,5 @@ public class Plato {
 		this.productos = productos;
 	}
 
-	public Comanda getComanda() {
-		return comanda;
-	}
-
-	public void setComanda(Comanda comanda) {
-		this.comanda = comanda;
-	}
-	
 
 }

@@ -39,9 +39,9 @@ public class CartaEntity {
 		this.idCarta = idCarta;
 	}
 
-	// public List<PlatoEntity> getPlatos() {
-	// return platos;
-	// }
+	public List<PlatoEntity> getPlatos() {
+		return platos;
+	}
 
 	// public void setPlatos(List<PlatoEntity> platos) {
 	// this.platos = platos;

@@ -1,5 +1,6 @@
 package org.servidor.entities;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -84,8 +85,10 @@ public class ComandaEntity {
 	@OneToOne(mappedBy = "comanda")
 	private FacturaEntity fact;
 
+	private Date fecha;
+
 	public ComandaEntity(Integer idComanda, List<ItemComandaEntity> platos, MozoEntity mozo, Boolean cerrada,
-			MesaEntity mesa, Integer estadoComanda, FacturaEntity fact) {
+			MesaEntity mesa, Integer estadoComanda, Date fecha, FacturaEntity fact) {
 		super();
 		this.idComanda = idComanda;
 		this.platos = platos;
@@ -94,6 +97,7 @@ public class ComandaEntity {
 		this.mesa = mesa;
 		this.estadoComanda = estadoComanda;
 		this.fact = fact;
+		this.fecha = fecha;
 	}
 
 	public ComandaEntity() {
@@ -145,6 +149,14 @@ public class ComandaEntity {
 
 	public void setEstadoComanda(Integer estadoComanda) {
 		this.estadoComanda = estadoComanda;
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
 }

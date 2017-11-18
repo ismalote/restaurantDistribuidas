@@ -38,9 +38,13 @@ public class ItemComandaEntity {
 		super();
 		this.idItemComanda = idItemComanda;
 		this.cantidad = cantidad;
+<<<<<<< HEAD
 		this.plato = plato;
 		this.estado = estado;
 		this.comanda = comanda;
+=======
+		this.plato = idPlato;
+>>>>>>> branch 'master' of https://github.com/ismalote/restaurantDistribuidas.git
 	}
 
 	public ItemComandaEntity() {
@@ -63,12 +67,21 @@ public class ItemComandaEntity {
 		this.cantidad = cantidad;
 	}
 
+<<<<<<< HEAD
 	public PlatoEntity getPlato() {
+=======
+	public PlatoEntity getIdPlato() {
+>>>>>>> branch 'master' of https://github.com/ismalote/restaurantDistribuidas.git
 		return plato;
 	}
 
+<<<<<<< HEAD
 	public void setPlato(PlatoEntity plato) {
 		this.plato = plato;
+=======
+	public void setIdPlato(PlatoEntity idPlato) {
+		this.plato = idPlato;
+>>>>>>> branch 'master' of https://github.com/ismalote/restaurantDistribuidas.git
 	}
 
 	public ComandaEntity getComanda() {

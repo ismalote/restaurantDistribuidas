@@ -1,13 +1,12 @@
 package org.servidor.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.repositorio.exceptions.SaveFailedException;
 import org.servidor.entities.ComandaEntity;
-import org.servidor.entities.ItemComandaEntity;
 import org.servidor.entities.MozoEntity;
 import org.servidor.entities.PlatoEntity;
 import org.servidor.negocio.Comanda;
@@ -92,5 +91,5 @@ public class ComandaDAO {
 	}
 
 	
-
+	
 }
