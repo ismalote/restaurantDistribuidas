@@ -1,10 +1,5 @@
 package org.servidor.entities;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-
-@Entity
-@DiscriminatorValue("mesaSimple")
 import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;

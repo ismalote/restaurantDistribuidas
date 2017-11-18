@@ -8,6 +8,7 @@ import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.ComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
+import org.repositorio.exceptions.ComandaNotFoundException;
 import org.repositorio.exceptions.ItemComandaFailException;
 import org.repositorio.exceptions.MesaNotFoundException;
 import org.repositorio.exceptions.MozoNotFoundException;
@@ -56,9 +57,9 @@ public class Comanda {
 		// this.platos.add(new Plato(plato));
 		// }
 		this.estadoComanda = (entity.getEstadoComanda());
-//		this.mozo = new Mozo(entity.getMozo());
+		// this.mozo = new Mozo(entity.getMozo());
 		this.mesa = new MesaSimple(entity.getMesa());
-//		this.fact = new Factura(entity.getFact());
+		// this.fact = new Factura(entity.getFact());
 	}
 
 	public Comanda(ComandaDTO dto) {
@@ -90,7 +91,8 @@ public class Comanda {
 		}
 	}
 
-	public Comanda(CrearComandaDTO comanda) { // TODO Revisar con otro constructor
+	public Comanda(CrearComandaDTO comanda) { // TODO Revisar con otro
+												// constructor
 		this.mozo = MozoDAO.getInstancia().obtenerMozo(1);
 		this.mesa = MesaDAO.getInstancia().obtenerMesaPorNumero(comanda.getNumeroMesa());
 		this.fecha = new Date();
@@ -128,11 +130,24 @@ public class Comanda {
 	}
 
 	public boolean cerrarComanda() {
+		if (this.cerrada) {
+			throw new ComandaNotFoundException(" cerrarComanda() fail, because status's comanda close ");
+		}
+
 		this.cerrada = true;
 		return save();
 	}
-	
 
+	public double montoTotal() {
+		double aux = 0;
+		List<ItemComanda> item = this.getPlatos();
+		for (ItemComanda ic: item){	
+			
+			aux = aux + ic.getPlato().getPrecio();
+		}
+		
+		return aux;
+	}
 
 	/*
 	 * Getters & Setters
