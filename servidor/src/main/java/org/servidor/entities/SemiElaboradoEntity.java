@@ -6,9 +6,11 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "idInsumo")
+@Table(name = "semiElaborado")
 public class SemiElaboradoEntity extends ProductoComestibleEntity {
 
 	@OneToMany(mappedBy = "semielaborado")

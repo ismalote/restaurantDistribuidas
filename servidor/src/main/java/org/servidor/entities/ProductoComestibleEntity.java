@@ -6,8 +6,10 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "productoComestible")
 public abstract class ProductoComestibleEntity extends InsumoEntity {
 
 	@ManyToOne

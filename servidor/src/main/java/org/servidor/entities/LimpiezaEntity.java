@@ -4,15 +4,12 @@ import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "idInsumo")
+@Table(name = "limpieza")
 public class LimpiezaEntity extends InsumoEntity {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	public LimpiezaEntity(Integer idInsumo, Float precio, Date fechaCreacion, Date fechaCaducidad, String descripcion,
 			Float cantidad, String unidad) {
