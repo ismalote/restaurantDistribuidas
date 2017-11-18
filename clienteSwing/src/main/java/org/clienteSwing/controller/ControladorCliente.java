@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.repositorio.bussinessDelegate.BussinessDelegate;
 import org.repositorio.dtos.CrearComandaDTO;
+import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
 import org.repositorio.exceptions.BusinessException;
 
@@ -38,4 +39,10 @@ public class ControladorCliente {
 		CrearComandaDTO comanda = new CrearComandaDTO();
 		BussinessDelegate.getInstancia().crearComanda(comanda);
 	}
+	
+	public List<ItemComandaDTO> listaDeItemComanda (int idComanda) throws RemoteException, Exception{
+		
+		return BussinessDelegate.getInstancia().listarItemComanda(idComanda);
+	}
+	
 }

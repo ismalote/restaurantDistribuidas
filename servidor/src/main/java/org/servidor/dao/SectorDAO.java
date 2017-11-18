@@ -4,6 +4,14 @@ public class SectorDAO {
 
 	private static SectorDAO instancia;
 
+	
+	
+	private SectorDAO() {
+	
+	}
+
+
+
 	public static SectorDAO getInstancia() {
 		if (instancia == null) {
 			instancia = new SectorDAO();
@@ -11,9 +19,7 @@ public class SectorDAO {
 		return instancia;
 	}
 
-	public static void setInstancia(SectorDAO instancia) {
-		SectorDAO.instancia = instancia;
-	}
+	
 
 	/*
 	 * anulamos el metodo porque no caracteriza al Sector, sino que quiere obtener las Mesas y filtrarlas por Sector. 

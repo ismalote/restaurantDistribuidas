@@ -20,9 +20,7 @@ public class ReservaDAO {
 		return instancia;
 	}
 
-	public static void setInstancia(ReservaDAO instancia) {
-		ReservaDAO.instancia = instancia;
-	}
+	
 
 	public Reserva obtenerReserva(int numeroReserva) {
 		Reserva resultado = null;

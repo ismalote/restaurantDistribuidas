@@ -8,6 +8,7 @@ import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
+import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
 import org.repositorio.interfaces.IAppRemote;
 import org.servidor.controlador.Controlador;
@@ -55,6 +56,10 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 	public void AbrirMesaNueva(List<Integer> nrosMesas) throws RemoteException {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public List<ItemComandaDTO> listarItemComanda(int idComanda) {
+		return Controlador.getInstancia().listarPedidos(idComanda);
 	}
 
 }

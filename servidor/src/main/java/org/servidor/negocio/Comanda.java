@@ -8,6 +8,7 @@ import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.ComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
+import org.repositorio.exceptions.ComandaNotFoundException;
 import org.repositorio.exceptions.ItemComandaFailException;
 import org.repositorio.exceptions.MesaNotFoundException;
 import org.repositorio.exceptions.MozoNotFoundException;
@@ -131,8 +132,23 @@ public class Comanda {
 	}
 
 	public boolean cerrarComanda() {
+		if (this.cerrada) {
+			throw new ComandaNotFoundException(" cerrarComanda() fail, because status's comanda close ");
+		}
+
 		this.cerrada = true;
 		return save();
+	}
+
+	public double montoTotal() {
+		double aux = 0;
+		List<ItemComanda> item = this.getPlatos();
+		for (ItemComanda ic: item){	
+			
+			aux = aux + ic.getPlato().getPrecio();
+		}
+		
+		return aux;
 	}
 
 	/*

@@ -8,6 +8,7 @@ import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
+import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
 
 public interface IAppRemote extends Remote {
@@ -29,5 +30,7 @@ public interface IAppRemote extends Remote {
 	List<MesaDTO> mesasLibres(Integer numeroSector) throws RemoteException;
 
 	void AbrirMesaNueva(List<Integer> nrosMesas) throws RemoteException;
+	
+	List<ItemComandaDTO> listarItemComanda (int idComanda) throws RemoteException;
 
 }

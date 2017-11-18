@@ -10,6 +10,7 @@ import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
+import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
 import org.repositorio.interfaces.IAppRemote;
 
@@ -94,6 +95,11 @@ public class BussinessDelegate {
 	public AbrirMesaDTO mesasLibres(Integer numeroSector, Integer cantidadComensales) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public List<ItemComandaDTO> listarItemComanda ( int idComanda) throws RemoteException{
+		return objetoRemoto.listarItemComanda(idComanda);
+		
 	}
 
 }

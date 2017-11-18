@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.repositorio.dtos.PlatoDTO;
+import org.repositorio.dtos.PlatoMenuDTO;
 import org.repositorio.dtos.ProductoComestibleDTO;
 import org.servidor.entities.PlatoEntity;
 import org.servidor.entities.ProductoComestibleEntity;
@@ -11,20 +12,19 @@ import org.servidor.entities.ProductoComestibleEntity;
 public class Plato {
 
 	private Integer idProductos;
+	private String nombrePlato;
 	private List<ProductoComestible> productos;
 	private Float precio;
-	private Carta carta;
-	private Comanda comanda;
 	private Float comisionExtra;
 
-	public Plato(Integer idPlato, List<ProductoComestible> productos, Float precio, Carta carta, Comanda comandas,
-			Float comisionExtra) {
+
+
+	public Plato(Integer idProductos, String nombrePlato, List<ProductoComestible> productos, Float precio, Float comisionExtra) {
 		super();
-		this.idProductos = idPlato;
+		this.idProductos = idProductos;
+		this.nombrePlato = nombrePlato;
 		this.productos = productos;
 		this.precio = precio;
-		this.carta = carta;
-		this.comanda = comandas;
 		this.comisionExtra = comisionExtra;
 	}
 
@@ -46,6 +46,21 @@ public class Plato {
 		}
 		this.precio = dto.getPrecio();
 		this.comisionExtra = dto.getComisionExtra();
+	}
+	
+	//Metodo que sirve para poder listar los productos a la hora de crear una comanda y ver el stock de cada plato
+	public PlatoMenuDTO toDTOMenu(){
+		
+		Boolean estadoStock = true;
+		
+		for (ProductoComestible prod : this.productos) {
+			if (prod.getStock() == 0){
+				estadoStock = false;
+			}
+
+		}
+		
+		return new PlatoMenuDTO(this.idProductos, this.precio, estadoStock);
 	}
 
 	public List<ProductoComestible> getProducto() {
@@ -72,22 +87,7 @@ public class Plato {
 		this.precio = precio;
 	}
 
-	public Carta getCarta() {
-		return carta;
-	}
-
-	public void setCarta(Carta carta) {
-		this.carta = carta;
-	}
-
-	public Comanda getComandas() {
-		return comanda;
-	}
-
-	public void setComandas(Comanda comandas) {
-		this.comanda = comandas;
-	}
-
+	
 	public Float getComisionExtra() {
 		return comisionExtra;
 	}
@@ -99,5 +99,30 @@ public class Plato {
 	public void calcularPrecio() {
 		// TODO Auto-generated method stub
 	}
+
+	public Integer getIdProductos() {
+		return idProductos;
+	}
+
+	public void setIdProductos(Integer idProductos) {
+		this.idProductos = idProductos;
+	}
+
+	public String getNombrePlato() {
+		return nombrePlato;
+	}
+
+	public void setNombrePlato(String nombrePlato) {
+		this.nombrePlato = nombrePlato;
+	}
+
+	public List<ProductoComestible> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<ProductoComestible> productos) {
+		this.productos = productos;
+	}
+
 
 }

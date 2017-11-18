@@ -14,15 +14,16 @@ public class MozoDAO {
 
 	private static MozoDAO instancia;
 
+	
+	public MozoDAO() {
+		
+	}
+
 	public static MozoDAO getInstancia() {
 		if (instancia == null) {
 			instancia = new MozoDAO();
 		}
 		return instancia;
-	}
-
-	public static void setInstancia(MozoDAO instancia) {
-		MozoDAO.instancia = instancia;
 	}
 
 	public Mozo obtenerMozo(int numeroMozo) {

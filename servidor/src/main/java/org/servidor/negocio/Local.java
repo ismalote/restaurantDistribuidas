@@ -6,18 +6,22 @@ public class Local {
 
 	private List<Encargado> encargadosAreas;
 	private List<Mozo> mozos;
+	private List<Mesa> mesas;
 	private Deposito deposito;
-	private List<Area> areas;
+	private List<AreaProduccion> areas;
+	private Caja caja;
 	private Carta carta;
 	private List<ListadoCompras> listadosCompras;
 
-	public Local(List<Encargado> encargadosAreas, List<Mozo> mozos, Deposito deposito, List<Area> areas, Carta carta,
-			List<ListadoCompras> listadosCompras) {
+	public Local(List<Encargado> encargadosAreas, List<Mozo> mozos, List<Mesa> mesas, Deposito deposito,
+			List<AreaProduccion> areas, Caja caja, Carta carta, List<ListadoCompras> listadosCompras) {
 		super();
 		this.encargadosAreas = encargadosAreas;
 		this.mozos = mozos;
+		this.mesas = mesas;
 		this.deposito = deposito;
 		this.areas = areas;
+		this.caja = caja;
 		this.carta = carta;
 		this.listadosCompras = listadosCompras;
 	}
@@ -38,6 +42,7 @@ public class Local {
 		this.mozos = mozos;
 	}
 
+
 	public Deposito getDeposito() {
 		return deposito;
 	}
@@ -46,12 +51,28 @@ public class Local {
 		this.deposito = deposito;
 	}
 
-	public List<Area> getAreas() {
+	public List<Mesa> getMesas() {
+		return mesas;
+	}
+
+	public void setMesas(List<Mesa> mesas) {
+		this.mesas = mesas;
+	}
+
+	public List<AreaProduccion> getAreas() {
 		return areas;
 	}
 
-	public void setAreas(List<Area> areas) {
+	public void setAreas(List<AreaProduccion> areas) {
 		this.areas = areas;
+	}
+
+	public Caja getCaja() {
+		return caja;
+	}
+
+	public void setCaja(Caja caja) {
+		this.caja = caja;
 	}
 
 	public Carta getCarta() {

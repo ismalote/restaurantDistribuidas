@@ -2,13 +2,14 @@ package org.servidor.negocio;
 
 import java.util.List;
 
-public class Caja extends Area {
+public class Caja {
 
+	private Integer idCaja;	
 	private EncargadoArea encargadoCaja;
 	private List<Comanda> comandas;
 
 	public Caja(Integer idArea) {
-		super(idArea);
+		this.idCaja=idArea;
 		// TODO Auto-generated constructor stub
 	}
 

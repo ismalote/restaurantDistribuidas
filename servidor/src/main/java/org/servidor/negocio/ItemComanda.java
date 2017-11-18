@@ -1,45 +1,51 @@
 package org.servidor.negocio;
 
-import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
+import org.servidor.dao.ItemComandaDAO;
 import org.servidor.dao.PlatoDAO;
 
 public class ItemComanda {
 
+	private int idPlato;
 	private Plato plato;
 
 	private boolean entregado;
 
 	private boolean reclamo;
 
-	public ItemComanda(Plato plato, boolean entregado, boolean reclamo) {
+	public ItemComanda(int idPlato, Plato plato, boolean entregado, boolean reclamo) {
 		super();
+		this.idPlato = idPlato;
 		this.plato = plato;
 		this.entregado = entregado;
 		this.reclamo = reclamo;
 	}
 
-	public ItemComanda(Plato plato) {
-		super();
+	public ItemComanda(ItemComandaDTO item) {
+		this.setIdPlato(item.getIdPlato());
+		this.plato= PlatoDAO.getInstancia().obtenerProducto(item.getIdPlato());
+		this.setEntregado(item.isEntregado());
+		this.setReclamo(item.isReclamo());
+	}
+
+	public ItemComanda() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public int getIdPlato() {
+		return idPlato;
+	}
+
+	public void setIdPlato(int idPlato) {
+		this.idPlato = idPlato;
+	}
+
+	public Plato getPlato() {
+		return plato;
+	}
+
+	public void setPlato(Plato plato) {
 		this.plato = plato;
-		this.entregado = false;
-		this.reclamo = false;
-	}
-
-	public ItemComanda(ItemComandaDTO dto) {
-		super();
-		this.plato = PlatoDAO.getInstancia().obtenerProducto(dto.getIdPlato());
-		this.entregado = false;
-		this.reclamo = false;
-	}
-
-	public ItemComanda(AgregarItemComandaDTO dto) {
-		this((ItemComandaDTO)dto);
-	}
-
-	public ItemComanda(int idPlato) {
-		super();
-		this.plato = PlatoDAO.getInstancia().obtenerProducto(idPlato);
 	}
 
 	public boolean isEntregado() {
@@ -58,12 +64,17 @@ public class ItemComanda {
 		this.reclamo = reclamo;
 	}
 
-	public Plato getPlato() {
-		return plato;
+	public ItemComandaDTO toDTO(ItemComanda item) {
+		ItemComandaDTO resultado = new ItemComandaDTO();
+		resultado.setIdPlato(item.getIdPlato());
+		resultado.setNombrePlato(item.getPlato().getNombrePlato());
+		resultado.setEntregado(item.isEntregado());
+		resultado.setReclamo(item.isReclamo());
+		return resultado;
+		
 	}
 
-	public void setPlato(Plato plato) {
-		this.plato = plato;
-	}
+
+	
 
 }

@@ -34,6 +34,4 @@ public class PlatoDAO {
 
 	public PlatoEntity toEntity(Plato plato) {
 		return new PlatoEntity();
-	}
-
 }

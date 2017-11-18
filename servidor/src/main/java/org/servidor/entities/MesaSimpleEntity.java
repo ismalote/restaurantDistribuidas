@@ -17,9 +17,10 @@ public class MesaSimpleEntity extends MesaEntity {
 		super();
 	}
 
-	public MesaSimpleEntity(Integer idMesa, EstadoMesa estadoMesa, SectorEntity sector, Integer cantidadSillas,
+	public MesaSimpleEntity(Integer idMesa, EstadoMesa estadoMesa, LocalEntity localRestaurante, Integer cantidadSillas,
 			Date horaOcupacion, Date horaLiberacion) {
-		super(idMesa, estadoMesa, sector, cantidadSillas, horaOcupacion, horaLiberacion);
+		super(idMesa, estadoMesa, localRestaurante, cantidadSillas, horaOcupacion, horaLiberacion);
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getNumeroMesa() {

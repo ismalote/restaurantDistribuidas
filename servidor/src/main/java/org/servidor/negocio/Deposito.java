@@ -1,12 +1,13 @@
 package org.servidor.negocio;
 
-public class Deposito extends Area {
+public class Deposito {
 
+	private Integer idDeposito;
 	private Stock stockDeposito;
 	private Encargado encargadoDeposito;
 
-	public Deposito(Integer idArea, Stock stockDeposito, Encargado encargadoDeposito) {
-		super(idArea);
+	public Deposito(Integer idArea, Stock stockDeposito, EncargadoArea encargadoDeposito) {
+		this.idDeposito = idArea;
 		this.stockDeposito = stockDeposito;
 		this.encargadoDeposito = encargadoDeposito;
 	}
@@ -26,4 +27,13 @@ public class Deposito extends Area {
 	public void setEncargadoDeposito(Encargado encargadoDeposito) {
 		this.encargadoDeposito = encargadoDeposito;
 	}
+
+	public Integer getIdDeposito() {
+		return idDeposito;
+	}
+
+	public void setIdDeposito(Integer idDeposito) {
+		this.idDeposito = idDeposito;
+	}
+
 }
