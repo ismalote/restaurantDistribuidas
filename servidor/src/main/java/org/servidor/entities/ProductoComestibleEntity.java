@@ -23,9 +23,6 @@ public abstract class ProductoComestibleEntity extends InsumoEntity {
 	@ManyToMany
 	protected List<PlatoEntity> platos;
 
-	@ManyToOne
-	private SemiElaboradoEntity semielaborado;
-
 	public ProductoComestibleEntity() {
 	}
 
@@ -80,14 +77,6 @@ public abstract class ProductoComestibleEntity extends InsumoEntity {
 
 	public void setPlatos(List<PlatoEntity> platos) {
 		this.platos = platos;
-	}
-
-	public SemiElaboradoEntity getSemielaborado() {
-		return semielaborado;
-	}
-
-	public void setSemielaborado(SemiElaboradoEntity semielaborado) {
-		this.semielaborado = semielaborado;
 	}
 
 }

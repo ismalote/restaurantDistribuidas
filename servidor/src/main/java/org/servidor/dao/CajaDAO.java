@@ -1,13 +1,9 @@
 
 package org.servidor.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.hibernate.Session;
 import org.repositorio.exceptions.SaveFailedException;
 import org.servidor.entities.CajaEntity;
-import org.servidor.entities.PlatoEntity;
 import org.servidor.negocio.Caja;
 import org.servidor.util.HibernateUtil;
 

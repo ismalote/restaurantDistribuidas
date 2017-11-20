@@ -7,8 +7,8 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "idInsumo")
 @Table(name = "limpieza")
+@PrimaryKeyJoinColumn(name = "idInsumo")
 public class LimpiezaEntity extends InsumoEntity {
 
 	public LimpiezaEntity(Integer idInsumo, Float precio, Date fechaCreacion, Date fechaCaducidad, String descripcion,

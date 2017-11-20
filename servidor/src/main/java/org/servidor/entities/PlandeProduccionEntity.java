@@ -22,9 +22,6 @@ public class PlandeProduccionEntity {
 	@ManyToOne
 	private AdministracionEntity administracion;
 
-	@ManyToOne
-	private RestaurantEntity restaurantePlanes;
-
 	private Date fecha;
 	private Date tiempoDeEjecucion;
 

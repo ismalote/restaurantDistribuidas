@@ -2,11 +2,6 @@ package org.servidor.negocio;
 
 import java.util.Date;
 
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
-import org.servidor.entities.CajaEntity;
-
 public class CierredeCaja {
 
 	private Integer idCierre;
