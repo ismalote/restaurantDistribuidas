@@ -3,6 +3,8 @@ package org.servidor.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,17 +15,19 @@ import org.servidor.negocio.Reserva;
 public class ReservaEntity {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idReserva;
-	private Boolean estado;
 	private Date horaReserva;
 	private Integer cantidadPersonas;
+	private String descripcion;
 
-	public ReservaEntity(Integer idReserva, Boolean estado, Date horaReserva, Integer cantidadPersonas) {
+	public ReservaEntity(Integer idReserva, Boolean estado, Date horaReserva, Integer cantidadPersonas,
+			String descripcion) {
 		super();
 		this.idReserva = idReserva;
-		this.estado = estado;
 		this.horaReserva = horaReserva;
 		this.cantidadPersonas = cantidadPersonas;
+		this.descripcion = descripcion;
 	}
 
 	public ReservaEntity() {
@@ -31,9 +35,9 @@ public class ReservaEntity {
 	}
 
 	public ReservaEntity(Reserva reserva) {
-		this.idReserva= reserva.getCantidadPersonas();
-		this.horaReserva=reserva.getHoraReserva();
-		this.cantidadPersonas=reserva.getCantidadPersonas();
+		this.horaReserva = reserva.getHoraReserva();
+		this.cantidadPersonas = reserva.getCantidadPersonas();
+		this.descripcion = reserva.getDescripcion();
 	}
 
 	public Integer getIdReserva() {
@@ -42,14 +46,6 @@ public class ReservaEntity {
 
 	public void setIdReserva(Integer idReserva) {
 		this.idReserva = idReserva;
-	}
-
-	public Boolean getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
 	}
 
 	public Date getHoraReserva() {
@@ -66,6 +62,14 @@ public class ReservaEntity {
 
 	public void setCantidadPersonas(Integer cantidadPersonas) {
 		this.cantidadPersonas = cantidadPersonas;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 }

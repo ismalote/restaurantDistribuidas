@@ -2,6 +2,7 @@ package org.clienteSwing;
 
 import java.awt.EventQueue;
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.swing.JFrame;
 
@@ -14,7 +15,7 @@ public class MainSwing implements Serializable {
     private JFrame frame;
 
 	public static void main(String[] args) {
-		ControladorCliente.INSTANCE.crearComanda(0, 0, 4, 0);
+		ControladorCliente.INSTANCE.reservarMesa(4, "Para cacho", new Date());
     	/*
         EventQueue.invokeLater(new Runnable() {
             public void run() {

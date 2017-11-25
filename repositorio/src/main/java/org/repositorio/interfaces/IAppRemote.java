@@ -2,6 +2,7 @@ package org.repositorio.interfaces;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.Date;
 import java.util.List;
 
 import org.repositorio.dtos.AbrirMesaDTO;
@@ -40,4 +41,6 @@ public interface IAppRemote extends Remote {
 	void cambiarItemCPRODUCCION(int idItemComanda)throws RemoteException;
 	
 	List<ItemComandaDTO> PedidoXSector(Integer idArea,Integer idLocal) throws RemoteException;
+	
+	boolean reservarMesa(Integer cantidadComensales, String descripcion, Date fechaHora) throws RemoteException;
 }

@@ -1,6 +1,7 @@
 package org.clienteSwing.controller;
 
 import java.rmi.RemoteException;
+import java.util.Date;
 import java.util.List;
 
 import org.repositorio.bussinessDelegate.BussinessDelegate;
@@ -44,6 +45,10 @@ public enum ControladorCliente {
 	public List<PlatoAConfirmarDTO> MostrarPlatoaArea(int idArea, int idLocal) {
 		return null;
 
+	}
+
+	public void reservarMesa(int cantidadComensales, String descripcion, Date fechaHora) {
+		BussinessDelegate.getInstancia().reservarMesa(cantidadComensales, descripcion, fechaHora);
 	}
 
 }

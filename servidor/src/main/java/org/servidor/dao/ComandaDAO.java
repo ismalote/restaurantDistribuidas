@@ -59,7 +59,6 @@ public class ComandaDAO {
 		// entity.setPlatos(p); // TODO FIX
 		entity.setLocalRestaurante(LocalDAO.getInstance().toSimpleEntity(c.getLocal()));
 		return entity;
-
 	}
 
 	public Comanda obtenerComanda(int idComanda) {
