@@ -211,8 +211,7 @@ public class Controlador {
 	
 	public List<ItemComandaDTO> confirmarPedido (Integer idArea,Integer idLocal ) {
 		
-		List<ItemComanda> items= 
-		
+		return null;		
 		
 		
 		

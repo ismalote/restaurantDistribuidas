@@ -18,7 +18,7 @@ public class DepositoEntity {
 	@Id
 	private Integer idDeposito;
 
-	@OneToMany(mappedBy = "stock")
+	@OneToMany
 	private List<ItemInsumoEntity> itemsStock;
 
 	@OneToOne

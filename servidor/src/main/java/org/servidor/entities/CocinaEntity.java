@@ -8,6 +8,6 @@ import javax.persistence.Entity;;
 public class CocinaEntity extends AreaProduccionEntity {
 
 	public CocinaEntity(Integer idArea, LocalEntity localRestaurante) {
-		super(idArea, localRestaurante);
+		super(idArea, null, null, localRestaurante);
 	}
 }
