@@ -77,6 +77,12 @@ public class LocalDAO {
 		LocalEntity le = new LocalEntity();
 		return null;
 	}
+	
+	public LocalEntity toSimpleEntity(Local local) {
+		LocalEntity le = new LocalEntity();
+		le.setIdLocal(local.getIdLocal());
+		return le;
+	}
 
 	public Local toNegocio(LocalEntity le) {
 //		List<ListadoComprasEntity> listadosCompras = le.getListadosCompras();

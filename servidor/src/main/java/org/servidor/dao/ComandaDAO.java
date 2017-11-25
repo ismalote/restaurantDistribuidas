@@ -6,7 +6,6 @@ import java.util.List;
 import org.hibernate.Session;
 import org.repositorio.exceptions.SaveFailedException;
 import org.servidor.entities.ComandaEntity;
-import org.servidor.entities.MozoEntity;
 import org.servidor.entities.PlatoEntity;
 import org.servidor.negocio.Comanda;
 import org.servidor.negocio.ItemComanda;
@@ -47,8 +46,10 @@ public class ComandaDAO {
 		entity.setIdComanda(c.getIdComanda());
 		entity.setCerrada(c.estaCerrada());
 		entity.setMozo(MozoDAO.getInstancia().toEntity(c.getMozo()));
+		entity.setCantidadComensales(c.getCantidadComensales());
+		entity.setFecha(c.getFecha());
 		// entity.setFact(new FacturaEntity(c.getFact()));
-		// entity.setMesa(new MesaEntity(c.getMesa()));
+		entity.setMesa(MesaDAO.getInstancia().toEntity(c.getMesa()));
 		List<PlatoEntity> p = new ArrayList<>();
 		if (c.getPlatos() != null) {
 			for (ItemComanda aux : c.getPlatos()) {
@@ -56,6 +57,7 @@ public class ComandaDAO {
 			}
 		}
 		// entity.setPlatos(p); // TODO FIX
+		entity.setLocalRestaurante(LocalDAO.getInstance().toSimpleEntity(c.getLocal()));
 		return entity;
 
 	}

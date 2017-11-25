@@ -57,7 +57,7 @@ public class Comanda {
 		// for (PlatoEntity plato : entity.getPlatos()) {
 		// this.platos.add(new Plato(plato));
 		// }
-		this.cantidadComensales = (entity.getEstadoComanda());
+		this.cantidadComensales = entity.getCantidadComensales();
 		// this.mozo = new Mozo(entity.getMozo());
 		this.mesa = new MesaSimple(entity.getMesa());
 		// this.fact = new Factura(entity.getFact());
