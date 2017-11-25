@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -17,8 +18,8 @@ import java.awt.event.MouseEvent;
 public class MainMenu {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField textUsuario;
+	private JTextField textPassword;
 
 	/**
 	 * Launch the application.
@@ -55,16 +56,64 @@ public class MainMenu {
 		
 		JLabel lblPassword = new JLabel("Password");
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		textUsuario = new JTextField();
+		textUsuario.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		textPassword = new JTextField();
+		textPassword.setColumns(10);
 		
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				String usuario = textUsuario.getText();
+				String password = textPassword.getText();
+				
+				switch (usuario) {
+				case "administracion":
+					
+					if (password.equals("1234")){
+						
+						
+					}else{
+						JOptionPane.showMessageDialog(null, "Password invalida");
+					}
+						break;
+				case "cocina":
+					
+						if (password.equals("1234")){
+							
+							
+						}else{
+							JOptionPane.showMessageDialog(null, "Password invalida");
+						}
+						
+				break;
+				case "cafeteria":
+					
+						if (password.equals("1234")){
+						
+							
+						}else{
+							JOptionPane.showMessageDialog(null, "Password invalida");
+						}
+						
+					break;
+				case "barra":
+					
+						if (password.equals("1234")){
+							
+							
+						}else{
+							JOptionPane.showMessageDialog(null,"Password incorrecto");
+						}
+						
+				break;
+				
+				default:
+					JOptionPane.showMessageDialog(null, "Usuario invalido");
+					break;
+				}
 				
 				
 			}
@@ -84,8 +133,8 @@ public class MainMenu {
 							.addComponent(lblPassword)
 							.addPreferredGap(ComponentPlacement.UNRELATED)))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(textField_1)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textPassword)
+						.addComponent(textUsuario, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(166, GroupLayout.PREFERRED_SIZE))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(128)
@@ -100,10 +149,10 @@ public class MainMenu {
 					.addGap(99)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblUsuario)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textPassword, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblPassword))
 					.addPreferredGap(ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
