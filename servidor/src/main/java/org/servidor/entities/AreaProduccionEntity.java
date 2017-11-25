@@ -23,7 +23,7 @@ import org.servidor.negocio.AreaProduccion;;
 public class AreaProduccionEntity {
 
 	@Id
-	private Integer idAreaProducion;
+	private Integer idAreaProduccion;
 
 	@OneToMany(mappedBy = "AreaProdu")
 	protected List<ProductoComestibleEntity> productos;
@@ -34,10 +34,8 @@ public class AreaProduccionEntity {
 
 	@ManyToOne
 	protected LocalEntity localRestaurante;
-//	@OneToMany(mappedBy = "areaProduccion")
-//	protected List<ComandaEntity> comandas;
-
-
+	// @OneToMany(mappedBy = "areaProduccion")
+	// protected List<ComandaEntity> comandas;
 
 	public List<ProductoComestibleEntity> getProductos() {
 		return productos;
@@ -47,10 +45,7 @@ public class AreaProduccionEntity {
 		this.productos = productos;
 	}
 
-	
-
-	public AreaProduccionEntity(Integer idAreaProduccion, List<ProductoComestibleEntity> productos, 
-	
+	public AreaProduccionEntity(Integer idAreaProduccion, List<ProductoComestibleEntity> productos,
 			EncargadoEntity encargado, LocalEntity localRestaurante) {
 		super();
 		this.idAreaProduccion = idAreaProduccion;
