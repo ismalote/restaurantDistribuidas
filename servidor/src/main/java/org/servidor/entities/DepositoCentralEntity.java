@@ -16,8 +16,8 @@ public class DepositoCentralEntity {
 	@Id
 	private Integer idDeposito;
 
-	@OneToMany(mappedBy = "stock")
-	private List<ItemInsumoEntity> itemsStock;
+	@OneToMany
+	private List<ItemInsumoEntity> itemsInsumo;
 
 	public DepositoCentralEntity() {
 		// TODO Auto-generated constructor stub
@@ -32,11 +32,11 @@ public class DepositoCentralEntity {
 	}
 
 	public List<ItemInsumoEntity> getItemsStock() {
-		return itemsStock;
+		return itemsInsumo;
 	}
 
 	public void setItemsStock(List<ItemInsumoEntity> itemsStock) {
-		this.itemsStock = itemsStock;
+		this.itemsInsumo = itemsStock;
 	}
 
 }

@@ -103,7 +103,7 @@ public class LocalDAO {
 
 		Deposito deposito = DepositoDAO.getInstancia().toNegocio(le.getDeposito());
 		Carta carta = CartaDAO.getInstancia().toNegocio(le.getCarta());
-		return new Local(encargados, mozosNegocio, null, deposito, areaNegocio, null, carta, listados);
+		return new Local(le.getIdLocal(), encargados, mozosNegocio, null, deposito, areaNegocio, null, carta, listados);
 	}
 
 }

@@ -8,6 +8,6 @@ import javax.persistence.Entity;;
 public class BarraEntity extends AreaProduccionEntity {
 
 	public BarraEntity(Integer idArea, LocalEntity localRestaurante) {
-		super(idArea, localRestaurante);
+		super(idArea, null, null, localRestaurante);
 	}
 }
