@@ -14,8 +14,6 @@ public class CierredeCajaEntity {
 	@Id
 	private Integer idCierre;
 
-	private boolean estado;
-
 	private Date fechaCierre;
 
 	@ManyToOne
@@ -24,7 +22,6 @@ public class CierredeCajaEntity {
 	public CierredeCajaEntity(Integer idCierre, boolean estado, Date fechaCierre, CajaEntity caja) {
 		super();
 		this.idCierre = idCierre;
-		this.estado = estado;
 		this.fechaCierre = fechaCierre;
 		this.caja = caja;
 	}
@@ -35,14 +32,6 @@ public class CierredeCajaEntity {
 
 	public void setIdCierre(Integer idCierre) {
 		this.idCierre = idCierre;
-	}
-
-	public boolean isEstado() {
-		return estado;
-	}
-
-	public void setEstado(boolean estado) {
-		this.estado = estado;
 	}
 
 	public Date getFechaCierre() {

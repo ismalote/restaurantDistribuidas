@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -49,9 +48,6 @@ public class LocalEntity {
 
 	@OneToMany(mappedBy = "listasCompras")
 	private List<ListadoComprasEntity> listadosCompras;
-
-	@ManyToOne
-	private RestaurantEntity restaurante;
 
 	public Integer getIdLocal() {
 		return idLocal;
@@ -131,13 +127,5 @@ public class LocalEntity {
 
 	public void setListadosCompras(List<ListadoComprasEntity> listadosCompras) {
 		this.listadosCompras = listadosCompras;
-	}
-
-	public RestaurantEntity getRestaurante() {
-		return restaurante;
-	}
-
-	public void setRestaurante(RestaurantEntity restaurante) {
-		this.restaurante = restaurante;
 	}
 }

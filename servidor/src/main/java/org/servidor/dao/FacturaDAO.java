@@ -2,9 +2,7 @@ package org.servidor.dao;
 
 import org.hibernate.Session;
 import org.repositorio.exceptions.SaveFailedException;
-import org.servidor.entities.ComandaEntity;
 import org.servidor.entities.FacturaEntity;
-import org.servidor.negocio.Comanda;
 import org.servidor.negocio.Factura;
 import org.servidor.util.HibernateUtil;
 

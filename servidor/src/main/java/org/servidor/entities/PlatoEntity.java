@@ -15,14 +15,13 @@ public class PlatoEntity {
 
 	@Id
 	private Integer idPlato;
-	
-	@Column(name="nombrePlato")
+
+	@Column(name = "nombrePlato")
 	private String nombrePlato;
 
 	@ManyToMany
 	private List<ProductoComestibleEntity> productos;
 
-	
 	private Float precio;
 
 	@ManyToOne
@@ -34,21 +33,17 @@ public class PlatoEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-	public PlatoEntity(Integer idPlato, String nombrePlato, List<ProductoComestibleEntity> productos,
-			 Float precio, CartaEntity carta, Float comisionExtra) {
+	public PlatoEntity(Integer idPlato, String nombrePlato, List<ProductoComestibleEntity> productos, Float precio,
+			CartaEntity carta, Float comisionExtra) {
 		super();
 		this.idPlato = idPlato;
 		this.nombrePlato = nombrePlato;
 		this.productos = productos;
-		//this.restaurantePlatos = restaurantePlatos;
+		// this.restaurantePlatos = restaurantePlatos;
 		this.precio = precio;
 		this.carta = carta;
 		this.comisionExtra = comisionExtra;
 	}
-
-
 
 	public void setIdPlato(Integer idPlato) {
 		this.idPlato = idPlato;
@@ -94,27 +89,16 @@ public class PlatoEntity {
 		this.comisionExtra = comisionExtra;
 	}
 
-
-
 	public String getNombrePlato() {
 		return nombrePlato;
 	}
-
-
 
 	public void setNombrePlato(String nombrePlato) {
 		this.nombrePlato = nombrePlato;
 	}
 
-
-
-
-
-
-
 	public Integer getIdPlato() {
 		return idPlato;
 	}
-	
 
 }

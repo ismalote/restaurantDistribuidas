@@ -49,14 +49,6 @@ public class ComandaEntity {
 		this.localRestaurante = localRestaurante;
 	}
 
-	public RestaurantEntity getRestauranteComandas() {
-		return restauranteComandas;
-	}
-
-	public void setRestauranteComandas(RestaurantEntity restauranteComandas) {
-		this.restauranteComandas = restauranteComandas;
-	}
-
 	public FacturaEntity getFact() {
 		return fact;
 	}
@@ -78,9 +70,6 @@ public class ComandaEntity {
 
 	@ManyToOne
 	private LocalEntity localRestaurante;
-
-	@ManyToOne
-	private RestaurantEntity restauranteComandas;
 
 	@OneToOne(mappedBy = "comanda")
 	private FacturaEntity fact;

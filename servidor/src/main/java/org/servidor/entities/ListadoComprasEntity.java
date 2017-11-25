@@ -19,8 +19,6 @@ public class ListadoComprasEntity {
 	private List<ItemListadoEntity> insumos;
 
 	@ManyToOne
-	private RestaurantEntity restauranteLista;
-	@ManyToOne
 	private LocalEntity listasCompras;
 
 	public ListadoComprasEntity(Integer idListadoCompras, String areaSolicitante, List<ItemListadoEntity> insumos) {
