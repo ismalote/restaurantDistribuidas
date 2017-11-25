@@ -4,9 +4,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.servidor.entities.AdministracionEntity;
 import org.servidor.entities.AreaProduccionEntity;
+import org.servidor.entities.BarraEntity;
+import org.servidor.entities.CafeteriaEntity;
 import org.servidor.entities.CajaEntity;
 import org.servidor.entities.CartaEntity;
 import org.servidor.entities.CierredeCajaEntity;
+import org.servidor.entities.CocinaEntity;
 import org.servidor.entities.ComandaEntity;
 import org.servidor.entities.DepositoCentralEntity;
 import org.servidor.entities.DepositoEntity;
@@ -16,9 +19,9 @@ import org.servidor.entities.EncargadoEntity;
 import org.servidor.entities.FacturaEntity;
 import org.servidor.entities.InsumoEntity;
 import org.servidor.entities.ItemComandaEntity;
+import org.servidor.entities.ItemInsumoEntity;
 import org.servidor.entities.ItemListadoEntity;
 import org.servidor.entities.ItemPlandeProduccionEntity;
-import org.servidor.entities.ItemStockEntity;
 import org.servidor.entities.LimpiezaEntity;
 import org.servidor.entities.ListadoComprasEntity;
 import org.servidor.entities.LocalEntity;
@@ -32,7 +35,6 @@ import org.servidor.entities.ProductoComestibleEntity;
 import org.servidor.entities.ProductoSimpleEntity;
 import org.servidor.entities.ReservaEntity;
 import org.servidor.entities.SemiElaboradoEntity;
-import org.servidor.entities.StockEntity;
 
 public class HibernateUtil {
 
@@ -43,9 +45,11 @@ public class HibernateUtil {
 
 			config.addAnnotatedClass(InsumoEntity.class);
 			// config.addAnnotatedClass(EstadoMesaEntity.class);
-			config.addAnnotatedClass(ItemStockEntity.class);
-			config.addAnnotatedClass(StockEntity.class);
+			config.addAnnotatedClass(ItemInsumoEntity.class);
 			config.addAnnotatedClass(AreaProduccionEntity.class);
+			config.addAnnotatedClass(BarraEntity.class);
+			config.addAnnotatedClass(CocinaEntity.class);
+			config.addAnnotatedClass(CafeteriaEntity.class);
 			config.addAnnotatedClass(ReservaEntity.class);
 
 			config.addAnnotatedClass(MozoEntity.class);

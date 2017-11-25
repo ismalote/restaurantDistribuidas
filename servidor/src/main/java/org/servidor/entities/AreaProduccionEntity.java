@@ -3,18 +3,25 @@ package org.servidor.entities;
 import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import org.servidor.negocio.AreaProduccion;
 import javax.persistence.Table;;
 
 @Entity
 @Table(name ="areaProduccion")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
 public class AreaProduccionEntity {
 	
 	@Id
@@ -23,7 +30,6 @@ public class AreaProduccionEntity {
 	@OneToMany(mappedBy = "AreaProdu")
 	protected List<ProductoComestibleEntity> productos;
 
-	protected String TipoArea;
 	@OneToOne
 	@JoinColumn(name = "idEncargado")
 	protected EncargadoEntity encargado;
@@ -39,14 +45,8 @@ public class AreaProduccionEntity {
 		return productos;
 	}
 
-	
-
 	public void setProductos(List<ProductoComestibleEntity> productos) {
 		this.productos = productos;
-	}
-
-	public String getTipoArea() {
-		return TipoArea;
 	}
 
 	
@@ -65,10 +65,6 @@ public class AreaProduccionEntity {
 
 	public AreaProduccionEntity(AreaProduccion area) {
 		// TODO Auto-generated constructor stub
-	}
-
-	public void setTipoArea(String tipoArea) {
-		TipoArea = tipoArea;
 	}
 
 	public EncargadoEntity getEncargado() {

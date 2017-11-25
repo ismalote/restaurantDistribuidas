@@ -1,15 +1,11 @@
 package org.servidor.negocio;
 
+import java.util.List;
+
 public class DepositoCentral {
 
 	private Integer id;
-	private Stock stockDeposito;
-
-	public DepositoCentral(Integer id, Stock stockDeposito) {
-		super();
-		this.id = id;
-		this.stockDeposito = stockDeposito;
-	}
+	private List<ItemStock> itemsStock;
 
 	public Integer getId() {
 		return id;
@@ -19,12 +15,12 @@ public class DepositoCentral {
 		this.id = id;
 	}
 
-	public Stock getStockDeposito() {
-		return stockDeposito;
+	public List<ItemStock> getItemsStock() {
+		return itemsStock;
 	}
 
-	public void setStockDeposito(Stock stockDeposito) {
-		this.stockDeposito = stockDeposito;
+	public void setItemsStock(List<ItemStock> itemsStock) {
+		this.itemsStock = itemsStock;
 	}
 
 }

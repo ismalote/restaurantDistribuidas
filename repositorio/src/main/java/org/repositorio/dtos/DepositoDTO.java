@@ -1,28 +1,23 @@
 package org.repositorio.dtos;
 
 import java.io.Serializable;
+import java.util.List;
 
-public class DepositoDTO extends AreaDTO implements Serializable {
+public class DepositoDTO implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 8790809135225160135L;
-	private StockDTO stockDeposito;
+	private List<ItemStockDTO> itemsStock;
 	private EncargadoAreaDTO encargadoDeposito;
 
-	public DepositoDTO(Integer idArea, StockDTO stockDeposito, EncargadoAreaDTO encargadoDeposito) {
-		super(idArea);
-		this.stockDeposito = stockDeposito;
-		this.encargadoDeposito = encargadoDeposito;
+	public List<ItemStockDTO> getItemsStock() {
+		return itemsStock;
 	}
 
-	public StockDTO getStockDeposito() {
-		return stockDeposito;
-	}
-
-	public void setStockDeposito(StockDTO stockDeposito) {
-		this.stockDeposito = stockDeposito;
+	public void setItemsStock(List<ItemStockDTO> itemsStock) {
+		this.itemsStock = itemsStock;
 	}
 
 	public EncargadoAreaDTO getEncargadoDeposito() {
@@ -32,5 +27,4 @@ public class DepositoDTO extends AreaDTO implements Serializable {
 	public void setEncargadoDeposito(EncargadoAreaDTO encargadoDeposito) {
 		this.encargadoDeposito = encargadoDeposito;
 	}
-
 }

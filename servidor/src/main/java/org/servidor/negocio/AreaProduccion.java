@@ -4,15 +4,12 @@ import java.util.List;
 
 public abstract class AreaProduccion {
 	private Integer idAreaProducion;
-	private String TipoArea;
 	private Encargado encargado;
 	private List<ProductoComestible> productos;
 	private List<Comanda> comandas;
 
-	public AreaProduccion(Integer id, String tipoArea, Encargado encargado, List<ProductoComestible> productos,
-			List<Comanda> comandas) {
+	public AreaProduccion(Integer id, Encargado encargado, List<ProductoComestible> productos, List<Comanda> comandas) {
 		this.idAreaProducion = id;
-		TipoArea = tipoArea;
 		this.encargado = encargado;
 		this.productos = productos;
 		this.comandas = comandas;
@@ -24,14 +21,6 @@ public abstract class AreaProduccion {
 
 	public void setId(Integer id) {
 		this.idAreaProducion = id;
-	}
-
-	public String getTipoArea() {
-		return TipoArea;
-	}
-
-	public void setTipoArea(String tipoArea) {
-		TipoArea = tipoArea;
 	}
 
 	public Encargado getEncargado() {

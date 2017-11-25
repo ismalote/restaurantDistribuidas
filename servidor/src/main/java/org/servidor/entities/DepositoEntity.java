@@ -1,9 +1,12 @@
 package org.servidor.entities;
 
+import java.util.List;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -15,9 +18,8 @@ public class DepositoEntity {
 	@Id
 	private Integer idDeposito;
 
-	@OneToOne
-	@JoinColumn(name = "idStock")
-	private StockEntity stockDeposito;
+	@OneToMany(mappedBy = "stock")
+	private List<ItemInsumoEntity> itemsStock;
 
 	@OneToOne
 	@JoinColumn(name = "idEncargado")
@@ -25,13 +27,6 @@ public class DepositoEntity {
 
 	public DepositoEntity() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public DepositoEntity(Integer idDeposito, StockEntity stockDeposito, EncargadoAreaEntity encargadoDeposito) {
-		super();
-		this.idDeposito = idDeposito;
-		this.stockDeposito = stockDeposito;
-		this.encargadoDeposito = encargadoDeposito;
 	}
 
 	public Integer getIdDeposito() {
@@ -42,12 +37,12 @@ public class DepositoEntity {
 		this.idDeposito = idDeposito;
 	}
 
-	public StockEntity getStockDeposito() {
-		return stockDeposito;
+	public List<ItemInsumoEntity> getItemsStock() {
+		return itemsStock;
 	}
 
-	public void setStockDeposito(StockEntity stockDeposito) {
-		this.stockDeposito = stockDeposito;
+	public void setItemsStock(List<ItemInsumoEntity> itemsStock) {
+		this.itemsStock = itemsStock;
 	}
 
 	public EncargadoAreaEntity getEncargadoDeposito() {

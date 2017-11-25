@@ -8,41 +8,31 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ItemStock")
-public class ItemStockEntity {
+@Table(name = "ItemInsumo")
+public class ItemInsumoEntity {
 
 	@Id
-	private Integer idItemStock;
+	private Integer idItemInsumo;
 	@OneToOne
 	@JoinColumn(name = "idInsumo")
 	private InsumoEntity producto;
-	 @ManyToOne
-	// @JoinColumn(name = "idStock")
-	 private StockEntity stock;
 	private Integer CantidadEnStock;
 	private Integer estimadoStock;
 
-	public ItemStockEntity(Integer idItemStock,
+	public ItemInsumoEntity(Integer idItemInsumo,
 			InsumoEntity producto /* , StockEntity stock */, Integer cantidadEnStock, Integer estimadoStock) {
 		super();
-		this.idItemStock = idItemStock;
+		this.idItemInsumo = idItemInsumo;
 		this.producto = producto;
 		// this.stock = stock;
-		CantidadEnStock = cantidadEnStock;
+		this.CantidadEnStock = cantidadEnStock;
 		this.estimadoStock = estimadoStock;
 	}
 
-	public ItemStockEntity() {
+	public ItemInsumoEntity() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Integer getIdItemStock() {
-		return idItemStock;
-	}
-
-	public void setIdItemStock(Integer idItemStock) {
-		this.idItemStock = idItemStock;
-	}
 
 	public InsumoEntity getProducto() {
 		return producto;
