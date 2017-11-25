@@ -101,5 +101,10 @@ public class BussinessDelegate {
 		return objetoRemoto.listarItemComanda(idComanda);
 		
 	}
+	
+	public List<ItemComandaDTO> PedidoXSector(Integer idArea,Integer idLocal) throws RemoteException{
+		return objetoRemoto.PedidoXSector(idArea, idLocal);
+		
+	}
 
 }

@@ -211,9 +211,13 @@ public class Controlador {
 	
 	public List<ItemComandaDTO> confirmarPedido (Integer idArea,Integer idLocal ) {
 		
-		List<ItemComanda> items= 
+		List<ItemComanda> items= ItemComandaDAO.getInstancia().obtenerItemAreaLocal(idArea,idLocal);
+		List<ItemComandaDTO> resultado= new ArrayList<ItemComandaDTO>();
+		for (ItemComanda item : items) {
+			resultado.add(item.toDTO(item));
+		}
 		
-		
+		return resultado;
 		
 		
 	}

@@ -1,5 +1,8 @@
 package org.servidor.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.servidor.entities.ItemComandaEntity;
 import org.servidor.negocio.ItemComanda;
@@ -60,6 +63,19 @@ public class ItemComandaDAO {
 		entity.setCantidad(comanda.getCantidad());
 		entity.setEstado(comanda.getEstado());
 		return entity;
+	}
+
+	public List<ItemComanda> obtenerItemAreaLocal(Integer idArea, Integer idLocal) {
+		
+		List<ItemComanda> resultado = new ArrayList<ItemComanda>();
+		
+		Session s= HibernateUtil.getSessionFactory().openSession();
+		List<ItemComandaEntity> items= (List<ItemComandaEntity>)s.createQuery("FROM ItemComandaEntity i where i.plato.area.idAreaProduccion= :idA and i.comanda.localRestaurante.idLocal= :idL and i.estado='PRODUCCION'").setInteger("idA", idArea).setInteger("idL", idLocal).list();
+		 for (ItemComandaEntity item : items) {
+			resultado.add(this.toNegocio(item));
+		}
+		
+		 return resultado;
 	}
 
 }

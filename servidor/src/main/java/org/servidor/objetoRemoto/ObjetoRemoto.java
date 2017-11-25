@@ -75,5 +75,9 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		Controlador.getInstancia().cambiarItemCProduccion(idItemComanda);
 		
 	}
+	public List<ItemComandaDTO> PedidoXSector(Integer idArea,Integer idLocal){
+		
+		return Controlador.getInstancia().confirmarPedido(idArea, idLocal);
+	}
 	
 }

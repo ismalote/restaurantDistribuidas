@@ -25,7 +25,7 @@ import javax.persistence.Table;;
 public class AreaProduccionEntity {
 	
 	@Id
-	private Integer idAreaProducion;
+	private Integer idAreaProduccion;
 
 	@OneToMany(mappedBy = "AreaProdu")
 	protected List<ProductoComestibleEntity> productos;
@@ -51,12 +51,12 @@ public class AreaProduccionEntity {
 
 	
 
-	public AreaProduccionEntity(Integer idAreaProducion, List<ProductoComestibleEntity> productos, String tipoArea,
+	public AreaProduccionEntity(Integer idAreaProduccion, List<ProductoComestibleEntity> productos, 
 			EncargadoEntity encargado, LocalEntity localRestaurante) {
 		super();
-		this.idAreaProducion = idAreaProducion;
+		this.idAreaProduccion = idAreaProduccion;
 		this.productos = productos;
-		TipoArea = tipoArea;
+		
 		this.encargado = encargado;
 		this.localRestaurante = localRestaurante;
 	}

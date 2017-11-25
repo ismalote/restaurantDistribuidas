@@ -9,6 +9,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.servidor.negocio.AreaProduccion;
+
 @Entity
 @Table(name = "plato")
 public class PlatoEntity {
@@ -26,24 +28,28 @@ public class PlatoEntity {
 
 	@ManyToOne
 	private CartaEntity carta;
-
+	
 	private Float comisionExtra;
+	@ManyToOne
+	private AreaProduccionEntity area;
 
 	public PlatoEntity() {
 		// TODO Auto-generated constructor stub
 	}
 
+
 	public PlatoEntity(Integer idPlato, String nombrePlato, List<ProductoComestibleEntity> productos, Float precio,
-			CartaEntity carta, Float comisionExtra) {
+			CartaEntity carta, Float comisionExtra, AreaProduccionEntity area) {
 		super();
 		this.idPlato = idPlato;
 		this.nombrePlato = nombrePlato;
 		this.productos = productos;
-		// this.restaurantePlatos = restaurantePlatos;
 		this.precio = precio;
 		this.carta = carta;
 		this.comisionExtra = comisionExtra;
+		this.area = area;
 	}
+
 
 	public void setIdPlato(Integer idPlato) {
 		this.idPlato = idPlato;
@@ -100,5 +106,16 @@ public class PlatoEntity {
 	public Integer getIdPlato() {
 		return idPlato;
 	}
+
+
+	public AreaProduccionEntity getArea() {
+		return area;
+	}
+
+
+	public void setArea(AreaProduccionEntity area) {
+		this.area = area;
+	}
+	
 
 }
