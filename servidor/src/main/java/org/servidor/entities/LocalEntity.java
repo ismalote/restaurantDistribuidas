@@ -4,9 +4,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,31 +18,7 @@ public class LocalEntity {
 	private Integer idLocal;
 
 	@OneToMany(mappedBy = "localRestaurante")
-	private List<EncargadoEntity> encargadosAreas;
-
-	@OneToMany(mappedBy = "localRestaurante")
-	private List<MozoEntity> mozos;
-
-	@OneToMany(mappedBy = "localRestaurante")
-	private List<MesaEntity> mesas;
-
-	@OneToMany(mappedBy = "localRestaurante")
 	private List<ComandaEntity> comandas;
-
-	@OneToOne
-	@JoinColumn(name = "idDeposito")
-	private DepositoEntity deposito;
-
-	@OneToOne
-	@JoinColumn(name = "idCaja")
-	private CajaEntity caja;
-
-	@OneToMany(mappedBy = "localRestaurante")
-	private List<AreaProduccionEntity> areas;
-
-	@OneToOne
-	@JoinColumn(name = "idCarta")
-	private CartaEntity carta;
 
 	@OneToMany(mappedBy = "listasCompras")
 	private List<ListadoComprasEntity> listadosCompras;
@@ -57,68 +31,12 @@ public class LocalEntity {
 		this.idLocal = idLocal;
 	}
 
-	public List<EncargadoEntity> getEncargadosAreas() {
-		return encargadosAreas;
-	}
-
-	public void setEncargadosAreas(List<EncargadoEntity> encargadosAreas) {
-		this.encargadosAreas = encargadosAreas;
-	}
-
-	public List<MozoEntity> getMozos() {
-		return mozos;
-	}
-
-	public void setMozos(List<MozoEntity> mozos) {
-		this.mozos = mozos;
-	}
-
-	public List<MesaEntity> getMesas() {
-		return mesas;
-	}
-
-	public void setMesas(List<MesaEntity> mesas) {
-		this.mesas = mesas;
-	}
-
 	public List<ComandaEntity> getComandas() {
 		return comandas;
 	}
 
 	public void setComandas(List<ComandaEntity> comandas) {
 		this.comandas = comandas;
-	}
-
-	public DepositoEntity getDeposito() {
-		return deposito;
-	}
-
-	public void setDeposito(DepositoEntity deposito) {
-		this.deposito = deposito;
-	}
-
-	public CajaEntity getCaja() {
-		return caja;
-	}
-
-	public void setCaja(CajaEntity caja) {
-		this.caja = caja;
-	}
-
-	public List<AreaProduccionEntity> getAreas() {
-		return areas;
-	}
-
-	public void setAreas(List<AreaProduccionEntity> areas) {
-		this.areas = areas;
-	}
-
-	public CartaEntity getCarta() {
-		return carta;
-	}
-
-	public void setCarta(CartaEntity carta) {
-		this.carta = carta;
 	}
 
 	public List<ListadoComprasEntity> getListadosCompras() {

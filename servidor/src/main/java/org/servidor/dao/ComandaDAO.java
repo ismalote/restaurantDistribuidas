@@ -15,10 +15,9 @@ import org.servidor.util.HibernateUtil;
 public class ComandaDAO {
 
 	private static ComandaDAO instancia;
-	
 
 	private ComandaDAO() {
-	
+
 	}
 
 	public static ComandaDAO getInstancia() {
@@ -47,12 +46,14 @@ public class ComandaDAO {
 		ComandaEntity entity = new ComandaEntity();
 		entity.setIdComanda(c.getIdComanda());
 		entity.setCerrada(c.estaCerrada());
-		entity.setMozo(new MozoEntity(c.getMozo()));
+		entity.setMozo(MozoDAO.getInstancia().toEntity(c.getMozo()));
 		// entity.setFact(new FacturaEntity(c.getFact()));
 		// entity.setMesa(new MesaEntity(c.getMesa()));
 		List<PlatoEntity> p = new ArrayList<>();
-		for (ItemComanda aux : c.getPlatos()) {
-			// p.add(new PlatoEntity(aux)); // TODO
+		if (c.getPlatos() != null) {
+			for (ItemComanda aux : c.getPlatos()) {
+				// p.add(new PlatoEntity(aux)); // TODO
+			}
 		}
 		// entity.setPlatos(p); // TODO FIX
 		return entity;
@@ -60,16 +61,14 @@ public class ComandaDAO {
 	}
 
 	public Comanda obtenerComanda(int idComanda) {
-		
-		Session s= HibernateUtil.getSessionFactory().openSession();
-		ComandaEntity comanda= (ComandaEntity) s.createQuery("FROM ComandaEntity where idComanda = ?").setInteger(0, idComanda).uniqueResult();
+
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		ComandaEntity comanda = (ComandaEntity) s.createQuery("FROM ComandaEntity where idComanda = ?")
+				.setInteger(0, idComanda).uniqueResult();
 		Comanda resultado = new Comanda(comanda);
 		return resultado;
-		
+
 	}
-	
-	
-	
 
 	public boolean existeComanda(int idComanda) {
 		ComandaEntity comandaEntity = getComandaEntity(idComanda);
@@ -78,8 +77,8 @@ public class ComandaDAO {
 
 	public Comanda getComanda(int idComanda) {
 		ComandaEntity comandaEntity = getComandaEntity(idComanda);
-		Comanda resultado= new Comanda(comandaEntity);
-		return resultado; 
+		Comanda resultado = new Comanda(comandaEntity);
+		return resultado;
 	}
 
 	private ComandaEntity getComandaEntity(int idComanda) {
@@ -89,6 +88,4 @@ public class ComandaDAO {
 		return comandaEntity;
 	}
 
-	
-	
 }

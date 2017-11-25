@@ -47,7 +47,11 @@ public class MozoEntity {
 	}
 
 	public MozoEntity(Mozo mozo) {
-		// TODO Auto-generated constructor stub
+		this.antiguedad = mozo.getAntiguedad();
+		this.apellido = mozo.getApellido();
+		this.idMozo = mozo.getIdMozo();
+		this.nombre = mozo.getNombre();
+		this.porcentajeComision = mozo.getPorcentajeComision();
 	}
 
 	public Integer getIdMozo() {

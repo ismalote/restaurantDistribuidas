@@ -1,7 +1,14 @@
 package org.repositorio.dtos;
 
-public class CrearComandaDTO {
+import java.io.Serializable;
 
+public class CrearComandaDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -455920126777668592L;
+	
 	private int numeroMesa;
 	private int idLocal;
 	private int idMozo;

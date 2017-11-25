@@ -75,34 +75,23 @@ public class LocalDAO {
 		}
 
 		LocalEntity le = new LocalEntity();
-		le.setCarta(CartaDAO.getInstancia().toEntity(local.getCarta()));
 		return null;
 	}
 
 	public Local toNegocio(LocalEntity le) {
-		List<EncargadoEntity> encargadosAreas = le.getEncargadosAreas();
-		List<ListadoComprasEntity> listadosCompras = le.getListadosCompras();
-		List<MozoEntity> mozos = le.getMozos();
+//		List<ListadoComprasEntity> listadosCompras = le.getListadosCompras();
 
 		List<AreaProduccion> areaNegocio = new ArrayList<AreaProduccion>();
 		List<Encargado> encargados = new ArrayList<Encargado>();
 		List<ListadoCompras> listados = new ArrayList<ListadoCompras>();
 		List<Mozo> mozosNegocio = new ArrayList<Mozo>();
 
-		for (MozoEntity mozoEntity : mozos) {
-			mozosNegocio.add(MozoDAO.getInstancia().toNegocio(mozoEntity));
-		}
+//		for (ListadoComprasEntity l : listadosCompras) { // TODO Falta DAO
+//			listados.add(ListadoCompraDAO.getInstancia().toNegocio(l));
+//		}
 
-		for (ListadoComprasEntity l : listadosCompras) { // TODO Falta DAO
-			listados.add(ListadoCompraDAO.getInstancia().toNegocio(l));
-		}
-
-		for (EncargadoEntity encargadoEntity : encargadosAreas) { // TODO Falta DAO
-			encargados.add(EncargadoDAO.getInstancia().toNegocio(encargadoEntity));
-		}
-
-		Deposito deposito = DepositoDAO.getInstancia().toNegocio(le.getDeposito());
-		Carta carta = CartaDAO.getInstancia().toNegocio(le.getCarta());
+		Deposito deposito = null;
+		Carta carta = null;
 		return new Local(le.getIdLocal(), encargados, mozosNegocio, null, deposito, areaNegocio, null, carta, listados);
 	}
 

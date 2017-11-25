@@ -5,13 +5,17 @@ import java.io.Serializable;
 
 import javax.swing.JFrame;
 
+import org.clienteSwing.controller.ControladorCliente;
+
 public class MainSwing implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private JFrame frame;
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
+		ControladorCliente.INSTANCE.crearComanda(0, 0, 4, 0);
+    	/*
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -19,11 +23,13 @@ public class MainSwing implements Serializable {
 
                     MainSwing window = new MainSwing();
                     window.frame.setVisible(true);
+                    
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
+        */
     }
     
 }
