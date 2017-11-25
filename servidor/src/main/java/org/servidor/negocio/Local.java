@@ -3,7 +3,8 @@ package org.servidor.negocio;
 import java.util.List;
 
 public class Local {
-
+	
+	private Integer idLocal;
 	private List<Encargado> encargadosAreas;
 	private List<Mozo> mozos;
 	private List<Mesa> mesas;
@@ -13,9 +14,10 @@ public class Local {
 	private Carta carta;
 	private List<ListadoCompras> listadosCompras;
 
-	public Local(List<Encargado> encargadosAreas, List<Mozo> mozos, List<Mesa> mesas, Deposito deposito,
+	public Local(Integer idLocal,List<Encargado> encargadosAreas, List<Mozo> mozos, List<Mesa> mesas, Deposito deposito,
 			List<AreaProduccion> areas, Caja caja, Carta carta, List<ListadoCompras> listadosCompras) {
 		super();
+		this.idLocal= idLocal;
 		this.encargadosAreas = encargadosAreas;
 		this.mozos = mozos;
 		this.mesas = mesas;
@@ -91,5 +93,13 @@ public class Local {
 		this.listadosCompras = listadosCompras;
 	}
 	// TODO faltan metodos
+
+	public Integer getIdLocal() {
+		return idLocal;
+	}
+
+	public void setIdLocal(Integer idLocal) {
+		this.idLocal = idLocal;
+	}
 
 }

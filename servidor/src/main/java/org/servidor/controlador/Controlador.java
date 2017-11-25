@@ -25,6 +25,7 @@ import org.servidor.dao.FacturaDAO;
 import org.servidor.dao.ItemComandaDAO;
 import org.servidor.dao.MesaDAO;
 import org.servidor.dao.PlatoDAO;
+import org.servidor.entities.ItemComandaEntity;
 import org.servidor.negocio.Comanda;
 import org.servidor.negocio.Factura;
 import org.servidor.negocio.ItemComanda;
@@ -208,21 +209,14 @@ public class Controlador {
 
 	}
 	
-	/*public void confirmarPedido(List<PlatoAConfirmarDTO> platos) {
+	public List<ItemComandaDTO> confirmarPedido (Integer idArea,Integer idLocal ) {
 		
-		List<Plato> lista = new ArrayList<>();
-		for (PlatoAConfirmarDTO plato : platos) {
-			Plato aux= PlatoDAO.getInstancia().obtenerProducto(plato.getIdPlato());
-			lista.add(aux);
-			
-		}
-		for (Plato p : lista) {
-			
-			if(p.getArea().get)
-		}
+		List<ItemComanda> items= 
 		
 		
-	}*/
+		
+		
+	}
 
 	public void cerrarCaja(Date fecha, boolean cierre) {
 		
@@ -233,6 +227,8 @@ public class Controlador {
 		
 		
 	}
+	
+	
 
 
 }
