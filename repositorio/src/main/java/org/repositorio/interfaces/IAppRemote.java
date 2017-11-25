@@ -33,4 +33,11 @@ public interface IAppRemote extends Remote {
 	
 	List<ItemComandaDTO> listarItemComanda (int idComanda) throws RemoteException;
 
+	void cambiarItemCRECLAMADO(int idItemComanda)throws RemoteException ;
+	
+	void cambiarItemCLISTO(int idItemComanda)throws RemoteException ;
+	
+	void cambiarItemCPRODUCCION(int idItemComanda)throws RemoteException;
+	
+	List<ItemComandaDTO> PedidoXSector(Integer idArea,Integer idLocal) throws RemoteException;
 }

@@ -11,32 +11,43 @@ public class ItemComandaDTO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -861569479002977627L;
-
-	private int idPlato;
+	private Integer idPlato;
+	private Integer idItemComanda;
 	private String nombrePlato;
 
-	private boolean entregado;
+	private String estado;
 
-	private boolean reclamo;
-
-	public ItemComandaDTO(int idPlato, String nombrePlato, boolean entregado, boolean reclamo) {
+	public ItemComandaDTO(Integer idPlato, Integer idItemComanda, String estado) {
 		super();
 		this.idPlato = idPlato;
-		this.nombrePlato = nombrePlato;
-		this.entregado = entregado;
-		this.reclamo = reclamo;
+		this.idItemComanda = idItemComanda;
+		this.estado = estado;
+
+	}
+
+	public ItemComandaDTO(Integer idPlato) {
+		super();
+		this.idPlato = idPlato;
 	}
 
 	public ItemComandaDTO() {
-		
+
 	}
 
-	public int getIdPlato() {
+	public Integer getIdPlato() {
 		return idPlato;
 	}
 
-	public void setIdPlato(int idPlato) {
+	public void setIdPlato(Integer idPlato) {
 		this.idPlato = idPlato;
+	}
+
+	public Integer getIdItemComanda() {
+		return idItemComanda;
+	}
+
+	public void setIdItemComanda(Integer idItemComanda) {
+		this.idItemComanda = idItemComanda;
 	}
 
 	public String getNombrePlato() {
@@ -47,27 +58,12 @@ public class ItemComandaDTO implements Serializable {
 		this.nombrePlato = nombrePlato;
 	}
 
-	public boolean isEntregado() {
-		return entregado;
+	public String getEstado() {
+		return estado;
 	}
 
-	public void setEntregado(boolean entregado) {
-		this.entregado = entregado;
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
-
-	public boolean isReclamo() {
-		return reclamo;
-	}
-
-	public void setReclamo(boolean reclamo) {
-		this.reclamo = reclamo;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-
-	
 
 }

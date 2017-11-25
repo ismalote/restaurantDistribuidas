@@ -1,29 +1,41 @@
 package org.servidor.negocio;
 
-public class Deposito extends Area {
+import java.util.List;
 
-	private Stock stockDeposito;
-	private EncargadoArea encargadoDeposito;
+public class Deposito {
 
-	public Deposito(Integer idArea, Stock stockDeposito, EncargadoArea encargadoDeposito) {
-		super(idArea);
-		this.stockDeposito = stockDeposito;
+	private Integer idDeposito;
+
+	private Encargado encargadoDeposito;
+
+	private List<ItemStock> itemsStock;
+
+	public Deposito(Encargado encargadoDeposito) {
 		this.encargadoDeposito = encargadoDeposito;
 	}
 
-	public Stock getStockDeposito() {
-		return stockDeposito;
-	}
-
-	public void setStockDeposito(Stock stockDeposito) {
-		this.stockDeposito = stockDeposito;
-	}
-
-	public EncargadoArea getEncargadoDeposito() {
+	public Encargado getEncargadoDeposito() {
 		return encargadoDeposito;
 	}
 
-	public void setEncargadoDeposito(EncargadoArea encargadoDeposito) {
+	public void setEncargadoDeposito(Encargado encargadoDeposito) {
 		this.encargadoDeposito = encargadoDeposito;
 	}
+
+	public Integer getIdDeposito() {
+		return idDeposito;
+	}
+
+	public void setIdDeposito(Integer idDeposito) {
+		this.idDeposito = idDeposito;
+	}
+
+	public List<ItemStock> getItemsStock() {
+		return itemsStock;
+	}
+
+	public void setItemsStock(List<ItemStock> itemsStock) {
+		this.itemsStock = itemsStock;
+	}
+
 }

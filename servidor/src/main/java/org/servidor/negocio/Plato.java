@@ -16,16 +16,17 @@ public class Plato {
 	private List<ProductoComestible> productos;
 	private Float precio;
 	private Float comisionExtra;
+	private AreaProduccion area;
 
-
-
-	public Plato(Integer idProductos, String nombrePlato, List<ProductoComestible> productos, Float precio, Float comisionExtra) {
+	public Plato(Integer idProductos, String nombrePlato, List<ProductoComestible> productos, Float precio,
+			Float comisionExtra, AreaProduccion area) {
 		super();
 		this.idProductos = idProductos;
 		this.nombrePlato = nombrePlato;
 		this.productos = productos;
 		this.precio = precio;
 		this.comisionExtra = comisionExtra;
+		this.area = area;
 	}
 
 	public Plato(PlatoEntity entity) {
@@ -47,19 +48,20 @@ public class Plato {
 		this.precio = dto.getPrecio();
 		this.comisionExtra = dto.getComisionExtra();
 	}
-	
-	//Metodo que sirve para poder listar los productos a la hora de crear una comanda y ver el stock de cada plato
-	public PlatoMenuDTO toDTOMenu(){
-		
+
+	// Metodo que sirve para poder listar los productos a la hora de crear una
+	// comanda y ver el stock de cada plato
+	public PlatoMenuDTO toDTOMenu() {
+
 		Boolean estadoStock = true;
-		
+
 		for (ProductoComestible prod : this.productos) {
-			if (prod.getStock() == 0){
+			if (prod.getStock() == 0) {
 				estadoStock = false;
 			}
 
 		}
-		
+
 		return new PlatoMenuDTO(this.idProductos, this.precio, estadoStock);
 	}
 
@@ -87,7 +89,6 @@ public class Plato {
 		this.precio = precio;
 	}
 
-	
 	public Float getComisionExtra() {
 		return comisionExtra;
 	}
@@ -124,5 +125,12 @@ public class Plato {
 		this.productos = productos;
 	}
 
+	public AreaProduccion getArea() {
+		return area;
+	}
+
+	public void setArea(AreaProduccion area) {
+		this.area = area;
+	}
 
 }

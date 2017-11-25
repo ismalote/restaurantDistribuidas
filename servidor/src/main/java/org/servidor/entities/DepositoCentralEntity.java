@@ -1,46 +1,42 @@
 package org.servidor.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="depositoCentral")
+@Table(name = "depositoCentral")
 public class DepositoCentralEntity {
 
 	// verificar la clase stock
 
 	@Id
 	private Integer idDeposito;
-	@OneToOne 
-	@JoinColumn (name="idStock")
-	private StockEntity stockDeposito;
 
-	public DepositoCentralEntity(Integer id, StockEntity stockDeposito) {
-		super();
-		this.idDeposito = id;
-		this.stockDeposito = stockDeposito;
-	}
+	@OneToMany
+	private List<ItemInsumoEntity> itemsInsumo;
 
 	public DepositoCentralEntity() {
 		// TODO Auto-generated constructor stub
 	}
-	public Integer getId() {
+
+	public Integer getIdDeposito() {
 		return idDeposito;
 	}
 
-	public void setId(Integer id) {
-		this.idDeposito = id;
+	public void setIdDeposito(Integer idDeposito) {
+		this.idDeposito = idDeposito;
 	}
 
-	public StockEntity getStockDeposito() {
-		return stockDeposito;
+	public List<ItemInsumoEntity> getItemsStock() {
+		return itemsInsumo;
 	}
 
-	public void setStockDeposito(StockEntity stockDeposito) {
-		this.stockDeposito = stockDeposito;
+	public void setItemsStock(List<ItemInsumoEntity> itemsStock) {
+		this.itemsInsumo = itemsStock;
 	}
 
 }

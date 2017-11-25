@@ -6,13 +6,9 @@ public class SemiElaborado extends ProductoComestible {
 
 	private List<ProductoComestible> materiales;
 
-
-
-
-	public SemiElaborado(Integer idProducto, AreaProduccion area, Integer cantidadPedido, Integer puntoPedido,
-			String descripcion, Integer stock, Float precio) {
-		super(idProducto, area, cantidadPedido, puntoPedido, descripcion, stock, precio);
-		// TODO Auto-generated constructor stub
+	public SemiElaborado(Integer idProducto, Integer cantidadPedido, Integer puntoPedido, String descripcion,
+			Integer stock, Float precio) {
+		super(idProducto, cantidadPedido, puntoPedido, descripcion, stock, precio);
 	}
 
 	public List<ProductoComestible> getMateriales() {
@@ -22,9 +18,5 @@ public class SemiElaborado extends ProductoComestible {
 	public void setMateriales(List<ProductoComestible> materiales) {
 		this.materiales = materiales;
 	}
-
-
-
-
 
 }

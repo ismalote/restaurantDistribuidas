@@ -18,7 +18,7 @@ import org.servidor.Enum.EstadoMesa;
 @Entity
 @Table(name = "mesa")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(discriminatorType=DiscriminatorType.STRING)
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
 public abstract class MesaEntity {
 
 	@Id
@@ -27,11 +27,11 @@ public abstract class MesaEntity {
 
 	private EstadoMesa estadoMesa;
 
-	// @OneToMany(mappedBy = "mesa")
-	// private ReservaEntity reserva;
+	@ManyToOne
+	private LocalEntity localRestaurante;
 
 	@ManyToOne
-	private SectorEntity sector;
+	private MozoEntity mozo;
 
 	private Integer cantidadSillas;
 	private Date horaOcupacion;
@@ -41,31 +41,15 @@ public abstract class MesaEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MesaEntity(Integer idMesa, EstadoMesa estadoMesa, SectorEntity sector, Integer cantidadSillas,
+	public MesaEntity(Integer idMesa, EstadoMesa estadoMesa, LocalEntity localRestaurante, Integer cantidadSillas,
 			Date horaOcupacion, Date horaLiberacion) {
 		super();
 		this.idMesa = idMesa;
 		this.estadoMesa = estadoMesa;
-		this.sector = sector;
+		this.localRestaurante = localRestaurante;
 		this.cantidadSillas = cantidadSillas;
 		this.horaOcupacion = horaOcupacion;
 		this.horaLiberacion = horaLiberacion;
-	}
-
-	public EstadoMesa getEstadoMesa() {
-		return estadoMesa;
-	}
-
-	public void setEstadoMesa(EstadoMesa estadoMesa) {
-		this.estadoMesa = estadoMesa;
-	}
-
-	public SectorEntity getSector() {
-		return sector;
-	}
-
-	public void setSector(SectorEntity sector) {
-		this.sector = sector;
 	}
 
 	public Integer getIdMesa() {
@@ -76,12 +60,20 @@ public abstract class MesaEntity {
 		this.idMesa = idMesa;
 	}
 
-	public ReservaEntity getReserva() {
-		return null; // TODO
+	public EstadoMesa getEstadoMesa() {
+		return estadoMesa;
 	}
 
-	public void setReserva(ReservaEntity reserva) {
-		// this.reserva = reserva; TODO
+	public void setEstadoMesa(EstadoMesa estadoMesa) {
+		this.estadoMesa = estadoMesa;
+	}
+
+	public LocalEntity getLocalRestaurante() {
+		return localRestaurante;
+	}
+
+	public void setLocalRestaurante(LocalEntity localRestaurante) {
+		this.localRestaurante = localRestaurante;
 	}
 
 	public Integer getCantidadSillas() {
@@ -107,7 +99,5 @@ public abstract class MesaEntity {
 	public void setHoraLiberacion(Date horaLiberacion) {
 		this.horaLiberacion = horaLiberacion;
 	}
-
-	// TODO falta metodo y nose como poner simple y compuesta
 
 }

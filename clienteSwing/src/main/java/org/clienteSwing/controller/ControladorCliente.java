@@ -7,6 +7,7 @@ import org.repositorio.bussinessDelegate.BussinessDelegate;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
+import org.repositorio.dtos.PlatoAConfirmarDTO;
 import org.repositorio.exceptions.BusinessException;
 
 public class ControladorCliente {
@@ -34,10 +35,20 @@ public class ControladorCliente {
 
 		return BussinessDelegate.getInstancia().listarMesasLibres(sector);
 	}
+
+	public void crearComanda() {
+		CrearComandaDTO comanda = new CrearComandaDTO();
+		BussinessDelegate.getInstancia().crearComanda(comanda);
+	}
 	
 	public List<ItemComandaDTO> listaDeItemComanda (int idComanda) throws RemoteException, Exception{
 		
 		return BussinessDelegate.getInstancia().listarItemComanda(idComanda);
+	}
+	
+	public List<PlatoAConfirmarDTO> MostrarPlatoaArea(int idArea, int idLocal){
+		return null;
+		
 	}
 	
 }

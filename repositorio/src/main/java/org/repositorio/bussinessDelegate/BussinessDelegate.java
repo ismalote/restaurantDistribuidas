@@ -1,6 +1,8 @@
 package org.repositorio.bussinessDelegate;
 
+import java.net.MalformedURLException;
 import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
@@ -18,9 +20,13 @@ public class BussinessDelegate {
 
 	private IAppRemote objetoRemoto;
 
-	public static BussinessDelegate getInstancia() throws Exception {
+	public static BussinessDelegate getInstancia() {
 		if (instancia == null) {
-			instancia = new BussinessDelegate();
+			try {
+				instancia = new BussinessDelegate();
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
 		}
 		return instancia;
 	}
@@ -29,7 +35,7 @@ public class BussinessDelegate {
 	 * 
 	 * contructor
 	 */
-	private BussinessDelegate() throws Exception {
+	private BussinessDelegate() throws MalformedURLException, RemoteException, NotBoundException {
 		super();
 		this.objetoRemoto = (IAppRemote) Naming.lookup(IAppRemote.URL_SERVICIO);
 	}
@@ -93,6 +99,11 @@ public class BussinessDelegate {
 	
 	public List<ItemComandaDTO> listarItemComanda ( int idComanda) throws RemoteException{
 		return objetoRemoto.listarItemComanda(idComanda);
+		
+	}
+	
+	public List<ItemComandaDTO> PedidoXSector(Integer idArea,Integer idLocal) throws RemoteException{
+		return objetoRemoto.PedidoXSector(idArea, idLocal);
 		
 	}
 

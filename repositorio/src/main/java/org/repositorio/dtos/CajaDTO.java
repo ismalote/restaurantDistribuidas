@@ -3,7 +3,7 @@ package org.repositorio.dtos;
 import java.io.Serializable;
 import java.util.List;
 
-public class CajaDTO extends AreaDTO implements Serializable {
+public class CajaDTO implements Serializable {
 
 	/**
 	 * 
@@ -13,8 +13,6 @@ public class CajaDTO extends AreaDTO implements Serializable {
 	private List<ComandaDTO> comandas;
 
 	public CajaDTO(Integer idArea) {
-		super(idArea);
-		// TODO Auto-generated constructor stub
 	}
 
 	public EncargadoAreaDTO getEncargadoCaja() {
@@ -32,5 +30,4 @@ public class CajaDTO extends AreaDTO implements Serializable {
 	public void setComandas(List<ComandaDTO> comandas) {
 		this.comandas = comandas;
 	}
-	// TODO faltan metodos, OJO esto es HERENCIA NO POLIMORFISMO...creo...
 }

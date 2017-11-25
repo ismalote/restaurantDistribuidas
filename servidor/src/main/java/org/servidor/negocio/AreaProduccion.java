@@ -2,27 +2,25 @@ package org.servidor.negocio;
 
 import java.util.List;
 
-public abstract class AreaProduccion extends Area {
-	private String TipoArea;
+public abstract class AreaProduccion {
+	private Integer idAreaProducion;
 	private Encargado encargado;
 	private List<ProductoComestible> productos;
 	private List<Comanda> comandas;
 
-	public AreaProduccion(Integer id, String tipoArea, Encargado encargado, List<ProductoComestible> productos,
-			List<Comanda> comandas) {
-		super(id);
-		TipoArea = tipoArea;
+	public AreaProduccion(Integer id, Encargado encargado, List<ProductoComestible> productos, List<Comanda> comandas) {
+		this.idAreaProducion = id;
 		this.encargado = encargado;
 		this.productos = productos;
 		this.comandas = comandas;
 	}
 
-	public String getTipoArea() {
-		return TipoArea;
+	public Integer getId() {
+		return idAreaProducion;
 	}
 
-	public void setTipoArea(String tipoArea) {
-		TipoArea = tipoArea;
+	public void setId(Integer id) {
+		this.idAreaProducion = id;
 	}
 
 	public Encargado getEncargado() {

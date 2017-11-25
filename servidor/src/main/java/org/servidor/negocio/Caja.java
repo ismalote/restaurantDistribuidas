@@ -2,13 +2,14 @@ package org.servidor.negocio;
 
 import java.util.List;
 
-public class Caja extends Area {
+public class Caja {
 
+	private Integer idCaja;	
 	private EncargadoArea encargadoCaja;
 	private List<Comanda> comandas;
 
 	public Caja(Integer idArea) {
-		super(idArea);
+		this.idCaja=idArea;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -26,6 +27,14 @@ public class Caja extends Area {
 
 	public void setComandas(List<Comanda> comandas) {
 		this.comandas = comandas;
+	}
+
+	public Integer getIdCaja() {
+		return idCaja;
+	}
+
+	public void setIdCaja(Integer idCaja) {
+		this.idCaja = idCaja;
 	}
 
 	// TODO faltan metodos, OJO esto es HERENCIA NO POLIMORFISMO...creo...

@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -14,24 +13,7 @@ import javax.persistence.Table;
 @Table(name = "localRestaurante")
 public class LocalEntity {
 
-	public LocalEntity(Integer idLocal, List<EncargadoEntity> encargadosAreas, List<MozoEntity> mozos,
-			List<ComandaEntity> comandas, SalonEntity salon, DepositoEntity deposito, List<AreaEntity> areas,
-			CartaEntity carta, List<ListadoComprasEntity> listadosCompras, RestaurantEntity restaurante) {
-		super();
-		this.idLocal = idLocal;
-		this.encargadosAreas = encargadosAreas;
-		this.mozos = mozos;
-		this.comandas = comandas;
-		this.salon = salon;
-		this.deposito = deposito;
-		this.areas = areas;
-		this.carta = carta;
-		this.listadosCompras = listadosCompras;
-		this.restaurante = restaurante;
-	}
-
 	public LocalEntity() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Id
@@ -44,18 +26,21 @@ public class LocalEntity {
 	private List<MozoEntity> mozos;
 
 	@OneToMany(mappedBy = "localRestaurante")
+	private List<MesaEntity> mesas;
+
+	@OneToMany(mappedBy = "localRestaurante")
 	private List<ComandaEntity> comandas;
 
 	@OneToOne
-	@JoinColumn(name = "idSalon")
-	private SalonEntity salon;
-
-	@OneToOne
-	@JoinColumn(name = "idArea")
+	@JoinColumn(name = "idDeposito")
 	private DepositoEntity deposito;
 
+	@OneToOne
+	@JoinColumn(name = "idCaja")
+	private CajaEntity caja;
+
 	@OneToMany(mappedBy = "localRestaurante")
-	private List<AreaEntity> areas;
+	private List<AreaProduccionEntity> areas;
 
 	@OneToOne
 	@JoinColumn(name = "idCarta")
@@ -63,23 +48,6 @@ public class LocalEntity {
 
 	@OneToMany(mappedBy = "listasCompras")
 	private List<ListadoComprasEntity> listadosCompras;
-
-	@ManyToOne
-	private RestaurantEntity restaurante;
-
-	public LocalEntity(Integer idLocal, List<EncargadoEntity> encargadosAreas, List<MozoEntity> mozos,
-			SalonEntity salon, DepositoEntity deposito, List<AreaEntity> areas, CartaEntity carta,
-			List<ListadoComprasEntity> listadosCompras) {
-		super();
-		this.idLocal = idLocal;
-		this.encargadosAreas = encargadosAreas;
-		this.mozos = mozos;
-		this.salon = salon;
-		this.deposito = deposito;
-		this.areas = areas;
-		this.carta = carta;
-		this.listadosCompras = listadosCompras;
-	}
 
 	public Integer getIdLocal() {
 		return idLocal;
@@ -105,12 +73,20 @@ public class LocalEntity {
 		this.mozos = mozos;
 	}
 
-	public SalonEntity getSalon() {
-		return salon;
+	public List<MesaEntity> getMesas() {
+		return mesas;
 	}
 
-	public void setSalon(SalonEntity salon) {
-		this.salon = salon;
+	public void setMesas(List<MesaEntity> mesas) {
+		this.mesas = mesas;
+	}
+
+	public List<ComandaEntity> getComandas() {
+		return comandas;
+	}
+
+	public void setComandas(List<ComandaEntity> comandas) {
+		this.comandas = comandas;
 	}
 
 	public DepositoEntity getDeposito() {
@@ -121,11 +97,19 @@ public class LocalEntity {
 		this.deposito = deposito;
 	}
 
-	public List<AreaEntity> getAreas() {
+	public CajaEntity getCaja() {
+		return caja;
+	}
+
+	public void setCaja(CajaEntity caja) {
+		this.caja = caja;
+	}
+
+	public List<AreaProduccionEntity> getAreas() {
 		return areas;
 	}
 
-	public void setAreas(List<AreaEntity> areas) {
+	public void setAreas(List<AreaProduccionEntity> areas) {
 		this.areas = areas;
 	}
 
@@ -144,5 +128,4 @@ public class LocalEntity {
 	public void setListadosCompras(List<ListadoComprasEntity> listadosCompras) {
 		this.listadosCompras = listadosCompras;
 	}
-
 }

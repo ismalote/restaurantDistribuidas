@@ -12,20 +12,23 @@ public class PlatoDTO implements Serializable {
 	private Integer idPlato;
 	private List<ProductoComestibleDTO> productos;
 	private Float precio;
-
 	private ComandaDTO comandas;
 	private CartaDTO carta;
 	private Float comisionExtra;
+	private AreaProduccionDTO area;
 
-	public PlatoDTO(Integer idPlato, List<ProductoComestibleDTO> plato, Float precio, ComandaDTO comandas,
-			CartaDTO carta, Float comisionExtra) {
+
+
+	public PlatoDTO(Integer idPlato, List<ProductoComestibleDTO> productos, Float precio, ComandaDTO comandas,
+			CartaDTO carta, Float comisionExtra, AreaProduccionDTO area) {
 		super();
 		this.idPlato = idPlato;
-		this.productos = plato;
+		this.productos = productos;
 		this.precio = precio;
 		this.comandas = comandas;
 		this.carta = carta;
 		this.comisionExtra = comisionExtra;
+		this.area = area;
 	}
 
 	public Integer getIdPlato() {
@@ -75,5 +78,19 @@ public class PlatoDTO implements Serializable {
 	public void setComisionExtra(Float comisionExtra) {
 		this.comisionExtra = comisionExtra;
 	}
+
+	public AreaProduccionDTO getArea() {
+		return area;
+	}
+
+	public void setArea(AreaProduccionDTO area) {
+		this.area = area;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	
 
 }

@@ -1,20 +1,14 @@
 package org.servidor.entities;
 
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "productoComestible")
 public abstract class ProductoComestibleEntity extends InsumoEntity {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
 	protected AreaProduccionEntity AreaProdu;
@@ -24,20 +18,12 @@ public abstract class ProductoComestibleEntity extends InsumoEntity {
 	protected Integer stock;
 	protected Integer puntoPedido;
 
-	@ManyToMany
-	protected List<PlatoEntity> platos;
-
-	@ManyToOne
-	private SemiElaboradoEntity semielaborado;
-
 	public ProductoComestibleEntity() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public ProductoComestibleEntity(Integer idInsumo, Float precio, Date fechaCreacion, Date fechaCaducidad,
 			String descripcion, String unidad) {
 		super(idInsumo, precio, fechaCreacion, fechaCaducidad, descripcion, unidad);
-		// TODO Auto-generated constructor stub
 	}
 
 	public AreaProduccionEntity getAreaProdu() {
@@ -78,22 +64,6 @@ public abstract class ProductoComestibleEntity extends InsumoEntity {
 
 	public void setPuntoPedido(Integer puntoPedido) {
 		this.puntoPedido = puntoPedido;
-	}
-
-	public List<PlatoEntity> getPlatos() {
-		return platos;
-	}
-
-	public void setPlatos(List<PlatoEntity> platos) {
-		this.platos = platos;
-	}
-
-	public SemiElaboradoEntity getSemielaborado() {
-		return semielaborado;
-	}
-
-	public void setSemielaborado(SemiElaboradoEntity semielaborado) {
-		this.semielaborado = semielaborado;
 	}
 
 }

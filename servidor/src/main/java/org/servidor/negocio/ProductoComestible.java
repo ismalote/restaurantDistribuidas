@@ -6,18 +6,17 @@ import org.servidor.entities.ProductoComestibleEntity;
 public abstract class ProductoComestible {
 
 	protected Integer idProducto;
-	protected AreaProduccion area;
+
 	protected Integer cantidadPedido;
 	protected Integer puntoPedido;
 	protected String descripcion;
 	protected Integer stock;
 	protected Float precio;
 
-	public ProductoComestible(Integer idProducto, AreaProduccion area, Integer cantidadPedido, Integer puntoPedido,
-			String descripcion, Integer stock, Float precio) {
+	public ProductoComestible(Integer idProducto, Integer cantidadPedido, Integer puntoPedido, String descripcion,
+			Integer stock, Float precio) {
 		super();
 		this.idProducto = idProducto;
-		this.area = area;
 		this.cantidadPedido = cantidadPedido;
 		this.puntoPedido = puntoPedido;
 		this.descripcion = descripcion;
@@ -31,14 +30,6 @@ public abstract class ProductoComestible {
 
 	public void setIdProducto(Integer idProducto) {
 		this.idProducto = idProducto;
-	}
-
-	public AreaProduccion getArea() {
-		return area;
-	}
-
-	public void setArea(AreaProduccion area) {
-		this.area = area;
 	}
 
 	public Integer getCantidadPedido() {
