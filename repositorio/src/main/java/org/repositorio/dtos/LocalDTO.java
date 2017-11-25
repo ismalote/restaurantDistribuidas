@@ -11,23 +11,11 @@ public class LocalDTO implements Serializable {
 	private static final long serialVersionUID = 267457852726575377L;
 	private List<EncargadoDTO> encargadosAreas;
 	private List<MozoDTO> mozos;
-	private SalonDTO salon;
+	private List<MesaDTO> mesas;
 	private DepositoDTO deposito;
-	private List<AreaDTO> areas;
+	private List<AreaProduccionDTO> areas;
 	private CartaDTO carta;
 	private List<ListadoComprasDTO> listadosCompras;
-
-	public LocalDTO(List<EncargadoDTO> encargadosAreas, List<MozoDTO> mozos, SalonDTO salon, DepositoDTO deposito,
-			List<AreaDTO> areas, CartaDTO carta, List<ListadoComprasDTO> listadosCompras) {
-		super();
-		this.encargadosAreas = encargadosAreas;
-		this.mozos = mozos;
-		this.salon = salon;
-		this.deposito = deposito;
-		this.areas = areas;
-		this.carta = carta;
-		this.listadosCompras = listadosCompras;
-	}
 
 	public List<EncargadoDTO> getEncargadosAreas() {
 		return encargadosAreas;
@@ -45,14 +33,6 @@ public class LocalDTO implements Serializable {
 		this.mozos = mozos;
 	}
 
-	public SalonDTO getSalon() {
-		return salon;
-	}
-
-	public void setSalon(SalonDTO salon) {
-		this.salon = salon;
-	}
-
 	public DepositoDTO getDeposito() {
 		return deposito;
 	}
@@ -61,11 +41,11 @@ public class LocalDTO implements Serializable {
 		this.deposito = deposito;
 	}
 
-	public List<AreaDTO> getAreas() {
+	public List<AreaProduccionDTO> getAreas() {
 		return areas;
 	}
 
-	public void setAreas(List<AreaDTO> areas) {
+	public void setAreas(List<AreaProduccionDTO> areas) {
 		this.areas = areas;
 	}
 
@@ -83,6 +63,14 @@ public class LocalDTO implements Serializable {
 
 	public void setListadosCompras(List<ListadoComprasDTO> listadosCompras) {
 		this.listadosCompras = listadosCompras;
+	}
+
+	public List<MesaDTO> getMesas() {
+		return mesas;
+	}
+
+	public void setMesas(List<MesaDTO> mesas) {
+		this.mesas = mesas;
 	}
 
 	// TODO faltan metodos
