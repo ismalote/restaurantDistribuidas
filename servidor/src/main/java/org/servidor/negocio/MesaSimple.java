@@ -41,8 +41,7 @@ public class MesaSimple extends Mesa {
 
 	@Override
 	public Integer getCantidadSillas() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.cantidadSillas;
 	}
 
 	@Override

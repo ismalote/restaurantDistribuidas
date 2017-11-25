@@ -84,7 +84,7 @@ public class MesaDAO {
 		try {
 			Session s = HibernateUtil.getSessionFactory().openSession();
 			s.beginTransaction();
-			s.persist(entity);
+			s.saveOrUpdate(entity);
 			s.flush();
 			s.getTransaction().commit();
 			s.close();

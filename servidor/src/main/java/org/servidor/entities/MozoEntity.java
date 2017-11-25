@@ -23,7 +23,7 @@ public class MozoEntity {
 	@OneToMany(mappedBy = "mozo")
 	private List<ComandaEntity> comandasAbiertas;
 
-	@OneToMany(mappedBy = "mozo")
+	@OneToMany
 	private List<MesaEntity> mesasMozo;
 
 	@ManyToOne

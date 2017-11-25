@@ -1,8 +1,8 @@
 package org.clienteSwing;
 
-import java.awt.EventQueue;
 import java.io.Serializable;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 
@@ -15,7 +15,10 @@ public class MainSwing implements Serializable {
     private JFrame frame;
 
 	public static void main(String[] args) {
-		ControladorCliente.INSTANCE.reservarMesa(4, "Para cacho", new Date());
+//		ControladorCliente.INSTANCE.reservarMesa(4, "Para cacho", new Date());
+		List<Integer> mesas = new ArrayList<Integer>();
+		mesas.add(0);
+		ControladorCliente.INSTANCE.abrirMesaNueva(mesas);
     	/*
         EventQueue.invokeLater(new Runnable() {
             public void run() {
