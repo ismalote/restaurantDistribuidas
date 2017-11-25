@@ -24,24 +24,18 @@ public class PlatoEntity {
 
 	private Float precio;
 
-	@ManyToOne
-	private CartaEntity carta;
-
 	private Float comisionExtra;
 
 	public PlatoEntity() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public PlatoEntity(Integer idPlato, String nombrePlato, List<ProductoComestibleEntity> productos, Float precio,
-			CartaEntity carta, Float comisionExtra) {
+			Float comisionExtra) {
 		super();
 		this.idPlato = idPlato;
 		this.nombrePlato = nombrePlato;
 		this.productos = productos;
-		// this.restaurantePlatos = restaurantePlatos;
 		this.precio = precio;
-		this.carta = carta;
 		this.comisionExtra = comisionExtra;
 	}
 
@@ -57,28 +51,12 @@ public class PlatoEntity {
 		this.productos = productos;
 	}
 
-	// public ComandaEntity getComandas() {
-	// return comanda;
-	// }
-
-	// public void setComandas(ComandaEntity comandas) {
-	// this.comanda = comandas;
-	// }
-
 	public Float getPrecio() {
 		return precio;
 	}
 
 	public void setPrecio(Float precio) {
 		this.precio = precio;
-	}
-
-	public CartaEntity getCarta() {
-		return carta;
-	}
-
-	public void setCarta(CartaEntity carta) {
-		this.carta = carta;
 	}
 
 	public Float getComisionExtra() {
