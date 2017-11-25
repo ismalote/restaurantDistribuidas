@@ -16,15 +16,13 @@ public class CartaEntity {
 	@Column(name = "idCarta")
 	private Integer idCarta;
 
-	// @OneToOne(mappedBy="comanda")
-	// private LocalEntity local;
-	@OneToMany(mappedBy = "carta")
+	@OneToMany
 	private List<PlatoEntity> platos;
 
 	public CartaEntity(Integer idCarta, List<PlatoEntity> platos) {
 		super();
 		this.idCarta = idCarta;
-		// this.platos = platos;
+		 this.platos = platos;
 	}
 
 	public CartaEntity() {

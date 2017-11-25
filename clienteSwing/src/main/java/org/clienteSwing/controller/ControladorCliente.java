@@ -4,12 +4,10 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import org.repositorio.bussinessDelegate.BussinessDelegate;
-import org.repositorio.dtos.AreaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
 import org.repositorio.dtos.PlatoAConfirmarDTO;
-import org.repositorio.dtos.ProductoComestibleDTO;
 import org.repositorio.exceptions.BusinessException;
 
 public class ControladorCliente {

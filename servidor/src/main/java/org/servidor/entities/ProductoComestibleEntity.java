@@ -1,10 +1,8 @@
 package org.servidor.entities;
 
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -19,9 +17,6 @@ public abstract class ProductoComestibleEntity extends InsumoEntity {
 	protected String descripcion;
 	protected Integer stock;
 	protected Integer puntoPedido;
-
-	@ManyToMany
-	protected List<PlatoEntity> platos;
 
 	public ProductoComestibleEntity() {
 	}
@@ -69,14 +64,6 @@ public abstract class ProductoComestibleEntity extends InsumoEntity {
 
 	public void setPuntoPedido(Integer puntoPedido) {
 		this.puntoPedido = puntoPedido;
-	}
-
-	public List<PlatoEntity> getPlatos() {
-		return platos;
-	}
-
-	public void setPlatos(List<PlatoEntity> platos) {
-		this.platos = platos;
 	}
 
 }
