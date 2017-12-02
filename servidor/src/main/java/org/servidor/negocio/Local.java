@@ -5,7 +5,7 @@ import java.util.List;
 public class Local {
 	
 	private Integer idLocal;
-	private List<Encargado> encargadosAreas;
+	private List<Operador> encargadosAreas;
 	private List<Mozo> mozos;
 	private List<Mesa> mesas;
 	private Deposito deposito;
@@ -14,7 +14,7 @@ public class Local {
 	private Carta carta;
 	private List<ListadoCompras> listadosCompras;
 
-	public Local(Integer idLocal,List<Encargado> encargadosAreas, List<Mozo> mozos, List<Mesa> mesas, Deposito deposito,
+	public Local(Integer idLocal,List<Operador> encargadosAreas, List<Mozo> mozos, List<Mesa> mesas, Deposito deposito,
 			List<AreaProduccion> areas, Caja caja, Carta carta, List<ListadoCompras> listadosCompras) {
 		super();
 		this.idLocal= idLocal;
@@ -28,11 +28,11 @@ public class Local {
 		this.listadosCompras = listadosCompras;
 	}
 
-	public List<Encargado> getEncargadosAreas() {
+	public List<Operador> getEncargadosAreas() {
 		return encargadosAreas;
 	}
 
-	public void setEncargadosAreas(List<Encargado> encargadosAreas) {
+	public void setEncargadosAreas(List<Operador> encargadosAreas) {
 		this.encargadosAreas = encargadosAreas;
 	}
 

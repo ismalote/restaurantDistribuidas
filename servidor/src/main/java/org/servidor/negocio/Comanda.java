@@ -63,6 +63,10 @@ public class Comanda {
 		// this.fact = new Factura(entity.getFact());
 	}
 
+	public Comanda() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Comanda(ComandaDTO dto) {
 		if (dto.getMozo() == null) {
 			throw new MozoNotFoundException("new Comanda(ComandaEntity entity)");
@@ -143,11 +147,11 @@ public class Comanda {
 	public double montoTotal() {
 		double aux = 0;
 		List<ItemComanda> item = this.getPlatos();
-		for (ItemComanda ic: item){	
-			
+		for (ItemComanda ic : item) {
+
 			aux = aux + ic.getPlato().getPrecio();
 		}
-		
+
 		return aux;
 	}
 
@@ -214,5 +218,15 @@ public class Comanda {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+
+	public boolean isCerrada() {
+		return cerrada;
+	}
+
+	public void setCerrada(boolean cerrada) {
+		this.cerrada = cerrada;
+	}
+	
+	
 
 }

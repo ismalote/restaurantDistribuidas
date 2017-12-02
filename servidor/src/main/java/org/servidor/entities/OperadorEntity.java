@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Table(name = "encargado")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "Encargado_type")
-public abstract class EncargadoEntity {
+public abstract class OperadorEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,7 +27,7 @@ public abstract class EncargadoEntity {
 	@ManyToOne
 	private LocalEntity localRestaurante;
 
-	public EncargadoEntity(Integer idEncargado, String nombre, String apellido, AreaProduccionEntity areaProdu,
+	public OperadorEntity(Integer idEncargado, String nombre, String apellido, AreaProduccionEntity areaProdu,
 			LocalEntity localRestaurante) {
 		super();
 		this.idEncargado = idEncargado;
@@ -37,15 +37,15 @@ public abstract class EncargadoEntity {
 		this.localRestaurante = localRestaurante;
 	}
 	
-	public EncargadoEntity() {
+	public OperadorEntity() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Integer getIdEncargado() {
+	public Integer getIdOperador() {
 		return idEncargado;
 	}
 
-	public void setIdEncargado(Integer idEncargado) {
+	public void setIdOperador(Integer idEncargado) {
 		this.idEncargado = idEncargado;
 	}
 

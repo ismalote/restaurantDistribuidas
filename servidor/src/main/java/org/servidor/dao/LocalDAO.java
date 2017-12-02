@@ -5,14 +5,14 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.repositorio.exceptions.SaveFailedException;
-import org.servidor.entities.EncargadoEntity;
+import org.servidor.entities.OperadorEntity;
 import org.servidor.entities.ListadoComprasEntity;
 import org.servidor.entities.LocalEntity;
 import org.servidor.entities.MozoEntity;
 import org.servidor.negocio.AreaProduccion;
 import org.servidor.negocio.Carta;
 import org.servidor.negocio.Deposito;
-import org.servidor.negocio.Encargado;
+import org.servidor.negocio.Operador;
 import org.servidor.negocio.ListadoCompras;
 import org.servidor.negocio.Local;
 import org.servidor.negocio.Mozo;
@@ -54,15 +54,15 @@ public class LocalDAO {
 	}
 
 	private LocalEntity toEntity(Local local) {
-		List<Encargado> encargadosAreas = local.getEncargadosAreas();
+		List<Operador> encargadosAreas = local.getEncargadosAreas();
 		List<ListadoCompras> listadosCompras = local.getListadosCompras();
 		List<Mozo> mozos = local.getMozos();
 
-		List<EncargadoEntity> encargadosAreasEntity = new ArrayList<EncargadoEntity>();
+		List<OperadorEntity> encargadosAreasEntity = new ArrayList<OperadorEntity>();
 		List<ListadoComprasEntity> listadosComprasEntity = new ArrayList<ListadoComprasEntity>();
 		List<MozoEntity> mozosEntity = new ArrayList<MozoEntity>();
 
-		for (Encargado encargado : encargadosAreas) {
+		for (Operador encargado : encargadosAreas) {
 			encargadosAreasEntity.add(EncargadoDAO.getInstancia().toEntity(encargado));
 		}
 
@@ -88,7 +88,7 @@ public class LocalDAO {
 //		List<ListadoComprasEntity> listadosCompras = le.getListadosCompras();
 
 		List<AreaProduccion> areaNegocio = new ArrayList<AreaProduccion>();
-		List<Encargado> encargados = new ArrayList<Encargado>();
+		List<Operador> encargados = new ArrayList<Operador>();
 		List<ListadoCompras> listados = new ArrayList<ListadoCompras>();
 		List<Mozo> mozosNegocio = new ArrayList<Mozo>();
 

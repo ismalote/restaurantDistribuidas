@@ -11,24 +11,32 @@ import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
 import org.repositorio.dtos.ReservaDTO;
+import org.repositorio.exceptions.CajaNotFoundException;
 import org.repositorio.exceptions.ComandaNotFoundException;
 import org.repositorio.exceptions.EstadoItemComandaException;
 import org.repositorio.exceptions.FacturaException;
 import org.repositorio.exceptions.ItemComandaFailException;
+import org.repositorio.exceptions.LocalNotFoundException;
 import org.repositorio.exceptions.MesaNotFoundException;
 import org.servidor.Enum.EstadoItemComanda;
 import org.servidor.Enum.EstadoMesa;
+import org.servidor.dao.CajaDAO;
 import org.servidor.dao.ComandaDAO;
 import org.servidor.dao.FacturaDAO;
 import org.servidor.dao.ItemComandaDAO;
+import org.servidor.dao.LocalDAO;
 import org.servidor.dao.MesaDAO;
 import org.servidor.dao.PlatoDAO;
+import org.servidor.negocio.Caja;
+import org.servidor.negocio.CierredeCaja;
 import org.servidor.negocio.Comanda;
 import org.servidor.negocio.Factura;
 import org.servidor.negocio.ItemComanda;
+import org.servidor.negocio.Local;
 import org.servidor.negocio.Mesa;
 import org.servidor.negocio.MesaCompuesta;
 import org.servidor.negocio.MesaSimple;
+import org.servidor.negocio.Mozo;
 import org.servidor.negocio.Plato;
 import org.servidor.negocio.Reserva;
 
@@ -43,7 +51,9 @@ public class Controlador {
 
 	private static Controlador instancia;
 
+
 	public Controlador() {
+
 
 	}
 
@@ -205,32 +215,80 @@ public class Controlador {
 		item.save();
 
 	}
-	
-	public List<ItemComandaDTO> confirmarPedido (Integer idArea,Integer idLocal ) {
-		
-		List<ItemComanda> items= ItemComandaDAO.getInstancia().obtenerItemAreaLocal(idArea,idLocal);
-		List<ItemComandaDTO> resultado= new ArrayList<ItemComandaDTO>();
+
+	public List<ItemComandaDTO> confirmarPedido(Integer idArea, Integer idLocal) {
+
+		List<ItemComanda> items = ItemComandaDAO.getInstancia().obtenerItemAreaLocal(idArea, idLocal);
+		List<ItemComandaDTO> resultado = new ArrayList<ItemComandaDTO>();
 		for (ItemComanda item : items) {
 			resultado.add(item.toDTO(item));
 		}
-		
-			
+
 		return resultado;
-		
-		
+
 	}
 
-	public void cerrarCaja(Date fecha, boolean cierre) {
+	public boolean cerrarCaja( Integer idLocal, Float monto) {
+
+		Local local = this.getLocal(idLocal, "calcularComisiones(int idLocal)");
+
+		Caja caja = this.getCaja(local.getCaja().getIdCaja(), "cerrarCaja(int idCaja)");
+		Date fecha = new Date();
+		boolean cierre = true;
+		Float comisiones = calcularComisiones(local);
 		
-		
+		CierredeCaja aux = new CierredeCaja( cierre, fecha, caja, monto-caja.getMontoIncial());
+		aux.setMontoComisiones(comisiones);
+		return aux.cerrar();
 	}
 	
-	public void abrirCaja(Date fecha, boolean cierre) {
+	public void abrirCaja( Integer idLocal, Float monto) {
+		
+		Local local = this.getLocal(idLocal, "calcularComisiones(int idLocal)");
+		
+		Caja caja = this.getCaja(local.getCaja().getIdCaja(), "abrirCaja(int idCaja)");
+		caja.setMontoIncial(monto);
+		caja.save();
 		
 		
+	}	
+
+	private Caja getCaja(int idCaja, String method) {
+		// TODO Auto-generated method stub
+		Caja aux = CajaDAO.getInstancia().getCaja(idCaja);
+		if (aux == null) {
+			throw new CajaNotFoundException(method);
+		}
+
+		return aux;
+
 	}
-	
-	
 
+	private Float calcularComisiones(Local local) {
+		float totalMozos = 0;
+		float totalPorMozo = 0;
+	//	Local local = instancia.getInstancia().getLocal(idLocal, "calcularComisiones(int idLocal)");
+		List<Mozo> mozos = local.getMozos();
+		List<Comanda> comandasMozo;
+		for (Mozo m: mozos){
+			comandasMozo = new ArrayList<Comanda>();
+			comandasMozo = ComandaDAO.getInstancia().getComandasMozo (m.getIdMozo());
+			for (Comanda c: comandasMozo){
+				List<ItemComanda> listItems = new ArrayList<ItemComanda>();
+				listItems = ItemComandaDAO.getInstancia().getItemsComanda(c.getIdComanda());
+				//TODO
+			}
+		}
+		
+		return totalMozos;
+	}
 
+	private Local getLocal(int idLocal, String method) {
+		Local aux = LocalDAO.getInstance().findById(idLocal);
+		if (aux == null) {
+			throw new LocalNotFoundException(method);
+		}
+
+		return aux;
+	}
 }

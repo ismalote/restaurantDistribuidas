@@ -30,7 +30,7 @@ public class AreaProduccionEntity {
 
 	@OneToOne
 	@JoinColumn(name = "idEncargado")
-	protected EncargadoEntity encargado;
+	protected OperadorEntity encargado;
 
 	@ManyToOne
 	protected LocalEntity localRestaurante;
@@ -46,7 +46,7 @@ public class AreaProduccionEntity {
 	}
 
 	public AreaProduccionEntity(Integer idAreaProduccion, List<ProductoComestibleEntity> productos,
-			EncargadoEntity encargado, LocalEntity localRestaurante) {
+			OperadorEntity encargado, LocalEntity localRestaurante) {
 		super();
 		this.idAreaProduccion = idAreaProduccion;
 		this.productos = productos;
@@ -58,12 +58,28 @@ public class AreaProduccionEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public EncargadoEntity getEncargado() {
+	public OperadorEntity getEncargado() {
 		return encargado;
 	}
 
-	public void setEncargado(EncargadoEntity encargado) {
+	public void setEncargado(OperadorEntity encargado) {
 		this.encargado = encargado;
+	}
+
+	public Integer getIdAreaProduccion() {
+		return idAreaProduccion;
+	}
+
+	public void setIdAreaProduccion(Integer idAreaProduccion) {
+		this.idAreaProduccion = idAreaProduccion;
+	}
+
+	public LocalEntity getLocalRestaurante() {
+		return localRestaurante;
+	}
+
+	public void setLocalRestaurante(LocalEntity localRestaurante) {
+		this.localRestaurante = localRestaurante;
 	}
 
 }

@@ -1,26 +1,26 @@
 package org.servidor.negocio;
 
-public class Encargado {
+public class Operador {
 
-	protected Integer idEncargado;
+	protected Integer idOperador;
 	protected String Nombre;
 	protected String Apellido;
 	protected AreaProduccion area;
 
-	public Encargado(Integer idEncargado, String nombre, String apellido, AreaProduccion area) {
+	public Operador(Integer idEncargado, String nombre, String apellido, AreaProduccion area) {
 		super();
-		this.idEncargado = idEncargado;
+		this.idOperador = idEncargado;
 		Nombre = nombre;
 		Apellido = apellido;
 		this.area = area;
 	}
 
-	public Integer getIdEncargado() {
-		return idEncargado;
+	public Integer getIdOperador() {
+		return idOperador;
 	}
 
-	public void setIdEncargado(Integer idEncargado) {
-		this.idEncargado = idEncargado;
+	public void setIdOperador(Integer idEncargado) {
+		this.idOperador = idEncargado;
 	}
 
 	public String getNombre() {

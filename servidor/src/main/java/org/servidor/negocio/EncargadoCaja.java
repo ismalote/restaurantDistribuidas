@@ -1,6 +1,6 @@
 package org.servidor.negocio;
 
-public class EncargadoCaja extends Encargado {
+public class EncargadoCaja extends Operador {
 
 	public EncargadoCaja(Integer idEncargado, String nombre, String apellido, AreaProduccion area) {
 		super(idEncargado, nombre, apellido, area);

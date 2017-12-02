@@ -26,6 +26,7 @@ public class ItemComandaEntity {
 	private EstadoItemComanda estado;
 
 	@ManyToOne
+	
 	private ComandaEntity comanda;
 
 	public ItemComandaEntity(Integer idItemComanda, Integer cantidad, PlatoEntity plato, EstadoItemComanda estado,

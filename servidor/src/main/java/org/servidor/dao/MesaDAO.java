@@ -68,7 +68,7 @@ public class MesaDAO {
 		return mesas;
 	}
 
-	private MesaSimple toNegocio(MesaEntity entity) {
+	public MesaSimple toNegocio(MesaEntity entity) {
 		MesaSimple aux = new MesaSimple();
 		aux.setIdMesa(entity.getIdMesa());
 		aux.setEstadoMesa(entity.getEstadoMesa());
@@ -120,5 +120,36 @@ public class MesaDAO {
 			return entity;
 		}
 	}
+	
+	public  Mesa toNegocio2 (MesaEntity m){
+		if (m instanceof MesaCompuestaEntity) {
+			List<MesaEntity> mesasEntity = ((MesaCompuestaEntity) m).getMesas();
+			List<Mesa> mesas = new ArrayList<Mesa>();
+			for (MesaEntity mesaActual : mesasEntity) {
+				mesas.add(this.toNegocio(mesaActual));
+			}
+			MesaCompuesta negocio = new MesaCompuesta();
+			negocio.setCantidadSillas(m.getCantidadSillas());
+			negocio.setEstadoMesa(m.getEstadoMesa());
+			negocio.setHoraLiberacion(m.getHoraLiberacion());
+			negocio.setHoraOcupacion(m.getHoraOcupacion());
+			negocio.setIdMesa(m.getIdMesa());
+			negocio.setMesas(mesas);
+			return negocio;
+		} else {
+			MesaSimple negocio = new MesaSimple();
+			negocio.setCantidadSillas(m.getCantidadSillas());
+			negocio.setEstadoMesa(m.getEstadoMesa());
+			negocio.setHoraLiberacion(m.getHoraLiberacion());
+			negocio.setHoraOcupacion(m.getHoraOcupacion());
+			negocio.setIdMesa(m.getIdMesa());
+			
+			negocio.setNumeroMesa(((MesaSimpleEntity) m).getNumeroMesa());
+			return negocio;
+		}		
+		
+		
+	}
+
 
 }

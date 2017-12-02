@@ -26,6 +26,7 @@ public class CajaEntity {
 
 	@OneToMany(mappedBy = "caja")
 	private List<CierredeCajaEntity> cierre;
+	private Float montoInicial;
 
 	public CajaEntity() {
 		// TODO Auto-generated constructor stub

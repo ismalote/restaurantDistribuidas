@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("encargadoCaja")
-public class EncargadoCajaEntity extends EncargadoEntity {
+public class EncargadoCajaEntity extends OperadorEntity {
 
 	public EncargadoCajaEntity(Integer idEncargado, String nombre, String apellido, AreaProduccionEntity areaProdu,
 			LocalEntity localRestaurante) {

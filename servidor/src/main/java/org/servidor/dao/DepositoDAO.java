@@ -2,7 +2,7 @@ package org.servidor.dao;
 
 import org.servidor.entities.DepositoEntity;
 import org.servidor.negocio.Deposito;
-import org.servidor.negocio.Encargado;
+import org.servidor.negocio.Operador;
 
 public class DepositoDAO {
 
@@ -19,7 +19,7 @@ public class DepositoDAO {
 	}
 
 	public Deposito toNegocio(DepositoEntity e) {
-		Encargado encargado = EncargadoDAO.getInstancia().toNegocio(e.getEncargadoDeposito());
+		Operador encargado = EncargadoDAO.getInstancia().toNegocio(e.getEncargadoDeposito());
 		return new Deposito(encargado);
 	}
 }
