@@ -11,6 +11,10 @@ public class SemiElaborado extends ProductoComestible {
 		super(idProducto, cantidadPedido, puntoPedido, descripcion, stock, precio);
 	}
 
+	public SemiElaborado() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public List<ProductoComestible> getMateriales() {
 		return materiales;
 	}

@@ -2,20 +2,36 @@ package org.servidor.negocio;
 
 public class ItemListado {
 
-	private Insumo insumo;
+	private ProductoComestible insumo;
 	private Integer cantidad;
+	private Integer id;
 
-	public ItemListado(Insumo insumo, Integer cantidad) {
+	public ItemListado(ProductoComestible insumo, Integer cantidad) {
 		super();
 		this.insumo = insumo;
 		this.cantidad = cantidad;
 	}
+	
+	public ItemListado(Integer id, ProductoComestible insumo, Integer cantidad) {
+		super();
+		this.id = id;
+		this.insumo = insumo;
+		this.cantidad = cantidad;
+	}
 
-	public Insumo getInsumo() {
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public ProductoComestible getInsumo() {
 		return insumo;
 	}
 
-	public void setInsumo(Insumo insumo) {
+	public void setInsumo(ProductoComestible insumo) {
 		this.insumo = insumo;
 	}
 

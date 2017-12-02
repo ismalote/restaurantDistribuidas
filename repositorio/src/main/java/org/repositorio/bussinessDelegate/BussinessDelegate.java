@@ -13,6 +13,8 @@ import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
+import org.repositorio.dtos.PlatoMenuDTO;
+import org.repositorio.dtos.ProductosAPedirDTO;
 import org.repositorio.interfaces.IAppRemote;
 
 public class BussinessDelegate {
@@ -125,5 +127,31 @@ public class BussinessDelegate {
 		}
 		return false;
 	}
+	
+	//listado de productos para pedir en las areas
+	public List<ProductosAPedirDTO> listarProductosParaPedir(){
+		try {
+			return objetoRemoto.listarProductosParaPedir();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	//menu para el mozo
+	public List<PlatoMenuDTO> platosDelMenu(){
+		try {
+			return objetoRemoto.platosDelMenu();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void pedirPorductos(String area, List<ProductosAPedirDTO> prods)  throws RemoteException {
+		objetoRemoto.pedirPorductos(area, prods);
+
+	}
+	
 
 }

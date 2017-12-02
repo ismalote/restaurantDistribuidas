@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.servidor.negocio.ProductoComestible;
+
 @Entity
 @Table(name = "productoComestible")
 public abstract class ProductoComestibleEntity extends InsumoEntity {
@@ -26,6 +28,9 @@ public abstract class ProductoComestibleEntity extends InsumoEntity {
 		super(idInsumo, precio, fechaCreacion, fechaCaducidad, descripcion, unidad);
 	}
 
+	public abstract ProductoComestible getNegocio();
+	
+	
 	public AreaProduccionEntity getAreaProdu() {
 		return AreaProdu;
 	}
