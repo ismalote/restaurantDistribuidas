@@ -5,12 +5,13 @@ import java.util.Date;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.servidor.Enum.EstadoMesa;
@@ -22,16 +23,11 @@ import org.servidor.Enum.EstadoMesa;
 public abstract class MesaEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idMesa;
 
+	@Enumerated(EnumType.STRING)
 	private EstadoMesa estadoMesa;
-
-	@ManyToOne
-	private LocalEntity localRestaurante;
-
-	@ManyToOne
-	private MozoEntity mozo;
 
 	private Integer cantidadSillas;
 	private Date horaOcupacion;
@@ -41,12 +37,11 @@ public abstract class MesaEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MesaEntity(Integer idMesa, EstadoMesa estadoMesa, LocalEntity localRestaurante, Integer cantidadSillas,
-			Date horaOcupacion, Date horaLiberacion) {
+	public MesaEntity(Integer idMesa, EstadoMesa estadoMesa, Integer cantidadSillas, Date horaOcupacion,
+			Date horaLiberacion) {
 		super();
 		this.idMesa = idMesa;
 		this.estadoMesa = estadoMesa;
-		this.localRestaurante = localRestaurante;
 		this.cantidadSillas = cantidadSillas;
 		this.horaOcupacion = horaOcupacion;
 		this.horaLiberacion = horaLiberacion;
@@ -66,14 +61,6 @@ public abstract class MesaEntity {
 
 	public void setEstadoMesa(EstadoMesa estadoMesa) {
 		this.estadoMesa = estadoMesa;
-	}
-
-	public LocalEntity getLocalRestaurante() {
-		return localRestaurante;
-	}
-
-	public void setLocalRestaurante(LocalEntity localRestaurante) {
-		this.localRestaurante = localRestaurante;
 	}
 
 	public Integer getCantidadSillas() {

@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.Date;
 import java.util.List;
 
 import org.repositorio.dtos.AbrirMesaDTO;
@@ -92,19 +93,37 @@ public class BussinessDelegate {
 		return null;
 	}
 
-	public AbrirMesaDTO mesasLibres(Integer numeroSector, Integer cantidadComensales) throws RemoteException {
+	public AbrirMesaDTO mesasLibres(Integer numeroSector, Integer cantidadComensales) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	public List<ItemComandaDTO> listarItemComanda ( int idComanda) throws RemoteException{
-		return objetoRemoto.listarItemComanda(idComanda);
-		
+
+	public List<ItemComandaDTO> listarItemComanda(int idComanda) {
+		try {
+			return objetoRemoto.listarItemComanda(idComanda);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
-	
-	public List<ItemComandaDTO> PedidoXSector(Integer idArea,Integer idLocal) throws RemoteException{
-		return objetoRemoto.PedidoXSector(idArea, idLocal);
-		
+
+	public List<ItemComandaDTO> PedidoXSector(Integer idArea, Integer idLocal) {
+		try {
+			return objetoRemoto.PedidoXSector(idArea, idLocal);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public boolean reservarMesa(int cantidadComensales, String descripcion, Date fechaHora) {
+		try {
+			return this.objetoRemoto.reservarMesa(cantidadComensales, descripcion, fechaHora);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

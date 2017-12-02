@@ -50,10 +50,6 @@ public class MozoDAO {
 		aux.setApellido(mozo.getApellido());
 		aux.setAntiguedad(mozo.getAntiguedad());
 		List<Comanda> c = new ArrayList<Comanda>();
-		for (ComandaEntity entity : mozo.getComandasAbiertas()) {
-			c.add(new Comanda(entity));
-
-		}
 		aux.setComandasAbiertas(c);
 
 		return aux;

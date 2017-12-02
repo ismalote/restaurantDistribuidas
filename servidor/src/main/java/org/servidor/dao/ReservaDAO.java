@@ -53,7 +53,7 @@ public class ReservaDAO {
 	}
 
 	public Reserva toNegocio(ReservaEntity reserva) {
-		return new Reserva(reserva.getHoraReserva(), reserva.getCantidadPersonas());
+		return new Reserva(reserva.getHoraReserva(), reserva.getCantidadPersonas(), reserva.getDescripcion());
 	}
 
 }

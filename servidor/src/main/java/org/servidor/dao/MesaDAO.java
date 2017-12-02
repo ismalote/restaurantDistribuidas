@@ -5,9 +5,11 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.repositorio.exceptions.SaveFailedException;
+import org.servidor.entities.MesaCompuestaEntity;
 import org.servidor.entities.MesaEntity;
 import org.servidor.entities.MesaSimpleEntity;
 import org.servidor.negocio.Mesa;
+import org.servidor.negocio.MesaCompuesta;
 import org.servidor.negocio.MesaSimple;
 import org.servidor.util.HibernateUtil;
 
@@ -82,7 +84,7 @@ public class MesaDAO {
 		try {
 			Session s = HibernateUtil.getSessionFactory().openSession();
 			s.beginTransaction();
-			s.persist(entity);
+			s.saveOrUpdate(entity);
 			s.flush();
 			s.getTransaction().commit();
 			s.close();
@@ -92,14 +94,31 @@ public class MesaDAO {
 		return true;
 	}
 
-	private MesaSimpleEntity toEntity(Mesa m) {
-		MesaEntity entity = new MesaSimpleEntity();
-		entity.setCantidadSillas(m.getCantidadSillas());
-		entity.setEstadoMesa(m.getEstadoMesa());
-		entity.setHoraLiberacion(m.getHoraLiberacion());
-		entity.setHoraOcupacion(m.getHoraOcupacion());
-		entity.setIdMesa(m.getIdMesa());
-		return null;
+	public MesaEntity toEntity(Mesa m) {
+		if (m instanceof MesaCompuesta) {
+			List<Mesa> mesas = ((MesaCompuesta) m).getMesas();
+			List<MesaEntity> mesasEntity = new ArrayList<MesaEntity>();
+			for (Mesa mesaActual : mesas) {
+				mesasEntity.add(this.toEntity(mesaActual));
+			}
+			MesaCompuestaEntity entity = new MesaCompuestaEntity();
+			entity.setCantidadSillas(m.getCantidadSillas());
+			entity.setEstadoMesa(m.getEstadoMesa());
+			entity.setHoraLiberacion(m.getHoraLiberacion());
+			entity.setHoraOcupacion(m.getHoraOcupacion());
+			entity.setIdMesa(m.getIdMesa());
+			entity.setMesas(mesasEntity);
+			return entity;
+		} else {
+			MesaSimpleEntity entity = new MesaSimpleEntity();
+			entity.setCantidadSillas(m.getCantidadSillas());
+			entity.setEstadoMesa(m.getEstadoMesa());
+			entity.setHoraLiberacion(m.getHoraLiberacion());
+			entity.setHoraOcupacion(m.getHoraOcupacion());
+			entity.setIdMesa(m.getIdMesa());
+			entity.setNumeroMesa(m.getNumeroMesa());
+			return entity;
+		}
 	}
 
 }

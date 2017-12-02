@@ -10,7 +10,7 @@ import org.servidor.entities.MesaEntity;
 public abstract class Mesa {
 
 	private Integer idMesa;
-	private Integer cantidadSillas;
+	protected Integer cantidadSillas;
 	private Date horaOcupacion;
 	private Date horaLiberacion;
 	protected EstadoMesa estadoMesa;
