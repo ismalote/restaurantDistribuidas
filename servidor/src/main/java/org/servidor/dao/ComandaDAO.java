@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.repositorio.exceptions.SaveFailedException;
 import org.servidor.entities.ComandaEntity;
+import org.servidor.entities.ItemComandaEntity;
 import org.servidor.entities.PlatoEntity;
 import org.servidor.negocio.Comanda;
 import org.servidor.negocio.ItemComanda;
@@ -31,7 +32,7 @@ public class ComandaDAO {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			session.beginTransaction();
-			session.persist(entity);
+			session.saveOrUpdate(entity);
 			session.flush();
 			session.getTransaction().commit();
 			session.close();
@@ -50,10 +51,10 @@ public class ComandaDAO {
 		entity.setFecha(c.getFecha());
 		// entity.setFact(new FacturaEntity(c.getFact()));
 		entity.setMesa(MesaDAO.getInstancia().toEntity(c.getMesa()));
-		List<PlatoEntity> p = new ArrayList<>();
+		List<ItemComandaEntity> p = new ArrayList<>();
 		if (c.getPlatos() != null) {
 			for (ItemComanda aux : c.getPlatos()) {
-				// p.add(new PlatoEntity(aux)); // TODO
+				 p.add(ItemComandaDAO.getInstancia().toEntity(aux)); // TODO
 			}
 		}
 		// entity.setPlatos(p); // TODO FIX

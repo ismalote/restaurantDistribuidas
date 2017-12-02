@@ -26,6 +26,7 @@ public class ItemComandaEntity {
 	private EstadoItemComanda estado;
 
 	@ManyToOne
+	@JoinColumn(name = "idComanda")
 	private ComandaEntity comanda;
 
 	public ItemComandaEntity(Integer idItemComanda, Integer cantidad, PlatoEntity plato, EstadoItemComanda estado,

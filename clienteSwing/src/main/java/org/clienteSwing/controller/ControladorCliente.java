@@ -2,9 +2,14 @@ package org.clienteSwing.controller;
 
 import java.rmi.RemoteException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.repositorio.bussinessDelegate.BussinessDelegate;
+import org.repositorio.dtos.AgregarItemComandaDTO;
+import org.repositorio.dtos.AgregarItemsComandaDTO;
+import org.repositorio.dtos.ComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
@@ -14,12 +19,11 @@ public enum ControladorCliente {
 
 	INSTANCE;
 
+	private Map<Integer, ComandaDTO> comandasCache = new HashMap<Integer, ComandaDTO>();
+
 	public void abrirMesaNueva(List<Integer> numeros) {
 		try {
 			BussinessDelegate.getInstancia().abrirMesaNueva(numeros);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,6 +53,23 @@ public enum ControladorCliente {
 
 	public void reservarMesa(int cantidadComensales, String descripcion, Date fechaHora) {
 		BussinessDelegate.getInstancia().reservarMesa(cantidadComensales, descripcion, fechaHora);
+	}
+
+	public void agregarItemAComanda(int idComanda, int idPlato, int cantidad) {
+		this.comandasCache.put(1, new ComandaDTO(1, null, false, null, 4));
+		ComandaDTO c = this.comandasCache.get(idComanda);
+		if (c != null) {
+			c.add(new AgregarItemComandaDTO(idPlato, idComanda));
+		}
+	}
+
+	public void confirmarPedido(int idComanda) {
+		ComandaDTO c = this.comandasCache.get(idComanda);
+		if (c != null) {
+			AgregarItemsComandaDTO dto = new AgregarItemsComandaDTO(idComanda);
+			dto.setItems(c.getPlatos());
+			BussinessDelegate.getInstancia().agregarItemsAComanda(dto);
+		}
 	}
 
 }

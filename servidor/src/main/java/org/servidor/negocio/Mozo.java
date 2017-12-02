@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.repositorio.dtos.ComandaDTO;
 import org.repositorio.dtos.MozoDTO;
-import org.servidor.entities.ComandaEntity;
 import org.servidor.entities.MozoEntity;
 
 public class Mozo {
@@ -15,18 +14,16 @@ public class Mozo {
 	private String nombre;
 	private String apellido;
 	private Integer antiguedad;
-	private List<Comanda> comandasAbiertas;
 	private List<Mesa> mesas;
 
 	public Mozo(Integer idMozo, Float porcentajeComision, String nombre, String apellido, Integer antiguedad,
-			List<Comanda> comandasAbiertas, List<Mesa> mesas) {
+			List<Mesa> mesas) {
 		super();
 		this.idMozo = idMozo;
 		this.porcentajeComision = porcentajeComision;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.antiguedad = antiguedad;
-		this.comandasAbiertas = comandasAbiertas;
 		this.mesas = mesas;
 	}
 
@@ -36,11 +33,6 @@ public class Mozo {
 		this.nombre = entity.getNombre();
 		this.apellido = entity.getApellido();
 		this.antiguedad = entity.getAntiguedad();
-		List<Comanda> comandasAbiertas = new ArrayList<>();
-		for (ComandaEntity c : entity.getComandasAbiertas()) {
-			comandasAbiertas.add(new Comanda(c));
-
-		}
 	}
 
 	public Mozo(MozoDTO dto) {
@@ -101,12 +93,8 @@ public class Mozo {
 		this.antiguedad = antiguedad;
 	}
 
-	public List<Comanda> getComandasAbiertas() {
-		return comandasAbiertas;
-	}
-
-	public void setComandasAbiertas(List<Comanda> comandasAbiertas) {
-		this.comandasAbiertas = comandasAbiertas;
+	public MozoDTO toDTO() {
+		return new MozoDTO(this.idMozo, this.porcentajeComision, nombre, apellido, antiguedad, null);
 	}
 
 }

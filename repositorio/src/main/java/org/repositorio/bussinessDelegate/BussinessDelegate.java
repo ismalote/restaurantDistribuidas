@@ -59,28 +59,52 @@ public class BussinessDelegate {
 		return false;
 	}
 
-	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO item) throws RemoteException {
-		return this.objetoRemoto.agregarItemsAComanda(item);
+	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO item) {
+		try {
+			return this.objetoRemoto.agregarItemsAComanda(item);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
-	public boolean cerrarcomanda(int idComanda) throws RemoteException {
-		return this.objetoRemoto.cerrarcomanda(idComanda);
+	public boolean cerrarcomanda(int idComanda) {
+		try {
+			return this.objetoRemoto.cerrarcomanda(idComanda);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
-	public void cerrarMesa(int idMesa) throws RemoteException {
-		this.objetoRemoto.cerrarMesa(idMesa);
+	public void cerrarMesa(int idMesa) {
+		try {
+			this.objetoRemoto.cerrarMesa(idMesa);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public void abrirMesaNueva(List<Integer> nrosMesas) throws RemoteException {
+	public void abrirMesaNueva(List<Integer> nrosMesas) {
 		AbrirMesaDTO dto = new AbrirMesaDTO();
 
 		dto.setNumerodeMesa(nrosMesas);
-		objetoRemoto.abrirMesa(dto);
-
+		try {
+			objetoRemoto.abrirMesa(dto);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public List<MesaDTO> listarMesasLibres(Integer sector) throws RemoteException {
-		return objetoRemoto.mesasLibres(sector);
+	public List<MesaDTO> listarMesasLibres(Integer sector) {
+		try {
+			return objetoRemoto.mesasLibres(sector);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public void AbrirMesa(AbrirMesaDTO dto) throws RuntimeException, RemoteException {
@@ -88,7 +112,7 @@ public class BussinessDelegate {
 
 	}
 
-	public AbrirMesaDTO mesasLibres(Integer numeroSector) throws RemoteException {
+	public AbrirMesaDTO mesasLibres(Integer numeroSector) {
 		// TODO Auto-generated method stub
 		return null;
 	}

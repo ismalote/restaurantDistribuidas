@@ -13,9 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
 @Entity
 @Table(name = "comanda")
 public class ComandaEntity {
@@ -25,7 +22,7 @@ public class ComandaEntity {
 	private Integer idComanda;
 
 	@OneToMany(mappedBy = "comanda")
-	@Cascade(value = CascadeType.ALL)
+//	@Cascade(value = CascadeType.ALL)
 	private List<ItemComandaEntity> platos;
 
 	@ManyToOne

@@ -13,10 +13,12 @@ import org.repositorio.exceptions.ItemComandaFailException;
 import org.repositorio.exceptions.MesaNotFoundException;
 import org.repositorio.exceptions.MozoNotFoundException;
 import org.servidor.dao.ComandaDAO;
+import org.servidor.dao.ItemComandaDAO;
 import org.servidor.dao.LocalDAO;
 import org.servidor.dao.MesaDAO;
 import org.servidor.dao.MozoDAO;
 import org.servidor.entities.ComandaEntity;
+import org.servidor.entities.ItemComandaEntity;
 
 public class Comanda {
 
@@ -54,12 +56,14 @@ public class Comanda {
 
 	public Comanda(ComandaEntity entity) {
 		this.platos = new ArrayList<ItemComanda>();
-		// for (PlatoEntity plato : entity.getPlatos()) {
-		// this.platos.add(new Plato(plato));
-		// }
+		for (ItemComandaEntity plato : entity.getPlatos()) {
+			this.platos.add(ItemComandaDAO.getInstancia().toNegocio(plato));
+		}
+		this.idComanda = entity.getIdComanda();
 		this.cantidadComensales = entity.getCantidadComensales();
-		// this.mozo = new Mozo(entity.getMozo());
+		this.mozo = new Mozo(entity.getMozo());
 		this.mesa = new MesaSimple(entity.getMesa());
+		this.Local = LocalDAO.getInstance().toNegocio(entity.getLocalRestaurante());
 		// this.fact = new Factura(entity.getFact());
 	}
 
@@ -123,6 +127,7 @@ public class Comanda {
 			if (!this.platos.add(itemNuevo)) {
 				throw new ItemComandaFailException("agregarItems(AgregarItemsComandaDTO dto)");
 			}
+			i++;
 		}
 		return save();
 	}
@@ -143,11 +148,11 @@ public class Comanda {
 	public double montoTotal() {
 		double aux = 0;
 		List<ItemComanda> item = this.getPlatos();
-		for (ItemComanda ic: item){	
-			
+		for (ItemComanda ic : item) {
+
 			aux = aux + ic.getPlato().getPrecio();
 		}
-		
+
 		return aux;
 	}
 

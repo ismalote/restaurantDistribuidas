@@ -5,11 +5,11 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.servidor.negocio.AreaProduccion;
 
 @Entity
 @Table(name = "plato")
@@ -22,6 +22,7 @@ public class PlatoEntity {
 	private String nombrePlato;
 
 	@ManyToMany
+	@JoinTable(joinColumns = { @JoinColumn(name = "idPlato") }, inverseJoinColumns = { @JoinColumn(name = "idInsumo") })
 	private List<ProductoComestibleEntity> productos;
 
 	private Float precio;
@@ -33,9 +34,8 @@ public class PlatoEntity {
 	public PlatoEntity() {
 	}
 
-
 	public PlatoEntity(Integer idPlato, String nombrePlato, List<ProductoComestibleEntity> productos, Float precio,
-			 Float comisionExtra, AreaProduccionEntity area) {
+			Float comisionExtra, AreaProduccionEntity area) {
 		super();
 		this.idPlato = idPlato;
 		this.nombrePlato = nombrePlato;
@@ -44,7 +44,6 @@ public class PlatoEntity {
 		this.comisionExtra = comisionExtra;
 		this.area = area;
 	}
-
 
 	public void setIdPlato(Integer idPlato) {
 		this.idPlato = idPlato;
@@ -86,15 +85,12 @@ public class PlatoEntity {
 		return idPlato;
 	}
 
-
 	public AreaProduccionEntity getArea() {
 		return area;
 	}
 
-
 	public void setArea(AreaProduccionEntity area) {
 		this.area = area;
 	}
-	
 
 }

@@ -14,7 +14,7 @@ public class AgregarItemComandaDTO extends ItemComandaDTO implements Serializabl
 
 	private int idComanda;
 
-	public AgregarItemComandaDTO(int idPlato, String nombre, int idComanda) {
+	public AgregarItemComandaDTO(int idPlato, int idComanda) {
 		super(idPlato);
 		this.idComanda = idComanda;
 	}

@@ -20,8 +20,6 @@ public class MozoEntity {
 	private String nombre;
 	private String apellido;
 	private Integer antiguedad;
-	@OneToMany(mappedBy = "mozo")
-	private List<ComandaEntity> comandasAbiertas;
 
 	@OneToMany
 	private List<MesaEntity> mesasMozo;
@@ -30,14 +28,13 @@ public class MozoEntity {
 	private LocalEntity localRestaurante;
 
 	public MozoEntity(Integer idMozo, Float porcentajeComision, String nombre, String apellido, Integer antiguedad,
-			List<ComandaEntity> comandasAbiertas, List<MesaEntity> mesasMozo, LocalEntity localRestaurante) {
+			List<MesaEntity> mesasMozo, LocalEntity localRestaurante) {
 		super();
 		this.idMozo = idMozo;
 		this.porcentajeComision = porcentajeComision;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.antiguedad = antiguedad;
-		this.comandasAbiertas = comandasAbiertas;
 		this.mesasMozo = mesasMozo;
 		this.localRestaurante = localRestaurante;
 	}
@@ -92,14 +89,6 @@ public class MozoEntity {
 
 	public void setAntiguedad(Integer antiguedad) {
 		this.antiguedad = antiguedad;
-	}
-
-	public List<ComandaEntity> getComandasAbiertas() {
-		return comandasAbiertas;
-	}
-
-	public void setComandasAbiertas(List<ComandaEntity> comandasAbiertas) {
-		this.comandasAbiertas = comandasAbiertas;
 	}
 
 	public List<MesaEntity> getMesasMozo() {

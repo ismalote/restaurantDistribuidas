@@ -50,7 +50,6 @@ public class MozoDAO {
 		aux.setApellido(mozo.getApellido());
 		aux.setAntiguedad(mozo.getAntiguedad());
 		List<Comanda> c = new ArrayList<Comanda>();
-		aux.setComandasAbiertas(c);
 
 		return aux;
 	}

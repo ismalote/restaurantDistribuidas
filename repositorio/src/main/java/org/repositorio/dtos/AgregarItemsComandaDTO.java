@@ -17,7 +17,7 @@ public class AgregarItemsComandaDTO implements Serializable {
 
 	private List<ItemComandaDTO> items;
 
-	public AgregarItemsComandaDTO(int idPlato, boolean entregado, boolean reclamo, int idComanda) {
+	public AgregarItemsComandaDTO(int idComanda) {
 		this.idComanda = idComanda;
 	}
 

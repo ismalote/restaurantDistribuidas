@@ -26,6 +26,9 @@ public class CierredeCajaEntity {
 		this.caja = caja;
 	}
 
+	public CierredeCajaEntity() {
+	}
+
 	public Integer getIdCierre() {
 		return idCierre;
 	}

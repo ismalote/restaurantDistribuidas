@@ -10,4 +10,7 @@ public class CocinaEntity extends AreaProduccionEntity {
 	public CocinaEntity(Integer idArea, LocalEntity localRestaurante) {
 		super(idArea, null, null, localRestaurante);
 	}
+
+	public CocinaEntity() {
+	}
 }

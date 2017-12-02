@@ -1,6 +1,7 @@
 package org.repositorio.dtos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ComandaDTO implements Serializable {
@@ -19,16 +20,15 @@ public class ComandaDTO implements Serializable {
 	private FacturaDTO factura;
 	private LocalDTO local;
 	
-	public ComandaDTO(Integer id,List<ItemComandaDTO> platos, MozoDTO mozo, Boolean cerrada, MesaDTO mesa,
-			Integer cantidadComensales, FacturaDTO factura) {
+	public ComandaDTO(Integer id, MozoDTO mozo, Boolean cerrada, MesaDTO mesa,
+			Integer cantidadComensales) {
 		super();
 		this.idComanda=id;
-		this.platos = platos;
 		this.mozo = mozo;
 		this.cerrada = cerrada;
 		this.mesa = mesa;
 		this.cantidadComensales = cantidadComensales;
-		this.factura = factura;
+		this.platos = new ArrayList<ItemComandaDTO>();
 	}
 	
 	public List<ItemComandaDTO> getPlatos() {
@@ -93,6 +93,10 @@ public class ComandaDTO implements Serializable {
 
 	public void setLocal(LocalDTO local) {
 		this.local = local;
+	}
+	
+	public void add(ItemComandaDTO item) {
+		this.platos.add(item);
 	}
 
 }

@@ -10,4 +10,7 @@ public class BarraEntity extends AreaProduccionEntity {
 	public BarraEntity(Integer idArea, LocalEntity localRestaurante) {
 		super(idArea, null, null, localRestaurante);
 	}
+	
+	public BarraEntity() {
+	}
 }

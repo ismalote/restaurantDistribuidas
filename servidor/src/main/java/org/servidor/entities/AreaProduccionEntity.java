@@ -12,9 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-import org.servidor.negocio.AreaProduccion;;
+import javax.persistence.Table;;
 
 @Entity
 @Table(name = "areaProduccion")
@@ -54,8 +52,7 @@ public class AreaProduccionEntity {
 		this.localRestaurante = localRestaurante;
 	}
 
-	public AreaProduccionEntity(AreaProduccion area) {
-		// TODO Auto-generated constructor stub
+	public AreaProduccionEntity() {
 	}
 
 	public EncargadoEntity getEncargado() {
