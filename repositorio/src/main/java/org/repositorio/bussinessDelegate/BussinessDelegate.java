@@ -158,6 +158,14 @@ public class BussinessDelegate {
 
 	}
 	
+	public void aprobarCompra(Integer idCompra) throws RemoteException {
+		objetoRemoto.aprobarCompra(idCompra);
+
+	}
 	
+	public void rechazarCompra(Integer idCompra) throws RemoteException {
+		objetoRemoto.rechazarCompra(idCompra);
+
+	}
 
 }

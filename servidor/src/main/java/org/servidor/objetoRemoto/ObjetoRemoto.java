@@ -111,4 +111,16 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		
 	}
 
+	@Override
+	public void aprobarCompra(Integer idCompra) throws RemoteException {
+		Controlador.getInstancia().aprobarCompra(idCompra);
+		
+	}
+
+	@Override
+	public void rechazarCompra(Integer idCompra) throws RemoteException {
+		Controlador.getInstancia().rechazarCompra(idCompra);
+		
+	}
+
 }

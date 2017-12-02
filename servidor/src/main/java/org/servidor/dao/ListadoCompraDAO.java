@@ -25,6 +25,14 @@ public class ListadoCompraDAO {
 		return instancia;
 	}
 	
+	public ListadoCompras obtenerListadoCompra(int idCompra) {
+		ListadoCompras listado = new ListadoCompras();
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		ListadoComprasEntity entity = (ListadoComprasEntity) s.createQuery("FROM ListadoComprasEntity as l  where l.idListadoCompras= ?").setInteger(0, idCompra).uniqueResult();
+		listado = this.toNegocio(entity);
+		return listado;
+	}
+	
 	public boolean save(ListadoCompras compras) {
 		ListadoComprasEntity entity = this.toEntity(compras);
 		try {
@@ -40,8 +48,8 @@ public class ListadoCompraDAO {
 		return true;
 	}
 
-	public ListadoCompras toNegocio(ListadoComprasEntity l) {
-		return new ListadoCompras(l.getAreaSolicitante(), null); // TODO
+	public ListadoCompras toNegocio(ListadoComprasEntity listado) {
+		return new ListadoCompras(listado.getIdListadoCompras(), listado.getAreaSolicitante());
 	}
 
 	public ListadoComprasEntity toEntity(ListadoCompras compras) {

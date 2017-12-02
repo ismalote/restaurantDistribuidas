@@ -53,4 +53,8 @@ public interface IAppRemote extends Remote {
 	void pedirPorductos(String area, List<ProductosAPedirDTO> prods) throws RemoteException;
 	
 	void finalizarPlato(Integer idItemComanda) throws RemoteException;
+	
+	void aprobarCompra(Integer idCompra) throws RemoteException;
+	
+	void rechazarCompra(Integer idCompra) throws RemoteException;
 }
