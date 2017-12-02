@@ -11,13 +11,23 @@ public class PlatoMenuDTO implements Serializable {
 	private Integer idPlato;
 	private Float precio;
 	private Boolean estadoStock;
+	private String nombrePlato;
 
 
-	public PlatoMenuDTO(Integer idPlato, Float precio, Boolean estadoStock) {
+	public PlatoMenuDTO(Integer idPlato, String nombrePlato, Float precio, Boolean estadoStock) {
 		super();
 		this.idPlato = idPlato;
 		this.precio = precio;
 		this.estadoStock = estadoStock;
+		this.nombrePlato = nombrePlato;
+	}
+
+	public String getNombrePlato() {
+		return nombrePlato;
+	}
+
+	public void setNombrePlato(String nombrePlato) {
+		this.nombrePlato = nombrePlato;
 	}
 
 	public Boolean getEstadoStock() {

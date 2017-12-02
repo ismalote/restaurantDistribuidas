@@ -74,6 +74,7 @@ public class Controlador {
 		return comanda.agregarItem(item);
 	}
 
+	//TODO recordar que se tiene que mapear de PlatoMenuDTO a ItemComandaDTO, solo idPlato
 	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO itemsComanda) {
 		String method = "agregarItemsAComanda(AgregarItemsComandaDTO itemsComanda)";
 
@@ -206,7 +207,7 @@ public class Controlador {
 
 	}
 	
-	public List<ItemComandaDTO> confirmarPedido (Integer idArea,Integer idLocal ) {
+	public List<ItemComandaDTO> obtenerPlatosAProducir (Integer idArea,Integer idLocal ) {
 		
 		List<ItemComanda> items= ItemComandaDAO.getInstancia().obtenerItemAreaLocal(idArea,idLocal);
 		List<ItemComandaDTO> resultado= new ArrayList<ItemComandaDTO>();

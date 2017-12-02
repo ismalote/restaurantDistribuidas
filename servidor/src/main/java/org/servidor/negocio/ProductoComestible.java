@@ -1,6 +1,7 @@
 package org.servidor.negocio;
 
 import org.repositorio.dtos.ProductoComestibleDTO;
+import org.servidor.dao.ProductoComestibleDAO;
 import org.servidor.entities.ProductoComestibleEntity;
 
 public abstract class ProductoComestible {
@@ -22,6 +23,10 @@ public abstract class ProductoComestible {
 		this.descripcion = descripcion;
 		this.stock = stock;
 		this.precio = precio;
+	}
+	
+	public ProductoComestible(){
+		
 	}
 
 	public Integer getIdProducto() {
@@ -80,6 +85,15 @@ public abstract class ProductoComestible {
 	public static ProductoComestible getNewDTO(ProductoComestibleDTO dto) {
 
 		return null;
+	}
+//baja el stock del producto
+	public void bajarStock(){
+		this.setStock(this.getStock()-1);
+		this.update();
+	}
+	
+	private void update(){
+		ProductoComestibleDAO.getInstancia().update(this);
 	}
 
 }

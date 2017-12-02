@@ -79,8 +79,8 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 	}
 
 	public List<ItemComandaDTO> PedidoXSector(Integer idArea, Integer idLocal) {
-
-		return Controlador.getInstancia().confirmarPedido(idArea, idLocal);
+//se cambio el nombre en el controlador, era la de la super query
+		return Controlador.getInstancia().obtenerPlatosAProducir(idArea, idLocal);
 	}
 
 	@Override

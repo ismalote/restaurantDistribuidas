@@ -8,6 +8,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.servidor.negocio.ProductoComestible;
+import org.servidor.negocio.SemiElaborado;
+
 @Entity
 @Table(name = "semiElaborado")
 @PrimaryKeyJoinColumn(name = "idInsumo")
@@ -22,5 +25,10 @@ public class SemiElaboradoEntity extends ProductoComestibleEntity {
 	}
 
 	public SemiElaboradoEntity() {
+	}
+
+	@Override
+	public ProductoComestible getNegocio() {
+		return new SemiElaborado();
 	}
 }
