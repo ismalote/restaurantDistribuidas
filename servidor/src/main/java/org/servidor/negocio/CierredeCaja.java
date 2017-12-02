@@ -2,19 +2,30 @@ package org.servidor.negocio;
 
 import java.util.Date;
 
+import org.repositorio.exceptions.CierreNotFoundException;
+import org.servidor.dao.CierreCajaDAO;
+
 public class CierredeCaja {
 
 	private Integer idCierre;
 	private boolean estado;
 	private Date fechaCierre;
 	private Caja caja;
+	private float montoNeto;
+	private float montoComisiones;
 
-	public CierredeCaja(Integer idCierre, boolean estado, Date fechaCierre, Caja caja) {
+	public CierredeCaja(boolean estado, Date fechaCierre, Caja caja, Float monto) {
 		super();
-		this.idCierre = idCierre;
+
 		this.estado = estado;
 		this.fechaCierre = fechaCierre;
 		this.caja = caja;
+		this.montoNeto = monto;
+
+	}
+
+	public CierredeCaja() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getIdCierre() {
@@ -47,6 +58,37 @@ public class CierredeCaja {
 
 	public void setCaja(Caja caja) {
 		this.caja = caja;
+	}
+
+	public boolean cerrar() {
+		// TODO Auto-generated method stub
+		if (this.estado) {
+			throw new CierreNotFoundException(" cerrarCaja() fail, because status's caja close today ");
+		}
+
+		this.estado = true;
+		return save();
+
+	}
+
+	public boolean save() {
+		return CierreCajaDAO.getInstancia().save(this);
+	}
+
+	public float getMontoNeto() {
+		return montoNeto;
+	}
+
+	public void setMontoNeto(float montoNeto) {
+		this.montoNeto = montoNeto;
+	}
+
+	public float getMontoComisiones() {
+		return montoComisiones;
+	}
+
+	public void setMontoComisiones(float montoComisiones) {
+		this.montoComisiones = montoComisiones;
 	}
 
 }

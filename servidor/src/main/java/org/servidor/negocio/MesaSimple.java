@@ -50,4 +50,10 @@ public class MesaSimple extends Mesa {
 		return ms;
 	}
 
+	public void setNumeroMesa(Integer numeroMesa2) {
+		// TODO Auto-generated method stub
+		this.numeroMesa= numeroMesa2;
+		
+	}
+
 }

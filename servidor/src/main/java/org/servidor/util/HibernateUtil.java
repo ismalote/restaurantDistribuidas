@@ -15,7 +15,7 @@ import org.servidor.entities.DepositoCentralEntity;
 import org.servidor.entities.DepositoEntity;
 import org.servidor.entities.EncargadoAreaEntity;
 import org.servidor.entities.EncargadoCajaEntity;
-import org.servidor.entities.EncargadoEntity;
+import org.servidor.entities.OperadorEntity;
 import org.servidor.entities.FacturaEntity;
 import org.servidor.entities.InsumoEntity;
 import org.servidor.entities.ItemComandaEntity;
@@ -57,7 +57,7 @@ public class HibernateUtil {
 			config.addAnnotatedClass(MesaSimpleEntity.class);
 			config.addAnnotatedClass(MesaCompuestaEntity.class);
 
-			config.addAnnotatedClass(EncargadoEntity.class);
+			config.addAnnotatedClass(OperadorEntity.class);
 			config.addAnnotatedClass(EncargadoAreaEntity.class);
 			config.addAnnotatedClass(EncargadoCajaEntity.class);
 

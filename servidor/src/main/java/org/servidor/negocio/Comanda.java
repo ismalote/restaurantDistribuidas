@@ -67,6 +67,10 @@ public class Comanda {
 		// this.fact = new Factura(entity.getFact());
 	}
 
+	public Comanda() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Comanda(ComandaDTO dto) {
 		if (dto.getMozo() == null) {
 			throw new MozoNotFoundException("new Comanda(ComandaEntity entity)");
@@ -112,6 +116,13 @@ public class Comanda {
 	public boolean agregarItem(ItemComandaDTO item) {
 		ItemComanda itemNuevo = new ItemComanda(item);
 		if (this.platos.add(itemNuevo)) {
+			//por cada agregado le baja el Stock	
+			for (ItemComanda plato : this.platos) {
+				plato.getPlato().getProductos();
+				for (ProductoComestible prod : plato.getPlato().getProductos()) {
+					prod.bajarStock();
+				}
+			}
 			return save();
 		}
 		return false;
@@ -129,6 +140,14 @@ public class Comanda {
 			}
 			i++;
 		}
+		
+			//por cada agregado le baja el Stock	
+				for (ItemComanda plato : this.platos) {
+					plato.getPlato().getProductos();
+					for (ProductoComestible prod : plato.getPlato().getProductos()) {
+						prod.bajarStock();
+					}
+				}
 		return save();
 	}
 
@@ -219,5 +238,15 @@ public class Comanda {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+
+	public boolean isCerrada() {
+		return cerrada;
+	}
+
+	public void setCerrada(boolean cerrada) {
+		this.cerrada = cerrada;
+	}
+	
+	
 
 }

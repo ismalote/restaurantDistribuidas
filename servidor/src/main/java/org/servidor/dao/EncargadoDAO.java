@@ -1,8 +1,8 @@
 package org.servidor.dao;
 
 import org.servidor.entities.EncargadoAreaEntity;
-import org.servidor.entities.EncargadoEntity;
-import org.servidor.negocio.Encargado;
+import org.servidor.entities.OperadorEntity;
+import org.servidor.negocio.Operador;
 
 public class EncargadoDAO {
 
@@ -18,11 +18,11 @@ public class EncargadoDAO {
 		return instancia;
 	}
 
-	public Encargado toNegocio(EncargadoEntity e) {
-		return new Encargado(e.getIdEncargado(), e.getNombre(), e.getApellido(), null);
+	public Operador toNegocio(OperadorEntity e) {
+		return new Operador(e.getIdOperador(), e.getNombre(), e.getApellido(), null);
 	}
 
-	public EncargadoEntity toEntity(Encargado encargado) {
+	public OperadorEntity toEntity(Operador encargado) {
 		return new EncargadoAreaEntity(); // TODO
 	}
 }

@@ -89,5 +89,38 @@ public class ComandaDAO {
 		session.close();
 		return comandaEntity;
 	}
-
+	
+	public List<Comanda> getComandasMozo (Integer idMozo){
+		List<Comanda> comanditas = new ArrayList<Comanda>();
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		List<ComandaEntity> list = (List<ComandaEntity>) session.createQuery("From ComandaEntity where mozo = ?")
+				.setInteger(0, idMozo).list();
+		for (ComandaEntity comandaEntity : list) {
+			comanditas.add(toNegocio(comandaEntity));
+		}
+		
+		return null;
+	}
+	
+	public Comanda toNegocio (ComandaEntity c){
+		Comanda aux = new Comanda();
+		aux.setCantidadComensales(c.getCantidadComensales());
+		aux.setFact(FacturaDAO.getInstancia().toNegocio(c.getFact()));
+		aux.setFecha(c.getFecha());
+		aux.setIdComanda(c.getIdComanda());
+		aux.setLocal(LocalDAO.getInstance().toNegocio(c.getLocalRestaurante()));
+		aux.setMesa(MesaDAO.getInstancia().toNegocio2(c.getMesa()));
+		aux.setMozo(MozoDAO.getInstancia().toNegocio(c.getMozo()));
+		List<ItemComanda> items = new ArrayList<>();
+		List<ItemComandaEntity> entitys = c.getPlatos();
+		for (ItemComandaEntity ic:  entitys){
+			ItemComanda icomanda = ItemComandaDAO.getInstancia().toNegocio(ic);
+			items.add(icomanda);
+			
+		}
+		aux.setPlatos(items);
+		aux.setCerrada(c.getCerrada());
+		return aux;
+	}
+ 
 }

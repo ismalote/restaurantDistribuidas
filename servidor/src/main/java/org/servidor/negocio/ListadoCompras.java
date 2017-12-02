@@ -2,19 +2,42 @@ package org.servidor.negocio;
 
 import java.util.List;
 
+import org.servidor.Enum.EstadoPedidoCompra;
+import org.servidor.dao.ListadoCompraDAO;
+
 public class ListadoCompras {
 
 	private Integer idListadoCompras;
-	private String AreaSolicitante;
+	private String areaSolicitante;
 	private List<ItemListado> insumos;
+	private EstadoPedidoCompra estado;
 
-	public ListadoCompras(Integer idListadoCompras, String areaSolicitante, List<ItemListado> insumos) {
+	public ListadoCompras(Integer idListadoCompras, String areaSolicitante) {
 		super();
 		this.idListadoCompras = idListadoCompras;
-		AreaSolicitante = areaSolicitante;
+		this.areaSolicitante = areaSolicitante;
+	}
+	
+	public ListadoCompras(Integer idListadoCompras, String areaSolicitante, List<ItemListado> insumos, EstadoPedidoCompra estado) {
+		super();
+		this.idListadoCompras = idListadoCompras;
+		this.areaSolicitante = areaSolicitante;
 		this.insumos = insumos;
+		this.estado = estado;
+	}
+	
+
+	public ListadoCompras(String areaSolicitante, List<ItemListado> insumos, EstadoPedidoCompra estado) {
+		super();
+		this.areaSolicitante = areaSolicitante;
+		this.insumos = insumos;
+		this.estado = estado;
 	}
 
+	public ListadoCompras(){
+		
+	}
+	
 	public Integer getIdListadoCompras() {
 		return idListadoCompras;
 	}
@@ -24,11 +47,11 @@ public class ListadoCompras {
 	}
 
 	public String getAreaSolicitante() {
-		return AreaSolicitante;
+		return this.areaSolicitante;
 	}
 
 	public void setAreaSolicitante(String areaSolicitante) {
-		AreaSolicitante = areaSolicitante;
+		this.areaSolicitante = areaSolicitante;
 	}
 
 	public List<ItemListado> getInsumos() {
@@ -39,4 +62,16 @@ public class ListadoCompras {
 		this.insumos = insumos;
 	}
 
+	public void save() {
+		ListadoCompraDAO.getInstancia().save(this);
+		
+	}
+
+	public EstadoPedidoCompra getEstado() {
+		return estado;
+	}
+	
+	public void setEstado(EstadoPedidoCompra estado) {
+		this.estado = estado;
+	}
 }

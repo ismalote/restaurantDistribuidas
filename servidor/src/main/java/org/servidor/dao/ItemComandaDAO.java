@@ -78,4 +78,19 @@ public class ItemComandaDAO {
 		 return resultado;
 	}
 
+	public List<ItemComanda> getItemsComanda(Integer idComanda) {
+		// TODO Auto-generated method stub
+		
+		List<ItemComanda> resultado = new ArrayList<ItemComanda>();
+			
+			Session s= HibernateUtil.getSessionFactory().openSession();
+			List<ItemComandaEntity> items= (List<ItemComandaEntity>)s.createQuery("FROM ItemComandaEntity as e  where e.comanda.idComanda= ?").setInteger(0, idComanda).list();
+			 for (ItemComandaEntity item : items) {
+				resultado.add(this.toNegocio(item));
+			}
+			
+			 return resultado;
+			
+		}
+
 }

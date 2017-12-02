@@ -11,6 +11,8 @@ import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
+import org.repositorio.dtos.PlatoMenuDTO;
+import org.repositorio.dtos.ProductosAPedirDTO;
 import org.repositorio.dtos.ReservaDTO;
 import org.repositorio.interfaces.IAppRemote;
 import org.servidor.controlador.Controlador;
@@ -79,13 +81,46 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 	}
 
 	public List<ItemComandaDTO> PedidoXSector(Integer idArea, Integer idLocal) {
-
-		return Controlador.getInstancia().confirmarPedido(idArea, idLocal);
+//se cambio el nombre en el controlador, era la de la super query
+		return Controlador.getInstancia().obtenerPlatosAProducir(idArea, idLocal);
 	}
 
 	@Override
 	public boolean reservarMesa(Integer cantidadComensales, String descripcion, Date fechaHora) throws RemoteException {
-		return controlador.reservarMesa(new ReservaDTO(fechaHora, cantidadComensales, descripcion));
+		return Controlador.getInstancia().reservarMesa(new ReservaDTO(fechaHora, cantidadComensales, descripcion));
+	}
+
+	@Override
+	public List<ProductosAPedirDTO> listarProductosParaPedir() throws RemoteException {
+		return Controlador.getInstancia().listarProductosParaPedir();
+	}
+
+	@Override
+	public List<PlatoMenuDTO> platosDelMenu() throws RemoteException {
+		return Controlador.getInstancia().platosDelMenu();
+	}
+
+	@Override
+	public void pedirPorductos(String area, List<ProductosAPedirDTO> prods) throws RemoteException {
+		Controlador.getInstancia().pedirPorductos(area, prods);
+	}
+
+	@Override
+	public void finalizarPlato(Integer idItemComanda) throws RemoteException {
+		Controlador.getInstancia().finalizarPlato(idItemComanda);
+		
+	}
+
+	@Override
+	public void aprobarCompra(Integer idCompra) throws RemoteException {
+		Controlador.getInstancia().aprobarCompra(idCompra);
+		
+	}
+
+	@Override
+	public void rechazarCompra(Integer idCompra) throws RemoteException {
+		Controlador.getInstancia().rechazarCompra(idCompra);
+		
 	}
 
 }

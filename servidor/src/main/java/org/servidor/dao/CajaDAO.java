@@ -40,37 +40,52 @@ public class CajaDAO {
 	public CajaEntity toEntity(Caja c) {
 		CajaEntity entity = new CajaEntity();
 		entity.setIdCaja(c.getIdCaja());
-//		entity.setCierre();
-		
+		// entity.setCierre();
+
 		return entity;
 	}
 
-//	public Caja obtenerCaja(int idCaja) {/
+	// public Caja obtenerCaja(int idCaja) {/
 
-//		Session s = HibernateUtil.getSessionFactory().openSession();
-	//	CajaEntity Caja = (CajaEntity) s.createQuery("FROM CajaEntity where idCaja = ?").setInteger(0, idCaja)
-//				.uniqueResult();
-//		Caja resultado = new Caja(Caja);
-//		return resultado;
+	// Session s = HibernateUtil.getSessionFactory().openSession();
+	// CajaEntity Caja = (CajaEntity) s.createQuery("FROM CajaEntity where
+	// idCaja = ?").setInteger(0, idCaja)
+	// .uniqueResult();
+	// Caja resultado = new Caja(Caja);
+	// return resultado;
 
-	//}
+	// }
 
 	public boolean existeCaja(int idCaja) {
 		CajaEntity CajaEntity = getCajaEntity(idCaja);
 		return CajaEntity != null;
 	}
 
-	//public Caja getCaja(int idCaja) {
-	//	CajaEntity CajaEntity = getCajaEntity(idCaja);
-		//Caja resultado = new Caja(CajaEntity);
-		//return resultado;
-//	}
+	// public Caja getCaja(int idCaja) {
+	// CajaEntity CajaEntity = getCajaEntity(idCaja);
+	// Caja resultado = new Caja(CajaEntity);
+	// return resultado;
+	// }
 
 	private CajaEntity getCajaEntity(int idCaja) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		CajaEntity CajaEntity = session.get(CajaEntity.class, idCaja);
 		session.close();
 		return CajaEntity;
+	}
+
+	public Caja getCaja(int idCaja) {
+		CajaEntity cajaEntity = getCajaEntity(idCaja);
+		Caja resultado = this.toNegocio(cajaEntity);
+		return resultado;
+	}
+
+	public Caja toNegocio(CajaEntity aux) {
+		Caja caja = new Caja();
+		caja.setIdCaja(aux.getIdCaja());
+
+		return caja;
+
 	}
 
 }

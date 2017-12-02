@@ -6,19 +6,19 @@ public class Deposito {
 
 	private Integer idDeposito;
 
-	private Encargado encargadoDeposito;
+	private Operador encargadoDeposito;
 
 	private List<ItemStock> itemsStock;
 
-	public Deposito(Encargado encargadoDeposito) {
+	public Deposito(Operador encargadoDeposito) {
 		this.encargadoDeposito = encargadoDeposito;
 	}
 
-	public Encargado getEncargadoDeposito() {
+	public Operador getEncargadoDeposito() {
 		return encargadoDeposito;
 	}
 
-	public void setEncargadoDeposito(Encargado encargadoDeposito) {
+	public void setEncargadoDeposito(Operador encargadoDeposito) {
 		this.encargadoDeposito = encargadoDeposito;
 	}
 

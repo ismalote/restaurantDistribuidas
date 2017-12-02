@@ -4,11 +4,11 @@ import java.util.List;
 
 public abstract class AreaProduccion {
 	private Integer idAreaProducion;
-	private Encargado encargado;
+	private Operador encargado;
 	private List<ProductoComestible> productos;
 	private List<Comanda> comandas;
 
-	public AreaProduccion(Integer id, Encargado encargado, List<ProductoComestible> productos, List<Comanda> comandas) {
+	public AreaProduccion(Integer id, Operador encargado, List<ProductoComestible> productos, List<Comanda> comandas) {
 		this.idAreaProducion = id;
 		this.encargado = encargado;
 		this.productos = productos;
@@ -23,11 +23,11 @@ public abstract class AreaProduccion {
 		this.idAreaProducion = id;
 	}
 
-	public Encargado getEncargado() {
+	public Operador getEncargado() {
 		return encargado;
 	}
 
-	public void setEncargado(Encargado encargado) {
+	public void setEncargado(Operador encargado) {
 		this.encargado = encargado;
 	}
 
