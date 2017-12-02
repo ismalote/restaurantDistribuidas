@@ -1,5 +1,8 @@
 package org.servidor.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.servidor.entities.ProductoComestibleEntity;
 import org.servidor.entities.ProductoSimpleEntity;
@@ -32,12 +35,12 @@ public class ProductoComestibleDAO {
 	}
 		
 
-//	private ProductoComestible toNegocio(ProductoComestibleEntity entity) {
-//		
-//		return new ProductoComestible(entity.getIdInsumo(), entity.getCantidadPedido(), entity.getPuntoPedido(), entity.getDescripcion(),
-//				entity.getStock(), entity.getPrecio()) {
-//		};
-//	}
+	private ProductoComestible toNegocio(ProductoComestibleEntity entity) {
+		
+		return new ProductoComestible(entity.getIdInsumo(), entity.getCantidadPedido(), entity.getPuntoPedido(), entity.getDescripcion(),
+				entity.getStock(), entity.getPrecio()) {
+		};
+	}
 
 	//TODO probar
 	public void update(ProductoComestible pc) {
@@ -60,6 +63,19 @@ public class ProductoComestibleDAO {
 		session.close();	
 		
 	}
-
+	
+	public List<ProductoComestible> listarProductos(){
+		List<ProductoComestible> prods = new ArrayList<ProductoComestible>();
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		@SuppressWarnings("unchecked")
+		List<ProductoComestibleEntity> entities = (List<ProductoComestibleEntity>)session.createQuery("from ProductoComestibleEntity").list();
+		session.close();
+		for (ProductoComestibleEntity p : entities) {
+			prods.add(this.toNegocio(p));
+		}
+		return prods;
+	}
+	
+	
 
 }

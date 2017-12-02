@@ -1,6 +1,7 @@
 package org.servidor.negocio;
 
 import org.repositorio.dtos.ProductoComestibleDTO;
+import org.repositorio.dtos.ProductosAPedirDTO;
 import org.servidor.dao.ProductoComestibleDAO;
 import org.servidor.entities.ProductoComestibleEntity;
 
@@ -95,5 +96,15 @@ public abstract class ProductoComestible {
 	private void update(){
 		ProductoComestibleDAO.getInstancia().update(this);
 	}
-
+	
+	public ProductosAPedirDTO toProdAPedirDTO(){
+		ProductosAPedirDTO dto = new ProductosAPedirDTO();
+		dto.setIdProd(this.getIdProducto());
+		dto.setNombreProd(this.getDescripcion());
+		dto.setStock(this.getStock());
+		return dto;
+		
+	}
+	
+	
 }

@@ -11,6 +11,8 @@ import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
+import org.repositorio.dtos.PlatoMenuDTO;
+import org.repositorio.dtos.ProductosAPedirDTO;
 
 public interface IAppRemote extends Remote {
 	String URL_SERVICIO = "localhost/RestaurantDistribuida";
@@ -43,4 +45,8 @@ public interface IAppRemote extends Remote {
 	List<ItemComandaDTO> PedidoXSector(Integer idArea,Integer idLocal) throws RemoteException;
 	
 	boolean reservarMesa(Integer cantidadComensales, String descripcion, Date fechaHora) throws RemoteException;
+	
+	public List<ProductosAPedirDTO> listarProductosParaPedir() throws RemoteException;
+	
+	public List<PlatoMenuDTO> platosDelMenu() throws RemoteException;
 }

@@ -9,7 +9,10 @@ import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
+import org.repositorio.dtos.ListadoComprasDTO;
 import org.repositorio.dtos.MesaDTO;
+import org.repositorio.dtos.PlatoMenuDTO;
+import org.repositorio.dtos.ProductosAPedirDTO;
 import org.repositorio.dtos.ReservaDTO;
 import org.repositorio.exceptions.ComandaNotFoundException;
 import org.repositorio.exceptions.EstadoItemComandaException;
@@ -23,6 +26,7 @@ import org.servidor.dao.FacturaDAO;
 import org.servidor.dao.ItemComandaDAO;
 import org.servidor.dao.MesaDAO;
 import org.servidor.dao.PlatoDAO;
+import org.servidor.dao.ProductoComestibleDAO;
 import org.servidor.negocio.Comanda;
 import org.servidor.negocio.Factura;
 import org.servidor.negocio.ItemComanda;
@@ -30,6 +34,7 @@ import org.servidor.negocio.Mesa;
 import org.servidor.negocio.MesaCompuesta;
 import org.servidor.negocio.MesaSimple;
 import org.servidor.negocio.Plato;
+import org.servidor.negocio.ProductoComestible;
 import org.servidor.negocio.Reserva;
 
 /**
@@ -219,6 +224,31 @@ public class Controlador {
 		return resultado;
 		
 		
+	}
+	//listar productos para hacer el pedido
+	public List<ProductosAPedirDTO> listarProductosParaPedir(){
+		
+		List<ProductosAPedirDTO> productos = new ArrayList<ProductosAPedirDTO>();
+		
+		List<ProductoComestible> prodCom = ProductoComestibleDAO.getInstancia().listarProductos();
+		for (ProductoComestible productoComestible : prodCom) {
+			productos.add(productoComestible.toProdAPedirDTO());
+		}
+		
+		return productos;
+	}
+	
+	//listar platos que posee el menu
+	public List<PlatoMenuDTO> platosDelMenu(){
+		
+		List<PlatoMenuDTO> menu = new ArrayList<PlatoMenuDTO>();
+		
+		List<Plato> platos = PlatoDAO.getInstancia().listarPlatos();
+		for (Plato plato : platos) {
+			menu.add(plato.toDTOMenu());
+		}
+		
+		return menu;
 	}
 
 	public void cerrarCaja(Date fecha, boolean cierre) {

@@ -11,6 +11,8 @@ import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
+import org.repositorio.dtos.PlatoMenuDTO;
+import org.repositorio.dtos.ProductosAPedirDTO;
 import org.repositorio.dtos.ReservaDTO;
 import org.repositorio.interfaces.IAppRemote;
 import org.servidor.controlador.Controlador;
@@ -86,6 +88,16 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 	@Override
 	public boolean reservarMesa(Integer cantidadComensales, String descripcion, Date fechaHora) throws RemoteException {
 		return controlador.reservarMesa(new ReservaDTO(fechaHora, cantidadComensales, descripcion));
+	}
+
+	@Override
+	public List<ProductosAPedirDTO> listarProductosParaPedir() throws RemoteException {
+		return controlador.listarProductosParaPedir();
+	}
+
+	@Override
+	public List<PlatoMenuDTO> platosDelMenu() throws RemoteException {
+		return controlador.platosDelMenu();
 	}
 
 }
