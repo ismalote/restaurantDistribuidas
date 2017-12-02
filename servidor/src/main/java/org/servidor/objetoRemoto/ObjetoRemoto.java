@@ -105,4 +105,10 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		Controlador.getInstancia().pedirPorductos(area, prods);
 	}
 
+	@Override
+	public void finalizarPlato(Integer idItemComanda) throws RemoteException {
+		Controlador.getInstancia().finalizarPlato(idItemComanda);
+		
+	}
+
 }

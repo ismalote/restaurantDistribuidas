@@ -266,6 +266,13 @@ public class Controlador {
 	
 	}
 	
+	//cambiarEstadoPedidoListo
+	
+	public void finalizarPlato(Integer idItemComanda){
+		ItemComanda comanda = ItemComandaDAO.getInstancia().obtenerItemComanda(idItemComanda);
+		comanda.setEstado(EstadoItemComanda.LISTO);
+		comanda.save();
+	}
 
 	public void cerrarCaja(Date fecha, boolean cierre) {
 		

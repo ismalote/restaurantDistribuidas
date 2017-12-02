@@ -153,5 +153,11 @@ public class BussinessDelegate {
 
 	}
 	
+	public void finalizarPlato(Integer idItemComanda) throws RemoteException {
+		objetoRemoto.finalizarPlato(idItemComanda);
+
+	}
+	
+	
 
 }
