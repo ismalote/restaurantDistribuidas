@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.servidor.Enum.EstadoPedidoCompra;
+
 @Entity
 @Table(name = "listadoCompras")
 public class ListadoComprasEntity {
@@ -18,6 +20,7 @@ public class ListadoComprasEntity {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idListadoCompras;
 	private String AreaSolicitante;
+	private EstadoPedidoCompra estado;
 	@OneToMany(mappedBy = "lc")
 	private List<ItemListadoEntity> insumos;
 
@@ -57,6 +60,22 @@ public class ListadoComprasEntity {
 
 	public void setInsumos(List<ItemListadoEntity> insumos) {
 		this.insumos = insumos;
+	}
+
+	public EstadoPedidoCompra getEstado() {
+		return estado;
+	}
+
+	public void setEstado(EstadoPedidoCompra estado) {
+		this.estado = estado;
+	}
+
+	public LocalEntity getListasCompras() {
+		return listasCompras;
+	}
+
+	public void setListasCompras(LocalEntity listasCompras) {
+		this.listasCompras = listasCompras;
 	}
 
 }

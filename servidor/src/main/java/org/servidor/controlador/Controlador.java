@@ -20,9 +20,11 @@ import org.repositorio.exceptions.ItemComandaFailException;
 import org.repositorio.exceptions.MesaNotFoundException;
 import org.servidor.Enum.EstadoItemComanda;
 import org.servidor.Enum.EstadoMesa;
+import org.servidor.Enum.EstadoPedidoCompra;
 import org.servidor.dao.ComandaDAO;
 import org.servidor.dao.FacturaDAO;
 import org.servidor.dao.ItemComandaDAO;
+import org.servidor.dao.ListadoCompraDAO;
 import org.servidor.dao.MesaDAO;
 import org.servidor.dao.PlatoDAO;
 import org.servidor.dao.ProductoComestibleDAO;
@@ -260,13 +262,33 @@ public class Controlador {
 			prod.add(new ItemListado(ProductoComestibleDAO.getInstancia().obtenerProducto(p.getIdProd()), p.getCantAPedir()));
 		}
 		
-		ListadoCompras compras = new ListadoCompras(area, prod);
+		ListadoCompras compras = new ListadoCompras(area, prod, EstadoPedidoCompra.PEDIDO);
 		
 		compras.save();
 	
 	}
 	
+	//cambiarEstadoPedidoListo	
+	public void finalizarPlato(Integer idItemComanda){
+		ItemComanda comanda = ItemComandaDAO.getInstancia().obtenerItemComanda(idItemComanda);
+		comanda.setEstado(EstadoItemComanda.LISTO);
+		comanda.save();
+	}
 
+	//AceptarPedido
+	public void aprobarCompra(Integer idCompra){
+		ListadoCompras listado = ListadoCompraDAO.getInstancia().obtenerListadoCompra(idCompra);
+		listado.setEstado(EstadoPedidoCompra.ACEPTADO);
+		listado.save();
+	}
+	
+	//RechazarPedido
+	public void rechazarCompra(Integer idCompra){
+		ListadoCompras listado = ListadoCompraDAO.getInstancia().obtenerListadoCompra(idCompra);
+		listado.setEstado(EstadoPedidoCompra.RECHAZADO);
+		listado.save();
+	}
+	
 	public void cerrarCaja(Date fecha, boolean cierre) {
 		
 		

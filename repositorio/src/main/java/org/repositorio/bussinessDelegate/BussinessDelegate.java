@@ -153,5 +153,19 @@ public class BussinessDelegate {
 
 	}
 	
+	public void finalizarPlato(Integer idItemComanda) throws RemoteException {
+		objetoRemoto.finalizarPlato(idItemComanda);
+
+	}
+	
+	public void aprobarCompra(Integer idCompra) throws RemoteException {
+		objetoRemoto.aprobarCompra(idCompra);
+
+	}
+	
+	public void rechazarCompra(Integer idCompra) throws RemoteException {
+		objetoRemoto.rechazarCompra(idCompra);
+
+	}
 
 }
