@@ -6,6 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.servidor.negocio.ProductoComestible;
+import org.servidor.negocio.ProductoSimple;
+
 @Entity
 @Table(name = "productoSimple")
 @PrimaryKeyJoinColumn(name = "idInsumo")
@@ -19,6 +22,11 @@ public class ProductoSimpleEntity extends ProductoComestibleEntity {
 			String descripcion, String unidad) {
 		super(idInsumo, precio, fechaCreacion, fechaCaducidad, descripcion, unidad);
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public ProductoComestible getNegocio() {
+		return new ProductoSimple();
 	}
 
 }

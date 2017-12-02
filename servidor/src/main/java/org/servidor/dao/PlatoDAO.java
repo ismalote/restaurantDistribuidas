@@ -1,5 +1,8 @@
 package org.servidor.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.servidor.entities.PlatoEntity;
 import org.servidor.negocio.Plato;
@@ -59,4 +62,16 @@ public class PlatoDAO {
 
 	}
 
+	
+	public List<Plato> listarPlatos(){
+		List<Plato> platos = new ArrayList<Plato>();
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		@SuppressWarnings("unchecked")
+		List<PlatoEntity> entities = (List<PlatoEntity>)session.createQuery("from PlatoEntity").list();
+		session.close();
+		for (PlatoEntity p : entities) {
+			platos.add(this.toNegocio(p));
+		}
+		return platos;
+	}
 }

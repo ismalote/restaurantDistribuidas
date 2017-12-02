@@ -62,7 +62,7 @@ public class Plato {
 
 		}
 
-		return new PlatoMenuDTO(this.idProductos, this.precio, estadoStock);
+		return new PlatoMenuDTO(this.idProductos, this.nombrePlato, this.precio, estadoStock);
 	}
 
 	public List<ProductoComestible> getProducto() {

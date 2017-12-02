@@ -112,6 +112,13 @@ public class Comanda {
 	public boolean agregarItem(ItemComandaDTO item) {
 		ItemComanda itemNuevo = new ItemComanda(item);
 		if (this.platos.add(itemNuevo)) {
+			//por cada agregado le baja el Stock	
+			for (ItemComanda plato : this.platos) {
+				plato.getPlato().getProductos();
+				for (ProductoComestible prod : plato.getPlato().getProductos()) {
+					prod.bajarStock();
+				}
+			}
 			return save();
 		}
 		return false;
@@ -128,6 +135,14 @@ public class Comanda {
 				throw new ItemComandaFailException("agregarItems(AgregarItemsComandaDTO dto)");
 			}
 		}
+		
+			//por cada agregado le baja el Stock	
+				for (ItemComanda plato : this.platos) {
+					plato.getPlato().getProductos();
+					for (ProductoComestible prod : plato.getPlato().getProductos()) {
+						prod.bajarStock();
+					}
+				}
 		return save();
 	}
 

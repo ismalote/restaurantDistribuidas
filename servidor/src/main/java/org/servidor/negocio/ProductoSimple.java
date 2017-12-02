@@ -10,6 +10,10 @@ public class ProductoSimple extends ProductoComestible {
 			Float precio) {
 		super(idProducto, cantidadPedido, puntoPedido, descripcion, stock, precio);
 	}
+	
+	public ProductoSimple(){
+		
+	}
 
 	public List<ProductoComestible> getProductos() {
 		return productos;
