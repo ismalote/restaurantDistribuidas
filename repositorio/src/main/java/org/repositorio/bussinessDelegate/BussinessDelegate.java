@@ -148,5 +148,10 @@ public class BussinessDelegate {
 		return null;
 	}
 	
+	public void pedirPorductos(String area, List<ProductosAPedirDTO> prods)  throws RemoteException {
+		objetoRemoto.pedirPorductos(area, prods);
+
+	}
+	
 
 }

@@ -87,17 +87,22 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 
 	@Override
 	public boolean reservarMesa(Integer cantidadComensales, String descripcion, Date fechaHora) throws RemoteException {
-		return controlador.reservarMesa(new ReservaDTO(fechaHora, cantidadComensales, descripcion));
+		return Controlador.getInstancia().reservarMesa(new ReservaDTO(fechaHora, cantidadComensales, descripcion));
 	}
 
 	@Override
 	public List<ProductosAPedirDTO> listarProductosParaPedir() throws RemoteException {
-		return controlador.listarProductosParaPedir();
+		return Controlador.getInstancia().listarProductosParaPedir();
 	}
 
 	@Override
 	public List<PlatoMenuDTO> platosDelMenu() throws RemoteException {
-		return controlador.platosDelMenu();
+		return Controlador.getInstancia().platosDelMenu();
+	}
+
+	@Override
+	public void pedirPorductos(String area, List<ProductosAPedirDTO> prods) throws RemoteException {
+		Controlador.getInstancia().pedirPorductos(area, prods);
 	}
 
 }

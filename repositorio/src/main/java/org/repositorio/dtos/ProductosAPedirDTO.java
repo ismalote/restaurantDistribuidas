@@ -11,6 +11,7 @@ public class ProductosAPedirDTO implements Serializable {
 	private Integer idProd;
 	private Integer stock;
 	private String nombreProd;
+	private Integer cantAPedir;
 
 
 	public ProductosAPedirDTO(Integer idPlato, String nombrePlato, Integer stock) {
@@ -18,11 +19,20 @@ public class ProductosAPedirDTO implements Serializable {
 		this.idProd = idPlato;
 		this.stock = stock;
 		this.nombreProd = nombrePlato;
+		this.cantAPedir = 0;
 	}
 	
 	public ProductosAPedirDTO(){
 	}
 
+
+	public Integer getCantAPedir() {
+		return cantAPedir;
+	}
+
+	public void setCantAPedir(Integer cantAPedir) {
+		this.cantAPedir = cantAPedir;
+	}
 
 	public String getNombreProd() {
 		return nombreProd;

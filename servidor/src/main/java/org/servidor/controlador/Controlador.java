@@ -9,7 +9,6 @@ import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
-import org.repositorio.dtos.ListadoComprasDTO;
 import org.repositorio.dtos.MesaDTO;
 import org.repositorio.dtos.PlatoMenuDTO;
 import org.repositorio.dtos.ProductosAPedirDTO;
@@ -30,6 +29,8 @@ import org.servidor.dao.ProductoComestibleDAO;
 import org.servidor.negocio.Comanda;
 import org.servidor.negocio.Factura;
 import org.servidor.negocio.ItemComanda;
+import org.servidor.negocio.ItemListado;
+import org.servidor.negocio.ListadoCompras;
 import org.servidor.negocio.Mesa;
 import org.servidor.negocio.MesaCompuesta;
 import org.servidor.negocio.MesaSimple;
@@ -250,6 +251,21 @@ public class Controlador {
 		
 		return menu;
 	}
+	
+	
+	//pedidoDeProdDesdeArea
+	public void pedirPorductos(String area, List<ProductosAPedirDTO> prods){
+		List<ItemListado> prod = new ArrayList<ItemListado>();
+		for (ProductosAPedirDTO p : prods) {
+			prod.add(new ItemListado(ProductoComestibleDAO.getInstancia().obtenerProducto(p.getIdProd()), p.getCantAPedir()));
+		}
+		
+		ListadoCompras compras = new ListadoCompras(area, prod);
+		
+		compras.save();
+	
+	}
+	
 
 	public void cerrarCaja(Date fecha, boolean cierre) {
 		

@@ -41,19 +41,26 @@ public class ProductoComestibleDAO {
 				entity.getStock(), entity.getPrecio()) {
 		};
 	}
+	
+	public ProductoComestibleEntity toEntity(ProductoComestible pc) {
+		
+		ProductoComestibleEntity entity = null;
+			if (pc instanceof ProductoSimple){
+				entity = new ProductoSimpleEntity();
+				entity.setIdInsumo(pc.getIdProducto());
+				entity.setStock(pc.getStock());
+			} else {
+				entity = new SemiElaboradoEntity();
+				entity.setIdInsumo(pc.getIdProducto());
+				entity.setStock(pc.getStock());
+			}
+			
+			return entity;
+	}
 
 	//TODO probar
 	public void update(ProductoComestible pc) {
-		ProductoComestibleEntity entity = null;
-		if (pc instanceof ProductoSimple){
-			entity = new ProductoSimpleEntity();
-			entity.setIdInsumo(pc.getIdProducto());
-			entity.setStock(pc.getStock());
-		} else {
-			entity = new SemiElaboradoEntity();
-			entity.setIdInsumo(pc.getIdProducto());
-			entity.setStock(pc.getStock());
-		}
+		ProductoComestibleEntity entity = this.toEntity(pc);
 	
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();

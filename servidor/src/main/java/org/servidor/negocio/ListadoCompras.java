@@ -2,6 +2,8 @@ package org.servidor.negocio;
 
 import java.util.List;
 
+import org.servidor.dao.ListadoCompraDAO;
+
 public class ListadoCompras {
 
 	private Integer idListadoCompras;
@@ -11,6 +13,12 @@ public class ListadoCompras {
 	public ListadoCompras(Integer idListadoCompras, String areaSolicitante, List<ItemListado> insumos) {
 		super();
 		this.idListadoCompras = idListadoCompras;
+		AreaSolicitante = areaSolicitante;
+		this.insumos = insumos;
+	}
+	
+	public ListadoCompras(String areaSolicitante, List<ItemListado> insumos) {
+		super();
 		AreaSolicitante = areaSolicitante;
 		this.insumos = insumos;
 	}
@@ -37,6 +45,11 @@ public class ListadoCompras {
 
 	public void setInsumos(List<ItemListado> insumos) {
 		this.insumos = insumos;
+	}
+
+	public void save() {
+		ListadoCompraDAO.getInstancia().save(this);
+		
 	}
 
 }

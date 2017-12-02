@@ -46,7 +46,9 @@ public interface IAppRemote extends Remote {
 	
 	boolean reservarMesa(Integer cantidadComensales, String descripcion, Date fechaHora) throws RemoteException;
 	
-	public List<ProductosAPedirDTO> listarProductosParaPedir() throws RemoteException;
+	List<ProductosAPedirDTO> listarProductosParaPedir() throws RemoteException;
 	
-	public List<PlatoMenuDTO> platosDelMenu() throws RemoteException;
+	List<PlatoMenuDTO> platosDelMenu() throws RemoteException;
+	
+	void pedirPorductos(String area, List<ProductosAPedirDTO> prods) throws RemoteException;
 }
