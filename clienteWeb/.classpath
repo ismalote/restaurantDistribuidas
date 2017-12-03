@@ -26,5 +26,6 @@
 	<classpathentry kind="lib" path="lib/tomcat-servlet-api-8.0.44.jar"/>
 	<classpathentry kind="lib" path="lib/tomcat-util-8.0.44.jar"/>
 	<classpathentry kind="lib" path="lib/tomcat-util-scan-8.0.44.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.8.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

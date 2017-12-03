@@ -54,10 +54,12 @@ public class ProductoComestibleDAO {
 			entity = new ProductoSimpleEntity();
 			entity.setIdInsumo(pc.getIdProducto());
 			entity.setStock(pc.getStock());
+			entity.setDescripcion(pc.getDescripcion());
 		} else {
 			entity = new SemiElaboradoEntity();
 			entity.setIdInsumo(pc.getIdProducto());
 			entity.setStock(pc.getStock());
+			entity.setDescripcion(pc.getDescripcion());
 		}
 
 		return entity;

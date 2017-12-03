@@ -10,12 +10,17 @@ import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
+import org.repositorio.dtos.ItemListadoDTO;
+import org.repositorio.dtos.ListadoComprasDTO;
 import org.repositorio.dtos.MesaDTO;
+import org.repositorio.dtos.ObtenerPlatoDto;
 import org.repositorio.dtos.PlatoMenuDTO;
 import org.repositorio.dtos.ProductosAPedirDTO;
 import org.repositorio.dtos.ReservaDTO;
 import org.repositorio.interfaces.IAppRemote;
 import org.servidor.controlador.Controlador;
+import org.servidor.dao.PlatoDAO;
+import org.servidor.negocio.Plato;
 
 public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 
@@ -121,6 +126,20 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 	public void rechazarCompra(Integer idCompra) throws RemoteException {
 		Controlador.getInstancia().rechazarCompra(idCompra);
 		
+	}
+	public ObtenerPlatoDto obtenerPlatoporId(int idPlato) throws RemoteException {
+		return Controlador.getInstancia().obtenerPlatoporId(idPlato);
+		
+	}
+
+	@Override
+	public List<ListadoComprasDTO> listarComprasPedidas() throws RemoteException {
+		return Controlador.getInstancia().listarComprasPedidas();
+	}
+
+	@Override
+	public List<ItemListadoDTO> listarProdDePedido(Integer idListadoCompras) throws RemoteException {
+		return Controlador.getInstancia().listarProdDePedido(idListadoCompras);
 	}
 
 }

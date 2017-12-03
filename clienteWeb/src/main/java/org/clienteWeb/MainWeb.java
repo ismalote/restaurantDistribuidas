@@ -1,5 +1,6 @@
 package org.clienteWeb;
 
+import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.WebResourceSet;
 import org.apache.catalina.core.StandardContext;
@@ -7,11 +8,15 @@ import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.EmptyResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
+import org.clienteWeb.controller.ProductoServelet;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
+import javax.servlet.ServletException;
 
 public class MainWeb {
 
@@ -33,7 +38,13 @@ public class MainWeb {
     }
 
     public static void main(String[] args) throws Exception {
-        File root = getRootFolder();
+       // initWeb();
+    	
+    	System.out.println(ProductoServelet.getInstancia().listarProductosParaPedir());
+    }
+
+	private static void initWeb() throws IOException, ServletException, LifecycleException {
+		File root = getRootFolder();
         System.setProperty("org.apache.catalina.startup.EXIT_ON_INIT_FAILURE", "true");
         Tomcat tomcat = new Tomcat();
         Path tempPath = Files.createTempDirectory("tomcat-base-dir");
@@ -68,5 +79,9 @@ public class MainWeb {
 
         tomcat.start();
         tomcat.getServer().await();
-    }
+	}
+    
+  
+    
+    
 }

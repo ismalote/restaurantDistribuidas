@@ -12,7 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;;
+import javax.persistence.Table;
+
+import org.servidor.Enum.TipoArea;;
 
 @Entity
 @Table(name = "areaProduccion")
@@ -34,6 +36,8 @@ public class AreaProduccionEntity {
 	protected LocalEntity localRestaurante;
 	// @OneToMany(mappedBy = "areaProduccion")
 	// protected List<ComandaEntity> comandas;
+	
+	protected TipoArea tipoArea;
 
 	public List<ProductoComestibleEntity> getProductos() {
 		return productos;
@@ -44,12 +48,13 @@ public class AreaProduccionEntity {
 	}
 
 	public AreaProduccionEntity(Integer idAreaProduccion, List<ProductoComestibleEntity> productos,
-			OperadorEntity encargado, LocalEntity localRestaurante) {
+			OperadorEntity encargado, LocalEntity localRestaurante, TipoArea area) {
 		super();
 		this.idAreaProduccion = idAreaProduccion;
 		this.productos = productos;
 		this.encargado = encargado;
 		this.localRestaurante = localRestaurante;
+		this.tipoArea = area;
 	}
 
 	public AreaProduccionEntity() {
@@ -77,6 +82,14 @@ public class AreaProduccionEntity {
 
 	public void setLocalRestaurante(LocalEntity localRestaurante) {
 		this.localRestaurante = localRestaurante;
+	}
+
+	public TipoArea getTipoArea() {
+		return tipoArea;
+	}
+
+	public void setTipoArea(TipoArea tipoArea) {
+		this.tipoArea = tipoArea;
 	}
 
 }

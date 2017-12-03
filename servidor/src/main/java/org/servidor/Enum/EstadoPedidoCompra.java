@@ -5,6 +5,6 @@ public enum EstadoPedidoCompra {
 
 	PEDIDO,
 	ACEPTADO,
-	RECHAZADO,
+	RECHAZADO;
 	
 }
