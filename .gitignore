@@ -22,7 +22,8 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-target/
+target
+.classpath
 
 # IntelliJ #
 ######################
