@@ -9,10 +9,17 @@
     <servlet-class>org.clienteWeb.servlets.ProductoServlet</servlet-class>
   </servlet>
   
+  <servlet>
+    <description>Plato</description>
+    <display-name>Plato</display-name>
+    <servlet-name>Plato</servlet-name>
+    <servlet-class>org.clienteWeb.servlets.PlatoServlet</servlet-class>
+  </servlet>
+  
   
   <servlet-mapping>
-    <servlet-name>Producto</servlet-name>
-    <url-pattern>/producto</url-pattern>
+    <servlet-name>Plato</servlet-name>
+    <url-pattern>/plato</url-pattern>
   </servlet-mapping>
   
   <context-param>

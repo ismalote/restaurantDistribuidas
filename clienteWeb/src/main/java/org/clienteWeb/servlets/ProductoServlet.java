@@ -1,5 +1,6 @@
 package org.clienteWeb.servlets;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletConfig;
@@ -24,6 +25,15 @@ public class ProductoServlet extends HttpServlet {
 	}
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) {
+		try {
+			resp.getWriter().println(listarProductosParaPedir());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
@@ -35,5 +45,5 @@ public class ProductoServlet extends HttpServlet {
 		String Json = new Gson().toJson(listaP);
 		return Json;
 	}
-
+	
 }
