@@ -1,4 +1,4 @@
-package org.clienteWeb.controller;
+package org.clienteWeb.servlets;
 
 import java.util.List;
 
@@ -14,12 +14,12 @@ import org.repositorio.exceptions.BusinessException;
 
 import com.google.gson.Gson;
 
-public class ProductoServelet extends HttpServlet {
+public class ProductoServlet extends HttpServlet {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static ProductoServelet instancia;
+	private static ProductoServlet instancia;
 
 	public void init(ServletConfig config) throws ServletException {
 	}
@@ -30,14 +30,14 @@ public class ProductoServelet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
 	}
 
-	public static ProductoServelet getInstancia() {
+	public static ProductoServlet getInstancia() {
 		if (instancia == null) {
-			instancia = new ProductoServelet();
+			instancia = new ProductoServlet();
 		}
 		return instancia;
 	}
 
-	private ProductoServelet() {
+	private ProductoServlet() {
 	};
 
 	public String listarProductosParaPedir() throws BusinessException {
