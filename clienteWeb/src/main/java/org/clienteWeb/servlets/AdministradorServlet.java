@@ -8,19 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class AdministradorServlet extends HttpServlet {
-	
-	
-protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		req.getRequestDispatcher("jsp/login principal.html").forward(req, resp);
-		
-		
+
 	}
-	
+
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
 	}
-	
-	
-	
 
 }

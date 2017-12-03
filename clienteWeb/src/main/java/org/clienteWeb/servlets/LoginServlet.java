@@ -13,17 +13,20 @@ public class LoginServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		req.getRequestDispatcher("jsp/login principal.html").forward(req, resp);
-		
-		
+
+		req.getRequestDispatcher("jsp/login principal.jsp").forward(req, resp);
+
 	}
-	
+
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
+
+		String email = req.getParameter("email");
+		String pwd = req.getParameter("password");
+
+		System.out.println("email: " + email + " pwd: " + pwd);
+
 	}
-	
-	
-	
+
 }
