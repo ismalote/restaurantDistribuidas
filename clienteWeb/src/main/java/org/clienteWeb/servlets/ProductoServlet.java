@@ -24,16 +24,18 @@ public class ProductoServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 	}
 
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) {
-		try {
-			resp.getWriter().println(listarProductosParaPedir());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (BusinessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		try {
+//			resp.getWriter().println(listarProductosParaPedir());
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (BusinessException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+        request.getRequestDispatcher("jsp/inicioMozo.html").forward(request, response);
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
