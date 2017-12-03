@@ -53,7 +53,7 @@ public class ComandaDAO {
 		List<ItemComandaEntity> p = new ArrayList<>();
 		if (c.getPlatos() != null) {
 			for (ItemComanda aux : c.getPlatos()) {
-				p.add(ItemComandaDAO.getInstancia().toEntity(aux)); // TODO
+				p.add(ItemComandaDAO.getInstancia().toEntity(aux, entity)); // TODO
 			}
 		}
 		entity.setPlatos(p); // TODO FIX
