@@ -22,24 +22,24 @@ import org.repositorio.exceptions.LocalNotFoundException;
 import org.repositorio.exceptions.MesaNotFoundException;
 import org.servidor.Enum.EstadoItemComanda;
 import org.servidor.Enum.EstadoMesa;
-import org.servidor.dao.CajaDAO;
 import org.servidor.Enum.EstadoPedidoCompra;
+import org.servidor.dao.CajaDAO;
 import org.servidor.dao.ComandaDAO;
 import org.servidor.dao.FacturaDAO;
 import org.servidor.dao.ItemComandaDAO;
-import org.servidor.dao.LocalDAO;
 import org.servidor.dao.ListadoCompraDAO;
+import org.servidor.dao.LocalDAO;
 import org.servidor.dao.MesaDAO;
 import org.servidor.dao.PlatoDAO;
+import org.servidor.dao.ProductoComestibleDAO;
 import org.servidor.negocio.Caja;
 import org.servidor.negocio.CierredeCaja;
-import org.servidor.dao.ProductoComestibleDAO;
 import org.servidor.negocio.Comanda;
 import org.servidor.negocio.Factura;
 import org.servidor.negocio.ItemComanda;
-import org.servidor.negocio.Local;
 import org.servidor.negocio.ItemListado;
 import org.servidor.negocio.ListadoCompras;
+import org.servidor.negocio.Local;
 import org.servidor.negocio.Mesa;
 import org.servidor.negocio.MesaCompuesta;
 import org.servidor.negocio.MesaSimple;
@@ -110,7 +110,7 @@ public class Controlador {
 			throw new FacturaException("Ya existe la factura para la comanda");
 		}
 
-		double precio = comanda.montoTotal();
+		float precio = comanda.montoTotal();
 		aux = new Factura("", precio, comanda);
 		aux.save();
 		return comanda.cerrarComanda();
@@ -336,6 +336,7 @@ public class Controlador {
 	private Float calcularComisiones(Local local) {
 		float totalMozos = 0;
 		float totalPorMozo = 0;
+		float totalComisionExtra=0;
 	//	Local local = instancia.getInstancia().getLocal(idLocal, "calcularComisiones(int idLocal)");
 		List<Mozo> mozos = local.getMozos();
 		List<Comanda> comandasMozo;
@@ -343,10 +344,13 @@ public class Controlador {
 			comandasMozo = new ArrayList<Comanda>();
 			comandasMozo = ComandaDAO.getInstancia().getComandasMozo (m.getIdMozo());
 			for (Comanda c: comandasMozo){
-				List<ItemComanda> listItems = new ArrayList<ItemComanda>();
-				listItems = ItemComandaDAO.getInstancia().getItemsComanda(c.getIdComanda());
-				//TODO
+				totalPorMozo =  c.montoTotalComision() * m.getPorcentajeComision();
+				totalComisionExtra = c.montoTotalComisionExtra(); 
+						
 			}
+			totalMozos = totalMozos + totalPorMozo + totalComisionExtra;
+			totalPorMozo = 0;
+			totalComisionExtra = 0;
 		}
 		
 		return totalMozos;

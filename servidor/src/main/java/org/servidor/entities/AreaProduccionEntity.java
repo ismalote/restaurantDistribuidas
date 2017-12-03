@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -34,6 +35,9 @@ public class AreaProduccionEntity {
 	protected LocalEntity localRestaurante;
 	// @OneToMany(mappedBy = "areaProduccion")
 	// protected List<ComandaEntity> comandas;
+
+	@ManyToMany
+	protected StockEmbeddeEntity stock;
 
 	public List<ProductoComestibleEntity> getProductos() {
 		return productos;
@@ -77,6 +81,14 @@ public class AreaProduccionEntity {
 
 	public void setLocalRestaurante(LocalEntity localRestaurante) {
 		this.localRestaurante = localRestaurante;
+	}
+
+	public StockEmbeddeEntity getStock() {
+		return stock;
+	}
+
+	public void setStock(StockEmbeddeEntity stock) {
+		this.stock = stock;
 	}
 
 }

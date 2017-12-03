@@ -191,5 +191,18 @@ public class BussinessDelegate {
 		objetoRemoto.rechazarCompra(idCompra);
 
 	}
+	
+	public boolean cerrarCaja( Integer idLocal, Float monto) throws RemoteException {
+		try{
+			objetoRemoto.cerrarCaja(idLocal, monto);
+		}catch(RemoteException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public void abrirCaja( Integer idLocal, Float monto) throws RemoteException{
+		objetoRemoto.abrirCaja(idLocal, monto);
+	}
 
 }

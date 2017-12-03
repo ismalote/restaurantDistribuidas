@@ -57,4 +57,8 @@ public interface IAppRemote extends Remote {
 	void aprobarCompra(Integer idCompra) throws RemoteException;
 	
 	void rechazarCompra(Integer idCompra) throws RemoteException;
+	
+	boolean cerrarCaja (Integer idLocal, Float monto) throws RemoteException;
+	
+	void abrirCaja (Integer idLocal, Float monto) throws RemoteException;
 }

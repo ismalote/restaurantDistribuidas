@@ -47,9 +47,6 @@ public class CierredeCajaEntity {
 		this.estado = estado;
 	}
 
-	public CierredeCajaEntity() {
-	}
-
 	public Integer getIdCierre() {
 		return idCierre;
 	}

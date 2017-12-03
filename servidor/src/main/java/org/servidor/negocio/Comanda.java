@@ -164,8 +164,8 @@ public class Comanda {
 		return save();
 	}
 
-	public double montoTotal() {
-		double aux = 0;
+	public float montoTotal() {
+		float aux = 0;
 		List<ItemComanda> item = this.getPlatos();
 		for (ItemComanda ic : item) {
 
@@ -175,6 +175,27 @@ public class Comanda {
 		return aux;
 	}
 
+	public float montoTotalComision() {
+		float aux = 0;
+		List<ItemComanda> item = this.getPlatos();
+		for (ItemComanda ic : item) {
+			if (ic.getPlato().getArea().getId() != 1 )
+			aux = aux + ic.getPlato().getPrecio() ;
+		}
+
+		return aux;
+	}
+
+	public float montoTotalComisionExtra() {
+		float aux = 0;
+		List<ItemComanda> item = this.getPlatos();
+		for (ItemComanda ic : item) {
+			if (ic.getPlato().getArea().getId() != 1 && ic.getPlato().getComisionExtra() > 0  )
+			aux = aux + ( ic.getPlato().getPrecio() * ic.getPlato().getComisionExtra() );
+		}
+
+		return aux;
+	}
 	/*
 	 * Getters & Setters
 	 */

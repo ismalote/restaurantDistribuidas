@@ -9,10 +9,10 @@ import org.servidor.entities.FacturaEntity;
 public class Factura {
 
 	private String cliente;
-	private double montoTotal;
+	private float montoTotal;
 	private Comanda comanda;
 
-	public Factura(String cliente, double montoTotal, Comanda comanda) {
+	public Factura(String cliente, float montoTotal, Comanda comanda) {
 		super();
 		this.cliente = cliente;
 		this.montoTotal = montoTotal;
@@ -39,11 +39,11 @@ public class Factura {
 		this.cliente = cliente;
 	}
 
-	public double getMontoTotal() {
+	public float getMontoTotal() {
 		return montoTotal;
 	}
 
-	public void setMontoTotal(double montoTotal) {
+	public void setMontoTotal(float montoTotal) {
 		this.montoTotal = montoTotal;
 	}
 

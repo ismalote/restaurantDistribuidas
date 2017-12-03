@@ -10,7 +10,7 @@ public class BarraDTO extends AreaProduccionDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 6490845237778347409L;
 
-	public BarraDTO(Integer id, String tipoArea, EncargadoDTO encargado, List<ProductoComestibleDTO> productos,
+	public BarraDTO(Integer id, String tipoArea, OperadorDTO encargado, List<ProductoComestibleDTO> productos,
 			List<ComandaDTO> comandas) {
 		super(id, tipoArea, encargado, productos, comandas);
 		// TODO Auto-generated constructor stub

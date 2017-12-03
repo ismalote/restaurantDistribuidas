@@ -9,10 +9,10 @@ public class FacturaDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1371403022295984753L;
 	private String cliente;
-	private double montoTotal;
+	private float montoTotal;
 	private ComandaDTO comanda;
 
-	public FacturaDTO(String cliente, double montoTotal, ComandaDTO comanda) {
+	public FacturaDTO(String cliente, float montoTotal, ComandaDTO comanda) {
 		super();
 		this.cliente = cliente;
 		this.montoTotal = montoTotal;
@@ -27,11 +27,11 @@ public class FacturaDTO implements Serializable {
 		this.cliente = cliente;
 	}
 
-	public double getMontoTotal() {
+	public float getMontoTotal() {
 		return montoTotal;
 	}
 
-	public void setMontoTotal(double montoTotal) {
+	public void setMontoTotal(float montoTotal) {
 		this.montoTotal = montoTotal;
 	}
 

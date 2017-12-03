@@ -122,5 +122,12 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		Controlador.getInstancia().rechazarCompra(idCompra);
 		
 	}
+	
+	public boolean cerrarCaja( Integer idLocal, Float monto) throws RemoteException {
+		return Controlador.getInstancia().cerrarCaja(idLocal, monto);
+	}
 
+	public void abrirCaja( Integer idLocal, Float monto) throws RemoteException{
+		Controlador.getInstancia().abrirCaja(idLocal, monto);
+	}
 }

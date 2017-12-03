@@ -10,11 +10,11 @@ public abstract class AreaProduccionDTO implements Serializable {
 	private static final long serialVersionUID = -1959001633436079009L;
 	private Integer id;
 	private String TipoArea;
-	private EncargadoDTO encargado;
+	private OperadorDTO encargado;
 	private List<ProductoComestibleDTO> productos;
 	private List<ComandaDTO> comandas;
 
-	public AreaProduccionDTO(Integer id, String tipoArea, EncargadoDTO encargado, List<ProductoComestibleDTO> productos,
+	public AreaProduccionDTO(Integer id, String tipoArea, OperadorDTO encargado, List<ProductoComestibleDTO> productos,
 			List<ComandaDTO> comandas) {
 		super();
 		this.id = id;
@@ -40,11 +40,11 @@ public abstract class AreaProduccionDTO implements Serializable {
 		TipoArea = tipoArea;
 	}
 
-	public EncargadoDTO getEncargado() {
+	public OperadorDTO getEncargado() {
 		return encargado;
 	}
 
-	public void setEncargado(EncargadoDTO encargado) {
+	public void setEncargado(OperadorDTO encargado) {
 		this.encargado = encargado;
 	}
 

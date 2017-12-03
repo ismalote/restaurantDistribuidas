@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,6 +23,9 @@ public class LocalEntity {
 
 	@OneToMany(mappedBy = "listasCompras")
 	private List<ListadoComprasEntity> listadosCompras;
+	
+	@ManyToMany
+	private StockEmbeddeEntity stock;
 
 	public Integer getIdLocal() {
 		return idLocal;

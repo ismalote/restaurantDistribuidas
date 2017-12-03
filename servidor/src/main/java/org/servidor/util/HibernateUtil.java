@@ -15,7 +15,6 @@ import org.servidor.entities.DepositoCentralEntity;
 import org.servidor.entities.DepositoEntity;
 import org.servidor.entities.EncargadoAreaEntity;
 import org.servidor.entities.EncargadoCajaEntity;
-import org.servidor.entities.OperadorEntity;
 import org.servidor.entities.FacturaEntity;
 import org.servidor.entities.InsumoEntity;
 import org.servidor.entities.ItemComandaEntity;
@@ -29,12 +28,15 @@ import org.servidor.entities.MesaCompuestaEntity;
 import org.servidor.entities.MesaEntity;
 import org.servidor.entities.MesaSimpleEntity;
 import org.servidor.entities.MozoEntity;
+import org.servidor.entities.OperadorEntity;
 import org.servidor.entities.PlandeProduccionEntity;
 import org.servidor.entities.PlatoEntity;
 import org.servidor.entities.ProductoComestibleEntity;
 import org.servidor.entities.ProductoSimpleEntity;
 import org.servidor.entities.ReservaEntity;
 import org.servidor.entities.SemiElaboradoEntity;
+import org.servidor.entities.StockEmbeddeEntity;
+import org.servidor.entities.StockEntity;
 
 public class HibernateUtil {
 
@@ -90,6 +92,9 @@ public class HibernateUtil {
 			config.addAnnotatedClass(ListadoComprasEntity.class);
 
 			config.addAnnotatedClass(LocalEntity.class);
+			
+			config.addAnnotatedClass(StockEmbeddeEntity.class);
+			config.addAnnotatedClass(StockEntity.class);
 
 			sessionFactory = config.buildSessionFactory();
 		} catch (Throwable ex) {

@@ -99,6 +99,8 @@ public class Plato {
 
 	public void calcularPrecio() {
 		// TODO Auto-generated method stub
+		
+		
 	}
 
 	public Integer getIdProductos() {

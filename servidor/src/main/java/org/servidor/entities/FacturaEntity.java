@@ -13,12 +13,12 @@ public class FacturaEntity {
 	@Id
 	private Integer idFactura;
 	private String cliente;
-	private double montoTotal;
+	private float montoTotal;
 	@OneToOne
 	@JoinColumn(name = "idComanda")
 	private ComandaEntity comanda;
 
-	public FacturaEntity(Integer idFactura, String cliente, double montoTotal, ComandaEntity comanda) {
+	public FacturaEntity(Integer idFactura, String cliente, float montoTotal, ComandaEntity comanda) {
 		super();
 		this.idFactura = idFactura;
 		this.cliente = cliente;
@@ -46,11 +46,11 @@ public class FacturaEntity {
 		this.cliente = cliente;
 	}
 
-	public double getMontoTotal() {
+	public float getMontoTotal() {
 		return montoTotal;
 	}
 
-	public void setMontoTotal(double montoTotal) {
+	public void setMontoTotal(float montoTotal) {
 		this.montoTotal = montoTotal;
 	}
 

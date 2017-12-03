@@ -9,7 +9,7 @@ public class LocalDTO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 267457852726575377L;
-	private List<EncargadoDTO> encargadosAreas;
+	private List<OperadorDTO> encargadosAreas;
 	private List<MozoDTO> mozos;
 	private List<MesaDTO> mesas;
 	private DepositoDTO deposito;
@@ -17,11 +17,11 @@ public class LocalDTO implements Serializable {
 	private CartaDTO carta;
 	private List<ListadoComprasDTO> listadosCompras;
 
-	public List<EncargadoDTO> getEncargadosAreas() {
+	public List<OperadorDTO> getEncargadosAreas() {
 		return encargadosAreas;
 	}
 
-	public void setEncargadosAreas(List<EncargadoDTO> encargadosAreas) {
+	public void setEncargadosAreas(List<OperadorDTO> encargadosAreas) {
 		this.encargadosAreas = encargadosAreas;
 	}
 

@@ -2,7 +2,7 @@ package org.repositorio.dtos;
 
 import java.io.Serializable;
 
-public abstract class EncargadoDTO implements Serializable {
+public abstract class OperadorDTO implements Serializable {
 
 	/**
 	 * 
@@ -13,7 +13,7 @@ public abstract class EncargadoDTO implements Serializable {
 	protected String Apellido;
 	protected AreaProduccionDTO area;
 
-	public EncargadoDTO(Integer idEncargado, String nombre, String apellido, AreaProduccionDTO area) {
+	public OperadorDTO(Integer idEncargado, String nombre, String apellido, AreaProduccionDTO area) {
 		super();
 		this.idEncargado = idEncargado;
 		Nombre = nombre;

@@ -2,7 +2,7 @@ package org.repositorio.dtos;
 
 import java.io.Serializable;
 
-public class EncargadoCajaDTO extends EncargadoDTO implements Serializable {
+public class EncargadoCajaDTO extends OperadorDTO implements Serializable {
 
 	/**
 	 * 
