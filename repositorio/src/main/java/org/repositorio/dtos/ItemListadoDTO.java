@@ -8,20 +8,20 @@ public class ItemListadoDTO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 4033814257643199404L;
-	private ProductoComestibleDTO insumo;
+	private ProductosAPedirDTO insumo;
 	private Integer cantidad;
 
-	public ItemListadoDTO(ProductoComestibleDTO insumo, Integer cantidad) {
+	public ItemListadoDTO(ProductosAPedirDTO insumo, Integer cantidad) {
 		super();
 		this.insumo = insumo;
 		this.cantidad = cantidad;
 	}
 
-	public ProductoComestibleDTO getInsumo() {
+	public ProductosAPedirDTO getInsumo() {
 		return insumo;
 	}
 
-	public void setInsumo(ProductoComestibleDTO insumo) {
+	public void setInsumo(ProductosAPedirDTO insumo) {
 		this.insumo = insumo;
 	}
 

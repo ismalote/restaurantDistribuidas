@@ -10,7 +10,10 @@ import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
+import org.repositorio.dtos.ItemListadoDTO;
+import org.repositorio.dtos.ListadoComprasDTO;
 import org.repositorio.dtos.MesaDTO;
+import org.repositorio.dtos.ObtenerPlatoDto;
 import org.repositorio.dtos.PlatoMenuDTO;
 import org.repositorio.dtos.ProductosAPedirDTO;
 
@@ -61,4 +64,15 @@ public interface IAppRemote extends Remote {
 	boolean cerrarCaja (Integer idLocal, Float monto) throws RemoteException;
 	
 	void abrirCaja (Integer idLocal, Float monto) throws RemoteException;
+	
+	ObtenerPlatoDto obtenerPlatoporId(int idPlato)throws RemoteException;
+	
+	
+	
+	
+	
+	
+	List<ListadoComprasDTO> listarComprasPedidas() throws RemoteException;
+	
+	List<ItemListadoDTO> listarProdDePedido(Integer idListadoCompras) throws RemoteException;
 }

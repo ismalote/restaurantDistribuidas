@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class CierredeCajaEntity {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idCierre;
 
 	private Date fechaCierre;

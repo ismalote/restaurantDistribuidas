@@ -23,7 +23,7 @@ public class PlatoDAO {
 
 	}
 
-	public Plato obtenerProducto(int idPlato) {
+	public Plato obtenerPlato(int idPlato) {
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		PlatoEntity p = (PlatoEntity) s.createQuery("from PlatoEntity where idPlato = :idPlato").setInteger("idPlato", idPlato)
 				.uniqueResult();
@@ -52,7 +52,7 @@ public class PlatoDAO {
 
 	public PlatoEntity toEntity(Plato plato) {
 		PlatoEntity entity = new PlatoEntity();
-		entity.setIdPlato(plato.getIdProducto());
+		entity.setIdPlato(plato.getIdPlato());
 		entity.setNombrePlato(plato.getNombrePlato());
 		entity.setPrecio(plato.getPrecio());
 		entity.setProductos(null);

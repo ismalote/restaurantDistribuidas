@@ -4,12 +4,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.servidor.entities.AdministracionEntity;
 import org.servidor.entities.AreaProduccionEntity;
-import org.servidor.entities.BarraEntity;
-import org.servidor.entities.CafeteriaEntity;
 import org.servidor.entities.CajaEntity;
 import org.servidor.entities.CartaEntity;
 import org.servidor.entities.CierredeCajaEntity;
-import org.servidor.entities.CocinaEntity;
 import org.servidor.entities.ComandaEntity;
 import org.servidor.entities.DepositoCentralEntity;
 import org.servidor.entities.DepositoEntity;
@@ -49,9 +46,6 @@ public class HibernateUtil {
 			// config.addAnnotatedClass(EstadoMesaEntity.class);
 			config.addAnnotatedClass(ItemInsumoEntity.class);
 			config.addAnnotatedClass(AreaProduccionEntity.class);
-			config.addAnnotatedClass(BarraEntity.class);
-			config.addAnnotatedClass(CocinaEntity.class);
-			config.addAnnotatedClass(CafeteriaEntity.class);
 			config.addAnnotatedClass(ReservaEntity.class);
 
 			config.addAnnotatedClass(MozoEntity.class);

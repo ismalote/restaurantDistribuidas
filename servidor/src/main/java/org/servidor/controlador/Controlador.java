@@ -9,7 +9,10 @@ import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
+import org.repositorio.dtos.ItemListadoDTO;
+import org.repositorio.dtos.ListadoComprasDTO;
 import org.repositorio.dtos.MesaDTO;
+import org.repositorio.dtos.ObtenerPlatoDto;
 import org.repositorio.dtos.PlatoMenuDTO;
 import org.repositorio.dtos.ProductosAPedirDTO;
 import org.repositorio.dtos.ReservaDTO;
@@ -23,6 +26,7 @@ import org.repositorio.exceptions.MesaNotFoundException;
 import org.servidor.Enum.EstadoItemComanda;
 import org.servidor.Enum.EstadoMesa;
 import org.servidor.Enum.EstadoPedidoCompra;
+import org.servidor.Enum.TipoArea;
 import org.servidor.dao.CajaDAO;
 import org.servidor.dao.ComandaDAO;
 import org.servidor.dao.FacturaDAO;
@@ -76,8 +80,11 @@ public class Controlador {
 		Controlador.instancia = instancia;
 	}
 
-	public Plato obtenerPlatoporId(int idPlato) {
-		return PlatoDAO.getInstancia().obtenerProducto(idPlato);
+	public ObtenerPlatoDto obtenerPlatoporId(int idPlato) {
+		
+		Plato aux= PlatoDAO.getInstancia().obtenerPlato(idPlato);
+		ObtenerPlatoDto plato = new ObtenerPlatoDto(aux.getIdPlato(), aux.getPrecio(), aux.getNombrePlato());
+		return plato;
 	}
 
 	public boolean crearNuevacomanda(CrearComandaDTO comanda) {
@@ -270,7 +277,7 @@ public class Controlador {
 			prod.add(new ItemListado(ProductoComestibleDAO.getInstancia().obtenerProducto(p.getIdProd()), p.getCantAPedir()));
 		}
 		
-		ListadoCompras compras = new ListadoCompras(area, prod, EstadoPedidoCompra.PEDIDO);
+		ListadoCompras compras = new ListadoCompras(TipoArea.valueOf(area), prod, EstadoPedidoCompra.PEDIDO);
 		
 		compras.save();
 	
@@ -363,5 +370,31 @@ public class Controlador {
 		}
 
 		return aux;
+	}
+	
+	//listar todos los pedidos de las areas (lo ve el admin)
+	public List<ListadoComprasDTO> listarComprasPedidas(){
+		
+		List<ListadoComprasDTO> pedidoCompra = new ArrayList<ListadoComprasDTO>();
+		
+		List<ListadoCompras> pedidos = ListadoCompraDAO.getInstancia().listarPedidoCompras();
+		for (ListadoCompras listado : pedidos) {
+			pedidoCompra.add(listado.toDTO());
+		}
+		
+		return pedidoCompra;
+	}
+	
+	//cuando se selecciona uno de los pedidos, te muestra los productos 
+	public List<ItemListadoDTO> listarProdDePedido(Integer idListadoCompras){
+		
+		List<ItemListadoDTO> pedidoCompra = new ArrayList<ItemListadoDTO>();
+		
+		List<ItemListado> pedidos = ListadoCompraDAO.getInstancia().obtenerItemsAComprarDePedido(idListadoCompras);
+		for (ItemListado prod : pedidos) {
+			pedidoCompra.add(prod.toDTO());
+		}
+		
+		return pedidoCompra;
 	}
 }

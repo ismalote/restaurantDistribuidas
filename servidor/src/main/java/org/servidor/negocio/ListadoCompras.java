@@ -2,23 +2,25 @@ package org.servidor.negocio;
 
 import java.util.List;
 
+import org.repositorio.dtos.ListadoComprasDTO;
 import org.servidor.Enum.EstadoPedidoCompra;
+import org.servidor.Enum.TipoArea;
 import org.servidor.dao.ListadoCompraDAO;
 
 public class ListadoCompras {
 
 	private Integer idListadoCompras;
-	private String areaSolicitante;
+	private TipoArea areaSolicitante;
 	private List<ItemListado> insumos;
 	private EstadoPedidoCompra estado;
 
-	public ListadoCompras(Integer idListadoCompras, String areaSolicitante) {
+	public ListadoCompras(Integer idListadoCompras, TipoArea areaSolicitante) {
 		super();
 		this.idListadoCompras = idListadoCompras;
 		this.areaSolicitante = areaSolicitante;
 	}
 	
-	public ListadoCompras(Integer idListadoCompras, String areaSolicitante, List<ItemListado> insumos, EstadoPedidoCompra estado) {
+	public ListadoCompras(Integer idListadoCompras, TipoArea areaSolicitante, List<ItemListado> insumos, EstadoPedidoCompra estado) {
 		super();
 		this.idListadoCompras = idListadoCompras;
 		this.areaSolicitante = areaSolicitante;
@@ -27,7 +29,7 @@ public class ListadoCompras {
 	}
 	
 
-	public ListadoCompras(String areaSolicitante, List<ItemListado> insumos, EstadoPedidoCompra estado) {
+	public ListadoCompras(TipoArea areaSolicitante, List<ItemListado> insumos, EstadoPedidoCompra estado) {
 		super();
 		this.areaSolicitante = areaSolicitante;
 		this.insumos = insumos;
@@ -46,11 +48,11 @@ public class ListadoCompras {
 		this.idListadoCompras = idListadoCompras;
 	}
 
-	public String getAreaSolicitante() {
+	public TipoArea getAreaSolicitante() {
 		return this.areaSolicitante;
 	}
 
-	public void setAreaSolicitante(String areaSolicitante) {
+	public void setAreaSolicitante(TipoArea areaSolicitante) {
 		this.areaSolicitante = areaSolicitante;
 	}
 
@@ -73,5 +75,9 @@ public class ListadoCompras {
 	
 	public void setEstado(EstadoPedidoCompra estado) {
 		this.estado = estado;
+	}
+	
+	public ListadoComprasDTO toDTO(){
+		return new ListadoComprasDTO(this.getIdListadoCompras(), this.getAreaSolicitante().toString(), null);
 	}
 }

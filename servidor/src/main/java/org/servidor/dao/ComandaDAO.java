@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.repositorio.exceptions.SaveFailedException;
 import org.servidor.entities.ComandaEntity;
 import org.servidor.entities.ItemComandaEntity;
-import org.servidor.entities.PlatoEntity;
 import org.servidor.negocio.Comanda;
 import org.servidor.negocio.ItemComanda;
 import org.servidor.util.HibernateUtil;
@@ -54,10 +53,10 @@ public class ComandaDAO {
 		List<ItemComandaEntity> p = new ArrayList<>();
 		if (c.getPlatos() != null) {
 			for (ItemComanda aux : c.getPlatos()) {
-				 p.add(ItemComandaDAO.getInstancia().toEntity(aux)); // TODO
+				p.add(ItemComandaDAO.getInstancia().toEntity(aux, entity)); // TODO
 			}
 		}
-		// entity.setPlatos(p); // TODO FIX
+		entity.setPlatos(p); // TODO FIX
 		entity.setLocalRestaurante(LocalDAO.getInstance().toSimpleEntity(c.getLocal()));
 		return entity;
 	}
@@ -89,8 +88,8 @@ public class ComandaDAO {
 		session.close();
 		return comandaEntity;
 	}
-	
-	public List<Comanda> getComandasMozo (Integer idMozo){
+
+	public List<Comanda> getComandasMozo(Integer idMozo) {
 		List<Comanda> comanditas = new ArrayList<Comanda>();
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		List<ComandaEntity> list = (List<ComandaEntity>) session.createQuery("From ComandaEntity where mozo = ?")
@@ -98,11 +97,11 @@ public class ComandaDAO {
 		for (ComandaEntity comandaEntity : list) {
 			comanditas.add(toNegocio(comandaEntity));
 		}
-		
+
 		return null;
 	}
-	
-	public Comanda toNegocio (ComandaEntity c){
+
+	public Comanda toNegocio(ComandaEntity c) {
 		Comanda aux = new Comanda();
 		aux.setCantidadComensales(c.getCantidadComensales());
 		aux.setFact(FacturaDAO.getInstancia().toNegocio(c.getFact()));
@@ -113,14 +112,14 @@ public class ComandaDAO {
 		aux.setMozo(MozoDAO.getInstancia().toNegocio(c.getMozo()));
 		List<ItemComanda> items = new ArrayList<>();
 		List<ItemComandaEntity> entitys = c.getPlatos();
-		for (ItemComandaEntity ic:  entitys){
+		for (ItemComandaEntity ic : entitys) {
 			ItemComanda icomanda = ItemComandaDAO.getInstancia().toNegocio(ic);
 			items.add(icomanda);
-			
+
 		}
 		aux.setPlatos(items);
 		aux.setCerrada(c.getCerrada());
 		return aux;
 	}
- 
+
 }
