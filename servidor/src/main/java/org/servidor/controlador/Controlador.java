@@ -10,6 +10,7 @@ import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
+import org.repositorio.dtos.ObtenerPlatoDto;
 import org.repositorio.dtos.PlatoMenuDTO;
 import org.repositorio.dtos.ProductosAPedirDTO;
 import org.repositorio.dtos.ReservaDTO;
@@ -76,8 +77,11 @@ public class Controlador {
 		Controlador.instancia = instancia;
 	}
 
-	public Plato obtenerPlatoporId(int idPlato) {
-		return PlatoDAO.getInstancia().obtenerPlato(idPlato);
+	public ObtenerPlatoDto obtenerPlatoporId(int idPlato) {
+		
+		Plato aux= PlatoDAO.getInstancia().obtenerPlato(idPlato);
+		ObtenerPlatoDto plato = new ObtenerPlatoDto(aux.getIdPlato(), aux.getPrecio(), aux.getNombrePlato());
+		return plato;
 	}
 
 	public boolean crearNuevacomanda(CrearComandaDTO comanda) {

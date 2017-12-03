@@ -13,8 +13,10 @@ import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
+import org.repositorio.dtos.ObtenerPlatoDto;
 import org.repositorio.dtos.PlatoMenuDTO;
 import org.repositorio.dtos.ProductosAPedirDTO;
+import org.repositorio.exceptions.BusinessException;
 import org.repositorio.interfaces.IAppRemote;
 
 public class BussinessDelegate {
@@ -38,56 +40,64 @@ public class BussinessDelegate {
 	 * 
 	 * contructor
 	 */
-	private BussinessDelegate() throws MalformedURLException, RemoteException, NotBoundException {
+	private BussinessDelegate() throws BusinessException  {
 		super();
-		this.objetoRemoto = (IAppRemote) Naming.lookup(IAppRemote.URL_SERVICIO);
+		try {
+			this.objetoRemoto = (IAppRemote) Naming.lookup(IAppRemote.URL_SERVICIO);
+		} catch (MalformedURLException e) {
+			throw new BusinessException("Servidor no encontrado");
+		} catch (RemoteException e) {
+			throw new BusinessException("Problemas en la red");
+		} catch (NotBoundException e) {
+			throw new BusinessException("Recurso no encontrado");
+		}
 	}
 
-	public boolean crearComanda(CrearComandaDTO comanda) {
+	public boolean crearComanda(CrearComandaDTO comanda) throws BusinessException{
 		try {
 			return objetoRemoto.crearComanda(comanda);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			throw new BusinessException("Error de Acceso al servidor");	
 		}
-		return false;
+	
 	}
 
-	public boolean agregarItemAComanda(AgregarItemComandaDTO item) {
+	public boolean agregarItemAComanda(AgregarItemComandaDTO item) throws BusinessException{
 		try {
 			return this.objetoRemoto.agregarItemAComanda(item);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			throw new BusinessException("Error de Acceso al servidor");	
 		}
-		return false;
+		
 	}
 
-	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO item) {
+	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO item)throws BusinessException {
 		try {
 			return this.objetoRemoto.agregarItemsAComanda(item);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			throw new BusinessException("Error de Acceso al servidor");	
 		}
-		return null;
+		
 	}
 
-	public boolean cerrarcomanda(int idComanda) {
+	public boolean cerrarcomanda(int idComanda) throws BusinessException{
 		try {
 			return this.objetoRemoto.cerrarcomanda(idComanda);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			throw new BusinessException("Error de Acceso al servidor");	
 		}
-		return false;
+		
 	}
 
-	public void cerrarMesa(int idMesa) {
+	public void cerrarMesa(int idMesa)throws BusinessException {
 		try {
 			this.objetoRemoto.cerrarMesa(idMesa);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			throw new BusinessException("Error de Acceso al servidor");	
 		}
 	}
 
-	public void abrirMesaNueva(List<Integer> nrosMesas) {
+	public void abrirMesaNueva(List<Integer> nrosMesas)throws BusinessException {
 		AbrirMesaDTO dto = new AbrirMesaDTO();
 
 		dto.setNumerodeMesa(nrosMesas);
@@ -95,101 +105,132 @@ public class BussinessDelegate {
 			objetoRemoto.abrirMesa(dto);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-		} catch (RuntimeException e) {
-			e.printStackTrace();
 		}
 	}
 
-	public List<MesaDTO> listarMesasLibres(Integer sector) {
+	public List<MesaDTO> listarMesasLibres(Integer sector)throws BusinessException {
 		try {
 			return objetoRemoto.mesasLibres(sector);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			throw new BusinessException("Error de Acceso al servidor");	
 		}
+		
+	}
+
+	public void AbrirMesa(AbrirMesaDTO dto) throws BusinessException {
+			try {
+				objetoRemoto.abrirMesa(dto);
+			} catch (RemoteException e) {
+				throw new BusinessException("Error de Acceso al servidor");	
+			} 
+
+	}
+
+	public List<MesaDTO> mesasLibres(Integer numeroSector)throws BusinessException {
+				try {
+					return objetoRemoto.mesasLibres(numeroSector);
+				} catch (RemoteException e) {
+					throw new BusinessException("Error de Acceso al servidor");	
+				}
+				
+	}
+
+	public AbrirMesaDTO mesasLibres(Integer numeroSector, Integer cantidadComensales)throws BusinessException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public void AbrirMesa(AbrirMesaDTO dto) throws RuntimeException, RemoteException {
-		// TODO Auto-generated method stub
-
-	}
-
-	public AbrirMesaDTO mesasLibres(Integer numeroSector) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public AbrirMesaDTO mesasLibres(Integer numeroSector, Integer cantidadComensales) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<ItemComandaDTO> listarItemComanda(int idComanda) {
+	public List<ItemComandaDTO> listarItemComanda(int idComanda)throws BusinessException {
 		try {
 			return objetoRemoto.listarItemComanda(idComanda);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new BusinessException("Error de Acceso al servidor");	
 		}
-		return null;
+		
 	}
 
-	public List<ItemComandaDTO> PedidoXSector(Integer idArea, Integer idLocal) {
+	public List<ItemComandaDTO> PedidoXSector(Integer idArea, Integer idLocal) throws BusinessException{
 		try {
 			return objetoRemoto.PedidoXSector(idArea, idLocal);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			throw new BusinessException("Error de Acceso al servidor");	
 		}
-		return null;
+		
 	}
 
-	public boolean reservarMesa(int cantidadComensales, String descripcion, Date fechaHora) {
+	public boolean reservarMesa(int cantidadComensales, String descripcion, Date fechaHora) throws BusinessException{
 		try {
 			return this.objetoRemoto.reservarMesa(cantidadComensales, descripcion, fechaHora);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			throw new BusinessException("Error de Acceso al servidor");	
 		}
-		return false;
+		
 	}
 	
 	//listado de productos para pedir en las areas
-	public List<ProductosAPedirDTO> listarProductosParaPedir(){
+	public List<ProductosAPedirDTO> listarProductosParaPedir()throws BusinessException{
 		try {
 			return objetoRemoto.listarProductosParaPedir();
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			throw new BusinessException("Error de Acceso al servidor");	
 		}
-		return null;
+	
 	}
 	
 	//menu para el mozo
-	public List<PlatoMenuDTO> platosDelMenu(){
+	public List<PlatoMenuDTO> platosDelMenu()throws BusinessException{
 		try {
 			return objetoRemoto.platosDelMenu();
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			throw new BusinessException("Error de Acceso al servidor");	
+		}
+		
+	}
+	
+	public void pedirPorductos(String area, List<ProductosAPedirDTO> prods)  throws BusinessException {
+		try {
+			objetoRemoto.pedirPorductos(area, prods);
+		} catch (RemoteException e) {
+			throw new BusinessException("Error de Acceso al servidor");	
+			
+		}
+
+	}
+	
+	public void finalizarPlato(Integer idItemComanda) throws BusinessException {
+		try {
+			objetoRemoto.finalizarPlato(idItemComanda);
+		} catch (RemoteException e) {
+			throw new BusinessException("Error de Acceso al servidor");	
+		}
+
+	}
+	
+	public void aprobarCompra(Integer idCompra) throws BusinessException {
+		try {
+			objetoRemoto.aprobarCompra(idCompra);
+		} catch (RemoteException e) {
+			throw new BusinessException("Error de Acceso al servidor");	
+		}
+
+	}
+	
+	public void rechazarCompra(Integer idCompra) throws BusinessException {
+		try {
+			objetoRemoto.rechazarCompra(idCompra);
+		} catch (RemoteException e) {
+			throw new BusinessException("Error de Acceso al servidor");	
+		}
+
+	}
+	
+	public ObtenerPlatoDto obtenerPlatoporId(int idPlato) throws BusinessException{
+		try {
+			return objetoRemoto.obtenerPlatoporId(idPlato);
+		} catch (RemoteException e) {
+			throw new BusinessException("Error de Acceso al servidor");	
 		}
 		return null;
-	}
-	
-	public void pedirPorductos(String area, List<ProductosAPedirDTO> prods)  throws RemoteException {
-		objetoRemoto.pedirPorductos(area, prods);
-
-	}
-	
-	public void finalizarPlato(Integer idItemComanda) throws RemoteException {
-		objetoRemoto.finalizarPlato(idItemComanda);
-
-	}
-	
-	public void aprobarCompra(Integer idCompra) throws RemoteException {
-		objetoRemoto.aprobarCompra(idCompra);
-
-	}
-	
-	public void rechazarCompra(Integer idCompra) throws RemoteException {
-		objetoRemoto.rechazarCompra(idCompra);
-
 	}
 
 }

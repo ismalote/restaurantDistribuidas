@@ -11,6 +11,7 @@ import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
+import org.repositorio.dtos.ObtenerPlatoDto;
 import org.repositorio.dtos.PlatoMenuDTO;
 import org.repositorio.dtos.ProductosAPedirDTO;
 
@@ -57,4 +58,11 @@ public interface IAppRemote extends Remote {
 	void aprobarCompra(Integer idCompra) throws RemoteException;
 	
 	void rechazarCompra(Integer idCompra) throws RemoteException;
+	
+	ObtenerPlatoDto obtenerPlatoporId(int idPlato)throws RemoteException;
+	
+	
+	
+	
+	
 }
