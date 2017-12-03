@@ -251,6 +251,7 @@ public class Controlador {
 		List<ProductoComestible> prodCom = ProductoComestibleDAO.getInstancia().listarProductos();
 		for (ProductoComestible productoComestible : prodCom) {
 			productos.add(productoComestible.toProdAPedirDTO());
+			
 		}
 		
 		return productos;
