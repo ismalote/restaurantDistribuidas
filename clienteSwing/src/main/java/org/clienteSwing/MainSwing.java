@@ -7,6 +7,7 @@ import java.util.List;
 import javax.swing.JFrame;
 
 import org.clienteSwing.controller.ControladorCliente;
+import org.repositorio.exceptions.BusinessException;
 
 public class MainSwing implements Serializable {
 
@@ -14,14 +15,14 @@ public class MainSwing implements Serializable {
 
     private JFrame frame;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws BusinessException {
 //		ControladorCliente.INSTANCE.reservarMesa(4, "Para cacho", new Date());
 //		List<Integer> mesas = new ArrayList<Integer>();
 //		mesas.add(0);
 //		ControladorCliente.INSTANCE.abrirMesaNueva(mesas);
 //		ControladorCliente.INSTANCE.crearComanda(0, 0, 4, 0);
 		ControladorCliente.INSTANCE.agregarItemAComanda(1, 0, 2);
-		ControladorCliente.INSTANCE.confirmarPedido(1);;
+		ControladorCliente.INSTANCE.confirmarPedido(1);
     	/*
         EventQueue.invokeLater(new Runnable() {
             public void run() {
