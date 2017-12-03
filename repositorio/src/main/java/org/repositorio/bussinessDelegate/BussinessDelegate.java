@@ -230,7 +230,7 @@ public class BussinessDelegate {
 		} catch (RemoteException e) {
 			throw new BusinessException("Error de Acceso al servidor");	
 		}
-		return null;
+	
 	}
 
 }
