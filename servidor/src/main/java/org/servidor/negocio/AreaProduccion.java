@@ -2,17 +2,19 @@ package org.servidor.negocio;
 
 import java.util.List;
 
-public abstract class AreaProduccion {
+import org.servidor.Enum.TipoArea;
+
+public class AreaProduccion {
 	private Integer idAreaProducion;
+	private TipoArea tipoArea;
 	private Operador encargado;
 	private List<ProductoComestible> productos;
-	private List<Comanda> comandas;
 
-	public AreaProduccion(Integer id, Operador encargado, List<ProductoComestible> productos, List<Comanda> comandas) {
+	public AreaProduccion(Integer id, Operador encargado, List<ProductoComestible> productos, TipoArea tipoArea) {
 		this.idAreaProducion = id;
 		this.encargado = encargado;
 		this.productos = productos;
-		this.comandas = comandas;
+		this.tipoArea = tipoArea;
 	}
 
 	public Integer getId() {
@@ -39,17 +41,20 @@ public abstract class AreaProduccion {
 		this.productos = productos;
 	}
 
-	public List<Comanda> getComandas() {
-		return comandas;
+	public Integer getIdAreaProducion() {
+		return idAreaProducion;
 	}
 
-	public void setComandas(List<Comanda> comandas) {
-		this.comandas = comandas;
+	public void setIdAreaProducion(Integer idAreaProducion) {
+		this.idAreaProducion = idAreaProducion;
 	}
 
-	public boolean prepararComanda(Comanda comanda) {
-		// TODO Auto-generated method stub
-		return false;
+	public TipoArea getTipoArea() {
+		return tipoArea;
+	}
+
+	public void setTipoArea(TipoArea tipoArea) {
+		this.tipoArea = tipoArea;
 	}
 
 }

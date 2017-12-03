@@ -35,7 +35,7 @@ public class ProductoComestibleDAO {
 	}
 		
 
-	private ProductoComestible toNegocio(ProductoComestibleEntity entity) {
+	ProductoComestible toNegocio(ProductoComestibleEntity entity) {
 		
 		return new ProductoComestible(entity.getIdInsumo(), entity.getCantidadPedido(), entity.getPuntoPedido(), entity.getDescripcion(),
 				entity.getStock(), entity.getPrecio()) {
