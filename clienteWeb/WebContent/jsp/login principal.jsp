@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Esto va a llamar a los inicios dependiendo del rol de la persona-->
 <!DOCTYPE html>
 <html>
@@ -22,7 +23,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4 offset-md-2">
-          <form class="" method="post" action="https://formspree.io/">
+          <form class="" method="post" action="<c:url value='/login'/>">
             <div class="form-group text-center"> <label></label>
               <input type="email" name="email" class="form-control ml-auto" placeholder="Usuario"> </div>
             <div class="form-group">
