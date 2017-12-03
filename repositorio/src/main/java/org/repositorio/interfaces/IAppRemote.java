@@ -10,6 +10,8 @@ import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
+import org.repositorio.dtos.ItemListadoDTO;
+import org.repositorio.dtos.ListadoComprasDTO;
 import org.repositorio.dtos.MesaDTO;
 import org.repositorio.dtos.ObtenerPlatoDto;
 import org.repositorio.dtos.PlatoMenuDTO;
@@ -65,4 +67,8 @@ public interface IAppRemote extends Remote {
 	
 	
 	
+	
+	List<ListadoComprasDTO> listarComprasPedidas() throws RemoteException;
+	
+	List<ItemListadoDTO> listarProdDePedido(Integer idListadoCompras) throws RemoteException;
 }

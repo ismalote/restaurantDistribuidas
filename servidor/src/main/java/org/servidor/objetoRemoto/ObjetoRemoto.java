@@ -10,6 +10,8 @@ import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
+import org.repositorio.dtos.ItemListadoDTO;
+import org.repositorio.dtos.ListadoComprasDTO;
 import org.repositorio.dtos.MesaDTO;
 import org.repositorio.dtos.ObtenerPlatoDto;
 import org.repositorio.dtos.PlatoMenuDTO;
@@ -128,6 +130,16 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 	public ObtenerPlatoDto obtenerPlatoporId(int idPlato) throws RemoteException {
 		return Controlador.getInstancia().obtenerPlatoporId(idPlato);
 		
+	}
+
+	@Override
+	public List<ListadoComprasDTO> listarComprasPedidas() throws RemoteException {
+		return Controlador.getInstancia().listarComprasPedidas();
+	}
+
+	@Override
+	public List<ItemListadoDTO> listarProdDePedido(Integer idListadoCompras) throws RemoteException {
+		return Controlador.getInstancia().listarProdDePedido(idListadoCompras);
 	}
 
 }

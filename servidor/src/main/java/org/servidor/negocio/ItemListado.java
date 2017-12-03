@@ -1,5 +1,7 @@
 package org.servidor.negocio;
 
+import org.repositorio.dtos.ItemListadoDTO;
+
 public class ItemListado {
 
 	private ProductoComestible insumo;
@@ -43,6 +45,8 @@ public class ItemListado {
 		this.cantidad = cantidad;
 	}
 
-	// todo metodo?
+	public ItemListadoDTO toDTO(){
+		return new ItemListadoDTO(this.getInsumo().toProdAPedirDTO(), this.getCantidad());
+	}
 
 }

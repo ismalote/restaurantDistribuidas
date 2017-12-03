@@ -12,6 +12,8 @@ import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
+import org.repositorio.dtos.ItemListadoDTO;
+import org.repositorio.dtos.ListadoComprasDTO;
 import org.repositorio.dtos.MesaDTO;
 import org.repositorio.dtos.ObtenerPlatoDto;
 import org.repositorio.dtos.PlatoMenuDTO;
@@ -232,6 +234,24 @@ public class BussinessDelegate {
 			throw new BusinessException("Error de Acceso al servidor");	
 		}
 	
+	}
+	
+	public List<ListadoComprasDTO> listarComprasPedidas(){
+		try {
+			return objetoRemoto.listarComprasPedidas();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public List<ItemListadoDTO> listarProdDePedido(Integer idListadoCompras){
+		try {
+			return objetoRemoto.listarProdDePedido(idListadoCompras);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

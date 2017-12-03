@@ -9,6 +9,8 @@ import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
+import org.repositorio.dtos.ItemListadoDTO;
+import org.repositorio.dtos.ListadoComprasDTO;
 import org.repositorio.dtos.MesaDTO;
 import org.repositorio.dtos.ObtenerPlatoDto;
 import org.repositorio.dtos.PlatoMenuDTO;
@@ -23,24 +25,25 @@ import org.repositorio.exceptions.LocalNotFoundException;
 import org.repositorio.exceptions.MesaNotFoundException;
 import org.servidor.Enum.EstadoItemComanda;
 import org.servidor.Enum.EstadoMesa;
-import org.servidor.dao.CajaDAO;
 import org.servidor.Enum.EstadoPedidoCompra;
+import org.servidor.Enum.TipoArea;
+import org.servidor.dao.CajaDAO;
 import org.servidor.dao.ComandaDAO;
 import org.servidor.dao.FacturaDAO;
 import org.servidor.dao.ItemComandaDAO;
-import org.servidor.dao.LocalDAO;
 import org.servidor.dao.ListadoCompraDAO;
+import org.servidor.dao.LocalDAO;
 import org.servidor.dao.MesaDAO;
 import org.servidor.dao.PlatoDAO;
+import org.servidor.dao.ProductoComestibleDAO;
 import org.servidor.negocio.Caja;
 import org.servidor.negocio.CierredeCaja;
-import org.servidor.dao.ProductoComestibleDAO;
 import org.servidor.negocio.Comanda;
 import org.servidor.negocio.Factura;
 import org.servidor.negocio.ItemComanda;
-import org.servidor.negocio.Local;
 import org.servidor.negocio.ItemListado;
 import org.servidor.negocio.ListadoCompras;
+import org.servidor.negocio.Local;
 import org.servidor.negocio.Mesa;
 import org.servidor.negocio.MesaCompuesta;
 import org.servidor.negocio.MesaSimple;
@@ -274,7 +277,7 @@ public class Controlador {
 			prod.add(new ItemListado(ProductoComestibleDAO.getInstancia().obtenerProducto(p.getIdProd()), p.getCantAPedir()));
 		}
 		
-		ListadoCompras compras = new ListadoCompras(area, prod, EstadoPedidoCompra.PEDIDO);
+		ListadoCompras compras = new ListadoCompras(TipoArea.valueOf(area), prod, EstadoPedidoCompra.PEDIDO);
 		
 		compras.save();
 	
@@ -363,5 +366,31 @@ public class Controlador {
 		}
 
 		return aux;
+	}
+	
+	//listar todos los pedidos de las areas (lo ve el admin)
+	public List<ListadoComprasDTO> listarComprasPedidas(){
+		
+		List<ListadoComprasDTO> pedidoCompra = new ArrayList<ListadoComprasDTO>();
+		
+		List<ListadoCompras> pedidos = ListadoCompraDAO.getInstancia().listarPedidoCompras();
+		for (ListadoCompras listado : pedidos) {
+			pedidoCompra.add(listado.toDTO());
+		}
+		
+		return pedidoCompra;
+	}
+	
+	//cuando se selecciona uno de los pedidos, te muestra los productos 
+	public List<ItemListadoDTO> listarProdDePedido(Integer idListadoCompras){
+		
+		List<ItemListadoDTO> pedidoCompra = new ArrayList<ItemListadoDTO>();
+		
+		List<ItemListado> pedidos = ListadoCompraDAO.getInstancia().obtenerItemsAComprarDePedido(idListadoCompras);
+		for (ItemListado prod : pedidos) {
+			pedidoCompra.add(prod.toDTO());
+		}
+		
+		return pedidoCompra;
 	}
 }
