@@ -2,14 +2,15 @@ package org.servidor.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -36,8 +37,8 @@ public class AreaProduccionEntity {
 	// @OneToMany(mappedBy = "areaProduccion")
 	// protected List<ComandaEntity> comandas;
 
-	@ManyToMany
-	protected StockEmbeddeEntity stock;
+	@OneToMany(mappedBy="idStock.idArea", fetch=FetchType.LAZY)
+	protected List<StockEntity> stock;
 
 	public List<ProductoComestibleEntity> getProductos() {
 		return productos;
@@ -83,11 +84,11 @@ public class AreaProduccionEntity {
 		this.localRestaurante = localRestaurante;
 	}
 
-	public StockEmbeddeEntity getStock() {
+	public List<StockEntity> getStock() {
 		return stock;
 	}
 
-	public void setStock(StockEmbeddeEntity stock) {
+	public void setStock(List<StockEntity> stock) {
 		this.stock = stock;
 	}
 

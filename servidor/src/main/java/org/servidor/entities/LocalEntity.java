@@ -3,9 +3,10 @@ package org.servidor.entities;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,9 +24,9 @@ public class LocalEntity {
 
 	@OneToMany(mappedBy = "listasCompras")
 	private List<ListadoComprasEntity> listadosCompras;
-	
-	@ManyToMany
-	private StockEmbeddeEntity stock;
+
+	@OneToMany(mappedBy = "idStock.idArea", fetch = FetchType.LAZY)
+	private List<StockEntity> stock;
 
 	public Integer getIdLocal() {
 		return idLocal;
@@ -50,4 +51,13 @@ public class LocalEntity {
 	public void setListadosCompras(List<ListadoComprasEntity> listadosCompras) {
 		this.listadosCompras = listadosCompras;
 	}
+
+	public List<StockEntity> getStock() {
+		return stock;
+	}
+
+	public void setStock(List<StockEntity> stock) {
+		this.stock = stock;
+	}
+
 }

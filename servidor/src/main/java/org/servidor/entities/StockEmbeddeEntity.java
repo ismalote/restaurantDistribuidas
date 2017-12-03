@@ -5,11 +5,10 @@ import java.io.Serializable;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Embeddable;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Embeddable
-@Access(AccessType.PROPERTY)
 public class StockEmbeddeEntity implements Serializable {
 
 	/**
@@ -17,11 +16,16 @@ public class StockEmbeddeEntity implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@ManyToMany
+	@ManyToOne(optional=false)
+	@JoinColumn(name="idInsumo", nullable=false)
 	private ProductoComestibleEntity idProducto;
-	@ManyToMany
+	
+	@ManyToOne(optional=false)
+	@JoinColumn(name="idAreaProduccion", nullable=false)
 	private AreaProduccionEntity idArea;
-	@ManyToMany
+	
+	@ManyToOne(optional=false)
+	@JoinColumn(name="idLocal", nullable=false)
 	private LocalEntity idLocal;
 
 	public StockEmbeddeEntity() {

@@ -38,7 +38,7 @@ public class ProductoComestibleDAO {
 	private ProductoComestible toNegocio(ProductoComestibleEntity entity) {
 		
 		return new ProductoComestible(entity.getIdInsumo(), entity.getCantidadPedido(), entity.getPuntoPedido(), entity.getDescripcion(),
-				entity.getStock(), entity.getPrecio()) {
+				null, entity.getPrecio()) {
 		};
 	}
 	
@@ -48,11 +48,11 @@ public class ProductoComestibleDAO {
 			if (pc instanceof ProductoSimple){
 				entity = new ProductoSimpleEntity();
 				entity.setIdInsumo(pc.getIdProducto());
-				entity.setStock(pc.getStock());
+			//	entity.setStock(pc.getStock());
 			} else {
 				entity = new SemiElaboradoEntity();
 				entity.setIdInsumo(pc.getIdProducto());
-				entity.setStock(pc.getStock());
+		//		entity.setStock(pc.getStock());
 			}
 			
 			return entity;
