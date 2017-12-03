@@ -19,7 +19,6 @@ public class ProductoServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static ProductoServlet instancia;
 
 	public void init(ServletConfig config) throws ServletException {
 	}
@@ -30,22 +29,11 @@ public class ProductoServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
 	}
 
-	public static ProductoServlet getInstancia() {
-		if (instancia == null) {
-			instancia = new ProductoServlet();
-		}
-		return instancia;
-	}
-
-	private ProductoServlet() {
-	};
-
 	public String listarProductosParaPedir() throws BusinessException {
 
 		List<ProductosAPedirDTO> listaP = BussinessDelegate.getInstancia().listarProductosParaPedir();
 		String Json = new Gson().toJson(listaP);
 		return Json;
-
 	}
 
 }
