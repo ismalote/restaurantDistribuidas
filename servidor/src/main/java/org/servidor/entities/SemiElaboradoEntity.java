@@ -1,6 +1,7 @@
 package org.servidor.entities;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.servidor.dao.ProductoComestibleDAO;
 import org.servidor.negocio.ProductoComestible;
 import org.servidor.negocio.SemiElaborado;
 
@@ -29,6 +31,11 @@ public class SemiElaboradoEntity extends ProductoComestibleEntity {
 
 	@Override
 	public ProductoComestible getNegocio() {
-		return new SemiElaborado();
+		List<ProductoComestible> p = new ArrayList<ProductoComestible>();
+		for (ProductoComestibleEntity productoComestibleEntity : materiales) {
+			ProductoComestible negocio = ProductoComestibleDAO.getInstancia().toNegocio(productoComestibleEntity);
+			p.add(negocio);
+		}
+		return new SemiElaborado(p);
 	}
 }

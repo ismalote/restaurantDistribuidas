@@ -3,7 +3,6 @@ package org.servidor.negocio;
 import org.repositorio.dtos.ProductoComestibleDTO;
 import org.repositorio.dtos.ProductosAPedirDTO;
 import org.servidor.dao.ProductoComestibleDAO;
-import org.servidor.entities.ProductoComestibleEntity;
 
 public abstract class ProductoComestible {
 
@@ -25,9 +24,9 @@ public abstract class ProductoComestible {
 		this.stock = stock;
 		this.precio = precio;
 	}
-	
-	public ProductoComestible(){
-		
+
+	public ProductoComestible() {
+
 	}
 
 	public Integer getIdProducto() {
@@ -78,33 +77,28 @@ public abstract class ProductoComestible {
 		this.precio = precio;
 	}
 
-	public static ProductoComestible getNew(ProductoComestibleEntity entity) {
-
-		return null;
-	}
-
 	public static ProductoComestible getNewDTO(ProductoComestibleDTO dto) {
 
 		return null;
 	}
-//baja el stock del producto
-	public void bajarStock(){
-		this.setStock(this.getStock()-1);
+
+	// baja el stock del producto
+	public void bajarStock() {
+		this.stock--;
 		this.update();
 	}
-	
-	private void update(){
+
+	private void update() {
 		ProductoComestibleDAO.getInstancia().update(this);
 	}
-	
-	public ProductosAPedirDTO toProdAPedirDTO(){
+
+	public ProductosAPedirDTO toProdAPedirDTO() {
 		ProductosAPedirDTO dto = new ProductosAPedirDTO();
 		dto.setIdProd(this.getIdProducto());
 		dto.setNombreProd(this.getDescripcion());
 		dto.setStock(this.getStock());
 		return dto;
-		
+
 	}
-	
-	
+
 }

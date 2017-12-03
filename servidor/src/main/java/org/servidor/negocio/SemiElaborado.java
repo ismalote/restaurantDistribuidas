@@ -1,5 +1,6 @@
 package org.servidor.negocio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SemiElaborado extends ProductoComestible {
@@ -12,9 +13,13 @@ public class SemiElaborado extends ProductoComestible {
 	}
 
 	public SemiElaborado() {
-		// TODO Auto-generated constructor stub
+		this.materiales = new ArrayList<>();
 	}
 
+	public SemiElaborado(List<ProductoComestible> materiales) {
+		this.materiales = materiales;
+	}
+	
 	public List<ProductoComestible> getMateriales() {
 		return materiales;
 	}

@@ -6,6 +6,7 @@ import java.util.List;
 import org.repositorio.dtos.PlatoDTO;
 import org.repositorio.dtos.PlatoMenuDTO;
 import org.repositorio.dtos.ProductoComestibleDTO;
+import org.servidor.dao.ProductoComestibleDAO;
 import org.servidor.entities.PlatoEntity;
 import org.servidor.entities.ProductoComestibleEntity;
 
@@ -39,7 +40,7 @@ public class Plato {
 
 		this.productos = new ArrayList<ProductoComestible>();
 		for (ProductoComestibleEntity p : entity.getProductos()) {
-			this.productos.add(ProductoComestible.getNew(p));
+			this.productos.add(ProductoComestibleDAO.getInstancia().toNegocio(p));
 		}
 	}
 
