@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>DiagnosticoInstalacionService</display-name>
+  <servlet>
+    <description>AppMesh</description>
+    <display-name>AppMesh</display-name>
+    <servlet-name>AppMesh</servlet-name>
+    <servlet-class>ar.nanocomm.diagnosticoservice.servlet.DebuggerBluetoothServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <description>AppMeshUsers</description>
+    <display-name>AppMeshUsers</display-name>
+    <servlet-name>AppMeshUsers</servlet-name>
+    <servlet-class>ar.nanocomm.diagnosticoservice.servlet.DebuggerBluetoothUserServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <description>AppMeshLogSession</description>
+    <display-name>AppMeshLogSession</display-name>
+    <servlet-name>AppMeshLogSession</servlet-name>
+    <servlet-class>ar.nanocomm.diagnosticoservice.servlet.DebuggerBluetoothLogSession</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <description>ProgLocal</description>
+    <display-name>ProgLocal</display-name>
+    <servlet-name>ProgLocal</servlet-name>
+    <servlet-class>ar.nanocomm.diagnosticoservice.servlet.ProgramadorLocalServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <description>AltaCliente</description>
+    <display-name>AltaCliente</display-name>
+    <servlet-name>AltaCliente</servlet-name>
+    <servlet-class>ar.nanocomm.diagnosticoservice.servlet.AltaClienteServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <description>ListaClientes</description>
+    <display-name>ListaClientes</display-name>
+    <servlet-name>ListaClientes</servlet-name>
+    <servlet-class>ar.nanocomm.diagnosticoservice.servlet.ListaClientesServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <description>RepresentanteComercial</description>
+    <display-name>RepresentanteComercial</display-name>
+    <servlet-name>RepresentanteComercial</servlet-name>
+    <servlet-class>ar.nanocomm.diagnosticoservice.servlet.RepresentanteComercialServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <description>Script</description>
+    <display-name>Script</display-name>
+    <servlet-name>Script</servlet-name>
+    <servlet-class>ar.nanocomm.diagnosticoservice.servlet.ScriptServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>AppMesh</servlet-name>
+    <url-pattern>/debugger</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AppMeshUsers</servlet-name>
+    <url-pattern>/debuggerUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AppMeshLogSession</servlet-name>
+    <url-pattern>/debuggerLogSession</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProgLocal</servlet-name>
+    <url-pattern>/prog</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AltaCliente</servlet-name>
+    <url-pattern>/alta</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ListaClientes</servlet-name>
+    <url-pattern>/listaRc</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RepresentanteComercial</servlet-name>
+    <url-pattern>/repcom</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Script</servlet-name>
+    <url-pattern>/script</url-pattern>
+  </servlet-mapping>
+  
+  <context-param>
+    <param-name>PLANTILLAS_DIR</param-name>
+    <param-value>/etc/nanocomm/AppMesh/plantillas/</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>LOG_DIR</param-name>
+    <param-value>/etc/nanocomm/AppMesh/log/</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>DEBUGGER_USER</param-name>
+    <param-value>/etc/nanocomm/AppMesh/log_user/</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>PROG_LOG_DIR</param-name>
+    <param-value>/etc/nanocomm/ProgramadorMobile/log/</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>DEBUGGER_RC_PATH</param-name>
+    <param-value>/etc/nanocomm/AppMesh/RCs/</param-value>
+  </context-param>
+  
+</web-app>

@@ -6,26 +6,23 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="lib"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+	<classpathentry kind="src" path="/repositorio"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/bootstrap-3.3.7-1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ecj-3.12.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/font-awesome-4.7.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/gson-2.6.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/gson-2.8.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.launching.macosx.MacOSXType/Java SE 8 [1.8.0_60]">
 		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="/repositorio"/>
-	<classpathentry kind="lib" path="lib/tomcat-api-8.0.44.jar"/>
-	<classpathentry kind="lib" path="lib/tomcat-el-api-8.0.44.jar"/>
-	<classpathentry kind="lib" path="lib/tomcat-embed-core-8.0.44.jar"/>
-	<classpathentry kind="lib" path="lib/tomcat-embed-el-8.0.44.jar"/>
-	<classpathentry kind="lib" path="lib/tomcat-embed-jasper-8.0.44.jar"/>
-	<classpathentry kind="lib" path="lib/tomcat-embed-logging-juli-8.0.44.jar"/>
-	<classpathentry kind="lib" path="lib/tomcat-jasper-8.0.44.jar"/>
-	<classpathentry kind="lib" path="lib/tomcat-jasper-el-8.0.44.jar"/>
-	<classpathentry kind="lib" path="lib/tomcat-jsp-api-8.0.44.jar"/>
-	<classpathentry kind="lib" path="lib/tomcat-juli-8.0.44.jar"/>
-	<classpathentry kind="lib" path="lib/tomcat-servlet-api-8.0.44.jar"/>
-	<classpathentry kind="lib" path="lib/tomcat-util-8.0.44.jar"/>
-	<classpathentry kind="lib" path="lib/tomcat-util-scan-8.0.44.jar"/>
-	<classpathentry kind="lib" path="lib/gson-2.8.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
