@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.servidor.negocio.ProductoComestible;
@@ -23,8 +24,8 @@ public abstract class ProductoComestibleEntity extends InsumoEntity {
 	protected String descripcion;
 	protected Integer puntoPedido;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="idStock.idProducto", fetch=FetchType.LAZY)
-	protected List<StockEntity> stock;
+	@OneToOne(cascade=CascadeType.ALL, mappedBy="idStock.idProducto", fetch=FetchType.LAZY)
+	protected StockEntity stock;
 
 	public ProductoComestibleEntity() {
 	}
@@ -60,11 +61,11 @@ public abstract class ProductoComestibleEntity extends InsumoEntity {
 		this.descripcion = descripcion;
 	}
 
-	public List<StockEntity> getStock() {
+	public StockEntity getStock() {
 		return stock;
 	}
 
-	public void setStock(List<StockEntity> stock) {
+	public void setStock(StockEntity stock) {
 		this.stock = stock;
 	}
 

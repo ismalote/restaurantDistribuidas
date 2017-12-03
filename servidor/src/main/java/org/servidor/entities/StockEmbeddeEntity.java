@@ -2,11 +2,10 @@ package org.servidor.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Embeddable
 public class StockEmbeddeEntity implements Serializable {
@@ -16,15 +15,15 @@ public class StockEmbeddeEntity implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@ManyToOne(optional=false)
+	@OneToOne(optional=false)
 	@JoinColumn(name="idInsumo", nullable=false)
 	private ProductoComestibleEntity idProducto;
 	
-	@ManyToOne(optional=false)
-	@JoinColumn(name="idAreaProduccion", nullable=false)
+	@OneToOne(optional=false)
+	@JoinColumn(name="tipoArea", nullable=false)
 	private AreaProduccionEntity idArea;
 	
-	@ManyToOne(optional=false)
+	@OneToOne(optional=false)
 	@JoinColumn(name="idLocal", nullable=false)
 	private LocalEntity idLocal;
 

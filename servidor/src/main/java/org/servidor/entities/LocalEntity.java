@@ -25,8 +25,8 @@ public class LocalEntity {
 	@OneToMany(mappedBy = "listasCompras")
 	private List<ListadoComprasEntity> listadosCompras;
 
-	@OneToMany(mappedBy = "idStock.idArea", fetch = FetchType.LAZY)
-	private List<StockEntity> stock;
+	@OneToOne(mappedBy = "idStock.idLocal", fetch = FetchType.LAZY)
+	private StockEntity stock;
 
 	public Integer getIdLocal() {
 		return idLocal;
@@ -52,11 +52,11 @@ public class LocalEntity {
 		this.listadosCompras = listadosCompras;
 	}
 
-	public List<StockEntity> getStock() {
+	public StockEntity getStock() {
 		return stock;
 	}
 
-	public void setStock(List<StockEntity> stock) {
+	public void setStock(StockEntity stock) {
 		this.stock = stock;
 	}
 
