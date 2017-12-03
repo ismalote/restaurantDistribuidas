@@ -44,110 +44,105 @@ public class WebController {
 		return instancia;
 	}
 	
-	public boolean crearComanda(CrearComandaDTO comanda) {
+	public boolean crearComanda(CrearComandaDTO comanda) throws BusinessException {
 		
 		return BussinessDelegate.getInstancia().crearComanda(comanda);
 		
 	}
 
-	public boolean agregarItemAComanda(AgregarItemComandaDTO item) {
+	public boolean agregarItemAComanda(AgregarItemComandaDTO item) throws BusinessException {
 		return BussinessDelegate.getInstancia().agregarItemAComanda(item);
 		
 	}
 
-	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO item) {
+	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO item) throws BusinessException {
 		
 		
 		return BussinessDelegate.getInstancia().agregarItemsAComanda(item);
 		
 	}
 
-	public boolean cerrarcomanda(int idComanda) {
+	public boolean cerrarcomanda(int idComanda) throws BusinessException {
 		return BussinessDelegate.getInstancia().cerrarcomanda(idComanda);
 		
 	}
 
-	public void cerrarMesa(int idMesa) {
+	public void cerrarMesa(int idMesa) throws BusinessException {
 		BussinessDelegate.getInstancia().cerrarMesa(idMesa);
 	}
 
-	public void abrirMesaNueva(List<Integer> nrosMesas) {
+	public void abrirMesaNueva(List<Integer> nrosMesas) throws BusinessException {
 		AbrirMesaDTO dto = new AbrirMesaDTO();
 
 		dto.setNumerodeMesa(nrosMesas);
-		try {
+		
 			BussinessDelegate.getInstancia().AbrirMesa(dto);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (RuntimeException e) {
-			e.printStackTrace();
-		}
 	}
 
-	public List<MesaDTO> listarMesasLibres(Integer sector) {
+	public List<MesaDTO> listarMesasLibres(Integer sector) throws BusinessException {
 		return BussinessDelegate.getInstancia().listarMesasLibres(sector);
 		
 	}
 
-	public void AbrirMesa(AbrirMesaDTO dto) throws RuntimeException, RemoteException {
+	public void AbrirMesa(AbrirMesaDTO dto) throws RuntimeException, RemoteException, BusinessException {
 		BussinessDelegate.getInstancia().AbrirMesa(dto);
 
 	}
 
-	public AbrirMesaDTO mesasLibres(Integer numeroSector) {
+	public List<MesaDTO> mesasLibres(Integer numeroSector) throws BusinessException {
 		return BussinessDelegate.getInstancia().mesasLibres(numeroSector);
 	}
 
 	
 
-	public List<ItemComandaDTO> listarItemComanda(int idComanda) {
+	public List<ItemComandaDTO> listarItemComanda(int idComanda) throws BusinessException {
 		return BussinessDelegate.getInstancia().listarItemComanda(idComanda);
 		
 	}
 
-	public List<ItemComandaDTO> PedidoXSector(Integer idArea, Integer idLocal) {
+	public List<ItemComandaDTO> PedidoXSector(Integer idArea, Integer idLocal) throws BusinessException {
 		return BussinessDelegate.getInstancia().PedidoXSector(idArea, idLocal);
 		
 	}
 
-	public boolean reservarMesa(int cantidadComensales, String descripcion, Date fechaHora) {
+	public boolean reservarMesa(int cantidadComensales, String descripcion, Date fechaHora) throws BusinessException {
 		return BussinessDelegate.getInstancia().reservarMesa(cantidadComensales, descripcion, fechaHora);
 		
 	}
 	
 	//listado de productos para pedir en las areas
-	public List<ProductosAPedirDTO> listarProductosParaPedir(){
+	public List<ProductosAPedirDTO> listarProductosParaPedir() throws BusinessException{
 		return BussinessDelegate.getInstancia().listarProductosParaPedir();
 		
 	}
 	
 	//menu para el mozo
-	public List<PlatoMenuDTO> platosDelMenu(){
+	public List<PlatoMenuDTO> platosDelMenu() throws BusinessException{
 		return BussinessDelegate.getInstancia().platosDelMenu();
 	
 	}
 	
-	public void pedirPorductos(String area, List<ProductosAPedirDTO> prods)  throws RemoteException {
+	public void pedirPorductos(String area, List<ProductosAPedirDTO> prods)  throws RemoteException, BusinessException {
 		BussinessDelegate.getInstancia().pedirPorductos(area, prods);
 
 	}
 	
-	public void finalizarPlato(Integer idItemComanda) throws RemoteException {
+	public void finalizarPlato(Integer idItemComanda) throws RemoteException, BusinessException {
 		BussinessDelegate.getInstancia().finalizarPlato(idItemComanda);
 
 	}
 	
-	public void aprobarCompra(Integer idCompra) throws RemoteException {
+	public void aprobarCompra(Integer idCompra) throws RemoteException, BusinessException {
 		BussinessDelegate.getInstancia().aprobarCompra(idCompra);
 
 	}
 	
-	public void rechazarCompra(Integer idCompra) throws RemoteException {
+	public void rechazarCompra(Integer idCompra) throws RemoteException, BusinessException {
 		BussinessDelegate.getInstancia().rechazarCompra(idCompra);
 
 	}
 	
-	public ObtenerPlatoDto obtenerPlatoporId(int idPlato) {
+	public ObtenerPlatoDto obtenerPlatoporId(int idPlato) throws BusinessException {
 		return BussinessDelegate.getInstancia().obtenerPlatoporId(idPlato);
 		
 	}

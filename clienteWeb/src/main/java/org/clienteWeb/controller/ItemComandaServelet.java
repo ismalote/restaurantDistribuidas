@@ -13,7 +13,7 @@ public class ItemComandaServelet {
 
 	
 	//Ojo con este metodo, esta el agregarItemComanda que devuelve boolean
-	public String agregarItemsAComanda(AgregarItemsComandaDTO item) {
+	public String agregarItemsAComanda(AgregarItemsComandaDTO item) throws BusinessException {
 		
 		AgregarItemsComandaDTO items = BussinessDelegate.getInstancia().agregarItemsAComanda(item);
 		String Json = new Gson().toJson(items);
@@ -21,14 +21,14 @@ public class ItemComandaServelet {
 		
 	}
 	
-	public String listarItemComanda(int idComanda){
+	public String listarItemComanda(int idComanda) throws BusinessException{
 		
 		List<ItemComandaDTO> items = BussinessDelegate.getInstancia().listarItemComanda(idComanda);
 		String Json = new Gson().toJson(items);
 		return Json;
 	}
 	
-	public String PedidoXSector(Integer idArea, Integer idLocal){
+	public String PedidoXSector(Integer idArea, Integer idLocal) throws BusinessException{
 		
 		List<ItemComandaDTO> items = BussinessDelegate.getInstancia().PedidoXSector(idArea, idLocal);
 		String Json = new Gson().toJson(items);
