@@ -22,7 +22,7 @@ public class MainSwing implements Serializable {
 //		ControladorCliente.INSTANCE.abrirMesaNueva(mesas);
 //		ControladorCliente.INSTANCE.crearComanda(0, 0, 4, 0);
 		ControladorCliente.INSTANCE.agregarItemAComanda(1, 0, 2);
-		ControladorCliente.INSTANCE.confirmarPedido(1);;
+		ControladorCliente.INSTANCE.confirmarPedido(1);
     	/*
         EventQueue.invokeLater(new Runnable() {
             public void run() {

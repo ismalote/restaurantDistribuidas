@@ -9,7 +9,7 @@ import org.repositorio.exceptions.BusinessException;
 
 import com.google.gson.Gson;
 
-public class MesaServelet {
+public class MesaServlet {
 	
 	
 	public String  listarMesasLibres(Integer sector) throws BusinessException {
