@@ -58,7 +58,7 @@ public class ItemComandaDAO {
 	
 	public ItemComandaEntity toEntity (ItemComanda comanda) {
 		ItemComandaEntity entity = new ItemComandaEntity();
-		entity.setPlato(PlatoDAO.getInstancia().obtenerProductoEntity(comanda.getPlato().getIdProducto()));
+		entity.setPlato(PlatoDAO.getInstancia().obtenerProductoEntity(comanda.getPlato().getIdPlato()));
 		entity.setIdItemComanda(comanda.getIdItemComanda());
 		entity.setCantidad(comanda.getCantidad());
 		entity.setEstado(comanda.getEstado());

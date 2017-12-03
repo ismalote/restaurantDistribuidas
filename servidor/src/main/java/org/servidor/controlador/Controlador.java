@@ -77,7 +77,7 @@ public class Controlador {
 	}
 
 	public Plato obtenerPlatoporId(int idPlato) {
-		return PlatoDAO.getInstancia().obtenerProducto(idPlato);
+		return PlatoDAO.getInstancia().obtenerPlato(idPlato);
 	}
 
 	public boolean crearNuevacomanda(CrearComandaDTO comanda) {

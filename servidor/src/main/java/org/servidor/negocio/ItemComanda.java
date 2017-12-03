@@ -22,7 +22,7 @@ public class ItemComanda {
 
 	public ItemComanda(ItemComandaDTO item) {
 		this.idItemComanda = item.getIdItemComanda();
-		this.plato = PlatoDAO.getInstancia().obtenerProducto(item.getIdPlato());
+		this.plato = PlatoDAO.getInstancia().obtenerPlato(item.getIdPlato());
 		if(item.getEstado() != null) {
 			this.estado = EstadoItemComanda.valueOf(item.getEstado());
 		} else {
