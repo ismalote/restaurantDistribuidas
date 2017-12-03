@@ -9,7 +9,20 @@ import org.repositorio.exceptions.BusinessException;
 import com.google.gson.Gson;
 
 public class ProductoServelet {
+	private static ProductoServelet instancia;
 	
+	
+
+
+	public static ProductoServelet getInstancia() {
+		if(instancia==null) {
+			instancia= new ProductoServelet();
+		}
+		return instancia;
+	}
+
+	private ProductoServelet(){};
+
 
 
 	public String listarProductosParaPedir() throws BusinessException {

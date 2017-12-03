@@ -47,7 +47,8 @@ public class BussinessDelegate {
 		} catch (MalformedURLException e) {
 			throw new BusinessException("Servidor no encontrado");
 		} catch (RemoteException e) {
-			throw new BusinessException("Problemas en la red");
+			//throw new BusinessException("Problemas en la red");
+			e.printStackTrace();
 		} catch (NotBoundException e) {
 			throw new BusinessException("Recurso no encontrado");
 		}
