@@ -14,6 +14,7 @@ import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
 import org.repositorio.dtos.PlatoAConfirmarDTO;
+import org.repositorio.exceptions.BusinessException;
 
 public enum ControladorCliente {
 
@@ -36,7 +37,7 @@ public enum ControladorCliente {
 		return BussinessDelegate.getInstancia().listarMesasLibres(sector);
 	}
 
-	public void crearComanda(int idMozo, int numeroMesa, int cantidadComensales, int idLocal) {
+	public void crearComanda(int idMozo, int numeroMesa, int cantidadComensales, int idLocal) throws BusinessException {
 		CrearComandaDTO comanda = new CrearComandaDTO(idMozo, numeroMesa, cantidadComensales, idLocal);
 		BussinessDelegate.getInstancia().crearComanda(comanda);
 	}
@@ -51,7 +52,7 @@ public enum ControladorCliente {
 
 	}
 
-	public void reservarMesa(int cantidadComensales, String descripcion, Date fechaHora) {
+	public void reservarMesa(int cantidadComensales, String descripcion, Date fechaHora) throws BusinessException {
 		BussinessDelegate.getInstancia().reservarMesa(cantidadComensales, descripcion, fechaHora);
 	}
 
@@ -63,7 +64,7 @@ public enum ControladorCliente {
 		}
 	}
 
-	public void confirmarPedido(int idComanda) {
+	public void confirmarPedido(int idComanda) throws BusinessException {
 		ComandaDTO c = this.comandasCache.get(idComanda);
 		if (c != null) {
 			AgregarItemsComandaDTO dto = new AgregarItemsComandaDTO(idComanda);
