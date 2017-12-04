@@ -29,7 +29,7 @@ public class AreaDAO {
 		return this.toNegocio(entity);
 	}
 
-	private AreaProduccion toNegocio(AreaProduccionEntity entity) {
+	public AreaProduccion toNegocio(AreaProduccionEntity entity) {
 		
 		return new AreaProduccion(entity.getIdAreaProduccion(), entity.getTipoArea());
 	}

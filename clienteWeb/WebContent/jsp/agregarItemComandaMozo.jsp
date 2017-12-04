@@ -76,7 +76,14 @@
 				"idPlato": plato.idPlato	
 			}
 			
-			$('html').load("<c:url value='/plato'/>", datos);
+			var url = "<c:url value='/plato'/>";
+			$.ajax({
+				method: 'post',
+				url : url,
+				data: datos
+			});
+			
+			window.location.href = "<c:url value='/comandas?idMozo=${idMozo}'/>";
 		}
 	</script>
       
