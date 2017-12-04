@@ -6,6 +6,7 @@ import java.util.List;
 import org.repositorio.dtos.PlatoDTO;
 import org.repositorio.dtos.PlatoMenuDTO;
 import org.repositorio.dtos.ProductoComestibleDTO;
+import org.servidor.dao.AreaDAO;
 import org.servidor.dao.PlatoDAO;
 import org.servidor.dao.ProductoComestibleDAO;
 import org.servidor.entities.PlatoEntity;
@@ -56,9 +57,14 @@ public class Plato {
 		this.comisionExtra = entity.getComisionExtra();
 		this.nombrePlato = entity.getNombrePlato();
 
-		this.area = null; // TODO DAO.toNegocio
+		this.area = AreaDAO.getInstancia().toNegocio(entity.getArea());
 
 		this.productos = new ArrayList<ProductoComestible>();
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		for (ProductoComestibleEntity p : entity.getProductos()) {
 			this.productos.add(ProductoComestibleDAO.getInstancia().toNegocio(p));
 		}

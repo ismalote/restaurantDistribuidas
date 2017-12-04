@@ -43,7 +43,7 @@ insert into stock (idInsumo, idLocal,  cantidad , tipoArea) VALUES (0,0,5,0);
 INSERT INTO productoSimple (idInsumo) VALUES (0);
 INSERT INTO productoSimple (idInsumo) VALUES (1);
 
-INSERT INTO plato (idPlato, comisionExtra, nombrePlato, precio) VALUES (0, 10.0, 'Milanesa con Papas Fritas', 100.0);
+INSERT INTO plato (idPlato, comisionExtra, nombrePlato, precio, receta, area_idAreaProduccion) VALUES (0, 10.0, 'Milanesa con Papas Fritas', 100.0, 'Cocinar', 0);
 INSERT INTO plato_productoComestible (idPlato, idInsumo) VALUES (0, 0);
 INSERT INTO plato_productoComestible (idPlato, idInsumo) VALUES (0, 1);
 
