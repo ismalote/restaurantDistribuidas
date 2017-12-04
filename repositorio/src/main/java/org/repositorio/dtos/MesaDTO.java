@@ -78,6 +78,11 @@ public class MesaDTO implements Serializable {
 		this.horaLiberacion = horaLiberacion;
 	}
 
+	@Override
+	public String toString() {
+		return String.valueOf(this.idMesa);
+	}
+	
 	// TODO falta metodo y nose como poner simple y compuesta
 
 }

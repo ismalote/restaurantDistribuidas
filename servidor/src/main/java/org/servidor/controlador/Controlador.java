@@ -7,11 +7,13 @@ import java.util.List;
 import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.AgregarItemsComandaDTO;
+import org.repositorio.dtos.ComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
 import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.ItemListadoDTO;
 import org.repositorio.dtos.ListadoComprasDTO;
 import org.repositorio.dtos.MesaDTO;
+import org.repositorio.dtos.MozoDTO;
 import org.repositorio.dtos.ObtenerPlatoDto;
 import org.repositorio.dtos.PlatoMenuDTO;
 import org.repositorio.dtos.ProductosAPedirDTO;
@@ -34,6 +36,7 @@ import org.servidor.dao.ItemComandaDAO;
 import org.servidor.dao.ListadoCompraDAO;
 import org.servidor.dao.LocalDAO;
 import org.servidor.dao.MesaDAO;
+import org.servidor.dao.MozoDAO;
 import org.servidor.dao.PlatoDAO;
 import org.servidor.dao.ProductoComestibleDAO;
 import org.servidor.negocio.Caja;
@@ -63,9 +66,7 @@ public class Controlador {
 
 	private static Controlador instancia;
 
-
 	public Controlador() {
-
 
 	}
 
@@ -81,8 +82,8 @@ public class Controlador {
 	}
 
 	public ObtenerPlatoDto obtenerPlatoporId(int idPlato) {
-		
-		Plato aux= PlatoDAO.getInstancia().obtenerPlato(idPlato);
+
+		Plato aux = PlatoDAO.getInstancia().obtenerPlato(idPlato);
 		ObtenerPlatoDto plato = new ObtenerPlatoDto(aux.getIdPlato(), aux.getPrecio(), aux.getNombrePlato());
 		return plato;
 	}
@@ -99,7 +100,8 @@ public class Controlador {
 		return comanda.agregarItem(item);
 	}
 
-	//TODO recordar que se tiene que mapear de PlatoMenuDTO a ItemComandaDTO, solo idPlato
+	// TODO recordar que se tiene que mapear de PlatoMenuDTO a ItemComandaDTO, solo
+	// idPlato
 	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO itemsComanda) {
 		String method = "agregarItemsAComanda(AgregarItemsComandaDTO itemsComanda)";
 
@@ -232,10 +234,10 @@ public class Controlador {
 
 	}
 
-	public List<ItemComandaDTO> obtenerPlatosAProducir(Integer idArea,Integer idLocal ) {
+	public List<ItemComandaDTO> obtenerPlatosAProducir(Integer idArea, Integer idLocal) {
 
-		List<ItemComanda> items= ItemComandaDAO.getInstancia().obtenerItemAreaLocal(idArea,idLocal);
-		List<ItemComandaDTO> resultado= new ArrayList<ItemComandaDTO>();
+		List<ItemComanda> items = ItemComandaDAO.getInstancia().obtenerItemAreaLocal(idArea, idLocal);
+		List<ItemComandaDTO> resultado = new ArrayList<ItemComandaDTO>();
 		for (ItemComanda item : items) {
 			resultado.add(item.toDTO(item));
 		}
@@ -243,69 +245,70 @@ public class Controlador {
 		return resultado;
 
 	}
-	//listar productos para hacer el pedido
-	public List<ProductosAPedirDTO> listarProductosParaPedir(){
-		
+
+	// listar productos para hacer el pedido
+	public List<ProductosAPedirDTO> listarProductosParaPedir() {
+
 		List<ProductosAPedirDTO> productos = new ArrayList<ProductosAPedirDTO>();
-		
+
 		List<ProductoComestible> prodCom = ProductoComestibleDAO.getInstancia().listarProductos();
 		for (ProductoComestible productoComestible : prodCom) {
 			productos.add(productoComestible.toProdAPedirDTO());
-			
+
 		}
-		
+
 		return productos;
 	}
-	
-	//listar platos que posee el menu
-	public List<PlatoMenuDTO> platosDelMenu(){
-		
+
+	// listar platos que posee el menu
+	public List<PlatoMenuDTO> platosDelMenu() {
+
 		List<PlatoMenuDTO> menu = new ArrayList<PlatoMenuDTO>();
-		
+
 		List<Plato> platos = PlatoDAO.getInstancia().listarPlatos();
 		for (Plato plato : platos) {
 			menu.add(plato.toDTOMenu());
 		}
-		
+
 		return menu;
 	}
-	
-	
-	//pedidoDeProdDesdeArea
-	public void pedirPorductos(String area, List<ProductosAPedirDTO> prods){
+
+	// pedidoDeProdDesdeArea
+	public void pedirPorductos(String area, List<ProductosAPedirDTO> prods) {
 		List<ItemListado> prod = new ArrayList<ItemListado>();
 		for (ProductosAPedirDTO p : prods) {
-			prod.add(new ItemListado(ProductoComestibleDAO.getInstancia().obtenerProducto(p.getIdProd()), p.getCantAPedir()));
+			prod.add(new ItemListado(ProductoComestibleDAO.getInstancia().obtenerProducto(p.getIdProd()),
+					p.getCantAPedir()));
 		}
-		
+
 		ListadoCompras compras = new ListadoCompras(TipoArea.valueOf(area), prod, EstadoPedidoCompra.PEDIDO);
-		
+
 		compras.save();
-	
+
 	}
-	
-	//cambiarEstadoPedidoListo	
-	public void finalizarPlato(Integer idItemComanda){
+
+	// cambiarEstadoPedidoListo
+	public void finalizarPlato(Integer idItemComanda) {
 		ItemComanda comanda = ItemComandaDAO.getInstancia().obtenerItemComanda(idItemComanda);
 		comanda.setEstado(EstadoItemComanda.LISTO);
 		comanda.save();
 	}
 
-	//AceptarPedido
-	public void aprobarCompra(Integer idCompra){
+	// AceptarPedido
+	public void aprobarCompra(Integer idCompra) {
 		ListadoCompras listado = ListadoCompraDAO.getInstancia().obtenerListadoCompra(idCompra);
 		listado.setEstado(EstadoPedidoCompra.ACEPTADO);
 		listado.save();
 	}
-	
-	//RechazarPedido
-	public void rechazarCompra(Integer idCompra){
+
+	// RechazarPedido
+	public void rechazarCompra(Integer idCompra) {
 		ListadoCompras listado = ListadoCompraDAO.getInstancia().obtenerListadoCompra(idCompra);
 		listado.setEstado(EstadoPedidoCompra.RECHAZADO);
 		listado.save();
 	}
-	
-	public boolean cerrarCaja( Integer idLocal, Float monto) {
+
+	public boolean cerrarCaja(Integer idLocal, Float monto) {
 
 		Local local = this.getLocal(idLocal, "calcularComisiones(int idLocal)");
 
@@ -313,22 +316,21 @@ public class Controlador {
 		Date fecha = new Date();
 		boolean cierre = true;
 		Float comisiones = calcularComisiones(local);
-		
-		CierredeCaja aux = new CierredeCaja( cierre, fecha, caja, monto-caja.getMontoIncial());
+
+		CierredeCaja aux = new CierredeCaja(cierre, fecha, caja, monto - caja.getMontoIncial());
 		aux.setMontoComisiones(comisiones);
 		return aux.cerrar();
 	}
-	
-	public void abrirCaja( Integer idLocal, Float monto) {
-		
+
+	public void abrirCaja(Integer idLocal, Float monto) {
+
 		Local local = this.getLocal(idLocal, "calcularComisiones(int idLocal)");
-		
+
 		Caja caja = this.getCaja(local.getCaja().getIdCaja(), "abrirCaja(int idCaja)");
 		caja.setMontoIncial(monto);
 		caja.save();
-		
-		
-	}	
+
+	}
 
 	private Caja getCaja(int idCaja, String method) {
 		// TODO Auto-generated method stub
@@ -344,23 +346,24 @@ public class Controlador {
 	private Float calcularComisiones(Local local) {
 		float totalMozos = 0;
 		float totalPorMozo = 0;
-		float totalComisionExtra=0;
-	//	Local local = instancia.getInstancia().getLocal(idLocal, "calcularComisiones(int idLocal)");
+		float totalComisionExtra = 0;
+		// Local local = instancia.getInstancia().getLocal(idLocal,
+		// "calcularComisiones(int idLocal)");
 		List<Mozo> mozos = local.getMozos();
 		List<Comanda> comandasMozo;
-		for (Mozo m: mozos){
+		for (Mozo m : mozos) {
 			comandasMozo = new ArrayList<Comanda>();
-			comandasMozo = ComandaDAO.getInstancia().getComandasMozo (m.getIdMozo());
-			for (Comanda c: comandasMozo){
-				totalPorMozo =  c.montoTotalComision() * m.getPorcentajeComision();
-				totalComisionExtra = c.montoTotalComisionExtra(); 
-						
+			comandasMozo = ComandaDAO.getInstancia().getComandasMozo(m.getIdMozo());
+			for (Comanda c : comandasMozo) {
+				totalPorMozo = c.montoTotalComision() * m.getPorcentajeComision();
+				totalComisionExtra = c.montoTotalComisionExtra();
+
 			}
 			totalMozos = totalMozos + totalPorMozo + totalComisionExtra;
 			totalPorMozo = 0;
 			totalComisionExtra = 0;
 		}
-		
+
 		return totalMozos;
 	}
 
@@ -372,30 +375,44 @@ public class Controlador {
 
 		return aux;
 	}
-	
-	//listar todos los pedidos de las areas (lo ve el admin)
-	public List<ListadoComprasDTO> listarComprasPedidas(){
-		
+
+	// listar todos los pedidos de las areas (lo ve el admin)
+	public List<ListadoComprasDTO> listarComprasPedidas() {
+
 		List<ListadoComprasDTO> pedidoCompra = new ArrayList<ListadoComprasDTO>();
-		
+
 		List<ListadoCompras> pedidos = ListadoCompraDAO.getInstancia().listarPedidoCompras();
 		for (ListadoCompras listado : pedidos) {
 			pedidoCompra.add(listado.toDTO());
 		}
-		
+
 		return pedidoCompra;
 	}
-	
-	//cuando se selecciona uno de los pedidos, te muestra los productos 
-	public List<ItemListadoDTO> listarProdDePedido(Integer idListadoCompras){
-		
+
+	// cuando se selecciona uno de los pedidos, te muestra los productos
+	public List<ItemListadoDTO> listarProdDePedido(Integer idListadoCompras) {
+
 		List<ItemListadoDTO> pedidoCompra = new ArrayList<ItemListadoDTO>();
-		
+
 		List<ItemListado> pedidos = ListadoCompraDAO.getInstancia().obtenerItemsAComprarDePedido(idListadoCompras);
 		for (ItemListado prod : pedidos) {
 			pedidoCompra.add(prod.toDTO());
 		}
-		
+
 		return pedidoCompra;
+	}
+
+	public MozoDTO obtenerDatosMozo(int idMozo) {
+		Mozo mozo = MozoDAO.getInstancia().obtenerMozo(idMozo);
+		return mozo.toDTO();
+	}
+
+	public List<ComandaDTO> listarComandas(int idMozo) {
+		List<Comanda> comandasMozo = ComandaDAO.getInstancia().getComandasMozo(idMozo);
+		List<ComandaDTO> comandas = new ArrayList<>();
+		for (Comanda comanda : comandasMozo) {
+			comandas.add(comanda.toDTO());
+		}
+		return comandas;
 	}
 }

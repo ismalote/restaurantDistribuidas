@@ -98,7 +98,7 @@ public class ComandaDAO {
 			comanditas.add(toNegocio(comandaEntity));
 		}
 
-		return null;
+		return comanditas;
 	}
 
 	public Comanda toNegocio(ComandaEntity c) {

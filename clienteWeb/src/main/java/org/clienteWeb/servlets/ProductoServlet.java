@@ -24,21 +24,31 @@ public class ProductoServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 	}
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		try {
-//			resp.getWriter().println(listarProductosParaPedir());
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (BusinessException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-        request.getRequestDispatcher("jsp/inicioMozo.html").forward(request, response);
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int idMozo = Integer.valueOf(req.getParameter("idMozo"));
+		String action = req.getParameter("action");
+		if ("listar".equals(action)) {
+			try {
+				resp.getWriter().println(listarProductosParaPedir());
+			} catch (BusinessException e) {
+				e.printStackTrace();
+			}
+		} else {
+			req.setAttribute("idMozo", idMozo);
+			req.getRequestDispatcher("jsp/agregarItemComandaMozo.jsp").forward(req, resp);
+		}
 	}
 
-	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int idMozo = Integer.valueOf(req.getParameter("idMozo"));
+		int idComanda = Integer.valueOf(req.getParameter("idComanda"));
+		int idPlato = Integer.valueOf(req.getParameter("idPlato"));
+
+		// AgregarItemComandaDTO item = new AgregarItemComandaDTO(idPlato, idComanda);
+		// BussinessDelegate.getInstancia().agregarItemAComanda(item );
+
+		req.setAttribute("idMozo", idMozo);
+		req.getRequestDispatcher("jsp/agregarItemComandaMozo.jsp").forward(req, resp);
 	}
 
 	public String listarProductosParaPedir() throws BusinessException {
@@ -47,5 +57,5 @@ public class ProductoServlet extends HttpServlet {
 		String Json = new Gson().toJson(listaP);
 		return Json;
 	}
-	
+
 }

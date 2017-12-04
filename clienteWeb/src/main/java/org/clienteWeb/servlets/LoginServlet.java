@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.repositorio.bussinessDelegate.BussinessDelegate;
+import org.repositorio.dtos.MozoDTO;
+
 public class LoginServlet extends HttpServlet {
 
 	/**
@@ -18,30 +21,33 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		req.getRequestDispatcher("jsp/login principal.jsp").forward(req, resp);
-		
-		}
 
-	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	}
+
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 
 		String user = req.getParameter("usuario");
 		String pwd = req.getParameter("password");
-	
+
 		if ("administrador".equals(user) && "admin".equals(pwd)) {
-		
-		}
-		else if ("mozo".equals(user) && "mozo".equals(pwd)) {
-			
-		}else if("barra".equals(user) && "barra".equals(pwd)) {
-			
-		}else if ("cocina".equals(user) && "cocina".equals(pwd)) {
-			
-		}else if ("cafeteria".equals(user) && "cafeteria".equals(pwd)) {
-			
-		}else {
+
+		} else if ("mozo".equals(user) && "mozo".equals(pwd)) {
+			setMozoData(req, BussinessDelegate.getInstancia().getDatosMozo(0));
+			req.getRequestDispatcher("jsp/inicioMozo.jsp").forward(req, resp);
+		} else if ("barra".equals(user) && "barra".equals(pwd)) {
+
+		} else if ("cocina".equals(user) && "cocina".equals(pwd)) {
+
+		} else if ("cafeteria".equals(user) && "cafeteria".equals(pwd)) {
+
+		} else {
 			response(resp, "Login invalido");
 		}
 	}
-	
+
+	private void setMozoData(HttpServletRequest req, MozoDTO mozo) {
+		req.setAttribute("mozo", mozo);
+	}
 
 	private void response(HttpServletResponse resp, String msg) throws IOException {
 		PrintWriter out = resp.getWriter();
@@ -50,7 +56,7 @@ public class LoginServlet extends HttpServlet {
 		out.println("<t1>" + msg + "</t1>");
 		out.println("</body>");
 		out.println("</html>");
-		
+
 	}
 
 }

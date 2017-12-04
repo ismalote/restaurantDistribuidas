@@ -23,8 +23,8 @@ public class MozoDTO implements Serializable {
 		super();
 		this.idMozo = idMozo;
 		this.porcentajeComision = porcentajeComision;
-		Nombre = nombre;
-		Apellido = apellido;
+		this.Nombre = nombre;
+		this.Apellido = apellido;
 		this.antiguedad = antiguedad;
 		this.comandasAbiertas = comandasAbiertas;
 	}

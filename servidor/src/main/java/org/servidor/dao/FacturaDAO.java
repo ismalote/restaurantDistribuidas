@@ -46,8 +46,11 @@ public class FacturaDAO {
 	}
 
 	public Factura toNegocio(FacturaEntity f) {
-		Factura negocio = new Factura(f);
-		return negocio;
+		if (f != null) {
+			Factura negocio = new Factura(f);
+			return negocio;
+		}
+		return null;
 
 	}
 
