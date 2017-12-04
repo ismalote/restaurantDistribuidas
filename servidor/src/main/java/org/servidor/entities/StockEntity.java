@@ -2,6 +2,8 @@ package org.servidor.entities;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
 @Entity
@@ -9,7 +11,9 @@ import javax.persistence.Table;
 public class StockEntity {
 
 	@EmbeddedId
+//	@GeneratedValue(strategy= GenerationType.AUTO )
 	private StockEmbeddeEntity idStock;
+	
 	private Integer cantidad;
 
 	public StockEntity() {

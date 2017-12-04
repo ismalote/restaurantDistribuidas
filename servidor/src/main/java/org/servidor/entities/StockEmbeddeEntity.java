@@ -14,17 +14,20 @@ public class StockEmbeddeEntity implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@OneToOne(optional=false)
+	@ManyToOne(optional=false)
 	@JoinColumn(name="idInsumo", nullable=false)
 	private ProductoComestibleEntity idProducto;
+//	private Integer idProducto;
 	
-	@OneToOne(optional=false)
+	@ManyToOne(optional=false)
 	@JoinColumn(name="tipoArea", nullable=false)
-	private AreaProduccionEntity idArea;
+	private AreaProduccionEntity tipoArea;
+//	private Integer tipoArea;
 	
-	@OneToOne(optional=false)
+	@ManyToOne(optional=false)
 	@JoinColumn(name="idLocal", nullable=false)
 	private LocalEntity idLocal;
+//	private Integer idLocal;
 
 	public StockEmbeddeEntity() {
 		// TODO Auto-generated constructor stub
@@ -39,11 +42,11 @@ public class StockEmbeddeEntity implements Serializable {
 	}
 
 	public AreaProduccionEntity getIdArea() {
-		return idArea;
+		return tipoArea;
 	}
 
 	public void setIdArea(AreaProduccionEntity idArea) {
-		this.idArea = idArea;
+		this.tipoArea = idArea;
 	}
 
 	public LocalEntity getIdLocal() {
