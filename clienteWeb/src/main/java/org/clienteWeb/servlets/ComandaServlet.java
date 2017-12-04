@@ -32,6 +32,18 @@ public class ComandaServlet extends HttpServlet {
 		if ("listar".equals(action)) {
 			List<ComandaDTO> comandasMozo = BussinessDelegate.getInstancia().listarComandasMozo(idMozo);
 			resp.getWriter().println(new Gson().toJson(comandasMozo));
+		} else if ("cerrar".equals(action)) {
+			String idComanda = req.getParameter("idComanda");
+			
+			try {
+				BussinessDelegate.getInstancia().cerrarcomanda(Integer.valueOf(idComanda));
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			} catch (BusinessException e) {
+				e.printStackTrace();
+			}
+			req.setAttribute("idMozo", idMozo);
+			req.getRequestDispatcher("jsp/Comanda(abrir,cerrar,add).jsp").forward(req, resp);
 		} else {
 			req.setAttribute("idMozo", idMozo);
 			req.getRequestDispatcher("jsp/Comanda(abrir,cerrar,add).jsp").forward(req, resp);

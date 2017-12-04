@@ -92,7 +92,7 @@ public class ComandaDAO {
 	public List<Comanda> getComandasMozo(Integer idMozo) {
 		List<Comanda> comanditas = new ArrayList<Comanda>();
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		List<ComandaEntity> list = (List<ComandaEntity>) session.createQuery("From ComandaEntity where mozo = ?")
+		List<ComandaEntity> list = (List<ComandaEntity>) session.createQuery("From ComandaEntity where mozo = ? AND cerrada = false")
 				.setInteger(0, idMozo).list();
 		for (ComandaEntity comandaEntity : list) {
 			comanditas.add(toNegocio(comandaEntity));

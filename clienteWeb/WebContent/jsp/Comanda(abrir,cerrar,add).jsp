@@ -80,11 +80,13 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<form class="" method="post" action="https://formspree.io/">
+					<form class="" method="get" action="<c:url value='/comandas'/>">
 						<div class="form-group">
 							<label>Cerrar Comanda</label> <input type="text"
-								name="Numero de comanda" class="form-control"
+								name="idComanda" class="form-control"
 								placeholder="Numero de comanda">
+								<input type="hidden" name="idMozo" value="${idMozo}">
+								<input type="hidden" name="action" value="cerrar">
 						</div>
 
 						<button type="submit" class="btn btn-primary">Aceptar</button>

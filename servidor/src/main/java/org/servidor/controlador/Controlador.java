@@ -138,11 +138,7 @@ public class Controlador {
 	}
 
 	private Factura getFacturaComanda(int idComanda) {
-		Factura fact = FacturaDAO.getInstancia().getFactura(idComanda);
-		if (fact == null) {
-			throw new FacturaException("");
-		}
-		return fact;
+		return FacturaDAO.getInstancia().getFactura(idComanda);
 	}
 
 	public void AbrirMesa(AbrirMesaDTO dto) {

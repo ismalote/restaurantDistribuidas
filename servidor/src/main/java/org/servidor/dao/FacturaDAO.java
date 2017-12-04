@@ -71,8 +71,11 @@ public class FacturaDAO {
 
 	public Factura getFactura(int idFactura) {
 		FacturaEntity factutaEntity = getFacturaEntity(idFactura);
-		Factura resultado = new Factura(factutaEntity);
-		return resultado;
+		if (factutaEntity != null) {
+			Factura resultado = new Factura(factutaEntity);
+			return resultado;
+		}
+		return null;
 	}
 
 	private FacturaEntity getFacturaEntity(int idFactura) {
