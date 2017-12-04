@@ -30,6 +30,7 @@
 				<table id="comandasTable" class="display nowrap">
 					<thead>
 						<tr>
+							<th>Id</th>
 							<th>Mesa</th>
 							<th>Cantidad de Comensales</th>
 						</tr>
@@ -63,7 +64,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<form class="" method="get" action="<c:url value='/producto'/>">
+					<form class="" method="get" action="<c:url value='/plato'/>">
 						<div class="form-group">
 							<label>Agregar Items a Comanda</label> 
 							<input type="text" name="num_comanda" class="form-control" placeholder="Numero de Comanda">
@@ -100,6 +101,7 @@
 				dataSrc: ''
 			},
 		    columns: [
+		    			  { data: "idComanda" },
 		              { data: "mesa.idMesa" },
 		              { data: "cantidadComensales" },
 		          	]
