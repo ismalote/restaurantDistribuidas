@@ -47,3 +47,21 @@ INSERT INTO plato (idPlato, comisionExtra, nombrePlato, precio) VALUES (0, 10.0,
 INSERT INTO plato_productoComestible (idPlato, idInsumo) VALUES (0, 0);
 INSERT INTO plato_productoComestible (idPlato, idInsumo) VALUES (0, 1);
 
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 0, 4, 'LIBRE', sysdatetime(), sysdatetime(), 0);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 1, 4, 'LIBRE', sysdatetime(), sysdatetime(), 1);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 2, 4, 'LIBRE', sysdatetime(), sysdatetime(), 2);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 3, 4, 'LIBRE', sysdatetime(), sysdatetime(), 3);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 4, 4, 'LIBRE', sysdatetime(), sysdatetime(), 4);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 5, 4, 'LIBRE', sysdatetime(), sysdatetime(), 5);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 6, 4, 'LIBRE', sysdatetime(), sysdatetime(), 6);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 7, 6, 'LIBRE', sysdatetime(), sysdatetime(), 7);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 8, 6, 'LIBRE', sysdatetime(), sysdatetime(), 8);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 9, 6, 'LIBRE', sysdatetime(), sysdatetime(), 9);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 10, 6, 'LIBRE', sysdatetime(), sysdatetime(), 10);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple',11, 6, 'LIBRE', sysdatetime(), sysdatetime(), 11);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 12, 6, 'LIBRE', sysdatetime(), sysdatetime(), 12);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 13, 8, 'LIBRE', sysdatetime(), sysdatetime(), 13);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 14, 8, 'LIBRE', sysdatetime(), sysdatetime(), 14);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 15, 8, 'LIBRE', sysdatetime(), sysdatetime(), 15);
+
+
