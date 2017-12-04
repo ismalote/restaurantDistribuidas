@@ -45,7 +45,7 @@
               <a class="nav-link" href="#">Ver Pedidos de Compra</a>
             </li>
              <li class="nav-item">
-              <a class="nav-link" href="#">Crear Nuevo Plato</a>
+              <a href="<c:url value='/nuevoplato'/>" class="nav-link">Crear Nuevo Plato</a>
             </li>
             </li><li class="nav-item">
               <a href="#" class="nav-link">Cerrar Sesion</a>

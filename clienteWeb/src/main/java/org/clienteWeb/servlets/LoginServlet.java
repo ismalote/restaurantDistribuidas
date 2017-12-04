@@ -30,16 +30,16 @@ public class LoginServlet extends HttpServlet {
 		String pwd = req.getParameter("password");
 
 		if ("administrador".equals(user) && "admin".equals(pwd)) {
-
+			req.getRequestDispatcher("jsp/inicioAdministrador.jsp").forward(req, resp);	
 		} else if ("mozo".equals(user) && "mozo".equals(pwd)) {
 			setMozoData(req, BussinessDelegate.getInstancia().getDatosMozo(0));
 			req.getRequestDispatcher("jsp/inicioMozo.jsp").forward(req, resp);
 		} else if ("barra".equals(user) && "barra".equals(pwd)) {
-
+			req.getRequestDispatcher("jsp/inicioBarra.jsp").forward(req, resp);
 		} else if ("cocina".equals(user) && "cocina".equals(pwd)) {
-
+			req.getRequestDispatcher("jsp/inicioCocina.jsp").forward(req, resp);
 		} else if ("cafeteria".equals(user) && "cafeteria".equals(pwd)) {
-
+			req.getRequestDispatcher("jsp/inicioCafeteria.jsp").forward(req, resp);
 		} else {
 			response(resp, "Login invalido");
 		}
