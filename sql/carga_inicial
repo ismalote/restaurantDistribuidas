@@ -7,6 +7,18 @@ INSERT INTO carta (idCarta) VALUES (0);
 INSERT INTO localRestaurante (idLocal) VALUES (0);
 
 INSERT INTO mozo (idMozo, antiguedad, apellido, nombre, porcentajeComision, localRestaurante_idLocal) VALUES (0, 1, 'Hernandez', 'Jose', 25.0, 0);
+INSERT INTO mozo (idMozo, antiguedad, apellido, nombre, porcentajeComision, localRestaurante_idLocal) VALUES (1, 2, 'Mejia', 'Martin', 25.0, 0);
+INSERT INTO mozo (idMozo, antiguedad, apellido, nombre, porcentajeComision, localRestaurante_idLocal) VALUES (2, 3, 'Alonso', 'Pedro', 25.0, 0);
+INSERT INTO mozo (idMozo, antiguedad, apellido, nombre, porcentajeComision, localRestaurante_idLocal) VALUES (3, 4, 'Perez', 'Hernan', 25.0, 0);
+INSERT INTO mozo (idMozo, antiguedad, apellido, nombre, porcentajeComision, localRestaurante_idLocal) VALUES (4, 10, 'Jua', 'Maxi', 25.0, 1);
+INSERT INTO mozo (idMozo, antiguedad, apellido, nombre, porcentajeComision, localRestaurante_idLocal) VALUES (5, 2, 'Almeyda', 'Martino', 25.0, 1);
+INSERT INTO mozo (idMozo, antiguedad, apellido, nombre, porcentajeComision, localRestaurante_idLocal) VALUES (6, 3, 'Pereyra', 'Roberto', 25.0, 1);
+INSERT INTO mozo (idMozo, antiguedad, apellido, nombre, porcentajeComision, localRestaurante_idLocal) VALUES (7, 4, 'Cuyo', 'Sergio', 25.0, 1);
+INSERT INTO mozo (idMozo, antiguedad, apellido, nombre, porcentajeComision, localRestaurante_idLocal) VALUES (8, 10, 'Pibot', 'Mauro', 25.0, 1);
+
+
+
+
 
 INSERT INTO encargado (Encargado_type, idEncargado, Apellido, Nombre, localRestaurante_idLocal) VALUES ('areaProduccion', 0, 'Perez', 'Simon', 0);
 INSERT INTO encargado (Encargado_type, idEncargado, Apellido, Nombre, localRestaurante_idLocal) VALUES ('areaProduccion', 1, 'Fernandez', 'Carla', 0);
@@ -18,16 +30,58 @@ INSERT INTO areaProduccion (DTYPE, idAreaProduccion, idEncargado, localRestauran
 
 INSERT INTO insumo (idInsumo, descripcion, fechaCaducidad, fechaCreacion, precio, unidad) VALUES (0 ,'papa', sysdatetime(), sysdatetime(), 14.5, 'kg');
 INSERT INTO insumo (idInsumo, descripcion, fechaCaducidad, fechaCreacion, precio, unidad) VALUES (1 ,'Milanesa', sysdatetime(), sysdatetime(), 5, 'kg');
+INSERT INTO insumo (idInsumo, descripcion, fechaCaducidad, fechaCreacion, precio, unidad) VALUES (2 ,'Ravioles', sysdatetime(), sysdatetime(), 20.5, 'kg');
+INSERT INTO insumo (idInsumo, descripcion, fechaCaducidad, fechaCreacion, precio, unidad) VALUES (3 ,'Pollo', sysdatetime(), sysdatetime(), 10, 'kg');
+INSERT INTO insumo (idInsumo, descripcion, fechaCaducidad, fechaCreacion, precio, unidad) VALUES (4 ,'Sorrentinos', sysdatetime(), sysdatetime(), 17, 'kg');
+INSERT INTO insumo (idInsumo, descripcion, fechaCaducidad, fechaCreacion, precio, unidad) VALUES (5 ,'Tomate', sysdatetime(), sysdatetime(), 25, 'kg');
+INSERT INTO insumo (idInsumo, descripcion, fechaCaducidad, fechaCreacion, precio, unidad) VALUES (6 ,'Salsa', sysdatetime(), sysdatetime(), 8, 'kg');
+INSERT INTO insumo (idInsumo, descripcion, fechaCaducidad, fechaCreacion, precio, unidad) VALUES (7 ,'Fideos', sysdatetime(), sysdatetime(), 18, 'kg');
+
 
 INSERT INTO productoComestible (cantidadPedido, puntoPedido, stock, idInsumo) VALUES (10, 5, 5, 0);
 INSERT INTO productoComestible (cantidadPedido, puntoPedido, stock, idInsumo) VALUES (10, 9, 10, 1);
+INSERT INTO productoComestible (cantidadPedido, puntoPedido, stock, idInsumo) VALUES (10, 5, 5, 2);
+INSERT INTO productoComestible (cantidadPedido, puntoPedido, stock, idInsumo) VALUES (10, 9, 10, 3);
+INSERT INTO productoComestible (cantidadPedido, puntoPedido, stock, idInsumo) VALUES (10, 5, 5, 4);
+INSERT INTO productoComestible (cantidadPedido, puntoPedido, stock, idInsumo) VALUES (10, 9, 10, 5);
+INSERT INTO productoComestible (cantidadPedido, puntoPedido, stock, idInsumo) VALUES (10, 5, 5, 6);
+INSERT INTO productoComestible (cantidadPedido, puntoPedido, stock, idInsumo) VALUES (10, 9, 10, 7);
 
 INSERT INTO productoSimple (idInsumo) VALUES (0);
 INSERT INTO productoSimple (idInsumo) VALUES (1);
+INSERT INTO productoSimple (idInsumo) VALUES (2);
+INSERT INTO productoSimple (idInsumo) VALUES (3);
+INSERT INTO productoSimple (idInsumo) VALUES (4);
+INSERT INTO productoSimple (idInsumo) VALUES (5);
+INSERT INTO productoSimple (idInsumo) VALUES (6);
+INSERT INTO productoSimple (idInsumo) VALUES (7);
 
 INSERT INTO plato (idPlato, comisionExtra, nombrePlato, precio) VALUES (0, 10.0, 'Milanesa con Papas Fritas', 100.0);
+INSERT INTO plato (idPlato, comisionExtra, nombrePlato, precio) VALUES (1, 4.0, 'Fideos con Salsa', 70.0);
+INSERT INTO plato (idPlato, comisionExtra, nombrePlato, precio) VALUES (2, 11.0, 'Pollo con Papas Fritas', 110.0);
+INSERT INTO plato (idPlato, comisionExtra, nombrePlato, precio) VALUES (3, 9.0, 'Sorrentinos con Salsa', 90.0);
 INSERT INTO plato_productoComestible (idPlato, idInsumo) VALUES (0, 0);
 INSERT INTO plato_productoComestible (idPlato, idInsumo) VALUES (0, 1);
+INSERT INTO plato_productoComestible (idPlato, idInsumo) VALUES (1, 7);
+INSERT INTO plato_productoComestible (idPlato, idInsumo) VALUES (1, 6);
+INSERT INTO plato_productoComestible (idPlato, idInsumo) VALUES (2, 3);
+INSERT INTO plato_productoComestible (idPlato, idInsumo) VALUES (2, 0);
+INSERT INTO plato_productoComestible (idPlato, idInsumo) VALUES (3, 4);
+INSERT INTO plato_productoComestible (idPlato, idInsumo) VALUES (3, 6);
 
 INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 0, 4, 'LIBRE', sysdatetime(), sysdatetime(), 0);
-
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 1, 4, 'LIBRE', sysdatetime(), sysdatetime(), 1);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 2, 4, 'LIBRE', sysdatetime(), sysdatetime(), 2);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 3, 4, 'LIBRE', sysdatetime(), sysdatetime(), 3);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 4, 4, 'LIBRE', sysdatetime(), sysdatetime(), 4);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 5, 4, 'LIBRE', sysdatetime(), sysdatetime(), 5);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 6, 4, 'LIBRE', sysdatetime(), sysdatetime(), 6);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 7, 6, 'LIBRE', sysdatetime(), sysdatetime(), 7);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 8, 6, 'LIBRE', sysdatetime(), sysdatetime(), 8);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 9, 6, 'LIBRE', sysdatetime(), sysdatetime(), 9);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 10, 6, 'LIBRE', sysdatetime(), sysdatetime(), 10);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple',11, 6, 'LIBRE', sysdatetime(), sysdatetime(), 11);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 12, 6, 'LIBRE', sysdatetime(), sysdatetime(), 12);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 13, 8, 'LIBRE', sysdatetime(), sysdatetime(), 13);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 14, 8, 'LIBRE', sysdatetime(), sysdatetime(), 14);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 15, 8, 'LIBRE', sysdatetime(), sysdatetime(), 15);
