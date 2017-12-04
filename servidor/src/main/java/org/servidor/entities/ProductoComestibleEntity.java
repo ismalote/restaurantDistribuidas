@@ -23,11 +23,12 @@ public abstract class ProductoComestibleEntity extends InsumoEntity {
 	protected Integer cantidadPedido;
 	protected String descripcion;
 	protected Integer puntoPedido;
-	
-	@OneToOne(cascade=CascadeType.ALL, mappedBy="idStock.idProducto", fetch=FetchType.LAZY)
-	protected StockEntity stock;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idStock.idProducto", fetch = FetchType.LAZY)
+	protected List<StockEntity> stock;
 
 	public ProductoComestibleEntity() {
+		
 	}
 
 	public ProductoComestibleEntity(Integer idInsumo, Float precio, Date fechaCreacion, Date fechaCaducidad,
@@ -61,11 +62,11 @@ public abstract class ProductoComestibleEntity extends InsumoEntity {
 		this.descripcion = descripcion;
 	}
 
-	public StockEntity getStock() {
+	public List<StockEntity> getStock() {
 		return stock;
 	}
 
-	public void setStock(StockEntity stock) {
+	public void setStock(List<StockEntity> stock) {
 		this.stock = stock;
 	}
 

@@ -7,6 +7,8 @@ import org.hibernate.Session;
 import org.servidor.entities.ProductoComestibleEntity;
 import org.servidor.entities.ProductoSimpleEntity;
 import org.servidor.entities.SemiElaboradoEntity;
+import org.servidor.entities.StockEmbeddeEntity;
+import org.servidor.entities.StockEntity;
 import org.servidor.negocio.ProductoComestible;
 import org.servidor.negocio.ProductoSimple;
 import org.servidor.util.HibernateUtil;
@@ -42,8 +44,8 @@ public class ProductoComestibleDAO {
 		negocio.setIdProducto(entity.getIdInsumo());
 		negocio.setPrecio(entity.getPrecio());
 		negocio.setPuntoPedido(entity.getPuntoPedido());
-		negocio.setStock(entity.getStock().getCantidad());
-
+//		negocio.setStock(entity.getStock().getCantidad());
+// agregar el  stock falta  cuando se pasa 	
 		return negocio;
 	}
 
@@ -53,7 +55,7 @@ public class ProductoComestibleDAO {
 		if (pc instanceof ProductoSimple){
 			entity = new ProductoSimpleEntity();
 			entity.setIdInsumo(pc.getIdProducto());
-	// revisar la transformacion del cantidad al embedded		
+	// revisar la transformacion del cantidad al embedded
 	//		entity.setStock(pc.getStock());
 			
 			entity.setDescripcion(pc.getDescripcion());			

@@ -40,8 +40,8 @@ public class AreaProduccionEntity {
 
 	protected TipoArea tipoArea;
 
-	@OneToOne(mappedBy = "idStock.idArea", fetch = FetchType.LAZY)
-	protected StockEntity stock;
+	@OneToMany(mappedBy = "idStock.tipoArea", fetch = FetchType.LAZY)
+	protected List<StockEntity> stock;
 
 	public List<ProductoComestibleEntity> getProductos() {
 		return productos;
@@ -88,11 +88,11 @@ public class AreaProduccionEntity {
 		this.localRestaurante = localRestaurante;
 	}
 
-	public StockEntity getStock() {
+	public List<StockEntity> getStock() {
 		return stock;
 	}
 
-	public void setStock(StockEntity stock) {
+	public void setStock(List<StockEntity> stock) {
 		this.stock = stock;
 	}
 
