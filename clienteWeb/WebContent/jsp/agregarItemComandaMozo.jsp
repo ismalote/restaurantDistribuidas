@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Llama a método: public List<PlatoMenuDTO> platosDelMenu() -->
 <!-- Llama a método: public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO itemsComanda) -->
 
@@ -9,21 +10,23 @@
   <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">
   
 	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="css/style.css">
 	
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/jquery.dataTables.js"></script>
   
-  
+  <h1>Agregar Item a Comanda</h1>
   </head><body>
   <div class="py-5" style="">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <table id="items" class="table" style="">
+          <table id="items" class="table">
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Nombre</th>
+                <th>Precio</th>
               </tr>
             </thead>
             <tbody>
@@ -33,6 +36,7 @@
       </div>
     </div>
   </div>
+  <!-- 
   <div class="py-5">
   	<div class="container">
   		<div class="row">
@@ -42,21 +46,38 @@
   		</div>
   	</div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
+   -->
     <script type="text/javascript">
 		var table = $("#items").DataTable({
 			ajax: {
-				url: "<c:url value='/producto?action=listar'/>",
+				url: "<c:url value='/plato?action=listar&idMozo=${idMozo}'/>",
 				dataSrc: ''
 			},
 		    columns: [
-		              { data: "idProd" },
-		              { data: "nombreProd" }
+		              { data: "idPlato" },
+		              { data: "nombrePlato" },
+		              { data: "precio" }
 		          	]
 		});
+		
+		$('#items tbody').on('click', 'tr', function() {
+			var data = table.row(this).data();
+			if(data != undefined){
+				agregarItem(data);
+			}
+		});
+		
+		function agregarItem(plato) {
+			debugger;
+			var datos = {
+				"idComanda": ${idComanda},
+				"idMozo": ${idMozo},
+				"idPlato": plato.idPlato	
+			}
+			
+			$('html').load("<c:url value='/plato'/>", datos);
+		}
 	</script>
       
 </body></html>

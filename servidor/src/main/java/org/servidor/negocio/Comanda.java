@@ -268,7 +268,7 @@ public class Comanda {
 	}
 
 	public ComandaDTO toDTO() {
-		return new ComandaDTO(idComanda, null, this.cerrada, this.mesa.toDTO(), cantidadComensales);
+		return new ComandaDTO(idComanda, this.mozo.toDTO(), this.cerrada, this.mesa.toDTO(), cantidadComensales);
 	}
 
 }

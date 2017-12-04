@@ -47,3 +47,6 @@ INSERT INTO plato (idPlato, comisionExtra, nombrePlato, precio) VALUES (0, 10.0,
 INSERT INTO plato_productoComestible (idPlato, idInsumo) VALUES (0, 0);
 INSERT INTO plato_productoComestible (idPlato, idInsumo) VALUES (0, 1);
 
+
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 0, 4, 'LIBRE', sysdatetime(), sysdatetime(), 0);
+INSERT INTO mesa (DTYPE, idMesa, cantidadSillas, estadoMesa, horaLiberacion, horaOcupacion, numeroMesa) VALUES ('simple', 1, 4, 'LIBRE', sysdatetime(), sysdatetime(), 0);

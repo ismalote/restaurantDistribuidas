@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.repositorio.bussinessDelegate.BussinessDelegate;
+import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.ProductosAPedirDTO;
 import org.repositorio.exceptions.BusinessException;
 
@@ -34,7 +35,9 @@ public class ProductoServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else {
+			int idComanda = Integer.valueOf(req.getParameter("num_comanda"));
 			req.setAttribute("idMozo", idMozo);
+			req.setAttribute("idComanda", idComanda);
 			req.getRequestDispatcher("jsp/agregarItemComandaMozo.jsp").forward(req, resp);
 		}
 	}
@@ -44,8 +47,12 @@ public class ProductoServlet extends HttpServlet {
 		int idComanda = Integer.valueOf(req.getParameter("idComanda"));
 		int idPlato = Integer.valueOf(req.getParameter("idPlato"));
 
-		// AgregarItemComandaDTO item = new AgregarItemComandaDTO(idPlato, idComanda);
-		// BussinessDelegate.getInstancia().agregarItemAComanda(item );
+		 AgregarItemComandaDTO item = new AgregarItemComandaDTO(idPlato, idComanda);
+		 try {
+			BussinessDelegate.getInstancia().agregarItemAComanda(item);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
 
 		req.setAttribute("idMozo", idMozo);
 		req.getRequestDispatcher("jsp/agregarItemComandaMozo.jsp").forward(req, resp);

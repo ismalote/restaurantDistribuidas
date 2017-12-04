@@ -5,3 +5,7 @@
 .display {
 	width: 100%;
 }
+
+table tbody tr:hover {
+    cursor: pointer;
+}
