@@ -6,6 +6,7 @@ import java.util.List;
 import org.repositorio.dtos.PlatoDTO;
 import org.repositorio.dtos.PlatoMenuDTO;
 import org.repositorio.dtos.ProductoComestibleDTO;
+import org.servidor.dao.PlatoDAO;
 import org.servidor.dao.ProductoComestibleDAO;
 import org.servidor.entities.PlatoEntity;
 import org.servidor.entities.ProductoComestibleEntity;
@@ -18,6 +19,7 @@ public class Plato {
 	private Float precio;
 	private Float comisionExtra;
 	private AreaProduccion area;
+	private String receta;
 
 	public Plato(Integer idProductos, String nombrePlato, List<ProductoComestible> productos, Float precio,
 			Float comisionExtra, AreaProduccion area) {
@@ -28,6 +30,24 @@ public class Plato {
 		this.precio = precio;
 		this.comisionExtra = comisionExtra;
 		this.area = area;
+	}
+	
+	public Plato(String nombrePlato, List<ProductoComestible> productos, Float precio,
+			Float comisionExtra, AreaProduccion area, String receta) {
+		super();
+		this.receta = receta;
+		this.nombrePlato = nombrePlato;
+		this.productos = productos;
+		this.precio = precio;
+		this.comisionExtra = comisionExtra;
+	}
+
+	public String getReceta() {
+		return receta;
+	}
+
+	public void setReceta(String receta) {
+		this.receta = receta;
 	}
 
 	public Plato(PlatoEntity entity) {
@@ -54,6 +74,7 @@ public class Plato {
 		this.comisionExtra = dto.getComisionExtra();
 	}
 
+
 	// Metodo que sirve para poder listar los productos a la hora de crear una
 	// comanda y ver el stock de cada plato
 	public PlatoMenuDTO toDTOMenu() {
@@ -69,6 +90,8 @@ public class Plato {
 
 		return new PlatoMenuDTO(this.idPlato, this.nombrePlato, this.precio, estadoStock);
 	}
+	
+
 
 	public List<ProductoComestible> getProducto() {
 		return productos;
@@ -105,7 +128,6 @@ public class Plato {
 	public void calcularPrecio() {
 		// TODO Auto-generated method stub
 		
-		
 	}
 
 	public Integer getIdProductos() {
@@ -138,6 +160,11 @@ public class Plato {
 
 	public void setArea(AreaProduccion area) {
 		this.area = area;
+	}
+
+	public void save() {
+		PlatoDAO.getInstancia().save(this);
+		
 	}
 
 }

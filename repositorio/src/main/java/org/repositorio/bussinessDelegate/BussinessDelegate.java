@@ -286,5 +286,15 @@ public class BussinessDelegate {
 		}
 		return null;
 	}
+	
+	public void crearPlato(Integer area, String receta,List<Integer> ingredientes,String nombre, 
+			Float precio, Float comision) throws BusinessException {
+		try {
+			objetoRemoto.crearPlato(area, receta, ingredientes, nombre, precio, comision);
+		} catch (RemoteException e) {
+			throw new BusinessException("Error de Acceso al servidor");
+		}
+
+	}
 
 }

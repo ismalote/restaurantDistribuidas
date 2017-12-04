@@ -4,8 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.repositorio.exceptions.SaveFailedException;
+import org.servidor.entities.ListadoComprasEntity;
 import org.servidor.entities.PlatoEntity;
+import org.servidor.entities.ProductoComestibleEntity;
+import org.servidor.negocio.ListadoCompras;
 import org.servidor.negocio.Plato;
+import org.servidor.negocio.ProductoComestible;
 import org.servidor.util.HibernateUtil;
 
 public class PlatoDAO {
@@ -50,6 +55,21 @@ public class PlatoDAO {
 		return new Plato(pe);
 	}
 
+	public PlatoEntity toEntityP(Plato plato) {
+		PlatoEntity entity = new PlatoEntity();
+		entity.setIdPlato(plato.getIdPlato());
+		entity.setNombrePlato(plato.getNombrePlato());
+		entity.setPrecio(plato.getPrecio());
+		List<ProductoComestibleEntity> prods = new ArrayList<ProductoComestibleEntity>();
+		for (ProductoComestible prod : plato.getProductos()) {
+			prods.add(ProductoComestibleDAO.getInstancia().toEntity(prod));
+		}
+		entity.setProductos(prods);
+		entity.setComisionExtra(plato.getComisionExtra());
+		return entity;
+
+	}
+	
 	public PlatoEntity toEntity(Plato plato) {
 		PlatoEntity entity = new PlatoEntity();
 		entity.setIdPlato(plato.getIdPlato());
@@ -73,4 +93,20 @@ public class PlatoDAO {
 		}
 		return platos;
 	}
+
+	public void save(Plato plato) {
+		
+			PlatoEntity entity = this.toEntityP(plato);
+			try {
+				Session session = HibernateUtil.getSessionFactory().openSession();
+				session.beginTransaction();
+				session.persist(entity);
+				session.flush();
+				session.getTransaction().commit();
+				session.close();
+			} catch (Exception e) {
+				throw new SaveFailedException(e);
+			}
+		}
+
 }

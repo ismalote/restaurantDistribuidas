@@ -159,4 +159,12 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 	public List<ComandaDTO> listarComandasMozo(int idMozo) throws RemoteException {
 		return this.controlador.listarComandas(idMozo);
 	}
+
+	@Override
+	public void crearPlato(Integer area, String receta,
+			List<Integer> ingredientes, String nombre, Float precio,
+			Float comision) throws RemoteException {
+		Controlador.getInstancia().crearPlato(area, receta, ingredientes, nombre, precio, comision);
+		
+	}
 }
