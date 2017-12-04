@@ -30,6 +30,8 @@ public class PlatoEntity {
 	private Float comisionExtra;
 	@ManyToOne
 	private AreaProduccionEntity area;
+	
+	private String receta;
 
 	public PlatoEntity() {
 	}
@@ -92,5 +94,14 @@ public class PlatoEntity {
 	public void setArea(AreaProduccionEntity area) {
 		this.area = area;
 	}
+
+	public String getReceta() {
+		return receta;
+	}
+
+	public void setReceta(String receta) {
+		this.receta = receta;
+	}
+	
 
 }

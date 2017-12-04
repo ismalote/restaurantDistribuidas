@@ -16,6 +16,7 @@ import org.repositorio.dtos.MesaDTO;
 import org.repositorio.dtos.MozoDTO;
 import org.repositorio.dtos.ObtenerPlatoDto;
 import org.repositorio.dtos.PlatoMenuDTO;
+import org.repositorio.dtos.ProductoComestibleDTO;
 import org.repositorio.dtos.ProductosAPedirDTO;
 import org.repositorio.dtos.ReservaDTO;
 import org.repositorio.exceptions.CajaNotFoundException;
@@ -29,6 +30,7 @@ import org.servidor.Enum.EstadoItemComanda;
 import org.servidor.Enum.EstadoMesa;
 import org.servidor.Enum.EstadoPedidoCompra;
 import org.servidor.Enum.TipoArea;
+import org.servidor.dao.AreaDAO;
 import org.servidor.dao.CajaDAO;
 import org.servidor.dao.ComandaDAO;
 import org.servidor.dao.FacturaDAO;
@@ -39,6 +41,7 @@ import org.servidor.dao.MesaDAO;
 import org.servidor.dao.MozoDAO;
 import org.servidor.dao.PlatoDAO;
 import org.servidor.dao.ProductoComestibleDAO;
+import org.servidor.negocio.AreaProduccion;
 import org.servidor.negocio.Caja;
 import org.servidor.negocio.CierredeCaja;
 import org.servidor.negocio.Comanda;
@@ -271,6 +274,19 @@ public class Controlador {
 		}
 
 		return menu;
+	}
+	public void crearPlato(Integer area, String receta,List<Integer> ingredientes,String nombre, Float precio, Float comision){
+		List<ProductoComestible> ing = new ArrayList<ProductoComestible>();
+		for (Integer inte : ingredientes) {
+			ProductoComestible prod= ProductoComestibleDAO.getInstancia().obtenerProducto(inte);
+			ing.add(prod);
+		}
+		AreaProduccion areaProd = AreaDAO.getInstancia().obtenerArea(area);
+		
+		Plato plato = new Plato(nombre, ing, precio, comision, areaProd, receta);
+				
+		plato.save();		
+		
 	}
 
 	// pedidoDeProdDesdeArea

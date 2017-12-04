@@ -17,6 +17,11 @@ public class AreaProduccion {
 		this.tipoArea = tipoArea;
 	}
 
+	public AreaProduccion(Integer idAreaProduccion, TipoArea tipoArea2) {
+		this.idAreaProducion = idAreaProduccion;
+		this.tipoArea = tipoArea2;
+	}
+
 	public Integer getId() {
 		return idAreaProducion;
 	}
