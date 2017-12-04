@@ -13,7 +13,6 @@ public class StockEntity {
 	private Integer cantidad;
 
 	public StockEntity() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public StockEmbeddeEntity getIdStock() {

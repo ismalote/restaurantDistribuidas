@@ -1,13 +1,11 @@
 package org.servidor.entities;
 
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,8 +21,8 @@ public abstract class ProductoComestibleEntity extends InsumoEntity {
 	protected Integer cantidadPedido;
 	protected String descripcion;
 	protected Integer puntoPedido;
-	
-	@OneToOne(cascade=CascadeType.ALL, mappedBy="idStock.idProducto", fetch=FetchType.LAZY)
+
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "idStock.idProducto", fetch = FetchType.LAZY)
 	protected StockEntity stock;
 
 	public ProductoComestibleEntity() {

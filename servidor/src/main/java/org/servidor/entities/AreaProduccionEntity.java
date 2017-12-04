@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -38,6 +40,7 @@ public class AreaProduccionEntity {
 	// @OneToMany(mappedBy = "areaProduccion")
 	// protected List<ComandaEntity> comandas;
 
+	@Enumerated(EnumType.ORDINAL)
 	protected TipoArea tipoArea;
 
 	@OneToOne(mappedBy = "idStock.idArea", fetch = FetchType.LAZY)
