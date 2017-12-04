@@ -25,7 +25,7 @@
         <div class="col-md-4 offset-md-2">
           <form class="" method="post" action="<c:url value='/login'/>">
             <div class="form-group text-center"> <label></label>
-              <input type="email" name="email" class="form-control ml-auto" placeholder="Usuario"> </div>
+              <input type="text" name="usuario" class="form-control ml-auto" placeholder="Usuario"> </div>
             <div class="form-group">
               <input type="password" name="password" class="form-control" placeholder="Contraseña"> </div>
             <button type="submit" class="btn btn-primary">Login</button>
