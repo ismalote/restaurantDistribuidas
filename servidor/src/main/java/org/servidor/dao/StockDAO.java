@@ -43,7 +43,7 @@ public class StockDAO {
 		return true;
 	}
 
-	private StockEntity toEntity(Integer cantidad, Integer local, Integer area, Integer producto) {
+	public StockEntity toEntity(Integer cantidad, Integer local, Integer area, Integer producto) {
 		StockEntity s = new StockEntity();
 		LocalEntity l = StockDAO.getInstancia().toSimpleLocalEntity(local);
 		AreaProduccionEntity ap = StockDAO.getInstancia().toSimpleAreaEntity(area);

@@ -120,7 +120,7 @@ public class Comanda {
 			for (ItemComanda plato : this.platos) {
 				plato.getPlato().getProductos();
 				for (ProductoComestible prod : plato.getPlato().getProductos()) {
-					prod.bajarStock();
+					prod.bajarStock(this.Local, plato.getPlato().getArea());
 				}
 			}
 			return save();
@@ -144,7 +144,7 @@ public class Comanda {
 		// por cada agregado le baja el Stock
 		for (ItemComanda plato : this.platos) {
 			for (ProductoComestible prod : plato.getPlato().getProductos()) {
-				prod.bajarStock();
+				prod.bajarStock(this.Local, plato.getPlato().getArea());
 			}
 		}
 		return save();

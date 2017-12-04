@@ -26,7 +26,7 @@ public abstract class ProductoComestible {
 	}
 
 	public ProductoComestible() {
-
+		this.stock = 0;
 	}
 
 	public Integer getIdProducto() {
@@ -83,9 +83,9 @@ public abstract class ProductoComestible {
 	}
 
 	// baja el stock del producto
-	public void bajarStock() {
+	public void bajarStock(Local local, AreaProduccion area) {
 		this.stock--;
-		this.update();
+		ProductoComestibleDAO.getInstancia().updateStock(this, local, area);
 	}
 
 	private void update() {
