@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -22,7 +23,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <form class="" method="post" action="https://formspree.io/">
+          <form class="" method="post" action="<c:url value='/nuevoplato?action=crear'/>">
             <div class="form-group"> <label>CREAR PLATO</label>
               <input type="text" name="NombrePlato" class="form-control" placeholder="Nombre Plato"> </div>
             <div class="form-group">
@@ -31,8 +32,7 @@
               <div>
                 
               </div>
-            <input type="number" />,<input type="number" />,<input type="number" />,<input type="number" />,<input type="number" />
-            <input type="number" />,<input type="number" />,<input type="number" />,<input type="number" />,<input type="number" /></div>
+            <input type="number" name="p"/>,<input type="number" name="p"/>,<input type="number" name="p"/>,<input type="number" name="p"/>,<input type="number" name="p"/>
             <div class="form-group">
               <input type="number" name="comision" class="form-control" placeholder="Comision"> </div>
             <div class="form-group">

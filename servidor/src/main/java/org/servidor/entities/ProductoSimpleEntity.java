@@ -1,6 +1,6 @@
 package org.servidor.entities;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -19,13 +19,13 @@ public class ProductoSimpleEntity extends ProductoComestibleEntity {
 	}
 
 	public ProductoSimpleEntity(Integer idInsumo, Float precio, Date fechaCreacion, Date fechaCaducidad,
-			String descripcion, String unidad) {
-		super(idInsumo, precio, fechaCreacion, fechaCaducidad, descripcion, unidad);
+			String descripcion, String unidad, Integer cantidadPedido, Integer puntoPedido) {
+		super(idInsumo, precio, fechaCreacion, fechaCaducidad, descripcion, unidad, cantidadPedido, puntoPedido);
 	}
 
 	@Override
 	public ProductoComestible getNegocio() {
-		return new ProductoSimple();
+		return new ProductoSimple(this.idInsumo, this.cantidadPedido, this.puntoPedido, this.descripcion, null, this.precio);
 	}
 
 }

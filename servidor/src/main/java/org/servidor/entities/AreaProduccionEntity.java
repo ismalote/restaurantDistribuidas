@@ -66,6 +66,11 @@ public class AreaProduccionEntity {
 
 	public AreaProduccionEntity() {
 	}
+	
+	public AreaProduccionEntity(int id, TipoArea tipoArea) {
+		this.idAreaProduccion = id;
+		this.tipoArea = tipoArea;
+	}
 
 	public OperadorEntity getEncargado() {
 		return encargado;

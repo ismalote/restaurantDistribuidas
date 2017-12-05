@@ -34,5 +34,8 @@ public class AreaDAO {
 		return new AreaProduccion(entity.getIdAreaProduccion(), entity.getTipoArea());
 	}
 	
+	public AreaProduccionEntity toEntity(AreaProduccion n) {
+		return new AreaProduccionEntity(n.getId(), n.getTipoArea());
+	}
 
 }

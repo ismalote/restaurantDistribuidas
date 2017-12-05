@@ -41,7 +41,7 @@
     <description>NuevoPlato</description>
     <display-name>NuevoPlato</display-name>
     <servlet-name>NuevoPlato</servlet-name>
-    <servlet-class>org.clienteWeb.servlets.ComandaServlet</servlet-class>
+    <servlet-class>org.clienteWeb.servlets.PlatoServlet</servlet-class>
   </servlet>
   
    <servlet-mapping>

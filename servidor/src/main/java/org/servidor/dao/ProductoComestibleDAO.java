@@ -1,6 +1,7 @@
 package org.servidor.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -73,9 +74,9 @@ public class ProductoComestibleDAO {
 
 		ProductoComestibleEntity entity = null;
 		if (pc instanceof ProductoSimple) {
-			entity = new ProductoSimpleEntity();
+			entity = new ProductoSimpleEntity(pc.getIdProducto(), pc.getPrecio(), new Date(), null, pc.getDescripcion(), "kg", pc.getCantidadPedido(), pc.getPuntoPedido());
 		} else {
-			entity = new SemiElaboradoEntity();
+			entity = new SemiElaboradoEntity(pc.getIdProducto(), pc.getPrecio(), new Date(), null, pc.getDescripcion(), "kg", pc.getCantidadPedido(), pc.getPuntoPedido());
 		}
 
 		entity.setCantidadPedido(pc.getCantidadPedido());

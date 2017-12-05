@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -17,12 +19,13 @@ import javax.persistence.Table;
 public class PlatoEntity {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idPlato;
 
 	@Column(name = "nombrePlato")
 	private String nombrePlato;
 
-	@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(joinColumns = { @JoinColumn(name = "idPlato") }, inverseJoinColumns = { @JoinColumn(name = "idInsumo") })
 	private List<ProductoComestibleEntity> productos;
 
@@ -31,7 +34,7 @@ public class PlatoEntity {
 	private Float comisionExtra;
 	@ManyToOne
 	private AreaProduccionEntity area;
-	
+
 	private String receta;
 
 	public PlatoEntity() {
@@ -103,6 +106,5 @@ public class PlatoEntity {
 	public void setReceta(String receta) {
 		this.receta = receta;
 	}
-	
 
 }

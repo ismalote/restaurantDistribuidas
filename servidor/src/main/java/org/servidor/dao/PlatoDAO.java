@@ -5,10 +5,8 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.repositorio.exceptions.SaveFailedException;
-import org.servidor.entities.ListadoComprasEntity;
 import org.servidor.entities.PlatoEntity;
 import org.servidor.entities.ProductoComestibleEntity;
-import org.servidor.negocio.ListadoCompras;
 import org.servidor.negocio.Plato;
 import org.servidor.negocio.ProductoComestible;
 import org.servidor.util.HibernateUtil;
@@ -30,8 +28,8 @@ public class PlatoDAO {
 
 	public Plato obtenerPlato(int idPlato) {
 		Session s = HibernateUtil.getSessionFactory().openSession();
-		PlatoEntity p = (PlatoEntity) s.createQuery("from PlatoEntity where idPlato = :idPlato").setInteger("idPlato", idPlato)
-				.uniqueResult();
+		PlatoEntity p = (PlatoEntity) s.createQuery("from PlatoEntity where idPlato = :idPlato")
+				.setInteger("idPlato", idPlato).uniqueResult();
 		return toNegocio(p);
 	}
 
@@ -66,10 +64,12 @@ public class PlatoDAO {
 		}
 		entity.setProductos(prods);
 		entity.setComisionExtra(plato.getComisionExtra());
+		entity.setArea(AreaDAO.getInstancia().toEntity(plato.getArea()));
+		entity.setReceta(plato.getReceta());
 		return entity;
 
 	}
-	
+
 	public PlatoEntity toEntity(Plato plato) {
 		PlatoEntity entity = new PlatoEntity();
 		entity.setIdPlato(plato.getIdPlato());
@@ -81,12 +81,11 @@ public class PlatoDAO {
 
 	}
 
-	
-	public List<Plato> listarPlatos(){
+	public List<Plato> listarPlatos() {
 		List<Plato> platos = new ArrayList<Plato>();
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		@SuppressWarnings("unchecked")
-		List<PlatoEntity> entities = (List<PlatoEntity>)session.createQuery("from PlatoEntity").list();
+		List<PlatoEntity> entities = (List<PlatoEntity>) session.createQuery("from PlatoEntity").list();
 		session.close();
 		for (PlatoEntity p : entities) {
 			platos.add(this.toNegocio(p));
@@ -95,18 +94,18 @@ public class PlatoDAO {
 	}
 
 	public void save(Plato plato) {
-		
-			PlatoEntity entity = this.toEntityP(plato);
-			try {
-				Session session = HibernateUtil.getSessionFactory().openSession();
-				session.beginTransaction();
-				session.persist(entity);
-				session.flush();
-				session.getTransaction().commit();
-				session.close();
-			} catch (Exception e) {
-				throw new SaveFailedException(e);
-			}
+
+		PlatoEntity entity = this.toEntityP(plato);
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			session.beginTransaction();
+			session.save(entity);
+			session.flush();
+			session.getTransaction().commit();
+			session.close();
+		} catch (Exception e) {
+			throw new SaveFailedException(e);
 		}
+	}
 
 }

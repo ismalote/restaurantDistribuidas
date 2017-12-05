@@ -1,6 +1,6 @@
 package org.servidor.entities;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -31,8 +31,10 @@ public abstract class ProductoComestibleEntity extends InsumoEntity {
 	}
 
 	public ProductoComestibleEntity(Integer idInsumo, Float precio, Date fechaCreacion, Date fechaCaducidad,
-			String descripcion, String unidad) {
+			String descripcion, String unidad, Integer cantidadPedido, Integer puntoPedido) {
 		super(idInsumo, precio, fechaCreacion, fechaCaducidad, descripcion, unidad);
+		this.cantidadPedido = cantidadPedido;
+		this.puntoPedido = puntoPedido;
 	}
 
 	public abstract ProductoComestible getNegocio();

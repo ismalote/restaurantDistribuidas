@@ -1,7 +1,7 @@
 package org.servidor.entities;
 
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,8 +22,8 @@ public class SemiElaboradoEntity extends ProductoComestibleEntity {
 	private List<ProductoComestibleEntity> materiales;
 
 	public SemiElaboradoEntity(Integer idInsumo, Float precio, Date fechaCreacion, Date fechaCaducidad,
-			String descripcion, String unidad) {
-		super(idInsumo, precio, fechaCreacion, fechaCaducidad, descripcion, unidad);
+			String descripcion, String unidad, Integer cantidadPedido, Integer puntoPedido) {
+		super(idInsumo, precio, fechaCreacion, fechaCaducidad, descripcion, unidad, cantidadPedido, puntoPedido);
 	}
 
 	public SemiElaboradoEntity() {

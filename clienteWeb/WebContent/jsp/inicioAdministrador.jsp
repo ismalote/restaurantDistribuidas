@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- Llama A: reserva.html = reservarMesa(ReservaDTO dto) -->
 <!-- Llama A: verPedidosStock.html = listarComprasPedidas() -->
 <!-- Llama A: abrir Caja.html = abrirCaja( Integer idLocal, Float monto) -->
@@ -11,7 +13,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css"> </head>
+  <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">
+  
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <script src="js/jquery-1.11.0.min.js"></script>
+  <script src="js/jquery.dataTables.js"></script>
+  </head>
 
 <body>
   <div class="py-5">
@@ -45,7 +54,7 @@
               <a class="nav-link" href="#">Ver Pedidos de Compra</a>
             </li>
              <li class="nav-item">
-              <a href="<c:url value='/nuevoplato'/>" class="nav-link">Crear Nuevo Plato</a>
+              <a href="<c:url value='/nuevoplato?action=abm'/>" class="nav-link">Crear Nuevo Plato</a>
             </li>
             </li><li class="nav-item">
               <a href="#" class="nav-link">Cerrar Sesion</a>

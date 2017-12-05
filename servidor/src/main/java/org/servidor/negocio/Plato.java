@@ -41,6 +41,7 @@ public class Plato {
 		this.productos = productos;
 		this.precio = precio;
 		this.comisionExtra = comisionExtra;
+		this.area = area;
 	}
 
 	public String getReceta() {
