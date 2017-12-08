@@ -7,7 +7,6 @@ import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -42,9 +41,6 @@ public class AreaProduccionEntity {
 
 	@Enumerated(EnumType.ORDINAL)
 	protected TipoArea tipoArea;
-
-	@OneToMany(mappedBy = "idStock.tipoArea", fetch = FetchType.LAZY)
-	protected List<StockEntity> stock;
 
 	public List<ProductoComestibleEntity> getProductos() {
 		return productos;
@@ -94,14 +90,6 @@ public class AreaProduccionEntity {
 
 	public void setLocalRestaurante(LocalEntity localRestaurante) {
 		this.localRestaurante = localRestaurante;
-	}
-
-	public List<StockEntity> getStock() {
-		return stock;
-	}
-
-	public void setStock(List<StockEntity> stock) {
-		this.stock = stock;
 	}
 
 	public TipoArea getTipoArea() {

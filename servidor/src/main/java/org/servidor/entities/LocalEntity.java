@@ -25,9 +25,6 @@ public class LocalEntity {
 	@OneToMany(mappedBy = "listasCompras")
 	private List<ListadoComprasEntity> listadosCompras;
 
-	@OneToMany(mappedBy = "idStock.idLocal", fetch = FetchType.LAZY)
-	private List<StockEntity> stock;
-
 	public Integer getIdLocal() {
 		return idLocal;
 	}
@@ -50,14 +47,6 @@ public class LocalEntity {
 
 	public void setListadosCompras(List<ListadoComprasEntity> listadosCompras) {
 		this.listadosCompras = listadosCompras;
-	}
-
-	public List<StockEntity> getStock() {
-		return stock;
-	}
-
-	public void setStock(List<StockEntity> stock) {
-		this.stock = stock;
 	}
 
 }
