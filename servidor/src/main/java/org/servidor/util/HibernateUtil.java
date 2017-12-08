@@ -32,8 +32,6 @@ import org.servidor.entities.ProductoComestibleEntity;
 import org.servidor.entities.ProductoSimpleEntity;
 import org.servidor.entities.ReservaEntity;
 import org.servidor.entities.SemiElaboradoEntity;
-import org.servidor.entities.StockEmbeddeEntity;
-import org.servidor.entities.StockEntity;
 
 public class HibernateUtil {
 
@@ -86,9 +84,9 @@ public class HibernateUtil {
 			config.addAnnotatedClass(ListadoComprasEntity.class);
 
 			config.addAnnotatedClass(LocalEntity.class);
-			
-			config.addAnnotatedClass(StockEmbeddeEntity.class);
-			config.addAnnotatedClass(StockEntity.class);
+
+			// config.addAnnotatedClass(StockEmbeddeEntity.class);
+			// config.addAnnotatedClass(StockEntity.class);
 
 			sessionFactory = config.buildSessionFactory();
 		} catch (Throwable ex) {

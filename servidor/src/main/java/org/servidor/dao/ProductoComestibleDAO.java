@@ -8,9 +8,6 @@ import org.hibernate.Session;
 import org.servidor.entities.ProductoComestibleEntity;
 import org.servidor.entities.ProductoSimpleEntity;
 import org.servidor.entities.SemiElaboradoEntity;
-import org.servidor.entities.StockEntity;
-import org.servidor.negocio.AreaProduccion;
-import org.servidor.negocio.Local;
 import org.servidor.negocio.ProductoComestible;
 import org.servidor.negocio.ProductoSimple;
 import org.servidor.util.HibernateUtil;
@@ -46,30 +43,10 @@ public class ProductoComestibleDAO {
 		negocio.setIdProducto(entity.getIdInsumo());
 		negocio.setPrecio(entity.getPrecio());
 		negocio.setPuntoPedido(entity.getPuntoPedido());
+		negocio.setStock(entity.getStock());
 		return negocio;
 	}
 	
-	public ProductoComestibleEntity toStockEntity(ProductoComestible pc, Local l, AreaProduccion a) {
-
-		ProductoComestibleEntity entity = null;
-		if (pc instanceof ProductoSimple) {
-			entity = new ProductoSimpleEntity();
-		} else {
-			entity = new SemiElaboradoEntity();
-		}
-
-		entity.setCantidadPedido(pc.getCantidadPedido());
-		entity.setPuntoPedido(pc.getPuntoPedido());
-		entity.setIdInsumo(pc.getIdProducto());
-		// revisar la transformacion del cantidad al embedded
-		List<StockEntity> stock = new ArrayList<>();
-		stock.add(StockDAO.getInstancia().toEntity(pc.getStock(), l.getIdLocal(), a.getId(), entity.getIdInsumo()));
-		entity.setStock(stock);
-
-		entity.setDescripcion(pc.getDescripcion());
-		return entity;
-	}
-
 	public ProductoComestibleEntity toEntity(ProductoComestible pc) {
 
 		ProductoComestibleEntity entity = null;
@@ -82,7 +59,7 @@ public class ProductoComestibleDAO {
 		entity.setCantidadPedido(pc.getCantidadPedido());
 		entity.setPuntoPedido(pc.getPuntoPedido());
 		entity.setIdInsumo(pc.getIdProducto());
-
+		entity.setStock(pc.getStock());
 		entity.setDescripcion(pc.getDescripcion());
 		return entity;
 	}
@@ -92,23 +69,6 @@ public class ProductoComestibleDAO {
 		try {
 
 			ProductoComestibleEntity entity = this.toEntity(pc);
-
-			Session session = HibernateUtil.getSessionFactory().openSession();
-			session.beginTransaction();
-			session.saveOrUpdate(entity);
-			session.flush();
-			session.getTransaction().commit();
-			session.close();
-
-		} catch (Exception e) {
-			System.out.println();
-		}
-	}
-
-	public void updateStock(ProductoComestible pc, Local l, AreaProduccion a) {
-		try {
-
-			ProductoComestibleEntity entity = this.toStockEntity(pc, l, a);
 
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			session.beginTransaction();
