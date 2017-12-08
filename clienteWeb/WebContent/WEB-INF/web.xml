@@ -43,6 +43,32 @@
     <servlet-name>NuevoPlato</servlet-name>
     <servlet-class>org.clienteWeb.servlets.PlatoServlet</servlet-class>
   </servlet>
+ 
+   <servlet>
+    <description>AreaProduccion</description>
+    <display-name>AreaProduccion</display-name>
+    <servlet-name>AreaProduccion</servlet-name>
+    <servlet-class>org.clienteWeb.servlets.AreaProduccionServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <description>CerrarSesion</description>
+    <display-name>CerrarSesion</display-name>
+    <servlet-name>CerrarSesion</servlet-name>
+    <servlet-class>org.clienteWeb.servlets.CerrarSesionServlet</servlet-class>
+  </servlet>
+  
+   <servlet-mapping>
+    <servlet-name>CerrarSesion</servlet-name>
+    <url-pattern>/cerrar</url-pattern>
+  </servlet-mapping> 
+  
+  
+   <servlet-mapping>
+    <servlet-name>AreaProduccion</servlet-name>
+    <url-pattern>/areaproduccion</url-pattern>
+  </servlet-mapping> 
+  
   
    <servlet-mapping>
     <servlet-name>NuevoPlato</servlet-name>

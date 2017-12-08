@@ -68,13 +68,14 @@ public class ItemComandaDAO {
 		return entity;
 	}
 
-	public List<ItemComanda> obtenerItemAreaLocal(Integer idArea, Integer idLocal) {
+	public List<ItemComanda> obtenerItemAreaLocal(Integer idArea) {
 
 		List<ItemComanda> resultado = new ArrayList<ItemComanda>();
 
 		Session s = HibernateUtil.getSessionFactory().openSession();
+		@SuppressWarnings("unchecked")
 		List<ItemComandaEntity> items = (List<ItemComandaEntity>) s.createQuery(
-				"FROM ItemComandaEntity i where i.plato.area.idAreaProduccion= :idA and i.comanda.localRestaurante.idLocal= :idL and i.estado='PRODUCCION'").setInteger("idA", idArea).setInteger("idL", idLocal).list();
+				"FROM ItemComandaEntity i where i.plato.area.idAreaProduccion= :idA and i.estado='PRODUCCION'").setInteger("idA", idArea).list();
 		for (ItemComandaEntity item : items) {
 			resultado.add(this.toNegocio(item));
 		}

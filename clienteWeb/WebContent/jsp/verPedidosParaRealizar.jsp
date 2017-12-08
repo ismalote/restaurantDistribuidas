@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- ESTA PANTALLA SE VA A LLAMAR DESDE TODAS LAS AREAS, PORQUE ES LA MISMA -->
 
 <!DOCTYPE html>

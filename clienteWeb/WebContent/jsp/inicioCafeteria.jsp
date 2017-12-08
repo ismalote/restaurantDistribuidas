@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Llama A: verPedidosParaRealizar.html = public List<ItemComandaDTO> obtenerPlatosAProducir(Integer idArea,Integer idLocal ) -->
 <!-- Llama A: listarProductosASolicitar.html = public List<ProductosAPedirDTO> listarProductosParaPedir() -->
 
@@ -20,13 +21,15 @@
               <a href="#" class="active nav-link"> <i class="fa fa-birthday-cake"></i>&nbsp;CAFETERIA</a>
             </li>
             <li class="nav-item text-center">
-              <a class="nav-link" href="#">Ver Pedidos</a>
+              <div class="form-group">
+              				<a class="nav-link" href="<c:url value='/areaproduccion?action=pedidosCafeteria'/>">Ver Pedidos</a>
+						</div>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">Solicitar productos</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Cerrar Sesion</a>
+              <a href="<c:url value='/cerrar'/>" class="nav-link">Cerrar Sesion</a>
             </li>
           </ul>
         </div>

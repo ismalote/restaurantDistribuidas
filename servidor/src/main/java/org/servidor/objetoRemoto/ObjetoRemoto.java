@@ -84,10 +84,11 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		Controlador.getInstancia().cambiarItemCProduccion(idItemComanda);
 
 	}
-
+ //Se cambio por otro sin local
 	public List<ItemComandaDTO> PedidoXSector(Integer idArea, Integer idLocal) {
 //se cambio el nombre en el controlador, era la de la super query
-		return Controlador.getInstancia().obtenerPlatosAProducir(idArea, idLocal);
+		// Controlador.getInstancia().obtenerPlatosAProducir(idArea, idLocal);
+		return null;
 	}
 
 	@Override
@@ -166,5 +167,10 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 			Float comision) throws RemoteException {
 		Controlador.getInstancia().crearPlato(area, receta, ingredientes, nombre, precio, comision);
 		
+	}
+
+	@Override
+	public List<ItemComandaDTO> obtenerPlatosAProducir(Integer idArea) throws RemoteException {
+		return Controlador.getInstancia().obtenerPlatosAProducir(idArea);
 	}
 }

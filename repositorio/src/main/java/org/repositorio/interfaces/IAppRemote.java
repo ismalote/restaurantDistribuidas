@@ -77,5 +77,7 @@ public interface IAppRemote extends Remote {
 
 	List<ItemListadoDTO> listarProdDePedido(Integer idListadoCompras) throws RemoteException;
 	
+	List<ItemComandaDTO> obtenerPlatosAProducir(Integer idArea) throws RemoteException;
+	
 	void crearPlato(Integer area, String receta,List<Integer> ingredientes,String nombre, Float precio, Float comision) throws RemoteException;
 }

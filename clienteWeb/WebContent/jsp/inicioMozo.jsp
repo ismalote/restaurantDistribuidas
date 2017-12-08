@@ -28,7 +28,7 @@
 	            <li class="nav-item">
 	              <a href="<c:url value='/comandas?idMozo=${mozo.idMozo}'/>" class="nav-link">Comandas</a>
 	            </li><li class="nav-item">
-	              <a href="#">Cerrar Sesion</a>
+	              <a href="<c:url value='/cerrar'/>">Cerrar Sesion</a>
 	            </li>
 	          </ul>
 		</div>

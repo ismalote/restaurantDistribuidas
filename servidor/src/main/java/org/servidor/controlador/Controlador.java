@@ -233,9 +233,9 @@ public class Controlador {
 
 	}
 
-	public List<ItemComandaDTO> obtenerPlatosAProducir(Integer idArea, Integer idLocal) {
+	public List<ItemComandaDTO> obtenerPlatosAProducir(Integer idArea) {
 
-		List<ItemComanda> items = ItemComandaDAO.getInstancia().obtenerItemAreaLocal(idArea, idLocal);
+		List<ItemComanda> items = ItemComandaDAO.getInstancia().obtenerItemAreaLocal(idArea);
 		List<ItemComandaDTO> resultado = new ArrayList<ItemComandaDTO>();
 		for (ItemComanda item : items) {
 			resultado.add(item.toDTO(item));

@@ -31,18 +31,6 @@
             <li class="nav-item">
               <a class="active nav-link" href="#"><i class="fa fa-home fa-home"></i>ADMINISTRADOR</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Reservar mesa</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Stock</a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Ver Stock Deposito</a>
-                <a class="dropdown-item" href="#">Ver Stock Cocina</a>
-                <a class="dropdown-item" href="#">Ver Stock Barra</a>
-                <a class="dropdown-item" href="#">Ver Stock Cafeteria</a>
-              </div>
-            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Caja</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -57,7 +45,7 @@
               <a href="<c:url value='/nuevoplato?action=abm'/>" class="nav-link">Crear Nuevo Plato</a>
             </li>
             </li><li class="nav-item">
-              <a href="#" class="nav-link">Cerrar Sesion</a>
+              <a href="<c:url value='/cerrar'/>" class="nav-link">Cerrar Sesion</a>
             </li>
           </ul>
         </div>

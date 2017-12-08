@@ -296,5 +296,15 @@ public class BussinessDelegate {
 		}
 
 	}
-
+	
+	public List<ItemComandaDTO> obtenerPlatosAProducir(Integer idArea) {
+		try {
+			return this.objetoRemoto.obtenerPlatosAProducir(idArea);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
 }
