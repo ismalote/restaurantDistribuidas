@@ -32,7 +32,7 @@ public class AreaProduccionServlet extends HttpServlet {
 		// Integer idArea = Integer.valueOf(req.getParameter("idArea"));
 		String action = req.getParameter("action");
 
-		if ("pedidosCocina".equals(action)) {
+		if ("cocina".equals(action)) {
 			req.setAttribute("titulo", "COCINA");
 			req.setAttribute("area", "cocina");
 
@@ -43,7 +43,7 @@ public class AreaProduccionServlet extends HttpServlet {
 			// }
 			// descomentar esto
 			// resp.getWriter().println(new Gson().toJson(pedidos));
-		} else if ("pedidosBarra".equals(action)) {
+		} else if ("barra".equals(action)) {
 			req.setAttribute("titulo", "BARRA");
 			req.setAttribute("area", "barra");
 			// List<ItemComandaDTO> pedidos =
@@ -53,7 +53,7 @@ public class AreaProduccionServlet extends HttpServlet {
 			// }
 			// descomentar esto
 			// resp.getWriter().println(new Gson().toJson(pedidos));
-		} else if ("pedidosCafeteria".equals(action)) {
+		} else if ("cafeteria".equals(action)) {
 			req.setAttribute("titulo", "CAFETERIA");
 			req.setAttribute("area", "cafeteria");
 			// List<ItemComandaDTO> pedidos =

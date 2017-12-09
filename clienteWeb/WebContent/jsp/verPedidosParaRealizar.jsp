@@ -58,6 +58,29 @@
 		    			  { data: "nombrePlato" }
 		          	]
 		});
+		
+		$('#pedidosSector tbody').on('click', 'tr', function() {
+			var data = table.row(this).data();
+			if(data != undefined){
+				terminarPedido(data);
+			}
+		});
+		function terminarPedido(data){
+			var datos = {
+					
+					"idPedido": data.idItemComanda
+						
+				}
+				
+				var url = "<c:url value='/pedidos?'/>";
+				$.ajax({
+					method: 'post',
+					url : url,
+					data: datos
+				});
+			window.location.href = "<c:url value='/areaproduccion?action=${area}'/>";
+			
+		}
 	</script>
 </body>
 

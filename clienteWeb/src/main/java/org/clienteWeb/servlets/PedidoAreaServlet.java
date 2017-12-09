@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.repositorio.bussinessDelegate.BussinessDelegate;
 import org.repositorio.dtos.ItemComandaDTO;
+import org.repositorio.exceptions.BusinessException;
 
 import com.google.gson.Gson;
 
@@ -43,5 +44,16 @@ public class PedidoAreaServlet extends HttpServlet {
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
+		String id = req.getParameter("idPedido");
+		try {
+			BussinessDelegate.getInstancia().finalizarPlato(Integer.parseInt(id));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
