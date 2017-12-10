@@ -5,85 +5,32 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css"> </head>
+  <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css"> 
+  <link rel="stylesheet" type="text/css"
+	href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+  <script src="js/jquery-1.11.0.min.js"></script>
+  <script src="js/jquery.dataTables.js"></script>
+  <h1>${titulo}</h1>
+  
+   </head>
 
 <body>
   <div class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <table class="table">
+          <table id="pedidosSector" class="table">
             <thead>
               <tr>
                 <th class="text-center">Producto</th>
-                <th class="text-center">Cantidad</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
             </tbody>
           </table>
         </div>
@@ -94,14 +41,47 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <a class="btn btn-primary" href="">Pedido Listo </a>
+    
         </div>
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  
+
+	<script type="text/javascript">
+		var table = $("#pedidosSector").DataTable({
+			ajax: {
+				url: "<c:url value='/pedidos?area=${area}'/>",
+				dataSrc: ''
+			},
+		    columns: [
+		    			  { data: "nombrePlato" }
+		          	]
+		});
+		
+		$('#pedidosSector tbody').on('click', 'tr', function() {
+			var data = table.row(this).data();
+			if(data != undefined){
+				terminarPedido(data);
+			}
+		});
+		function terminarPedido(data){
+			var datos = {
+					
+					"idPedido": data.idItemComanda
+						
+				}
+				
+				var url = "<c:url value='/pedidos?'/>";
+				$.ajax({
+					method: 'post',
+					url : url,
+					data: datos
+				});
+			window.location.href = "<c:url value='/areaproduccion?action=${area}'/>";
+			
+		}
+	</script>
 </body>
 
 </html>

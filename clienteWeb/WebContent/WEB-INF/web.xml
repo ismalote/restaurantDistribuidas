@@ -43,6 +43,13 @@
     <servlet-name>NuevoPlato</servlet-name>
     <servlet-class>org.clienteWeb.servlets.PlatoServlet</servlet-class>
   </servlet>
+  
+   <servlet>
+    <description>PedidoArea</description>
+    <display-name>PedidoArea</display-name>
+    <servlet-name>PedidoArea</servlet-name>
+    <servlet-class>org.clienteWeb.servlets.PedidoAreaServlet</servlet-class>
+  </servlet>
  
    <servlet>
     <description>AreaProduccion</description>
@@ -50,6 +57,8 @@
     <servlet-name>AreaProduccion</servlet-name>
     <servlet-class>org.clienteWeb.servlets.AreaProduccionServlet</servlet-class>
   </servlet>
+  
+
   
   <servlet>
     <description>CerrarSesion</description>
@@ -90,9 +99,19 @@
     <url-pattern>/producto</url-pattern>
   </servlet-mapping>
   
+      <servlet-mapping>
+    <servlet-name>AreaProduccion</servlet-name>
+    <url-pattern>/verPedidosParaRealizar</url-pattern>
+  </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>Mozo</servlet-name>
     <url-pattern>/mozo</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+    <servlet-name>PedidoArea</servlet-name>
+    <url-pattern>/pedidos</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>

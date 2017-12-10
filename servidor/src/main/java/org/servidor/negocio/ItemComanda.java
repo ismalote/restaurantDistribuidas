@@ -75,7 +75,7 @@ public class ItemComanda {
 	}
 
 	public void save() {
-		ItemComandaDAO.getInstancia().save();
+		ItemComandaDAO.getInstancia().save(this);
 
 	}
 

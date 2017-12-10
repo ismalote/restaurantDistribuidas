@@ -27,33 +27,45 @@ public class AreaProduccionServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("jsp/VerPedidosParaRealizar.jsp").forward(req, resp);
-//		Integer idArea = Integer.valueOf(req.getParameter("idArea"));
+		// req.getRequestDispatcher("jsp/VerPedidosParaRealizar.jsp").forward(req,
+		// resp);
+		// Integer idArea = Integer.valueOf(req.getParameter("idArea"));
 		String action = req.getParameter("action");
 
-		if ("pedidosCocina".equals(action)) {
-			List<ItemComandaDTO> pedidos = BussinessDelegate.getInstancia().obtenerPlatosAProducir(0);
-			for (ItemComandaDTO itemComandaDTO : pedidos) {
-				System.out.println(itemComandaDTO.getNombrePlato());
-			}
-//			descomentar esto
-//			resp.getWriter().println(new Gson().toJson(pedidos));
-		} else if ("pedidosBarra".equals(action)) {
-			List<ItemComandaDTO> pedidos = BussinessDelegate.getInstancia().obtenerPlatosAProducir(1); //ver si es 1
-			for (ItemComandaDTO itemComandaDTO : pedidos) {
-				System.out.println(itemComandaDTO.getNombrePlato());
-			}
-//			descomentar esto
-//			resp.getWriter().println(new Gson().toJson(pedidos));
-		} else if ("pedidosCafeteria".equals(action)) {
-			List<ItemComandaDTO> pedidos = BussinessDelegate.getInstancia().obtenerPlatosAProducir(2); //ver si es 2
-			for (ItemComandaDTO itemComandaDTO : pedidos) {
-				System.out.println(itemComandaDTO.getNombrePlato());
-			}
-//			descomentar esto
-//			resp.getWriter().println(new Gson().toJson(pedidos));
+		if ("cocina".equals(action)) {
+			req.setAttribute("titulo", "COCINA");
+			req.setAttribute("area", "cocina");
+
+			// List<ItemComandaDTO> pedidos =
+			// BussinessDelegate.getInstancia().obtenerPlatosAProducir(0);
+			// for (ItemComandaDTO itemComandaDTO : pedidos) {
+			// System.out.println(itemComandaDTO.getNombrePlato());
+			// }
+			// descomentar esto
+			// resp.getWriter().println(new Gson().toJson(pedidos));
+		} else if ("barra".equals(action)) {
+			req.setAttribute("titulo", "BARRA");
+			req.setAttribute("area", "barra");
+			// List<ItemComandaDTO> pedidos =
+			// BussinessDelegate.getInstancia().obtenerPlatosAProducir(1); //ver si es 1
+			// for (ItemComandaDTO itemComandaDTO : pedidos) {
+			// System.out.println(itemComandaDTO.getNombrePlato());
+			// }
+			// descomentar esto
+			// resp.getWriter().println(new Gson().toJson(pedidos));
+		} else if ("cafeteria".equals(action)) {
+			req.setAttribute("titulo", "CAFETERIA");
+			req.setAttribute("area", "cafeteria");
+			// List<ItemComandaDTO> pedidos =
+			// BussinessDelegate.getInstancia().obtenerPlatosAProducir(2); //ver si es 2
+			// for (ItemComandaDTO itemComandaDTO : pedidos) {
+			// System.out.println(itemComandaDTO.getNombrePlato());
+			// }
+			// descomentar esto
+			// resp.getWriter().println(new Gson().toJson(pedidos));
 		} else {
 		}
+		req.getRequestDispatcher("jsp/verPedidosParaRealizar.jsp").forward(req, resp);
 	}
 
 	@Override

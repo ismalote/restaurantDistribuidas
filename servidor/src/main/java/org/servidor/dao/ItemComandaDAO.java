@@ -38,11 +38,11 @@ public class ItemComandaDAO {
 
 	}
 
-	public void save() {
-		ItemComandaEntity entity = new ItemComandaEntity();
+	public void save(ItemComanda itemComanda) {
+		ItemComandaEntity entity = toEntity(itemComanda, null);
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
-		session.persist(entity);
+		session.saveOrUpdate(entity);
 		session.flush();
 		session.getTransaction().commit();
 		session.close();
