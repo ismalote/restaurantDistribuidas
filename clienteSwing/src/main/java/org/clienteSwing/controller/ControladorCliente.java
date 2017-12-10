@@ -26,15 +26,14 @@ public enum ControladorCliente {
 		try {
 			BussinessDelegate.getInstancia().abrirMesaNueva(numeros);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
 
-	public List<MesaDTO> listarMesasLibresPorSector(Integer sector) throws RemoteException, Exception {
+	public List<MesaDTO> listarMesasLibresPorSector() throws RemoteException, Exception {
 
-		return BussinessDelegate.getInstancia().listarMesasLibres(sector);
+		return BussinessDelegate.getInstancia().listarMesasLibres();
 	}
 
 	public void crearComanda(int idMozo, int numeroMesa, int cantidadComensales, int idLocal) throws BusinessException {

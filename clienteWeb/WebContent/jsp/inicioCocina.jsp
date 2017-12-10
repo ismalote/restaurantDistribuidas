@@ -19,7 +19,7 @@
             <li class="nav-item text-center">
 
 						<div class="form-group">
-              				<a class="nav-link" href="<c:url value='/areaproduccion?action=pedidosCocina'/>">Ver Pedidos</a>
+              				<a class="nav-link" href="<c:url value='/areaproduccion?action=cocina'/>">Ver Pedidos</a>
 						</div>
 						
             </li>

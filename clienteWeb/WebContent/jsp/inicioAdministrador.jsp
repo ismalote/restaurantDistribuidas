@@ -1,5 +1,6 @@
+<%@page import="org.repositorio.bussinessDelegate.BussinessDelegate"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ page session="true" import="java.util.*" %>
 <!-- Llama A: reserva.html = reservarMesa(ReservaDTO dto) -->
 <!-- Llama A: verPedidosStock.html = listarComprasPedidas() -->
 <!-- Llama A: abrir Caja.html = abrirCaja( Integer idLocal, Float monto) -->
@@ -23,6 +24,14 @@
   </head>
 
 <body>
+<%
+	String action = request.getParameter("action");
+	if(action != null && "abrirCaja".equals(action)) {
+		Float monto = Float.valueOf(request.getParameter("monto"));
+		BussinessDelegate.getInstancia().abrirCaja(null, monto);
+	}
+%>
+
   <div class="py-5">
     <div class="container">
       <div class="row">
@@ -34,7 +43,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Caja</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Abrir Caja</a>
+                <a class="dropdown-item" href="/clienteWeb/jsp/abrir caja.jsp">Abrir Caja</a>
                 <a class="dropdown-item" href="#">Cerrar Caja</a>
               </div>
             </li>

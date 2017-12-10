@@ -16,13 +16,18 @@ public class MainSwing implements Serializable {
     private JFrame frame;
 
 	public static void main(String[] args) throws BusinessException {
-//		ControladorCliente.INSTANCE.reservarMesa(4, "Para cacho", new Date());
+		//		ControladorCliente.INSTANCE.reservarMesa(4, "Para cacho", new Date());
 //		List<Integer> mesas = new ArrayList<Integer>();
 //		mesas.add(0);
 //		ControladorCliente.INSTANCE.abrirMesaNueva(mesas);
 //		ControladorCliente.INSTANCE.crearComanda(0, 0, 4, 0);
-		ControladorCliente.INSTANCE.agregarItemAComanda(1, 0, 2);
-		ControladorCliente.INSTANCE.confirmarPedido(1);
+//		ControladorCliente.INSTANCE.agregarItemAComanda(1, 0, 2);
+//		ControladorCliente.INSTANCE.confirmarPedido(1);
+		List<Integer> numeros = new ArrayList<>();
+		numeros.add(1);
+		numeros.add(4);
+		numeros.add(6);
+		ControladorCliente.INSTANCE.abrirMesaNueva(numeros);
     	/*
         EventQueue.invokeLater(new Runnable() {
             public void run() {
