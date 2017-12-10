@@ -62,7 +62,7 @@ public class Comanda {
 		this.idComanda = entity.getIdComanda();
 		this.cantidadComensales = entity.getCantidadComensales();
 		this.mozo = new Mozo(entity.getMozo());
-		this.mesa = new MesaSimple(entity.getMesa());
+		this.mesa = MesaDAO.getInstancia().toNegocio(entity.getMesa());
 		this.Local = LocalDAO.getInstance().toNegocio(entity.getLocalRestaurante());
 		// this.fact = new Factura(entity.getFact());
 	}
@@ -71,7 +71,7 @@ public class Comanda {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Comanda(ComandaDTO dto) {
+	public Comanda(ComandaDTO dto) throws MozoNotFoundException, MesaNotFoundException {
 		if (dto.getMozo() == null) {
 			throw new MozoNotFoundException("new Comanda(ComandaEntity entity)");
 		}
@@ -80,7 +80,7 @@ public class Comanda {
 		if (dto.getMesa() == null) {
 			throw new MesaNotFoundException("new Comanda(ComandaEntity entity)");
 		}
-		this.mesa = new MesaSimple(dto.getMesa());
+		this.mesa = getMesa(dto);
 
 		this.platos = new ArrayList<ItemComanda>();
 		for (ItemComandaDTO item : dto.getPlatos()) {
@@ -98,6 +98,10 @@ public class Comanda {
 		} else {
 			this.fact = new Factura(dto.getFactura());
 		}
+	}
+
+	public Mesa getMesa(ComandaDTO dto) {
+		return MesaDAO.getInstancia().obtenerMesaPorNumero(dto.getMesa().getIdMesa());
 	}
 
 	public Comanda(CrearComandaDTO comanda) {
@@ -154,7 +158,7 @@ public class Comanda {
 		return ComandaDAO.getInstancia().save(this);
 	}
 
-	public boolean cerrarComanda() {
+	public boolean cerrarComanda() throws ComandaNotFoundException {
 		if (this.cerrada) {
 			throw new ComandaNotFoundException(" cerrarComanda() fail, because status's comanda close ");
 		}

@@ -10,26 +10,24 @@ public class MesaDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = -1172104457781444998L;
 	private Integer idMesa;
+	private Integer numeroMesa;
 	private String estadoMesa;
 	private ReservaDTO reserva;
 	private Integer cantidadSillas;
 	private Date horaOcupacion;
 	private Date horaLiberacion;
 
-	public MesaDTO(Integer idMesa, String estadoMesa, ReservaDTO reserva, Integer cantidadSillas, Date horaOcupacion,
-			Date horaLiberacion) {
-		super();
-		this.idMesa = idMesa;
-		this.estadoMesa = estadoMesa;
-		this.reserva = reserva;
-		this.cantidadSillas = cantidadSillas;
-		this.horaOcupacion = horaOcupacion;
-		this.horaLiberacion = horaLiberacion;
-	}
-
 	public MesaDTO() {
 	}
-	
+
+	public Integer getNumeroMesa() {
+		return numeroMesa;
+	}
+
+	public void setNumeroMesa(Integer numeroMesa) {
+		this.numeroMesa = numeroMesa;
+	}
+
 	public Integer getIdMesa() {
 		return idMesa;
 	}
@@ -82,7 +80,7 @@ public class MesaDTO implements Serializable {
 	public String toString() {
 		return String.valueOf(this.idMesa);
 	}
-	
+
 	// TODO falta metodo y nose como poner simple y compuesta
 
 }

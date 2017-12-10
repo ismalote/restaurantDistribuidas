@@ -6,13 +6,19 @@ import java.util.List;
 import org.repositorio.dtos.MesaCompuestaDTO;
 import org.repositorio.dtos.MesaDTO;
 import org.servidor.Enum.EstadoMesa;
+import org.servidor.entities.MesaEntity;
 
 public class MesaCompuesta extends Mesa {
 
 	private List<Mesa> mesas;
 
+	
 	public MesaCompuesta() {
 		super();
+	}
+	
+	public MesaCompuesta(MesaEntity entity) {
+		super(entity);
 	}
 
 	public MesaCompuesta(Integer idMesa, Reserva reserva, Integer cantidadSillas, Date horaOcupacion,

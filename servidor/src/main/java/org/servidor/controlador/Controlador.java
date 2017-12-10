@@ -16,12 +16,12 @@ import org.repositorio.dtos.MesaDTO;
 import org.repositorio.dtos.MozoDTO;
 import org.repositorio.dtos.ObtenerPlatoDto;
 import org.repositorio.dtos.PlatoMenuDTO;
-import org.repositorio.dtos.ProductoComestibleDTO;
 import org.repositorio.dtos.ProductosAPedirDTO;
 import org.repositorio.dtos.ReservaDTO;
 import org.repositorio.exceptions.CajaNotFoundException;
+import org.repositorio.exceptions.CajaYaCerradaException;
 import org.repositorio.exceptions.ComandaNotFoundException;
-import org.repositorio.exceptions.EstadoItemComandaException;
+import org.repositorio.exceptions.EstadoItemComandaInvalidoException;
 import org.repositorio.exceptions.FacturaException;
 import org.repositorio.exceptions.ItemComandaFailException;
 import org.repositorio.exceptions.LocalNotFoundException;
@@ -52,7 +52,6 @@ import org.servidor.negocio.ListadoCompras;
 import org.servidor.negocio.Local;
 import org.servidor.negocio.Mesa;
 import org.servidor.negocio.MesaCompuesta;
-import org.servidor.negocio.MesaSimple;
 import org.servidor.negocio.Mozo;
 import org.servidor.negocio.Plato;
 import org.servidor.negocio.ProductoComestible;
@@ -96,7 +95,7 @@ public class Controlador {
 		return aux.save();
 	}
 
-	public boolean agregarItemAComanda(AgregarItemComandaDTO item) {
+	public boolean agregarItemAComanda(AgregarItemComandaDTO item) throws ComandaNotFoundException {
 		String method = "agregarItemAComanda(AgregarItemComandaDTO item)";
 
 		Comanda comanda = getComanda(item.getIdComanda(), method);
@@ -105,7 +104,8 @@ public class Controlador {
 
 	// TODO recordar que se tiene que mapear de PlatoMenuDTO a ItemComandaDTO, solo
 	// idPlato
-	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO itemsComanda) {
+	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO itemsComanda)
+			throws ComandaNotFoundException {
 		String method = "agregarItemsAComanda(AgregarItemsComandaDTO itemsComanda)";
 
 		Comanda comanda = getComanda(itemsComanda.getIdComanda(), method);
@@ -115,7 +115,7 @@ public class Controlador {
 		return itemsComanda;
 	}
 
-	public boolean cerrarComanda(int idComanda) {
+	public boolean cerrarComanda(int idComanda) throws FacturaException, ComandaNotFoundException {
 		Comanda comanda = getComanda(idComanda, "cerrarComanda(int idComanda)");
 		Factura aux = getFacturaComanda(idComanda);
 		if (aux != null) {
@@ -129,7 +129,7 @@ public class Controlador {
 
 	}
 
-	private Comanda getComanda(int idComanda, String method) {
+	private Comanda getComanda(int idComanda, String method) throws ComandaNotFoundException {
 		Comanda comanda = ComandaDAO.getInstancia().getComanda(idComanda);
 		if (comanda == null) {
 			throw new ComandaNotFoundException(method);
@@ -146,14 +146,13 @@ public class Controlador {
 		List<Integer> nrosMesas = new ArrayList<>();
 		nrosMesas.addAll(dto.getNumerodeMesa());
 		if (nrosMesas.size() == 1) {
-			MesaSimple m = MesaDAO.getInstancia().obtenerMesaSimplePorNumero(nrosMesas.get(0));
+			Mesa m = MesaDAO.getInstancia().obtenerMesaPorNumero(nrosMesas.get(0));
 			m.setEstadoMesa(EstadoMesa.OCUPADA);
 			m.save();
 		} else {
 			List<Mesa> m = new ArrayList<Mesa>();
 			for (Integer numero : nrosMesas) {
 				m.add(MesaDAO.getInstancia().obtenerMesaPorNumero(numero));
-
 			}
 			MesaCompuesta mc = new MesaCompuesta();
 			mc.setMesas(m);
@@ -166,7 +165,7 @@ public class Controlador {
 
 	}
 
-	public void cerrarMesa(int idMesa) {
+	public void cerrarMesa(int idMesa) throws MesaNotFoundException {
 		String method = "cerrarMesa(int idMesa)";
 		Mesa mesa = getMesa(idMesa, method);
 		mesa.cerrarMesa();
@@ -177,7 +176,7 @@ public class Controlador {
 		return nuevaReserva.save();
 	}
 
-	private Mesa getMesa(int idMesa, String method) {
+	private Mesa getMesa(int idMesa, String method) throws MesaNotFoundException {
 		Mesa mesa = MesaDAO.getInstancia().obtenerMesaPorNumero(idMesa);
 		if (mesa == null) {
 			throw new MesaNotFoundException(method);
@@ -185,13 +184,16 @@ public class Controlador {
 		return mesa;
 	}
 
-	public List<MesaDTO> mesasLibres(Integer numeroSector) {
+	public List<MesaDTO> mesasLibres() throws MesaNotFoundException {
 		List<MesaDTO> mesas = new ArrayList<MesaDTO>();
-		List<Mesa> resultado = MesaDAO.getInstancia().obtenerMesasPorSector(numeroSector);
-		for (Mesa mesa : resultado) {
-			mesas.add(mesa.toDTO());
+		List<Mesa> resultado = MesaDAO.getInstancia().obtenerMesasLibres();
+		if (resultado != null && !resultado.isEmpty()) {
+			for (Mesa mesa : resultado) {
+				mesas.add(mesa.toDTO());
+			}
+			return mesas;
 		}
-		return mesas;
+		throw new MesaNotFoundException("No existen mesas disponibles");
 	}
 
 	public List<ItemComandaDTO> listarPedidos(int idComanda) {
@@ -211,22 +213,22 @@ public class Controlador {
 		item.save();
 	}
 
-	public void cambiarItemCLISTO(int idItemComanda) {
+	public void cambiarItemCLISTO(int idItemComanda) throws EstadoItemComandaInvalidoException {
 
 		ItemComanda item = ItemComandaDAO.getInstancia().obtenerItemComanda(idItemComanda);
 		if (item.getEstado() != EstadoItemComanda.PRODUCCION) {
-			throw new EstadoItemComandaException("El producto esta en produccion");
+			throw new EstadoItemComandaInvalidoException("El producto esta en produccion");
 		}
 		item.setEstado(EstadoItemComanda.LISTO);
 		item.save();
 
 	}
 
-	public void cambiarItemCRECLAMADO(int idItemComanda) {
+	public void cambiarItemCRECLAMADO(int idItemComanda) throws EstadoItemComandaInvalidoException {
 
 		ItemComanda item = ItemComandaDAO.getInstancia().obtenerItemComanda(idItemComanda);
 		if (item.getEstado() != EstadoItemComanda.LISTO) {
-			throw new EstadoItemComandaException("El producto esta Listo");
+			throw new EstadoItemComandaInvalidoException("El producto esta Listo");
 		}
 		item.setEstado(EstadoItemComanda.RECLAMADO);
 		item.save();
@@ -271,18 +273,20 @@ public class Controlador {
 
 		return menu;
 	}
-	public void crearPlato(Integer area, String receta,List<Integer> ingredientes,String nombre, Float precio, Float comision){
+
+	public void crearPlato(Integer area, String receta, List<Integer> ingredientes, String nombre, Float precio,
+			Float comision) {
 		List<ProductoComestible> ing = new ArrayList<ProductoComestible>();
 		for (Integer inte : ingredientes) {
-			ProductoComestible prod= ProductoComestibleDAO.getInstancia().obtenerProducto(inte);
+			ProductoComestible prod = ProductoComestibleDAO.getInstancia().obtenerProducto(inte);
 			ing.add(prod);
 		}
 		AreaProduccion areaProd = AreaDAO.getInstancia().obtenerArea(area);
-		
+
 		Plato plato = new Plato(nombre, ing, precio, comision, areaProd, receta);
-				
-		plato.save();		
-		
+
+		plato.save();
+
 	}
 
 	// pedidoDeProdDesdeArea
@@ -320,7 +324,8 @@ public class Controlador {
 		listado.save();
 	}
 
-	public boolean cerrarCaja(Integer idLocal, Float monto) {
+	public boolean cerrarCaja(Integer idLocal, Float monto)
+			throws LocalNotFoundException, CajaNotFoundException, CajaYaCerradaException {
 
 		Local local = this.getLocal(idLocal, "calcularComisiones(int idLocal)");
 
@@ -334,7 +339,7 @@ public class Controlador {
 		return aux.cerrar();
 	}
 
-	public void abrirCaja(Integer idLocal, Float monto) {
+	public void abrirCaja(Integer idLocal, Float monto) throws LocalNotFoundException, CajaNotFoundException {
 
 		Local local = this.getLocal(idLocal, "calcularComisiones(int idLocal)");
 
@@ -344,8 +349,7 @@ public class Controlador {
 
 	}
 
-	private Caja getCaja(int idCaja, String method) {
-		// TODO Auto-generated method stub
+	private Caja getCaja(int idCaja, String method) throws CajaNotFoundException {
 		Caja aux = CajaDAO.getInstancia().getCaja(idCaja);
 		if (aux == null) {
 			throw new CajaNotFoundException(method);
@@ -379,7 +383,7 @@ public class Controlador {
 		return totalMozos;
 	}
 
-	private Local getLocal(int idLocal, String method) {
+	private Local getLocal(int idLocal, String method) throws LocalNotFoundException {
 		Local aux = LocalDAO.getInstance().findById(idLocal);
 		if (aux == null) {
 			throw new LocalNotFoundException(method);

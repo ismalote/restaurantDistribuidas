@@ -21,11 +21,14 @@
 
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/jquery.dataTables.js"></script>
-
+<h1>Mesas</h1>
 </head>
 <body>
 	<div class="py-5">
 		<div class="container">
+			<div class="row">
+				<h2>Ocupadas</h2>
+			</div>
 			<div class="row">
 				<table id="comandasTable" class="display nowrap">
 					<thead>
@@ -38,6 +41,19 @@
 					<tbody>
 					</tbody>
 				</table>
+			</div>
+			<div class="row">
+				<h3>Disponibles</h3>
+			</div>
+			<div class="row">
+				<select name="mesas">
+					<c:forEach items="${mesas}" var="mesaActual">
+					    <option value="${mesaActual.idMesa}">${mesaActual.numeroMesa}</option>
+					</c:forEach>
+				</select>
+			</div>
+			<div class="row">
+				<h2>Crear Mesa</h2>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
@@ -108,6 +124,10 @@
 		              { data: "cantidadComensales" },
 		          	]
 		});
+		// Crear una ul con las mesas disponibles.
+		// Capturar el click de crear comanda y mandar un ajax abriendo la mesa, 
+		// si la abre, submitear el form, sino mandar error de mesa.
+		// Agregar botones dinamicos a la tabla para agregar items y cerrar comanda
 	</script>
 </body>
 </html>

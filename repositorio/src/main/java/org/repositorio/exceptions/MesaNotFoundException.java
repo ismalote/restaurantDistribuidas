@@ -1,6 +1,8 @@
 package org.repositorio.exceptions;
 
-public class MesaNotFoundException extends RuntimeException {
+import java.rmi.RemoteException;
+
+public class MesaNotFoundException extends RemoteException {
 
 	/**
 	 * 

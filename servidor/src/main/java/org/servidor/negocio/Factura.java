@@ -3,6 +3,8 @@ package org.servidor.negocio;
 import java.util.List;
 
 import org.repositorio.dtos.FacturaDTO;
+import org.repositorio.exceptions.MesaNotFoundException;
+import org.repositorio.exceptions.MozoNotFoundException;
 import org.servidor.dao.FacturaDAO;
 import org.servidor.entities.FacturaEntity;
 
@@ -25,7 +27,7 @@ public class Factura {
 		this.comanda = new Comanda(entity.getComanda());
 	}
 
-	public Factura(FacturaDTO dto) {
+	public Factura(FacturaDTO dto) throws MozoNotFoundException, MesaNotFoundException {
 		this.cliente = dto.getCliente();
 		this.montoTotal = dto.getMontoTotal();
 		this.comanda = new Comanda(dto.getComanda());

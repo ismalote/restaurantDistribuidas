@@ -1,8 +1,9 @@
 package org.repositorio.exceptions;
 
-public class FacturaException extends RuntimeException{
-	
-	
+import java.rmi.RemoteException;
+
+public class FacturaException extends RemoteException {
+
 	/**
 	 * 
 	 */

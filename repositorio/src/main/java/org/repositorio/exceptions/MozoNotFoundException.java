@@ -1,6 +1,8 @@
 package org.repositorio.exceptions;
 
-public class MozoNotFoundException extends RuntimeException {
+import java.rmi.RemoteException;
+
+public class MozoNotFoundException extends RemoteException {
 
 	/**
 	 * 

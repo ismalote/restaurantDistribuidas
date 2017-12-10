@@ -35,7 +35,7 @@ public interface IAppRemote extends Remote {
 
 	void abrirMesa(AbrirMesaDTO dto) throws RuntimeException, RemoteException;
 
-	List<MesaDTO> mesasLibres(Integer numeroSector) throws RemoteException;
+	List<MesaDTO> mesasLibres() throws RemoteException;
 
 	void AbrirMesaNueva(List<Integer> nrosMesas) throws RemoteException;
 

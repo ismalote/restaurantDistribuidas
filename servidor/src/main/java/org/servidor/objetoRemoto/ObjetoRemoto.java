@@ -19,6 +19,9 @@ import org.repositorio.dtos.ObtenerPlatoDto;
 import org.repositorio.dtos.PlatoMenuDTO;
 import org.repositorio.dtos.ProductosAPedirDTO;
 import org.repositorio.dtos.ReservaDTO;
+import org.repositorio.exceptions.ComandaNotFoundException;
+import org.repositorio.exceptions.EstadoItemComandaInvalidoException;
+import org.repositorio.exceptions.MesaNotFoundException;
 import org.repositorio.interfaces.IAppRemote;
 import org.servidor.controlador.Controlador;
 
@@ -37,7 +40,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		return this.controlador.crearNuevacomanda(comanda);
 	}
 
-	public boolean agregarItemAComanda(AgregarItemComandaDTO item) throws RemoteException {
+	public boolean agregarItemAComanda(AgregarItemComandaDTO item) throws ComandaNotFoundException {
 		return this.controlador.agregarItemAComanda(item);
 	}
 
@@ -57,9 +60,8 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		Controlador.getInstancia().AbrirMesa(dto);
 	}
 
-	public List<MesaDTO> mesasLibres(Integer numeroSector) throws RemoteException {
-
-		return Controlador.getInstancia().mesasLibres(numeroSector);
+	public List<MesaDTO> mesasLibres() throws MesaNotFoundException {
+		return Controlador.getInstancia().mesasLibres();
 	}
 
 	public void AbrirMesaNueva(List<Integer> nrosMesas) throws RemoteException {
@@ -71,11 +73,11 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		return Controlador.getInstancia().listarPedidos(idComanda);
 	}
 
-	public void cambiarItemCRECLAMADO(int idItemComanda) {
+	public void cambiarItemCRECLAMADO(int idItemComanda) throws EstadoItemComandaInvalidoException {
 		Controlador.getInstancia().cambiarItemCRECLAMADO(idItemComanda);
 	}
 
-	public void cambiarItemCLISTO(int idItemComanda) {
+	public void cambiarItemCLISTO(int idItemComanda) throws EstadoItemComandaInvalidoException {
 		Controlador.getInstancia().cambiarItemCLISTO(idItemComanda);
 
 	}
@@ -84,9 +86,10 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		Controlador.getInstancia().cambiarItemCProduccion(idItemComanda);
 
 	}
- //Se cambio por otro sin local
+
+	// Se cambio por otro sin local
 	public List<ItemComandaDTO> PedidoXSector(Integer idArea, Integer idLocal) {
-//se cambio el nombre en el controlador, era la de la super query
+		// se cambio el nombre en el controlador, era la de la super query
 		// Controlador.getInstancia().obtenerPlatosAProducir(idArea, idLocal);
 		return null;
 	}
@@ -114,27 +117,28 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 	@Override
 	public void finalizarPlato(Integer idItemComanda) throws RemoteException {
 		Controlador.getInstancia().finalizarPlato(idItemComanda);
-		
+
 	}
 
 	@Override
 	public void aprobarCompra(Integer idCompra) throws RemoteException {
 		Controlador.getInstancia().aprobarCompra(idCompra);
-		
+
 	}
 
 	@Override
 	public void rechazarCompra(Integer idCompra) throws RemoteException {
 		Controlador.getInstancia().rechazarCompra(idCompra);
-		
+
 	}
-	
-	public boolean cerrarCaja( Integer idLocal, Float monto) throws RemoteException {
+
+	public boolean cerrarCaja(Integer idLocal, Float monto) throws RemoteException {
 		return Controlador.getInstancia().cerrarCaja(idLocal, monto);
 	}
+
 	public ObtenerPlatoDto obtenerPlatoporId(int idPlato) throws RemoteException {
 		return Controlador.getInstancia().obtenerPlatoporId(idPlato);
-		
+
 	}
 
 	@Override
@@ -147,7 +151,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		return Controlador.getInstancia().listarProdDePedido(idListadoCompras);
 	}
 
-	public void abrirCaja( Integer idLocal, Float monto) throws RemoteException{
+	public void abrirCaja(Integer idLocal, Float monto) throws RemoteException {
 		Controlador.getInstancia().abrirCaja(idLocal, monto);
 	}
 
@@ -162,11 +166,10 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 	}
 
 	@Override
-	public void crearPlato(Integer area, String receta,
-			List<Integer> ingredientes, String nombre, Float precio,
+	public void crearPlato(Integer area, String receta, List<Integer> ingredientes, String nombre, Float precio,
 			Float comision) throws RemoteException {
 		Controlador.getInstancia().crearPlato(area, receta, ingredientes, nombre, precio, comision);
-		
+
 	}
 
 	@Override

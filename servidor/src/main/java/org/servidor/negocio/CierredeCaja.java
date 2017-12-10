@@ -2,7 +2,7 @@ package org.servidor.negocio;
 
 import java.util.Date;
 
-import org.repositorio.exceptions.CierreNotFoundException;
+import org.repositorio.exceptions.CajaYaCerradaException;
 import org.servidor.dao.CierreCajaDAO;
 
 public class CierredeCaja {
@@ -60,10 +60,9 @@ public class CierredeCaja {
 		this.caja = caja;
 	}
 
-	public boolean cerrar() {
-		// TODO Auto-generated method stub
+	public boolean cerrar() throws CajaYaCerradaException {
 		if (this.estado) {
-			throw new CierreNotFoundException(" cerrarCaja() fail, because status's caja close today ");
+			throw new CajaYaCerradaException(" cerrarCaja() fail, because status's caja close today ");
 		}
 
 		this.estado = true;

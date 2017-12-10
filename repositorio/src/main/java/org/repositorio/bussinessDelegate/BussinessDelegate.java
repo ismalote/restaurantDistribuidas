@@ -67,13 +67,8 @@ public class BussinessDelegate {
 
 	}
 
-	public boolean agregarItemAComanda(AgregarItemComandaDTO item) throws BusinessException {
-		try {
-			return this.objetoRemoto.agregarItemAComanda(item);
-		} catch (RemoteException e) {
-			throw new BusinessException("Error de Acceso al servidor");
-		}
-
+	public boolean agregarItemAComanda(AgregarItemComandaDTO item) throws RemoteException {
+		return this.objetoRemoto.agregarItemAComanda(item);
 	}
 
 	public AgregarItemsComandaDTO agregarItemsAComanda(AgregarItemsComandaDTO item) throws BusinessException {
@@ -113,13 +108,8 @@ public class BussinessDelegate {
 		}
 	}
 
-	public List<MesaDTO> listarMesasLibres(Integer sector) throws BusinessException {
-		try {
-			return objetoRemoto.mesasLibres(sector);
-		} catch (RemoteException e) {
-			throw new BusinessException("Error de Acceso al servidor");
-		}
-
+	public List<MesaDTO> listarMesasLibres() throws RemoteException {
+		return objetoRemoto.mesasLibres();
 	}
 
 	public void AbrirMesa(AbrirMesaDTO dto) throws BusinessException {
@@ -131,9 +121,9 @@ public class BussinessDelegate {
 
 	}
 
-	public List<MesaDTO> mesasLibres(Integer numeroSector) throws BusinessException {
+	public List<MesaDTO> mesasLibres() throws BusinessException {
 		try {
-			return objetoRemoto.mesasLibres(numeroSector);
+			return objetoRemoto.mesasLibres();
 		} catch (RemoteException e) {
 			throw new BusinessException("Error de Acceso al servidor");
 		}
@@ -286,9 +276,9 @@ public class BussinessDelegate {
 		}
 		return null;
 	}
-	
-	public void crearPlato(Integer area, String receta,List<Integer> ingredientes,String nombre, 
-			Float precio, Float comision) throws BusinessException {
+
+	public void crearPlato(Integer area, String receta, List<Integer> ingredientes, String nombre, Float precio,
+			Float comision) throws BusinessException {
 		try {
 			objetoRemoto.crearPlato(area, receta, ingredientes, nombre, precio, comision);
 		} catch (RemoteException e) {
@@ -296,7 +286,7 @@ public class BussinessDelegate {
 		}
 
 	}
-	
+
 	public List<ItemComandaDTO> obtenerPlatosAProducir(Integer idArea) {
 		try {
 			return this.objetoRemoto.obtenerPlatosAProducir(idArea);
@@ -305,6 +295,5 @@ public class BussinessDelegate {
 		}
 		return null;
 	}
-	
-	
+
 }

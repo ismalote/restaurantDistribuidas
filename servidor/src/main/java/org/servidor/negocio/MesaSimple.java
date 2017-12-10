@@ -6,6 +6,7 @@ import org.repositorio.dtos.MesaDTO;
 import org.repositorio.dtos.MesaSimpleDTO;
 import org.servidor.Enum.EstadoMesa;
 import org.servidor.entities.MesaEntity;
+import org.servidor.entities.MesaSimpleEntity;
 
 public class MesaSimple extends Mesa {
 
@@ -26,6 +27,7 @@ public class MesaSimple extends Mesa {
 
 	public MesaSimple(MesaEntity entity) {
 		super(entity);
+		this.numeroMesa = ((MesaSimpleEntity) entity).getNumeroMesa();
 	}
 
 	@Override

@@ -28,20 +28,6 @@ public class MesaDAO {
 		return instancia;
 	}
 
-	public MesaSimple obtenerMesaSimplePorNumero(int numeroMesa) {
-
-		MesaSimple resultado = null;
-
-		Session s = HibernateUtil.getSessionFactory().openSession();
-		s.beginTransaction();
-		MesaEntity entity = (MesaEntity) s.createQuery("From MesaSimpleEntity m where idMesa=?")
-				.setInteger(0, numeroMesa).uniqueResult();
-		resultado = this.toNegocio(entity);
-		s.getTransaction().commit();
-		s.close();
-		return resultado;
-	}
-
 	public Mesa obtenerMesaPorNumero(int numeroMesa) {
 
 		Mesa resultado = null;
@@ -57,25 +43,24 @@ public class MesaDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Mesa> obtenerMesasPorSector(int sector) {
+	public List<Mesa> obtenerMesasLibres() {
 		List<Mesa> mesas = new ArrayList<Mesa>();
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		List<MesaEntity> list = (List<MesaEntity>) session.createQuery("From MesaEntity where sector = ?")
-				.setInteger(0, sector).list();
+		List<MesaEntity> list = (List<MesaEntity>) session.createQuery("From MesaEntity where estadoMesa = 'LIBRE'")
+				.list();
 		for (MesaEntity mesaEntity : list) {
 			mesas.add(toNegocio(mesaEntity));
 		}
 		return mesas;
 	}
 
-	public MesaSimple toNegocio(MesaEntity entity) {
-		MesaSimple aux = new MesaSimple();
-		aux.setIdMesa(entity.getIdMesa());
-		aux.setEstadoMesa(entity.getEstadoMesa());
-		aux.setCantidadSillas(entity.getCantidadSillas());
-		aux.setHoraOcupacion(entity.getHoraOcupacion());
-		aux.setHoraLiberacion(entity.getHoraLiberacion());
-
+	public Mesa toNegocio(MesaEntity entity) {
+		Mesa aux = null;
+		if (entity instanceof MesaSimpleEntity) {
+			aux = new MesaSimple(entity);
+		} else {
+			aux = new MesaCompuesta(entity);
+		}
 		return aux;
 	}
 
@@ -120,8 +105,8 @@ public class MesaDAO {
 			return entity;
 		}
 	}
-	
-	public  Mesa toNegocio2 (MesaEntity m){
+
+	public Mesa toNegocio2(MesaEntity m) {
 		if (m instanceof MesaCompuestaEntity) {
 			List<MesaEntity> mesasEntity = ((MesaCompuestaEntity) m).getMesas();
 			List<Mesa> mesas = new ArrayList<Mesa>();
@@ -143,13 +128,11 @@ public class MesaDAO {
 			negocio.setHoraLiberacion(m.getHoraLiberacion());
 			negocio.setHoraOcupacion(m.getHoraOcupacion());
 			negocio.setIdMesa(m.getIdMesa());
-			
+
 			negocio.setNumeroMesa(((MesaSimpleEntity) m).getNumeroMesa());
 			return negocio;
-		}		
-		
-		
-	}
+		}
 
+	}
 
 }

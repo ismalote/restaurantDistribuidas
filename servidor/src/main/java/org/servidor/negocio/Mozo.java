@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.repositorio.dtos.ComandaDTO;
 import org.repositorio.dtos.MozoDTO;
+import org.repositorio.exceptions.MesaNotFoundException;
+import org.repositorio.exceptions.MozoNotFoundException;
 import org.servidor.entities.MozoEntity;
 
 public class Mozo {
@@ -44,7 +46,11 @@ public class Mozo {
 		this.antiguedad = dto.getAntiguedad();
 		List<Comanda> comandasAbiertas = new ArrayList<>();
 		for (ComandaDTO c : dto.getComandasAbiertas()) {
-			comandasAbiertas.add(new Comanda(c));
+			try {
+				comandasAbiertas.add(new Comanda(c));
+			} catch (MozoNotFoundException | MesaNotFoundException e) {
+				e.printStackTrace();
+			}
 
 		}
 	}

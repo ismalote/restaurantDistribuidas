@@ -76,7 +76,7 @@
 				"idPlato": plato.idPlato	
 			}
 			
-			var url = "<c:url value='/plato?action=agregarPlato'/>";
+			var url = "<c:url value='/comandas?action=agregarPlato'/>";
 			$.ajax({
 				method: 'post',
 				url : url,

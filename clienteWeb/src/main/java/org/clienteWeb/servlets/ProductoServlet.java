@@ -13,6 +13,7 @@ import org.repositorio.bussinessDelegate.BussinessDelegate;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.ProductosAPedirDTO;
 import org.repositorio.exceptions.BusinessException;
+import org.repositorio.exceptions.ComandaNotFoundException;
 
 import com.google.gson.Gson;
 
@@ -50,8 +51,8 @@ public class ProductoServlet extends HttpServlet {
 		 AgregarItemComandaDTO item = new AgregarItemComandaDTO(idPlato, idComanda);
 		 try {
 			BussinessDelegate.getInstancia().agregarItemAComanda(item);
-		} catch (BusinessException e) {
-			e.printStackTrace();
+		} catch (ComandaNotFoundException e) {
+			resp.getWriter().println("<h1>" + e.getMessage() + "</h1>");
 		}
 
 		req.setAttribute("idMozo", idMozo);

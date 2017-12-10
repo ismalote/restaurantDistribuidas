@@ -15,6 +15,8 @@ import org.repositorio.dtos.ObtenerPlatoDto;
 import org.repositorio.dtos.PlatoMenuDTO;
 import org.repositorio.dtos.ProductosAPedirDTO;
 import org.repositorio.exceptions.BusinessException;
+import org.repositorio.exceptions.ComandaNotFoundException;
+import org.repositorio.exceptions.MesaNotFoundException;
 
 public class WebController {
 
@@ -50,7 +52,7 @@ public class WebController {
 		
 	}
 
-	public boolean agregarItemAComanda(AgregarItemComandaDTO item) throws BusinessException {
+	public boolean agregarItemAComanda(AgregarItemComandaDTO item) throws RemoteException {
 		return BussinessDelegate.getInstancia().agregarItemAComanda(item);
 		
 	}
@@ -79,8 +81,8 @@ public class WebController {
 			BussinessDelegate.getInstancia().AbrirMesa(dto);
 	}
 
-	public List<MesaDTO> listarMesasLibres(Integer sector) throws BusinessException {
-		return BussinessDelegate.getInstancia().listarMesasLibres(sector);
+	public List<MesaDTO> listarMesasLibres() throws RemoteException {
+		return BussinessDelegate.getInstancia().listarMesasLibres();
 		
 	}
 
@@ -89,8 +91,8 @@ public class WebController {
 
 	}
 
-	public List<MesaDTO> mesasLibres(Integer numeroSector) throws BusinessException {
-		return BussinessDelegate.getInstancia().mesasLibres(numeroSector);
+	public List<MesaDTO> mesasLibres() throws BusinessException {
+		return BussinessDelegate.getInstancia().mesasLibres();
 	}
 
 	

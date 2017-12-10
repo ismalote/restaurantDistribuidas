@@ -1,6 +1,8 @@
 package org.repositorio.exceptions;
 
-public class LocalNotFoundException extends RuntimeException {
+import java.rmi.RemoteException;
+
+public class LocalNotFoundException extends RemoteException {
 	
 	/**
 	 * 

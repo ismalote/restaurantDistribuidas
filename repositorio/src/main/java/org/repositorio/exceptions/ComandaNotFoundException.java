@@ -1,6 +1,8 @@
 package org.repositorio.exceptions;
 
-public class ComandaNotFoundException extends RuntimeException {
+import java.rmi.RemoteException;
+
+public class ComandaNotFoundException extends RemoteException {
 
 	/**
 	 * 

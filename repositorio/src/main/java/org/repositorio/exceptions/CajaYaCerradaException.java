@@ -1,14 +1,16 @@
 package org.repositorio.exceptions;
 
-public class CierreNotFoundException extends RuntimeException {
+import java.rmi.RemoteException;
+
+public class CajaYaCerradaException extends RemoteException {
 
 	private static final long serialVersionUID = -6759521109939138032L;
 
-	public CierreNotFoundException(String message) {
+	public CajaYaCerradaException(String message) {
 		super("Comanda not found in " + message);
 	}
 
-	public CierreNotFoundException() {
+	public CajaYaCerradaException() {
 		super("Caja not found");
 	}
 }

@@ -1,6 +1,8 @@
 package org.repositorio.exceptions;
 
-public class CajaNotFoundException extends RuntimeException {
+import java.rmi.RemoteException;
+
+public class CajaNotFoundException extends RemoteException {
 
 	private static final long serialVersionUID = -6759521109939138032L;
 
