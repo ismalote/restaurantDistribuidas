@@ -27,8 +27,12 @@
 <%
 	String action = request.getParameter("action");
 	if(action != null && "abrirCaja".equals(action)) {
-		Float monto = Float.valueOf(request.getParameter("monto"));
-		BussinessDelegate.getInstancia().abrirCaja(null, monto);
+		Float montoAbrir = Float.valueOf(request.getParameter("monto"));
+		BussinessDelegate.getInstancia().abrirCaja(montoAbrir);
+	} else if(action != null && "cerrarCaja".equals(action)){
+		Float montoCierre = Float.valueOf(request.getParameter("montoCierre"));
+		BussinessDelegate.getInstancia().cerrarCaja(null, montoCierre);
+		
 	}
 %>
 
@@ -44,7 +48,7 @@
               <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Caja</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="/clienteWeb/jsp/abrir caja.jsp">Abrir Caja</a>
-                <a class="dropdown-item" href="#">Cerrar Caja</a>
+                <a class="dropdown-item" href="/clienteWeb/jsp/cerrar caja.jsp">Cerrar Caja</a>
               </div>
             </li>
             <li class="nav-item">

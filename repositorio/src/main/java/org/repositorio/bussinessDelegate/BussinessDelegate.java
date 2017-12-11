@@ -255,8 +255,8 @@ public class BussinessDelegate {
 		return false;
 	}
 
-	public void abrirCaja(Integer idLocal, Float monto) throws RemoteException {
-		objetoRemoto.abrirCaja(idLocal, monto);
+	public void abrirCaja(Float monto) throws RemoteException {
+		objetoRemoto.abrirCaja(monto);
 	}
 
 	public MozoDTO getDatosMozo(int idMozo) {

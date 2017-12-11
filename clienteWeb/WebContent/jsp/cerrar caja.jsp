@@ -12,11 +12,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <form class="" method="post" action="https://formspree.io/">
+          <form class="" method="post" action="/clienteWeb/jsp/inicioAdministrador.jsp?action=cerrarCaja">
             <div class="form-group"> <label>CERRAR CAJA</label>
-              <input type="number" name="id Local" class="form-control" placeholder="id Sucursal"> </div>
-            <div class="form-group">
-              <input type="number" name="Monto apertura" class="form-control" placeholder="Monto cierre"> </div>
+              <input type="number" name="montoCierre" class="form-control" placeholder="Monto cierre"> </div>
             <button type="submit" class="btn btn-primary">ACEPTAR</button>
           </form>
         </div>

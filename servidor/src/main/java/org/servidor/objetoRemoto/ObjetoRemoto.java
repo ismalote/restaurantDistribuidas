@@ -151,8 +151,8 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		return Controlador.getInstancia().listarProdDePedido(idListadoCompras);
 	}
 
-	public void abrirCaja(Integer idLocal, Float monto) throws RemoteException {
-		Controlador.getInstancia().abrirCaja(idLocal, monto);
+	public void abrirCaja(Float monto) throws RemoteException {
+		Controlador.getInstancia().abrirCaja(monto);
 	}
 
 	@Override

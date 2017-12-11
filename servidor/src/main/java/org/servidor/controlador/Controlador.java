@@ -339,11 +339,9 @@ public class Controlador {
 		return aux.cerrar();
 	}
 
-	public void abrirCaja(Integer idLocal, Float monto) throws LocalNotFoundException, CajaNotFoundException {
+	public void abrirCaja(Float monto) throws LocalNotFoundException, CajaNotFoundException {
 
-		Local local = this.getLocal(idLocal, "calcularComisiones(int idLocal)");
-
-		Caja caja = this.getCaja(local.getCaja().getIdCaja(), "abrirCaja(int idCaja)");
+		Caja caja = this.getCaja(1, "abrirCaja(int idCaja)");
 		caja.setMontoIncial(monto);
 		caja.save();
 

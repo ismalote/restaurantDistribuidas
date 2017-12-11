@@ -1,7 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- Llama A: verPedidosParaRealizar.html = public List<ItemComandaDTO> obtenerPlatosAProducir(Integer idArea,Integer idLocal ) -->
-<!-- Llama A: listarProductosASolicitar.html = public List<ProductosAPedirDTO> listarProductosParaPedir() -->
-
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@ page import="org.repositorio.dtos.ItemComandaDTO" %>
+<%@ page import="java.util.List" %>
+<%@ page import="org.repositorio.bussinessDelegate.BussinessDelegate" %>
 <!DOCTYPE html>
 <html>
 
@@ -16,26 +17,23 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <ul class="nav nav-pills">
-            <li class="nav-item">
-              <a href="#" class="active nav-link"> <i class="fa fa-birthday-cake"></i>&nbsp;BARRA</a>
-            </li>
-            <li class="nav-item text-center">
-              <div class="form-group">
-              				<a class="nav-link" href="<c:url value='/areaproduccion?action=barra'/>">Ver Pedidos</a>
-						</div>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">Solicitar productos</a>
-            </li>
-           </li><li class="nav-item">
-              <a href="<c:url value='/cerrar'/>" class="nav-link">Cerrar Sesion</a>
-            </li>
-          </ul>
+          <form class="" method="post" action="<c:url value='/comandas?action=listar&idMozo=${idMozo}'/>">
+            <div class="form-group"> <label>Factura</label>
+            	<p>
+            	Numero: ${comanda}
+            	 </p>
+            	<p>
+            	Platos:
+            	 </p>
+         
+         			<c:forEach items="${platos}" var="platoA">
+					    <option value="${platoA.nombrePlato}">${platoA.nombrePlato}</option>
+					</c:forEach>
+            	
+            </div>
+            <button type="submit" href="<c:url value='/comandas?action=listar&idMozo=${idMozo}'/>" class="btn btn-primary">Volver</button>
+          </form>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12"> </div>
       </div>
     </div>
   </div>
