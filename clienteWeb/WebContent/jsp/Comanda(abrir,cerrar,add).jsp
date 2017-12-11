@@ -36,6 +36,8 @@
 							<th>Id</th>
 							<th>Mesa</th>
 							<th>Cantidad de Comensales</th>
+							<th>Agregar</th>
+							<th>Cerrar</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -80,41 +82,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="py-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<form class="" method="get" action="<c:url value='/plato'/>">
-						<div class="form-group">
-							<label>Agregar Items a Comanda</label> 
-							<input type="text" name="num_comanda" class="form-control" placeholder="Numero de Comanda">
-							<input type="hidden" name="idMozo" value="${idMozo}">
-						</div>
-						<button type="submit" class="btn btn-primary">Aceptar</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="py-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<form class="" method="get" action="<c:url value='/comandas'/>">
-						<div class="form-group">
-							<label>Cerrar Comanda</label> <input type="text"
-								name="idComanda" class="form-control"
-								placeholder="Numero de comanda">
-								<input type="hidden" name="idMozo" value="${idMozo}">
-								<input type="hidden" name="action" value="cerrar">
-						</div>
-
-						<button type="submit" class="btn btn-primary">Aceptar</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
 	
 	<script type="text/javascript">
 		var table = $("#comandasTable").DataTable({
@@ -126,6 +93,16 @@
 		    			  { data: "idComanda" },
 		              { data: "mesa.idMesa" },
 		              { data: "cantidadComensales" },
+		              {
+		                  "targets": -1,
+		                  "data": null,
+		                  "defaultContent": "<button id='add' onclick='addPlato(this)'>Agregar Plato</button>"
+		              },
+		              {
+		                  "targets": -1,
+		                  "data": null,
+		                  "defaultContent": "<button id='close' onclick='closePlato(this)'>Cerrar</button>"
+		              }
 		          	]
 		});
 		$("#addMesa").click(function () {
@@ -136,9 +113,25 @@
 				text.val($("#mesas option:selected").text());
 			}
 		});
+		
+		function addPlato(row){
+			debugger;
+			var data = table.row(row.parentNode.parentNode).data();
+			
+	        window.location.href = "<c:url value='/plato?idMozo=${idMozo}&num_comanda=" + data.idComanda + "'/>";
+		}
+		
+		function closePlato(row){
+			debugger;
+			var data = table.row(row.parentNode.parentNode).data();
+			window.location.href = "<c:url value='/comandas?idMozo=${idMozo}&action=cerrar&idComanda=" + data.idComanda + "'/>";
+		}
+		
 		if("${error}") {
 			alert("${error}");
 		}
+		
+		
 		// Crear una ul con las mesas disponibles.
 		// Capturar el click de crear comanda y mandar un ajax abriendo la mesa, 
 		// si la abre, submitear el form, sino mandar error de mesa.

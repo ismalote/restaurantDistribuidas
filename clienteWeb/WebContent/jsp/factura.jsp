@@ -17,7 +17,6 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <form class="" method="post" action="<c:url value='/comandas?action=listar&idMozo=${idMozo}'/>">
             <div class="form-group"> <label>Factura</label>
             	<p>
             	Numero: ${comanda}
@@ -25,14 +24,13 @@
             	<p>
             	Platos:
             	 </p>
-         
+         		<ul>
          			<c:forEach items="${platos}" var="platoA">
-					    <option value="${platoA.nombrePlato}">${platoA.nombrePlato}</option>
+					    <li>${platoA.nombrePlato} _ ${platoA.precio}</li>
 					</c:forEach>
-            	
+         		</ul>
             </div>
-            <button type="submit" href="<c:url value='/comandas?action=listar&idMozo=${idMozo}'/>" class="btn btn-primary">Volver</button>
-          </form>
+            <a href="<c:url value='/comandas?idMozo=${idMozo}'/>" class="btn btn-primary">Volver</a>
         </div>
       </div>
     </div>

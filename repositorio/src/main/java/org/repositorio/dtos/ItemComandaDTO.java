@@ -16,6 +16,8 @@ public class ItemComandaDTO implements Serializable {
 	private String nombrePlato;
 
 	private String estado;
+	
+	private float precio;
 
 	public ItemComandaDTO(Integer idPlato, Integer idItemComanda, String estado) {
 		super();
@@ -65,5 +67,15 @@ public class ItemComandaDTO implements Serializable {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+
+	public float getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(float precio) {
+		this.precio = precio;
+	}
+	
+	
 
 }

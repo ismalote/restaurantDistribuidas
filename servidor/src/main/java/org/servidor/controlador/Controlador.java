@@ -123,8 +123,10 @@ public class Controlador {
 		float precio = comanda.montoTotal();
 		aux = new Factura("", precio, comanda);
 		aux.save();
-		return comanda.cerrarComanda();
-
+		if(comanda.cerrarComanda()) {
+			comanda.getMesa().cerrarMesa();
+		}
+		return false;
 	}
 
 	private Comanda getComanda(int idComanda, String method) throws ComandaNotFoundException {

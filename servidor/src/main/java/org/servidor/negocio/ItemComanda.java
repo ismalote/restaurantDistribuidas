@@ -71,6 +71,7 @@ public class ItemComanda {
 		resultado.setIdItemComanda(item.getIdItemComanda());
 		resultado.setNombrePlato(item.getPlato().getNombrePlato());
 		resultado.setEstado(item.getEstado().name()); // TODO
+		resultado.setPrecio(item.getPlato().getPrecio());
 		return resultado;
 	}
 
