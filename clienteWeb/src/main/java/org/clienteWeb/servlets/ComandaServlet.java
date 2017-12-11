@@ -18,6 +18,7 @@ import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.ComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
+import org.repositorio.dtos.ItemComandaDTO;
 import org.repositorio.dtos.MesaDTO;
 import org.repositorio.exceptions.BusinessException;
 import org.repositorio.exceptions.ComandaNotFoundException;
@@ -44,9 +45,15 @@ public class ComandaServlet extends HttpServlet {
 			resp.getWriter().println(new Gson().toJson(comandasMozo));
 		} else if ("cerrar".equals(action)) {
 			String idComanda = req.getParameter("idComanda");
+			
 
 			try {
 				BussinessDelegate.getInstancia().cerrarcomanda(Integer.valueOf(idComanda));
+				req.setAttribute("comanda", idComanda);
+				req.setAttribute("idMozo", idMozo);
+				List<ItemComandaDTO> platos = BussinessDelegate.getInstancia().listarItemComanda(Integer.valueOf(idComanda));
+				req.setAttribute("platos", platos);
+				req.getRequestDispatcher("jsp/factura.jsp").forward(req, resp);
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 			} catch (BusinessException e) {

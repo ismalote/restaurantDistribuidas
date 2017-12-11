@@ -63,7 +63,7 @@ public interface IAppRemote extends Remote {
 
 	boolean cerrarCaja(Integer idLocal, Float monto) throws RemoteException;
 
-	void abrirCaja(Integer idLocal, Float monto) throws RemoteException;
+	void abrirCaja(Float monto) throws RemoteException;
 
 	ObtenerPlatoDto obtenerPlatoporId(int idPlato) throws RemoteException;
 
