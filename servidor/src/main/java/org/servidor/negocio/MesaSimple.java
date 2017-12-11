@@ -33,7 +33,7 @@ public class MesaSimple extends Mesa {
 	@Override
 	public void cerrarMesa() {
 		this.estadoMesa = EstadoMesa.LIBRE;
-		this.save();
+		this.update();
 	}
 
 	@Override

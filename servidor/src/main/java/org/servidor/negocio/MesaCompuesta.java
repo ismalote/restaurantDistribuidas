@@ -6,6 +6,8 @@ import java.util.List;
 import org.repositorio.dtos.MesaCompuestaDTO;
 import org.repositorio.dtos.MesaDTO;
 import org.servidor.Enum.EstadoMesa;
+import org.servidor.dao.MesaDAO;
+import org.servidor.entities.MesaCompuestaEntity;
 import org.servidor.entities.MesaEntity;
 
 public class MesaCompuesta extends Mesa {
@@ -40,7 +42,7 @@ public class MesaCompuesta extends Mesa {
 		for (Mesa mesa : this.mesas) {
 			mesa.setEstadoMesa(EstadoMesa.LIBRE);
 		}
-		super.save(); // TODO Check si cascade funca
+		super.update(); // TODO Check si cascade funca
 	}
 
 	@Override

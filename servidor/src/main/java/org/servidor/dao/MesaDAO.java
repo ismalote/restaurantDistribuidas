@@ -35,7 +35,7 @@ public class MesaDAO {
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		MesaEntity entity = (MesaEntity) s.createQuery("From MesaEntity m where idMesa=?").setInteger(0, numeroMesa)
 				.uniqueResult();
-		resultado = this.toNegocio(entity);
+		resultado = this.toNegocio2(entity);
 		s.close();
 		return resultado;
 	}
@@ -43,7 +43,7 @@ public class MesaDAO {
 	public Mesa getMesa(int id) {
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		MesaEntity entity = s.get(MesaEntity.class, id);
-		Mesa resultado = this.toNegocio(entity);
+		Mesa resultado = this.toNegocio2(entity);
 		s.close();
 		return resultado;
 	}
@@ -55,7 +55,7 @@ public class MesaDAO {
 		List<MesaEntity> list = (List<MesaEntity>) session.createQuery("From MesaEntity where estadoMesa = 'LIBRE'")
 				.list();
 		for (MesaEntity mesaEntity : list) {
-			mesas.add(toNegocio(mesaEntity));
+			mesas.add(toNegocio2(mesaEntity));
 		}
 		return mesas;
 	}
@@ -70,19 +70,20 @@ public class MesaDAO {
 		return aux;
 	}
 
-	public boolean save(Mesa mesa) {
+	public int save(Mesa mesa) {
 		MesaEntity entity = this.toEntity(mesa);
+		int idGenerated = 0;
 		try {
 			Session s = HibernateUtil.getSessionFactory().openSession();
 			s.beginTransaction();
-			s.saveOrUpdate(entity);
+			idGenerated = (int) s.save(entity);
 			s.flush();
 			s.getTransaction().commit();
 			s.close();
 		} catch (Exception e) {
 			throw new SaveFailedException(e);
 		}
-		return true;
+		return idGenerated;
 	}
 
 	public MesaEntity toEntity(Mesa m) {
@@ -117,7 +118,7 @@ public class MesaDAO {
 			List<MesaEntity> mesasEntity = ((MesaCompuestaEntity) m).getMesas();
 			List<Mesa> mesas = new ArrayList<Mesa>();
 			for (MesaEntity mesaActual : mesasEntity) {
-				mesas.add(this.toNegocio(mesaActual));
+				mesas.add(this.toNegocio2(mesaActual));
 			}
 			MesaCompuesta negocio = new MesaCompuesta();
 			negocio.setCantidadSillas(m.getCantidadSillas());
@@ -139,6 +140,21 @@ public class MesaDAO {
 			return negocio;
 		}
 
+	}
+
+	public boolean update(Mesa mesa) {
+		MesaEntity entity = this.toEntity(mesa);
+		try {
+			Session s = HibernateUtil.getSessionFactory().openSession();
+			s.beginTransaction();
+			s.saveOrUpdate(entity);
+			s.flush();
+			s.getTransaction().commit();
+			s.close();
+		} catch (Exception e) {
+			throw new SaveFailedException(e);
+		}
+		return true;
 	}
 
 }

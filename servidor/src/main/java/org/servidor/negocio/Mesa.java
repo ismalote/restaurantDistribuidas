@@ -102,8 +102,12 @@ public abstract class Mesa {
 		this.estadoMesa = estadoMesa;
 	}
 
-	public boolean save() {
+	public int save() {
 		return MesaDAO.getInstancia().save(this);
+	}
+	
+	public boolean update() {
+		return MesaDAO.getInstancia().update(this);
 	}
 	
 	public boolean entranComensales(int cantComensales) {

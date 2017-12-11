@@ -62,7 +62,7 @@ public class Comanda {
 		this.idComanda = entity.getIdComanda();
 		this.cantidadComensales = entity.getCantidadComensales();
 		this.mozo = new Mozo(entity.getMozo());
-		this.mesa = MesaDAO.getInstancia().toNegocio(entity.getMesa());
+		this.mesa = MesaDAO.getInstancia().toNegocio2(entity.getMesa());
 		this.Local = LocalDAO.getInstance().toNegocio(entity.getLocalRestaurante());
 		// this.fact = new Factura(entity.getFact());
 	}

@@ -149,7 +149,7 @@ public class Controlador {
 				if (!m.entranComensales(dto.getCantComensales())) {
 					throw new NoAlcanzaMesaException();
 				}
-				m.save();
+				m.update();
 				return m.toDTO();
 			} else {
 				throw new MesaOcupadaException();
@@ -173,7 +173,9 @@ public class Controlador {
 			if (!mc.entranComensales(dto.getCantComensales())) {
 				throw new NoAlcanzaMesaException();
 			}
-			mc.save();
+			int id = mc.save();
+			mc.setIdMesa(id);
+			
 			return mc.toDTO();
 		}
 	}
