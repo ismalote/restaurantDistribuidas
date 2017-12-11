@@ -26,6 +26,8 @@ import org.repositorio.exceptions.FacturaException;
 import org.repositorio.exceptions.ItemComandaFailException;
 import org.repositorio.exceptions.LocalNotFoundException;
 import org.repositorio.exceptions.MesaNotFoundException;
+import org.repositorio.exceptions.MesaOcupadaException;
+import org.repositorio.exceptions.NoAlcanzaMesaException;
 import org.servidor.Enum.EstadoItemComanda;
 import org.servidor.Enum.EstadoMesa;
 import org.servidor.Enum.EstadoPedidoCompra;
@@ -77,10 +79,6 @@ public class Controlador {
 			instancia = new Controlador();
 		}
 		return instancia;
-	}
-
-	public static void setInstancia(Controlador instancia) {
-		Controlador.instancia = instancia;
 	}
 
 	public ObtenerPlatoDto obtenerPlatoporId(int idPlato) {
@@ -141,28 +139,43 @@ public class Controlador {
 		return FacturaDAO.getInstancia().getFactura(idComanda);
 	}
 
-	public void AbrirMesa(AbrirMesaDTO dto) {
+	public MesaDTO AbrirMesa(AbrirMesaDTO dto) throws NoAlcanzaMesaException, MesaOcupadaException {
 
-		List<Integer> nrosMesas = new ArrayList<>();
-		nrosMesas.addAll(dto.getNumerodeMesa());
+		List<Integer> nrosMesas = dto.getNumerodeMesa();
 		if (nrosMesas.size() == 1) {
 			Mesa m = MesaDAO.getInstancia().obtenerMesaPorNumero(nrosMesas.get(0));
-			m.setEstadoMesa(EstadoMesa.OCUPADA);
-			m.save();
+			if (m.getEstadoMesa() == EstadoMesa.LIBRE) {
+				m.setEstadoMesa(EstadoMesa.OCUPADA);
+				if (!m.entranComensales(dto.getCantComensales())) {
+					throw new NoAlcanzaMesaException();
+				}
+				m.save();
+				return m.toDTO();
+			} else {
+				throw new MesaOcupadaException();
+			}
 		} else {
 			List<Mesa> m = new ArrayList<Mesa>();
 			for (Integer numero : nrosMesas) {
-				m.add(MesaDAO.getInstancia().obtenerMesaPorNumero(numero));
+				Mesa mesa = MesaDAO.getInstancia().obtenerMesaPorNumero(numero);
+				if (mesa.getEstadoMesa() == EstadoMesa.LIBRE) {
+					m.add(mesa);
+				} else {
+					throw new MesaOcupadaException();
+				}
 			}
 			MesaCompuesta mc = new MesaCompuesta();
 			mc.setMesas(m);
 			mc.setCantidadSillas(mc.getCantidadSillas());
 			mc.setEstadoMesa(EstadoMesa.OCUPADA);
-			mc.setHoraLiberacion(null);
+			mc.setHoraLiberacion(new Date());
 			mc.setHoraOcupacion(new Date());
+			if (!mc.entranComensales(dto.getCantComensales())) {
+				throw new NoAlcanzaMesaException();
+			}
 			mc.save();
+			return mc.toDTO();
 		}
-
 	}
 
 	public void cerrarMesa(int idMesa) throws MesaNotFoundException {

@@ -1,7 +1,11 @@
 package org.clienteWeb.servlets;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -10,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.repositorio.bussinessDelegate.BussinessDelegate;
+import org.repositorio.dtos.AbrirMesaDTO;
 import org.repositorio.dtos.AgregarItemComandaDTO;
 import org.repositorio.dtos.ComandaDTO;
 import org.repositorio.dtos.CrearComandaDTO;
@@ -61,8 +66,6 @@ public class ComandaServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String idMozo = req.getParameter("idMozo");
-		String numMesa = req.getParameter("num_mesa");
-		String cantComensales = req.getParameter("cant_comensales");
 
 		String action = req.getParameter("action");
 
@@ -77,19 +80,58 @@ public class ComandaServlet extends HttpServlet {
 			} catch (ComandaNotFoundException e) {
 				resp.getWriter().println("<h1>" + e.getMessage() + "</h1>");
 			}
-			
+
 			obtenerMesasLibres(req, resp);
 			req.setAttribute("idMozo", idMozo);
 			req.getRequestDispatcher(ComandaServlet.JSP).forward(req, resp);
 		} else {
-			CrearComandaDTO dto = new CrearComandaDTO(Integer.parseInt(idMozo), Integer.parseInt(numMesa),
-					Integer.parseInt(cantComensales), 0);
-			try {
-				BussinessDelegate.getInstancia().crearComanda(dto);
-			} catch (BusinessException e) {
-				e.printStackTrace();
+			String numMesa = req.getParameter("num_mesa");
+			String cantComensales = req.getParameter("cant_comensales");
+			String[] m = numMesa.split(";");
+			Set<Integer> nrosMesas = new HashSet<Integer>();
+			for (String string : m) {
+				if (string != null) {
+					string = string.trim();
+					if (!string.isEmpty()) {
+						try {
+							nrosMesas.add(Integer.parseInt(string));
+						} catch (NumberFormatException e) {
+						}
+					}
+				}
 			}
-			
+
+			ArrayList<Integer> mesas = new ArrayList<Integer>();
+			mesas.addAll(nrosMesas);
+			AbrirMesaDTO mesa = new AbrirMesaDTO();
+			mesa.setCantComensales(Integer.parseInt(cantComensales));
+			mesa.setNumerodeMesa(mesas);
+
+			String error = "";
+
+			MesaDTO abrirMesa = null;
+			try {
+				abrirMesa = BussinessDelegate.getInstancia().AbrirMesa(mesa);
+
+				if (abrirMesa != null) {
+					CrearComandaDTO dto = new CrearComandaDTO(Integer.parseInt(idMozo), abrirMesa.getIdMesa(),
+							Integer.parseInt(cantComensales), 0);
+					try {
+						BussinessDelegate.getInstancia().crearComanda(dto);
+					} catch (BusinessException e) {
+						error = e.getCause().getMessage();
+						req.setAttribute("error", error.replaceAll("\n\t", ""));
+					}
+				} else {
+					req.setAttribute("error", "Error al Abrir esa mesa");
+				}
+
+			} catch (BusinessException e1) {
+				e1.printStackTrace();
+				error = e1.getCause().getMessage();
+				req.setAttribute("error", error.replaceAll("\n\t", ""));
+			}
+
 			obtenerMesasLibres(req, resp);
 			req.setAttribute("idMozo", idMozo);
 			req.getRequestDispatcher(JSP).forward(req, resp);
@@ -101,8 +143,10 @@ public class ComandaServlet extends HttpServlet {
 		try {
 			List<MesaDTO> mesasLibres = BussinessDelegate.getInstancia().listarMesasLibres();
 			req.setAttribute("mesas", mesasLibres);
-		} catch (MesaNotFoundException e) {
-			resp.getWriter().println("<h1>" + e.getMessage() + "</h1>");
+		} catch (RemoteException e) {
+			if (e.getCause().getClass().equals(MesaNotFoundException.class)) {
+				req.setAttribute("mesas", new ArrayList<MesaDTO>());
+			}
 		}
 	}
 

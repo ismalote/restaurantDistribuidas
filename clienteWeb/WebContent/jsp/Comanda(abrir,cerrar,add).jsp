@@ -46,24 +46,28 @@
 				<h3>Disponibles</h3>
 			</div>
 			<div class="row">
-				<select name="mesas">
-					<c:forEach items="${mesas}" var="mesaActual">
-					    <option value="${mesaActual.idMesa}">${mesaActual.numeroMesa}</option>
-					</c:forEach>
-				</select>
+				<div class="col-md-4">
+					<select id="mesas" name="mesas">
+						<c:forEach items="${mesas}" var="mesaActual">
+						    <option value="${mesaActual.idMesa}">${mesaActual.numeroMesa}</option>
+						</c:forEach>
+					</select>
+				</div>
+				<div class="col-md-4">
+					<input id="addMesa" type="button" value="Agregar Mesa"/>
+				</div>
 			</div>
 			<div class="row">
 				<h2>Crear Mesa</h2>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<form class="" method="post"
-						action="<c:url value='/comandas?idMozo=${idMozo}'/>">
+					<form class="" method="post" action="<c:url value='/comandas?idMozo=${idMozo}'/>">
 						<div class="form-group">
 							<label>Crear Comanda</label>
 						</div>
 						<div class="form-group">
-							<input type="text" name="num_mesa" class="form-control"
+							<input id="num_mesa" type="text" name="num_mesa" class="form-control"
 								placeholder="Numero de Mesa">
 						</div>
 						<div class="form-group">
@@ -124,6 +128,17 @@
 		              { data: "cantidadComensales" },
 		          	]
 		});
+		$("#addMesa").click(function () {
+			text = $("#num_mesa");
+			if(text.val()){
+			    text.val(text.val() + ";" + $("#mesas option:selected").text());
+			} else {
+				text.val($("#mesas option:selected").text());
+			}
+		});
+		if("${error}") {
+			alert("${error}");
+		}
 		// Crear una ul con las mesas disponibles.
 		// Capturar el click de crear comanda y mandar un ajax abriendo la mesa, 
 		// si la abre, submitear el form, sino mandar error de mesa.

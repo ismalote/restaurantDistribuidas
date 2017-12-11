@@ -106,7 +106,7 @@ public class Comanda {
 
 	public Comanda(CrearComandaDTO comanda) {
 		this.mozo = MozoDAO.getInstancia().obtenerMozo(comanda.getIdMozo());
-		this.mesa = MesaDAO.getInstancia().obtenerMesaPorNumero(comanda.getNumeroMesa());
+		this.mesa = MesaDAO.getInstancia().getMesa(comanda.getNumeroMesa());
 		this.cantidadComensales = comanda.getCantidadComensales();
 		this.Local = LocalDAO.getInstance().findById(comanda.getIdLocal());
 		this.fecha = new Date();

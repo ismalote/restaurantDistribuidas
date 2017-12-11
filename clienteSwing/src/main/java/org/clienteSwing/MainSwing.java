@@ -24,9 +24,8 @@ public class MainSwing implements Serializable {
 //		ControladorCliente.INSTANCE.agregarItemAComanda(1, 0, 2);
 //		ControladorCliente.INSTANCE.confirmarPedido(1);
 		List<Integer> numeros = new ArrayList<>();
+		numeros.add(0);
 		numeros.add(1);
-		numeros.add(4);
-		numeros.add(6);
 		ControladorCliente.INSTANCE.abrirMesaNueva(numeros);
     	/*
         EventQueue.invokeLater(new Runnable() {

@@ -97,28 +97,16 @@ public class BussinessDelegate {
 		}
 	}
 
-	public void abrirMesaNueva(List<Integer> nrosMesas) throws BusinessException {
-		AbrirMesaDTO dto = new AbrirMesaDTO();
-
-		dto.setNumerodeMesa(nrosMesas);
-		try {
-			objetoRemoto.abrirMesa(dto);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-	}
-
 	public List<MesaDTO> listarMesasLibres() throws RemoteException {
 		return objetoRemoto.mesasLibres();
 	}
 
-	public void AbrirMesa(AbrirMesaDTO dto) throws BusinessException {
+	public MesaDTO AbrirMesa(AbrirMesaDTO dto) throws BusinessException {
 		try {
-			objetoRemoto.abrirMesa(dto);
+			return objetoRemoto.abrirMesa(dto);
 		} catch (RemoteException e) {
-			throw new BusinessException("Error de Acceso al servidor");
+			throw new BusinessException(e);
 		}
-
 	}
 
 	public List<MesaDTO> mesasLibres() throws BusinessException {

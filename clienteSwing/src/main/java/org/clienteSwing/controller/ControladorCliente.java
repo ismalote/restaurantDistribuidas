@@ -22,13 +22,13 @@ public enum ControladorCliente {
 
 	private Map<Integer, ComandaDTO> comandasCache = new HashMap<Integer, ComandaDTO>();
 
-	public void abrirMesaNueva(List<Integer> numeros) {
+	public MesaDTO abrirMesaNueva(List<Integer> numeros) {
 		try {
-			BussinessDelegate.getInstancia().abrirMesaNueva(numeros);
+			return BussinessDelegate.getInstancia().abrirMesaNueva(numeros);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		return null;
 	}
 
 	public List<MesaDTO> listarMesasLibresPorSector() throws RemoteException, Exception {

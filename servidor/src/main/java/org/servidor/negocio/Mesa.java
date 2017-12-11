@@ -105,6 +105,10 @@ public abstract class Mesa {
 	public boolean save() {
 		return MesaDAO.getInstancia().save(this);
 	}
+	
+	public boolean entranComensales(int cantComensales) {
+		return this.getCantidadSillas() >= cantComensales;
+	}
 	// TODO falta metodo y nose como poner simple y compuesta
 
 }

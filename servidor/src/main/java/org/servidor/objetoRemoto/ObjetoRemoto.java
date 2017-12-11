@@ -56,17 +56,12 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IAppRemote {
 		this.controlador.cerrarMesa(idMesa);
 	}
 
-	public void abrirMesa(AbrirMesaDTO dto) throws RemoteException {
-		Controlador.getInstancia().AbrirMesa(dto);
+	public MesaDTO abrirMesa(AbrirMesaDTO dto) throws RemoteException {
+		return Controlador.getInstancia().AbrirMesa(dto);
 	}
 
 	public List<MesaDTO> mesasLibres() throws MesaNotFoundException {
 		return Controlador.getInstancia().mesasLibres();
-	}
-
-	public void AbrirMesaNueva(List<Integer> nrosMesas) throws RemoteException {
-		// TODO Auto-generated method stub
-
 	}
 
 	public List<ItemComandaDTO> listarItemComanda(int idComanda) {

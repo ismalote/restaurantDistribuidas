@@ -23,7 +23,7 @@ import org.servidor.Enum.EstadoMesa;
 public abstract class MesaEntity {
 
 	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idMesa;
 
 	@Enumerated(EnumType.STRING)

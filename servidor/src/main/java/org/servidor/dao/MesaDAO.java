@@ -33,11 +33,17 @@ public class MesaDAO {
 		Mesa resultado = null;
 
 		Session s = HibernateUtil.getSessionFactory().openSession();
-		s.beginTransaction();
 		MesaEntity entity = (MesaEntity) s.createQuery("From MesaEntity m where idMesa=?").setInteger(0, numeroMesa)
 				.uniqueResult();
 		resultado = this.toNegocio(entity);
-		s.getTransaction().commit();
+		s.close();
+		return resultado;
+	}
+
+	public Mesa getMesa(int id) {
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		MesaEntity entity = s.get(MesaEntity.class, id);
+		Mesa resultado = this.toNegocio(entity);
 		s.close();
 		return resultado;
 	}
@@ -88,11 +94,11 @@ public class MesaDAO {
 			}
 			MesaCompuestaEntity entity = new MesaCompuestaEntity();
 			entity.setCantidadSillas(m.getCantidadSillas());
-			entity.setEstadoMesa(m.getEstadoMesa());
 			entity.setHoraLiberacion(m.getHoraLiberacion());
 			entity.setHoraOcupacion(m.getHoraOcupacion());
 			entity.setIdMesa(m.getIdMesa());
 			entity.setMesas(mesasEntity);
+			entity.setEstadoMesa(m.getEstadoMesa());
 			return entity;
 		} else {
 			MesaSimpleEntity entity = new MesaSimpleEntity();
