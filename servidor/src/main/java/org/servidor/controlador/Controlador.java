@@ -344,9 +344,9 @@ public class Controlador {
 	public boolean cerrarCaja(Integer idLocal, Float monto)
 			throws LocalNotFoundException, CajaNotFoundException, CajaYaCerradaException {
 
-		Local local = this.getLocal(idLocal, "calcularComisiones(int idLocal)");
+		Local local = this.getLocal(0, "calcularComisiones(int idLocal)");
 
-		Caja caja = this.getCaja(local.getCaja().getIdCaja(), "cerrarCaja(int idCaja)");
+		Caja caja = this.getCaja(0, "cerrarCaja(int idCaja)");
 		Date fecha = new Date();
 		boolean cierre = true;
 		Float comisiones = calcularComisiones(local);
